@@ -1,0 +1,458 @@
+[
+  {
+    "Mega Evo": "Mega Venusaur",
+    "Gmax": "Venusaur"
+  },
+  {
+    "Mega Evo": "Mega Raichu X",
+    "Gmax": "Charizard"
+  },
+  {
+    "Mega Evo": "Mega Gengar",
+    "Gmax": "Blastoise"
+  },
+  {
+    "Mega Evo": "Mega Dragonite",
+    "Gmax": "Butterfree"
+  },
+  {
+    "Mega Evo": "Mega Steelix",
+    "Gmax": "Pikachu"
+  },
+  {
+    "Mega Evo": "Mega Sceptile",
+    "Gmax": "Meowth"
+  },
+  {
+    "Mega Evo": "Mega Aggron",
+    "Gmax": "Machamp"
+  },
+  {
+    "Mega Evo": "Mega Banette",
+    "Gmax": "Gengar"
+  },
+  {
+    "Mega Evo": "Mega Metagross",
+    "Gmax": "Kingler"
+  },
+  {
+    "Mega Evo": "Mega Garchomp",
+    "Gmax": "Lapras"
+  },
+  {
+    "Mega Evo": "Mega Froslass",
+    "Gmax": "Eevee"
+  },
+  {
+    "Mega Evo": "Mega Scolipede",
+    "Gmax": "Snorlax"
+  },
+  {
+    "Mega Evo": "Mega Delphox",
+    "Gmax": "Garbodor"
+  },
+  {
+    "Mega Evo": "Mega Barbaracle",
+    "Gmax": "Melmetal"
+  },
+  {
+    "Mega Evo": "Mega Golisopod",
+    "Gmax": "Rillaboom"
+  },
+  {
+    "Mega Evo": "Mega Scovillain",
+    "Gmax": "Cinderace"
+  },
+  {
+    "Mega Evo": "Primal Kyogre",
+    "Gmax": "Inteleon"
+  },
+  {
+    "Mega Evo": "Mega Charizard X",
+    "Gmax": "Corviknight"
+  },
+  {
+    "Mega Evo": "Mega Raichu Y",
+    "Gmax": "Orbeetle"
+  },
+  {
+    "Mega Evo": "Mega Kangaskhan",
+    "Gmax": "Drednaw"
+  },
+  {
+    "Mega Evo": "Mega Mewtwo X",
+    "Gmax": "Coalossal"
+  },
+  {
+    "Mega Evo": "Mega Scizor",
+    "Gmax": "Flapple"
+  },
+  {
+    "Mega Evo": "Mega Blaziken",
+    "Gmax": "Appletun"
+  },
+  {
+    "Mega Evo": "Mega Medicham",
+    "Gmax": "Sandaconda"
+  },
+  {
+    "Mega Evo": "Mega Chimecho",
+    "Gmax": "Toxtricity"
+  },
+  {
+    "Mega Evo": "Mega Latias",
+    "Gmax": "Centiskorch"
+  },
+  {
+    "Mega Evo": "Mega Garchomp Z",
+    "Gmax": "Hatterene"
+  },
+  {
+    "Mega Evo": "Mega Heatran",
+    "Gmax": "Grimmsnarl"
+  },
+  {
+    "Mega Evo": "Mega Scrafty",
+    "Gmax": "Alcremie"
+  },
+  {
+    "Mega Evo": "Mega Greninja",
+    "Gmax": "Copperajah"
+  },
+  {
+    "Mega Evo": "Mega Dragalge",
+    "Gmax": "Duraludon"
+  },
+  {
+    "Mega Evo": "Mega Drampa",
+    "Gmax": "Urshifu"
+  },
+  {
+    "Mega Evo": "Mega Glimmora",
+    "Gmax": "Urshifu"
+  },
+  {
+    "Mega Evo": "Primal Groudon",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Charizard Y",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Clefable",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Starmie",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Mewtwo Y",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Heracross",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Swampert",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Manectric",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Absol",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Latios",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Lucario",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Darkrai",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Eelektross",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Pyroar",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Hawlucha",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Magearna",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Tatsugiri\nCurly Form",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Blastoise",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Alakazam",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Pinsir",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Meganium",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Skarmory",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Gardevoir",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Sharpedo",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Absol Z",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Rayquaza",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Lucario Z",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Emboar",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Chandelure",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Floette\nEternal Flower",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Zygarde",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Magearna\nOriginal Color",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Tatsugiri\nDroopy Form",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Blastoise",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Alakazam",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Pinsir",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Meganium",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Skarmory",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Gardevoir",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Sharpedo",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Absol Z",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Rayquaza",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Lucario Z",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Emboar",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Chandelure",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Floette\nEternal Flower",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Zygarde",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Magearna\nOriginal Color",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Tatsugiri\nDroopy Form",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Beedrill",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Victreebel",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Gyarados",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Feraligatr",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Houndoom",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Sableye",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Camerupt",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Glalie",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Staraptor",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Abomasnow",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Excadrill",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Golurk",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Meowstic",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Diancie",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Zeraora",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Tatsugiri\nStretchy Form",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Pidgeot",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Slowbro",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Aerodactyl",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Ampharos",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Tyranitar",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Mawile",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Altaria",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Salamence",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Lopunny",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Gallade",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Audino",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Chesnaught",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Malamar",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Crabominable",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Falinks",
+    "Gmax": ""
+  },
+  {
+    "Mega Evo": "Mega Baxcalibur",
+    "Gmax": ""
+  }
+]

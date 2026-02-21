@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 8%;
+    --foreground: 210 40% 98%;
+    --card: 220 13% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 13% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 220 13% 8%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.01) 10px,
+        rgba(255, 255, 255, 0.01) 20px
+      );
+    background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%, 40px 40px;
+    background-position: 0 0, 400px 400px, 200px 200px, 0 0, 0 0;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  .light body {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+    background-size: 800px 800px, 600px 600px, 400px 400px, 100% 100%;
+    background-position: 0 0, 400px 400px, 200px 200px, 0 0;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .pokemon-card {
+    @apply bg-card border rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer;
+    backdrop-filter: blur(10px);
+    background-color: hsl(var(--card) / 0.8);
+  }
+  
+  .type-badge {
+    @apply inline-block px-2 py-1 text-xs font-semibold text-white rounded-full;
+    contain: layout;
+    contain-intrinsic-size: auto 32px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .type-badge-placeholder {
+    @apply inline-block px-2 py-1 text-xs bg-gray-200 rounded-full animate-pulse;
+    min-width: 32px;
+    min-height: 20px;
+    contain: layout;
+  }
+  
+  .stat-bar {
+    @apply w-full bg-gray-200 rounded-full h-2;
+    background-color: hsl(var(--muted) / 0.5);
+  }
+  
+  .stat-fill {
+    @apply h-2 rounded-full transition-all duration-300;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background-color: hsl(var(--card) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Dark theme fixes for common elements */
+  input, textarea, select {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  input::placeholder {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  
+  .bg-white {
+    background-color: hsl(var(--card)) !important;
+  }
+  
+  .bg-gray-50 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .bg-gray-100 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .bg-gray-200 {
+    background-color: hsl(var(--border)) !important;
+  }
+  
+  .text-gray-600 {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  
+  .text-gray-700 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .text-gray-800 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .text-gray-500 {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  
+  .border-gray-200 {
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  .border-gray-300 {
+    border-color: hsl(var(--border)) !important;
+  }
+  
+  .hover\\:bg-gray-50:hover {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .hover\\:bg-gray-300:hover {
+    background-color: hsl(var(--accent)) !important;
+  }
+  
+  /* Type chart specific fixes */
+  .bg-green-50 {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+  }
+  
+  .bg-orange-50 {
+    background-color: rgba(251, 146, 60, 0.1) !important;
+  }
+  
+  .bg-red-50 {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+  }
+  
+  .bg-blue-50 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+  
+  .bg-indigo-50 {
+    background-color: rgba(99, 102, 241, 0.1) !important;
+  }
+  
+  .border-green-200 {
+    border-color: rgba(34, 197, 94, 0.3) !important;
+  }
+  
+  .border-orange-200 {
+    border-color: rgba(251, 146, 60, 0.3) !important;
+  }
+  
+  .border-red-200 {
+    border-color: rgba(239, 68, 68, 0.3) !important;
+  }
+  
+  .border-blue-200 {
+    border-color: rgba(59, 130, 246, 0.3) !important;
+  }
+  
+  .text-green-700 {
+    color: rgb(34, 197, 94) !important;
+  }
+  
+  .text-orange-700 {
+    color: rgb(251, 146, 60) !important;
+  }
+  
+  .text-red-800 {
+    color: rgb(239, 68, 68) !important;
+  }
+  
+  .text-blue-800 {
+    color: rgb(59, 130, 246) !important;
+  }
+  
+  .text-green-600 {
+    color: rgb(34, 197, 94) !important;
+  }
+  
+  .text-red-600 {
+    color: rgb(239, 68, 68) !important;
+  }
+  
+  .text-orange-600 {
+    color: rgb(251, 146, 60) !important;
+  }
+  
+  /* Trainer card fixes */
+  .bg-gray-100 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .bg-purple-100 {
+    background-color: rgba(147, 51, 234, 0.1) !important;
+  }
+  
+  .bg-yellow-100 {
+    background-color: rgba(250, 204, 21, 0.1) !important;
+  }
+  
+  .text-purple-800 {
+    color: rgb(147, 51, 234) !important;
+  }
+  
+  .text-yellow-800 {
+    color: rgb(250, 204, 21) !important;
+  }
+  
+  .text-gray-800 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  /* Special forms button fixes */
+  .bg-purple-100 {
+    background-color: rgba(147, 51, 234, 0.2) !important;
+  }
+  
+  .border-purple-300 {
+    border-color: rgba(147, 51, 234, 0.4) !important;
+  }
+  
+  .text-purple-700 {
+    color: rgb(196, 181, 253) !important;
+  }
+  
+  /* Additional purple variants */
+  .text-purple-600 {
+    color: rgb(196, 181, 253) !important;
+  }
+  
+  .text-purple-500 {
+    color: rgb(196, 181, 253) !important;
+  }
+  
+  .bg-purple-50 {
+    background-color: rgba(147, 51, 234, 0.1) !important;
+  }
+  
+  /* Battle Strategy specific fixes */
+  .text-purple-800 {
+    color: rgb(196, 181, 253) !important;
+  }
+  
+  .text-purple-500 {
+    color: rgb(196, 181, 253) !important;
+  }
+  
+  /* Additional fixes for better readability */
+  .text-yellow-100 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .text-yellow-200 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .text-yellow-300 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .bg-yellow-50 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .bg-yellow-100 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  /* Modal specific fixes */
+  .bg-blue-50 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+  
+  .bg-green-50 {
+    background-color: rgba(34, 197, 94, 0.1) !important;
+  }
+  
+  .bg-red-50 {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+  }
+  
+  .bg-yellow-50 {
+    background-color: rgba(251, 146, 60, 0.1) !important;
+  }
+  
+  .text-blue-600 {
+    color: rgb(96, 165, 250) !important;
+  }
+  
+  .text-green-600 {
+    color: rgb(134, 239, 172) !important;
+  }
+  
+  .text-red-600 {
+    color: rgb(248, 113, 113) !important;
+  }
+  
+  .text-yellow-700 {
+    color: rgb(251, 191, 36) !important;
+  }
+  
+  .text-blue-800 {
+    color: rgb(96, 165, 250) !important;
+  }
+  
+  /* Additional modal fixes */
+  .bg-gray-100 {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .text-gray-800 {
+    color: hsl(var(--foreground)) !important;
+  }
+  
+  .hover\\:bg-gray-100:hover {
+    background-color: hsl(var(--muted)) !important;
+  }
+  
+  .border-b {
+    border-color: hsl(var(--border)) !important;
+  }
+}

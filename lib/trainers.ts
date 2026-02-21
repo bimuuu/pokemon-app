@@ -1,0 +1,62 @@
+export const REGION_TRAINERS = {
+  kanto: [
+    { name: 'Brock', file: 'kanto_brock.json', type: 'Gym Leader' },
+    { name: 'Misty', file: 'kanto_misty.json', type: 'Gym Leader' },
+    { name: 'Lt. Surge', file: 'kanto_ltsurge.json', type: 'Gym Leader' },
+    { name: 'Erika', file: 'kanto_erika.json', type: 'Gym Leader' },
+    { name: 'Koga', file: 'kanto_koga.json', type: 'Gym Leader' },
+    { name: 'Sabrina', file: 'kanto_sabrina.json', type: 'Gym Leader' },
+    { name: 'Blaine', file: 'kanto_blaine.json', type: 'Gym Leader' },
+    { name: 'Giovanni', file: 'kanto_giovanni.json', type: 'Gym Leader' },
+    { name: 'Lorelei', file: 'kanto_league_lorelei.json', type: 'Elite Four' },
+    { name: 'Bruno', file: 'kanto_league_bruno.json', type: 'Elite Four' },
+    { name: 'Agatha', file: 'kanto_league_agatha.json', type: 'Elite Four' },
+    { name: 'Lance', file: 'kanto_league_lance.json', type: 'Elite Four' },
+    { name: 'Blue', file: 'kanto_champion_blue.json', type: 'Champion' }
+  ],
+  johto: [
+    { name: 'Falkner', file: 'johto_valerio.json', type: 'Gym Leader' },
+    { name: 'Bugsy', file: 'johto_raffaello.json', type: 'Gym Leader' },
+    { name: 'Whitney', file: 'johto_chiara.json', type: 'Gym Leader' },
+    { name: 'Morty', file: 'johto_alfredo.json', type: 'Gym Leader' },
+    { name: 'Chuck', file: 'johto_furio.json', type: 'Gym Leader' },
+    { name: 'Jasmine', file: 'johto_jasmine.json', type: 'Gym Leader' },
+    { name: 'Pryce', file: 'johto_angelo.json', type: 'Gym Leader' },
+    { name: 'Clair', file: 'johto_sandra.json', type: 'Gym Leader' },
+    { name: 'Will', file: 'johto_league_pino.json', type: 'Elite Four' },
+    { name: 'Koga', file: 'johto_league_koga.json', type: 'Elite Four' },
+    { name: 'Bruno', file: 'johto_league_bruno.json', type: 'Elite Four' },
+    { name: 'Karen', file: 'johto_league_karen.json', type: 'Elite Four' },
+    { name: 'Lance', file: 'johto_champion_lance.json', type: 'Champion' }
+  ],
+  hoenn: [
+    { name: 'Roxanne', file: 'hoenn_pat.json', type: 'Gym Leader' },
+    { name: 'Brawly', file: 'hoenn_rudi.json', type: 'Gym Leader' },
+    { name: 'Wattson', file: 'hoenn_walter.json', type: 'Gym Leader' },
+    { name: 'Flannery', file: 'hoenn_fiammetta.json', type: 'Gym Leader' },
+    { name: 'Norman', file: 'hoenn_norman.json', type: 'Gym Leader' },
+    { name: 'Winona', file: 'hoenn_lyris.json', type: 'Gym Leader' },
+    { name: 'Tate & Liza', file: 'hoenn_alice.json', type: 'Gym Leader' },
+    { name: 'Juan', file: 'hoenn_petra.json', type: 'Gym Leader' },
+    { name: 'Sidney', file: 'hoenn_league_fosco.json', type: 'Elite Four' },
+    { name: 'Phoebe', file: 'hoenn_league_frida.json', type: 'Elite Four' },
+    { name: 'Glacia', file: 'hoenn_league_ester.json', type: 'Elite Four' },
+    { name: 'Drake', file: 'hoenn_league_drake.json', type: 'Elite Four' },
+    { name: 'Wallace', file: 'hoenn_adriano.json', type: 'Champion' }
+  ],
+  sinnoh: [
+    { name: 'Roark', file: 'sinnoh_pedro.json', type: 'Gym Leader' },
+    { name: 'Gardenia', file: 'sinnoh_gardenia.json', type: 'Gym Leader' },
+    { name: 'Maylene', file: 'sinnoh_marzia.json', type: 'Gym Leader' },
+    { name: 'Crasher Wake', file: 'sinnoh_elfio.json', type: 'Gym Leader' },
+    { name: 'Fantina', file: 'sinnoh_fannie.json', type: 'Gym Leader' },
+    { name: 'Byron', file: 'sinnoh_ferruccio.json', type: 'Gym Leader' },
+    { name: 'Candice', file: 'sinnoh_bianca.json', type: 'Gym Leader' },
+    { name: 'Volkner', file: 'sinnoh_corrado.json', type: 'Gym Leader' },
+    { name: 'Aaron', file: 'sinnoh_league_aaron.json', type: 'Elite Four' },
+    { name: 'Bertha', file: 'sinnoh_league_terrie.json', type: 'Elite Four' },
+    { name: 'Flint', file: 'sinnoh_league_vulcano.json', type: 'Elite Four' },
+    { name: 'Lucian', file: 'sinnoh_league_luciano.json', type: 'Elite Four' },
+    { name: 'Cynthia', file: 'sinnoh_champion_camilla.json', type: 'Champion' }
+  ]
+} as const

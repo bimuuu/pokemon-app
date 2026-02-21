@@ -1,0 +1,201 @@
+{
+  "name": {
+    "literal": "Karen"
+  },
+  "ai": {
+    "type": "rct",
+    "data": {
+      "moveBias": 1,
+      "switchBias": 0.5,
+      "statMoveBias": 1,
+      "itemBias": 0.8,
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 4
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 4
+    }
+  ],
+  "team": [
+    {
+      "moveset": [
+        "playrough",
+        "stoneedge",
+        "darkpulse",
+        "shadowball"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spd": 252,
+        "def": 252,
+        "hp": 6
+      },
+      "heldItem": [
+        "leftovers"
+      ],
+      "species": "absol",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "timid",
+      "ability": "superluck"
+    },
+    {
+      "moveset": [
+        "flamethrower",
+        "thunderfang",
+        "darkpulse",
+        "shadowball"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spe": 252,
+        "def": 6,
+        "hp": 252
+      },
+      "heldItem": [
+        "shell_bell"
+      ],
+      "species": "houndoom",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "relaxed",
+      "ability": "flashfire"
+    },
+    {
+      "moveset": [
+        "shadowball",
+        "darkpulse",
+        "waterpulse",
+        "psychic"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spe": 252,
+        "spa": 6,
+        "hp": 252
+      },
+      "heldItem": [
+        "focus_sash"
+      ],
+      "species": "spiritomb",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "adamant",
+      "ability": "infiltrator"
+    },
+    {
+      "moveset": [
+        "psychic",
+        "darkpulse",
+        "shadowball",
+        "dig"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spd": 252,
+        "atk": 6,
+        "hp": 252
+      },
+      "heldItem": [
+        "focus_sash"
+      ],
+      "species": "umbreon",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "impish",
+      "ability": "synchronize"
+    },
+    {
+      "moveset": [
+        "surf",
+        "shadowclaw",
+        "icebeam",
+        "throatchop"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spa": 252,
+        "atk": 252,
+        "hp": 6
+      },
+      "heldItem": [
+        "leftovers"
+      ],
+      "species": "weavile",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "jolly",
+      "ability": "pickpocket"
+    },
+    {
+      "moveset": [
+        "steelwing",
+        "aerialace",
+        "shadowball",
+        "darkpulse"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "evs": {
+        "spd": 252,
+        "def": 252,
+        "hp": 6
+      },
+      "heldItem": [
+        "leftovers"
+      ],
+      "species": "honchkrow",
+      "gender": "MALE",
+      "level": 90,
+      "nature": "jolly",
+      "ability": "superluck"
+    }
+  ],
+  "battleFormat": "GEN_9_SINGLES"
+}

@@ -1,0 +1,123 @@
+{
+  "name": {
+    "literal": "Misty"
+  },
+  "ai": {
+    "type": "rct",
+    "data": {
+      "moveBias": 1,
+      "switchBias": 0.5,
+      "statMoveBias": 1,
+      "itemBias": 0.8,
+      "maxSelectMargin": 0.15
+    }
+  },
+  "battleRules": {
+    "maxItemUses": 2
+  },
+  "bag": [
+    {
+      "item": "cobblemon:full_restore",
+      "quantity": 2
+    }
+  ],
+  "team": [
+    {
+      "moveset": [
+        "flashcannon",
+        "waterpulse",
+        "blizzard",
+        "waterfall"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 30,
+        "def": 31,
+        "atk": 30,
+        "hp": 31
+      },
+      "heldItem": [
+        "focus_sash"
+      ],
+      "species": "horsea",
+      "gender": "MALE",
+      "level": 23,
+      "nature": "jolly",
+      "ability": "sniper"
+    },
+    {
+      "moveset": [
+        "psyshock",
+        "surf",
+        "psywave",
+        "watergun"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 31,
+        "def": 31,
+        "atk": 31,
+        "hp": 31
+      },
+      "heldItem": [
+        "twisted_spoon"
+      ],
+      "species": "starmie",
+      "gender": "GENDERLESS",
+      "level": 25,
+      "nature": "timid",
+      "ability": "analytic"
+    },
+    {
+      "moveset": [
+        "watergun",
+        "confusion",
+        "aquatail",
+        "zenheadbutt"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 30,
+        "def": 29,
+        "atk": 29,
+        "hp": 31
+      },
+      "heldItem": [
+        "leftovers"
+      ],
+      "species": "psyduck",
+      "gender": "MALE",
+      "level": 23,
+      "nature": "bold",
+      "ability": "cloudnine"
+    },
+    {
+      "moveset": [
+        "waterpulse",
+        "peck",
+        "aquaring",
+        "hornattack"
+      ],
+      "ivs": {
+        "spe": 31,
+        "spd": 31,
+        "spa": 30,
+        "def": 29,
+        "atk": 29,
+        "hp": 31
+      },
+      "heldItem": [
+        "scope_lens"
+      ],
+      "species": "goldeen",
+      "gender": "FEMALE",
+      "level": 24,
+      "nature": "hasty",
+      "ability": "swiftswim"
+    }
+  ],
+  "battleFormat": "GEN_9_SINGLES"
+}
