@@ -1,13 +1,14 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { PokemonCard } from '@/components/pokemon/PokemonCard'
 import { Pagination } from '@/components/common/Pagination'
 import { PokemonFilters } from '@/components/filters/PokemonFilters'
 import { FilterTags } from '@/components/filters/FilterTags'
 import { PokemonPageLoading } from '@/components/loading/PokemonPageLoading'
 import { CobblemonPokemon } from '@/types/pokemon'
-import { fetchCobblemonData, fetchPokemonById } from '@/lib/api'
+import { fetchCobblemonData } from '@/lib/api'
+import { fetchPokemonTypesOnly, preloadPokemonImages, debounce } from '@/lib/optimized-api'
 import { POKEMON_PER_PAGE } from '@/lib/constants'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { usePokemonCache } from '@/contexts/PokemonCacheContext'
@@ -50,43 +51,31 @@ export default function HomePage() {
     loadData()
   }, [getCachedTypes])
 
-  // Lazy load types for visible Pokemon only (current page)
+  // Optimized type loading with better batching
   useEffect(() => {
     const loadVisibleTypes = async () => {
       const startIndex = (currentPage - 1) * POKEMON_PER_PAGE
       const endIndex = startIndex + POKEMON_PER_PAGE
       const visiblePokemon = pokemonFilter.filteredData.slice(startIndex, endIndex)
       
-      // Load types only for Pokemon on current page if not already loaded
+      // Get Pokemon IDs that need types
       const pokemonToLoad = visiblePokemon.filter(p => !pokemonTypes[p.POKÉMON])
       
       if (pokemonToLoad.length > 0) {
         setLoadingTypes(true)
         
         try {
-          const typesPromises = pokemonToLoad.map(async (pokemon) => {
-            const id = parseInt(pokemon['N.'].replace('#', ''))
-            try {
-              const pokemonData = await fetchPokemonById(id)
-              if (pokemonData && pokemonData.types) {
-                return {
-                  name: pokemon.POKÉMON,
-                  types: pokemonData.types.map(t => t.type.name)
-                }
-              }
-              return null
-            } catch (error) {
-              console.warn(`Failed to fetch types for ${pokemon.POKÉMON}:`, error)
-              return null
-            }
-          })
+          // Extract IDs and fetch types in optimized batches
+          const pokemonIds = pokemonToLoad.slice(0, 20).map(p => parseInt(p['N.'].replace('#', '')))
+          const typesData = await fetchPokemonTypesOnly(pokemonIds)
           
-          const results = await Promise.allSettled(typesPromises)
+          // Map types back to Pokemon names
           const newTypes: Record<string, string[]> = {}
-          
-          results.forEach((result) => {
-            if (result.status === 'fulfilled' && result.value) {
-              newTypes[result.value.name] = result.value.types
+          pokemonToLoad.slice(0, 20).forEach(pokemon => {
+            const id = parseInt(pokemon['N.'].replace('#', ''))
+            const types = typesData[id]
+            if (types) {
+              newTypes[pokemon.POKÉMON] = types
             }
           })
           
@@ -159,7 +148,7 @@ export default function HomePage() {
         </section>
       ) : (
         <>
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid-container">
             {paginatedData.map((pokemon, index) => (
               <PokemonCard 
                 key={`${pokemon['N.']}-${index}`} 
