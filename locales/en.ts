@@ -126,7 +126,16 @@ export const enTranslations = {
     speed: "Speed",
     typeMatchups: "Type Matchups",
     strongAgainst: "Strong Against",
-    weakAgainst: "Weak Against"
+    weakAgainst: "Weak Against",
+    levelUpMoves: "Level Up Moves",
+    tmMoves: "TM Moves", 
+    eggMoves: "Egg Moves",
+    tutorMoves: "Tutor Moves",
+    otherMoves: "Other Moves",
+    searchMoves: "Search moves...",
+    allMoves: "All Moves",
+    noMovesFound: "No moves found matching your search",
+    noMovesInCategory: "No moves in this category"
   },
   types: {
     normal: "Normal",

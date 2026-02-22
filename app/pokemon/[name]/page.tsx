@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown } from 'lucide-react'
+import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown, Search } from 'lucide-react'
 import Link from 'next/link'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { EvolutionStage } from '@/components/pokemon/EvolutionStage'
@@ -13,6 +13,10 @@ import { usePokemonCache } from '@/contexts/PokemonCacheContext'
 import { translateCondition } from '@/lib/i18n'
 import { fetchPokemonForms, fetchAllFormsData, getFormTransformationConditions, getFormDisplayName, getGmaxMoveName } from '@/lib/pokemon-api'
 import { FormTransformationService } from '@/lib/form-transformations'
+import { PokemonMovesService, type MoveLearnMethod } from '@/services/pokemonMovesService'
+import { MoveDetailModal } from '@/components/modals/MoveDetailModal'
+import { MoveService, type PokemonWithMove } from '@/services/moveService'
+import type { Move } from 'pokenode-ts'
 
 export default function PokemonDetailPage() {
   const { t } = useLanguage()
@@ -29,6 +33,20 @@ export default function PokemonDetailPage() {
   const [loadingForms, setLoadingForms] = useState(false)
   const [selectedForm, setSelectedForm] = useState<PokemonForm | null>(null)
   const [showFormDetails, setShowFormDetails] = useState(false)
+  const [pokemonMoves, setPokemonMoves] = useState<{
+    levelUp: MoveLearnMethod[]
+    tm: MoveLearnMethod[]
+    egg: MoveLearnMethod[]
+    tutor: MoveLearnMethod[]
+    other: MoveLearnMethod[]
+  } | null>(null)
+  const [loadingMoves, setLoadingMoves] = useState(false)
+  const [selectedMove, setSelectedMove] = useState<Move | null>(null)
+  const [pokemonWithMove, setPokemonWithMove] = useState<PokemonWithMove[]>([])
+  const [isLoadingPokemon, setIsLoadingPokemon] = useState(false)
+  const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
+  const [moveSearchTerm, setMoveSearchTerm] = useState('')
+  const [selectedMoveCategory, setSelectedMoveCategory] = useState<string>('all')
 
   useEffect(() => {
     const loadData = async () => {
@@ -44,6 +62,9 @@ export default function PokemonDetailPage() {
           if (cachedData.pokemon?.id) {
             await loadFormsData(cachedData.pokemon.id)
           }
+          
+          // Load Pokemon moves
+          await loadPokemonMoves()
         }
       } catch (error) {
         console.error('Error loading Pokemon data:', error)
@@ -74,6 +95,77 @@ export default function PokemonDetailPage() {
       console.error('Error loading forms data:', error)
     } finally {
       setLoadingForms(false)
+    }
+  }
+
+  // Load Pokemon moves
+  const loadPokemonMoves = async () => {
+    setLoadingMoves(true)
+    try {
+      const moves = await PokemonMovesService.fetchPokemonMoves(pokemonName)
+      const processedMoves = PokemonMovesService.processMovesByMethod(moves)
+      setPokemonMoves(processedMoves)
+    } catch (error) {
+      console.error('Error loading Pokemon moves:', error)
+    } finally {
+      setLoadingMoves(false)
+    }
+  }
+
+  // Handle move click to show modal
+  const handleMoveClick = async (moveName: string) => {
+    setIsLoadingPokemon(true)
+    try {
+      // Convert move name with spaces to API-friendly format (replace spaces with hyphens)
+      const apiMoveName = moveName.replace(' ', '-').toLowerCase()
+      const moveData = await MoveService.fetchMoveDetails(apiMoveName)
+      if (moveData) {
+        setSelectedMove(moveData)
+        // Fetch Pokemon that can learn this move
+        const pokemonData = await MoveService.fetchPokemonWithMove(apiMoveName)
+        setPokemonWithMove(pokemonData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch move details:', error)
+    } finally {
+      setIsLoadingPokemon(false)
+    }
+  }
+
+  // Close modal
+  const closeModal = () => {
+    setSelectedMove(null)
+    setPokemonWithMove([])
+    setPokemonSearchTerm('')
+  }
+
+  // Filter moves based on search term and category
+  const filterMoves = (moves: MoveLearnMethod[]) => {
+    return moves.filter(move => 
+      move.name.toLowerCase().includes(moveSearchTerm.toLowerCase())
+    )
+  }
+
+  // Get filtered moves by category
+  const getFilteredMoves = () => {
+    if (!pokemonMoves) return { levelUp: [], tm: [], egg: [], tutor: [], other: [] }
+    
+    if (selectedMoveCategory === 'all') {
+      return {
+        levelUp: filterMoves(pokemonMoves.levelUp),
+        tm: filterMoves(pokemonMoves.tm),
+        egg: filterMoves(pokemonMoves.egg),
+        tutor: filterMoves(pokemonMoves.tutor),
+        other: filterMoves(pokemonMoves.other)
+      }
+    }
+    
+    return {
+      levelUp: selectedMoveCategory === 'level-up' ? filterMoves(pokemonMoves.levelUp) : [],
+      tm: selectedMoveCategory === 'tm' ? filterMoves(pokemonMoves.tm) : [],
+      egg: selectedMoveCategory === 'egg' ? filterMoves(pokemonMoves.egg) : [],
+      tutor: selectedMoveCategory === 'tutor' ? filterMoves(pokemonMoves.tutor) : [],
+      other: selectedMoveCategory === 'other' ? filterMoves(pokemonMoves.other) : []
     }
   }
 
@@ -435,7 +527,7 @@ export default function PokemonDetailPage() {
                     <h4 className="font-medium mb-2">{t('pokemon.transformationConditions') || 'Transformation Conditions'}</h4>
                     <div className="space-y-2">
                       {(() => {
-                      const conditions = FormTransformationService.getFormTransformationConditions(selectedForm.name)
+                        const conditions = FormTransformationService.getFormTransformationConditions(selectedForm.name)
                         if (conditions.length === 0) {
                           return <p className="text-sm text-gray-600">No special transformation conditions</p>
                         }
@@ -454,6 +546,44 @@ export default function PokemonDetailPage() {
         </section>
       )}
 
+      {/* Abilities Section */}
+      <section className="bg-white rounded-lg shadow-sm border p-8">
+        <h2 className="text-xl font-semibold mb-6 flex items-center">
+          <Star className="w-5 h-5 mr-2" />
+          {t('pokemon.abilities') || 'Abilities'}
+        </h2>
+        
+        {pokemon.abilities && pokemon.abilities.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {pokemon.abilities.map((ability, index) => (
+              <Link 
+                key={index} 
+                href={`/abilities/${ability.ability.name.replace(' ', '-')}`}
+                className="flex flex-col p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium capitalize text-sm">
+                    {ability.ability.name.replace('-', ' ')}
+                  </span>
+                  {ability.is_hidden && (
+                    <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
+                      {t('pokemon.hidden') || 'Hidden'}
+                    </span>
+                  )}
+                </div>
+                <div className="text-xs text-gray-500">
+                  Slot {ability.slot}
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-gray-600">No ability data available for this Pokemon.</p>
+          </div>
+        )}
+      </section>
+
       {evolutionChain && (
         <section className="bg-white rounded-lg shadow-sm border p-8">
           <h2 className="text-xl font-semibold mb-6 flex items-center">
@@ -469,29 +599,250 @@ export default function PokemonDetailPage() {
         </section>
       )}
 
+      {/* Moves Section */}
       <section className="bg-white rounded-lg shadow-sm border p-8">
-        <h2 className="text-xl font-semibold mb-4">Training Guide</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="font-medium mb-2">Recommended Nature</h3>
-            <p className="text-gray-600">Based on highest base stat: {pokemon.stats.reduce((prev, current) => 
-              prev.base_stat > current.base_stat ? prev : current
-            ).stat.name}</p>
+        <h2 className="text-xl font-semibold mb-6 flex items-center">
+          <Zap className="w-5 h-5 mr-2" />
+          {t('pokemon.moves') || 'Moves'}
+        </h2>
+        
+        {loadingMoves ? (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading moves data...</p>
           </div>
+        ) : pokemonMoves ? (
           <div>
-            <h3 className="font-medium mb-2">EV Training Focus</h3>
-            <p className="text-gray-600">Prioritize HP and highest offensive/defensive stat</p>
+            {/* Search and Filter Controls */}
+            <div className="mb-6 space-y-4">
+              {/* Search Bar */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <input
+                  type="text"
+                  placeholder={t('pokemon.searchMoves') || 'Search moves...'}
+                  value={moveSearchTerm}
+                  onChange={(e) => setMoveSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+
+              {/* Category Filter */}
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedMoveCategory('all')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'all'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {t('pokemon.allMoves') || 'All Moves'}
+                </button>
+                <button
+                  onClick={() => setSelectedMoveCategory('level-up')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'level-up'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  📈 {t('pokemon.levelUpMoves') || 'Level Up'}
+                </button>
+                <button
+                  onClick={() => setSelectedMoveCategory('tm')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'tm'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  💿 {t('pokemon.tmMoves') || 'TM'}
+                </button>
+                <button
+                  onClick={() => setSelectedMoveCategory('egg')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'egg'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  🥚 {t('pokemon.eggMoves') || 'Egg'}
+                </button>
+                <button
+                  onClick={() => setSelectedMoveCategory('tutor')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'tutor'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  👨‍🏫 {t('pokemon.tutorMoves') || 'Tutor'}
+                </button>
+                <button
+                  onClick={() => setSelectedMoveCategory('other')}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    selectedMoveCategory === 'other'
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  ⭐ {t('pokemon.otherMoves') || 'Other'}
+                </button>
+              </div>
+            </div>
+
+            {/* Filtered Moves Display */}
+            <div className="space-y-8">
+              {(() => {
+                const filteredMoves = getFilteredMoves()
+                const hasAnyMoves = filteredMoves.levelUp.length > 0 || 
+                                 filteredMoves.tm.length > 0 || 
+                                 filteredMoves.egg.length > 0 || 
+                                 filteredMoves.tutor.length > 0 || 
+                                 filteredMoves.other.length > 0
+
+                if (!hasAnyMoves) {
+                  return (
+                    <div className="text-center py-8">
+                      <p className="text-gray-600">
+                        {moveSearchTerm 
+                          ? (t('pokemon.noMovesFound') || 'No moves found matching your search.')
+                          : (t('pokemon.noMovesInCategory') || 'No moves in this category.')
+                        }
+                      </p>
+                    </div>
+                  )
+                }
+
+                return (
+                  <>
+                    {/* Level Up Moves */}
+                    {filteredMoves.levelUp.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-medium mb-4 flex items-center">
+                          <span className="mr-2">📈</span>
+                          {t('pokemon.levelUpMoves') || 'Level Up Moves'} ({filteredMoves.levelUp.length})
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {filteredMoves.levelUp.map((move, index) => (
+                            <div 
+                              key={index} 
+                              onClick={() => handleMoveClick(move.name)}
+                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                            >
+                              <span className="font-medium capitalize text-sm">{move.name}</span>
+                              <span className="text-sm font-semibold text-blue-600">Lv. {move.level}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TM Moves */}
+                    {filteredMoves.tm.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-medium mb-4 flex items-center">
+                          <span className="mr-2">💿</span>
+                          {t('pokemon.tmMoves') || 'TM Moves'} ({filteredMoves.tm.length})
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {filteredMoves.tm.map((move, index) => (
+                            <div 
+                              key={index} 
+                              onClick={() => handleMoveClick(move.name)}
+                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                            >
+                              <span className="font-medium capitalize text-sm">{move.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Egg Moves */}
+                    {filteredMoves.egg.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-medium mb-4 flex items-center">
+                          <span className="mr-2">🥚</span>
+                          {t('pokemon.eggMoves') || 'Egg Moves'} ({filteredMoves.egg.length})
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {filteredMoves.egg.map((move, index) => (
+                            <div 
+                              key={index} 
+                              onClick={() => handleMoveClick(move.name)}
+                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                            >
+                              <span className="font-medium capitalize text-sm">{move.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Tutor Moves */}
+                    {filteredMoves.tutor.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-medium mb-4 flex items-center">
+                          <span className="mr-2">👨‍🏫</span>
+                          {t('pokemon.tutorMoves') || 'Tutor Moves'} ({filteredMoves.tutor.length})
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {filteredMoves.tutor.map((move, index) => (
+                            <div 
+                              key={index} 
+                              onClick={() => handleMoveClick(move.name)}
+                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                            >
+                              <span className="font-medium capitalize text-sm">{move.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Other Moves */}
+                    {filteredMoves.other.length > 0 && (
+                      <div>
+                        <h3 className="text-lg font-medium mb-4 flex items-center">
+                          <span className="mr-2">⭐</span>
+                          {t('pokemon.otherMoves') || 'Other Moves'} ({filteredMoves.other.length})
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                          {filteredMoves.other.map((move, index) => (
+                            <div 
+                              key={index} 
+                              onClick={() => handleMoveClick(move.name)}
+                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                            >
+                              <span className="font-medium capitalize text-sm">{move.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )
+              })()}
+            </div>
           </div>
-          <div>
-            <h3 className="font-medium mb-2">Best Held Items</h3>
-            <p className="text-gray-600">Type-enhancing items or choice items based on role</p>
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-gray-600">Failed to load moves data.</p>
           </div>
-          <div>
-            <h3 className="font-medium mb-2">Leveling Strategy</h3>
-            <p className="text-gray-600">Train against Pokemon weak to your types for efficient EXP gain</p>
-          </div>
-        </div>
+        )}
       </section>
+
+      {/* Move Detail Modal */}
+      <MoveDetailModal
+        move={selectedMove}
+        pokemonWithMove={pokemonWithMove}
+        isLoadingPokemon={isLoadingPokemon}
+        pokemonSearchTerm={pokemonSearchTerm}
+        onPokemonSearchChange={setPokemonSearchTerm}
+        onClose={closeModal}
+      />
     </main>
   )
 }

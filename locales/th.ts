@@ -131,7 +131,16 @@ export const thTranslations = {
     formStats: "เปรียบเทียบสถิติรูปแบบ",
     formTypeMatchups: "การจับคู่ธาตุของรูปแบบ",
     noFormStats: "ไม่มีข้อมูลสถิติสำหรับรูปแบบนี้",
-    hidden: "ซ่อน"
+    hidden: "ซ่อน",
+    levelUpMoves: "ท่าเรียนรู้ตามเลเวล",
+    tmMoves: "ท่าที่เรียนจาก TM",
+    eggMoves: "ท่าที่สามารถเพิ่มได้จากไข่",
+    tutorMoves: "ท่าที่สามารถเพิ่มได้จากผู้สอน",
+    otherMoves: "ท่าอื่นๆ",
+    searchMoves: "ค้นหาท่าต่อสู้...",
+    allMoves: "ทุกท่า",
+    noMovesFound: "ไม่พบท่าต่อสู้ที่ตรงกับการค้นหา",
+    noMovesInCategory: "ไม่มีท่าต่อสู้ในหมวดหมู่นี้"
   },
   types: {
     normal: "ธรรมดา",
