@@ -14,6 +14,11 @@ export const thTranslations = {
     pokemon: "โปเกม่อน",
     teamBuilder: "สร้างทีม",
     typeChart: "ตารางธาตุ",
+    shop: "ร้านค้า",
+    gameData: "ท่าต่อสู้ / ความสามารถ / นิสัย",
+    moves: "ท่าต่อสู้",
+    abilities: "ความสามารถ",
+    natures: "นิสัย",
     gymsAndElites: "ยิมและเทรนเนอร์ระดับสูง"
   },
   home: {
@@ -131,7 +136,7 @@ export const thTranslations = {
     fire: "ไฟ",
     water: "น้ำ",
     electric: "ไฟฟ้า",
-    grass: "หญ้า",
+    grass: "พืช",
     ice: "น้ำแข็ง",
     fighting: "ต่อสู้",
     poison: "พิษ",
@@ -227,7 +232,7 @@ export const thTranslations = {
       flamePlate: "เปลี่ยนเป็นรูปแบบไฟเมื่อถือ Flame Plate",
       splashPlate: "เปลี่ยนเป็นรูปแบบน้ำเมื่อถือ Splash Plate",
       zapPlate: "เปลี่ยนเป็นรูปแบบไฟฟ้าเมื่อถือ Zap Plate",
-      meadowPlate: "เปลี่ยนเป็นรูปแบบหญ้าเมื่อถือ Meadow Plate",
+      meadowPlate: "เปลี่ยนเป็นรูปแบบพืชเมื่อถือ Meadow Plate",
       iciclePlate: "เปลี่ยนเป็นรูปแบบน้ำแข็งเมื่อถือ Icicle Plate",
       fistPlate: "เปลี่ยนเป็นรูปแบบต่อสู้เมื่อถือ Fist Plate",
       toxicPlate: "เปลี่ยนเป็นรูปแบบพิษเมื่อถือ Toxic Plate",
@@ -276,7 +281,7 @@ export const thTranslations = {
       washForm: "รูปแบบ Wash - เครื่องซักผ้า ชนิดน้ำ/ไฟฟ้า",
       frostForm: "รูปแบบ Frost - ตู้เย็น ชนิดน้ำแข็ง/ไฟฟ้า",
       fanForm: "รูปแบบ Fan - พัดลมไฟฟ้า ชนิดบิน/ไฟฟ้า",
-      mowForm: "รูปแบบ Mow - เครื่องตัดหญ้า ชนิดหญ้า/ไฟฟ้า",
+      mowForm: "รูปแบบ Mow - เครื่องตัดพืช ชนิดพืช/ไฟฟ้า",
       revertBase: "กลับเป็นรูปแบบพื้นฐานนอกเครื่องใช้ไฟฟ้า"
     },
     castform: {
@@ -314,7 +319,7 @@ export const thTranslations = {
       overcast: "เปลี่ยนเป็นรูปแบบ Overcast ในสภาพอากาศปกติ"
     },
     burmy: {
-      plantCloak: "เปลี่ยนเป็น Plant Cloak ในพื้นที่หญ้า",
+      plantCloak: "เปลี่ยนเป็น Plant Cloak ในพื้นที่พืช",
       sandyCloak: "เปลี่ยนเป็น Sandy Cloak ในถ้ำ/ชายหาด",
       trashCloak: "เปลี่ยนเป็น Trash Cloak ในอาคาร"
     },
@@ -470,7 +475,7 @@ export const thTranslations = {
     },
     venusaur: {
       mega: "Mega Evolve เป็น Mega Venusaur ด้วย Venusaurite",
-      megaDesc: "Mega Venusaur - ชนิดหญ้า/พิษ ความสามารถ Thick Fat",
+      megaDesc: "Mega Venusaur - ชนิดพืช/พิษ ความสามารถ Thick Fat",
       megaBattle: "Mega Evolution เฉพาะในการต่อสู้"
     },
     alakazam: {
@@ -516,9 +521,9 @@ export const thTranslations = {
       coalossal: "Gigantamax เป็น Gmax Coalossal ด้วย Dynamax Band",
       coalossalDesc: "Gmax Coalossal - ชนิดหิน/ไฟ ท่า Gmax Steelsurge",
       flapple: "Gigantamax เป็น Gmax Flapple ด้วย Dynamax Band",
-      flappleDesc: "Gmax Flapple - ชนิดหญ้า/มังกร ท่า Gmax Tartness",
+      flappleDesc: "Gmax Flapple - ชนิดพืช/มังกร ท่า Gmax Tartness",
       appletun: "Gigantamax เป็น Gmax Appletun ด้วย Dynamax Band",
-      appletunDesc: "Gmax Appletun - ชนิดหญ้า/มังกร ท่า Gmax Sweetness",
+      appletunDesc: "Gmax Appletun - ชนิดพืช/มังกร ท่า Gmax Sweetness",
       sandaconda: "Gigantamax เป็น Gmax Sandaconda ด้วย Dynamax Band",
       sandacondaDesc: "Gmax Sandaconda - ชนิดดิน ท่า Gmax Sandblast",
       centiskorch: "Gigantamax เป็น Gmax Centiskorch ด้วย Dynamax Band",
@@ -534,7 +539,7 @@ export const thTranslations = {
       urshifu: "Gigantamax เป็น Gmax Urshifu ด้วย Dynamax Band",
       urshifuDesc: "Gmax Urshifu - ชนิดต่อสู้/ความมืด ท่า Gmax One Blow",
       rillaboom: "Gigantamax เป็น Gmax Rillaboom ด้วย Dynamax Band",
-      rillaboomDesc: "Gmax Rillaboom - ชนิดหญ้า ท่า Gmax Drum Solo",
+      rillaboomDesc: "Gmax Rillaboom - ชนิดพืช ท่า Gmax Drum Solo",
       cinderace: "Gigantamax เป็น Gmax Cinderace ด้วย Dynamax Band",
       cinderaceDesc: "Gmax Cinderace - ชนิดไฟ ท่า Gmax Fireball",
       inteleon: "Gigantamax เป็น Gmax Inteleon ด้วย Dynamax Band",

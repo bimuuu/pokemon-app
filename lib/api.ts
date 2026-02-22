@@ -1,14 +1,34 @@
 // Re-export all Pokemon API functions from dedicated module
 export {
-  pokemonClient,
-  evolutionClient,
-  normalizePokemonName,
-  fetchPokemonSpeciesByName,
-  fetchPokemonSpeciesById,
+  // Move API functions
+  fetchMoveByName,
+  fetchMoveById,
+  fetchAllMoves,
+  fetchAllMovesComplete,
+  
+  // Ability API functions
+  fetchAbilityByName,
+  fetchAbilityById,
+  fetchAllAbilities,
+  
+  // Item API functions
+  fetchItemByName,
+  fetchItemById,
+  fetchAllItems,
+  fetchItemsByCategory,
+  
+  // Nature API functions
+  fetchNatureByName,
+  fetchNatureById,
+  fetchAllNatures,
+  
+  // Pokemon API functions
   fetchPokemonByName,
   fetchPokemonById,
+  fetchPokemonSpeciesByName,
+  fetchPokemonSpeciesById,
   fetchEvolutionChain,
-  fetchEvolutionChainBySpeciesName
+  fetchEvolutionChainBySpeciesName,
 } from './pokemon-api'
 
 // Keep other API functions that are not Pokemon-related

@@ -1,0 +1,481 @@
+{
+  "currency": "CobbleDollar",
+  "categories": [
+    {
+      "id": "pokeballs",
+      "name": "Poke Balls",
+      "description": "Various types of Poke Balls for catching Pokemon",
+      "items": [
+        {
+          "id": "poke_ball",
+          "name": "Poke Ball",
+          "itemId": "cobblemon:poke_ball",
+          "price": 400,
+          "description": "A basic device for catching wild Pokemon"
+        },
+        {
+          "id": "citrine_ball",
+          "name": "Citrine Ball",
+          "itemId": "cobblemon:citrine_ball",
+          "price": 400,
+          "description": "A yellow-colored Poke Ball"
+        },
+        {
+          "id": "verdant_ball",
+          "name": "Verdant Ball",
+          "itemId": "cobblemon:verdant_ball",
+          "price": 400,
+          "description": "A green-colored Poke Ball"
+        },
+        {
+          "id": "azure_ball",
+          "name": "Azure Ball",
+          "itemId": "cobblemon:azure_ball",
+          "price": 400,
+          "description": "A blue-colored Poke Ball"
+        },
+        {
+          "id": "roseate_ball",
+          "name": "Roseate Ball",
+          "itemId": "cobblemon:roseate_ball",
+          "price": 400,
+          "description": "A pink-colored Poke Ball"
+        },
+        {
+          "id": "slate_ball",
+          "name": "Slate Ball",
+          "itemId": "cobblemon:slate_ball",
+          "price": 400,
+          "description": "A gray-colored Poke Ball"
+        },
+        {
+          "id": "great_ball",
+          "name": "Great Ball",
+          "itemId": "cobblemon:great_ball",
+          "price": 750,
+          "description": "A better-quality Poke Ball with a higher catch rate"
+        },
+        {
+          "id": "ultra_ball",
+          "name": "Ultra Ball",
+          "itemId": "cobblemon:ultra_ball",
+          "price": 1000,
+          "description": "A high-performance Poke Ball with a higher catch rate"
+        },
+        {
+          "id": "luxury_ball",
+          "name": "Luxury Ball",
+          "itemId": "cobblemon:luxury_ball",
+          "price": 4000,
+          "description": "A comfortable Poke Ball that makes Pokemon more friendly"
+        }
+      ]
+    },
+    {
+      "id": "medicine",
+      "name": "Medicine",
+      "description": "Healing items and medicine for Pokemon",
+      "items": [
+        {
+          "id": "potion",
+          "name": "Potion",
+          "itemId": "cobblemon:potion",
+          "price": 600,
+          "description": "Heals 20 HP damage"
+        },
+        {
+          "id": "super_potion",
+          "name": "Super Potion",
+          "itemId": "cobblemon:super_potion",
+          "price": 900,
+          "description": "Heals 60 HP damage"
+        },
+        {
+          "id": "hyper_potion",
+          "name": "Hyper Potion",
+          "itemId": "cobblemon:hyper_potion",
+          "price": 1600,
+          "description": "Heals 120 HP damage"
+        },
+        {
+          "id": "max_potion",
+          "name": "Max Potion",
+          "itemId": "cobblemon:max_potion",
+          "price": 2500,
+          "description": "Fully restores HP"
+        },
+        {
+          "id": "full_restore",
+          "name": "Full Restore",
+          "itemId": "cobblemon:full_restore",
+          "price": 3000,
+          "description": "Fully restores HP and removes all status conditions"
+        },
+        {
+          "id": "revive",
+          "name": "Revive",
+          "itemId": "cobblemon:revive",
+          "price": 3000,
+          "description": "Revives fainted Pokemon with half HP"
+        },
+        {
+          "id": "max_revive",
+          "name": "Max Revive",
+          "itemId": "cobblemon:max_revive",
+          "price": 5000,
+          "description": "Revives fainted Pokemon with full HP"
+        },
+        {
+          "id": "antidote",
+          "name": "Antidote",
+          "itemId": "cobblemon:antidote",
+          "price": 250,
+          "description": "Cures poisoning"
+        },
+        {
+          "id": "burn_heal",
+          "name": "Burn Heal",
+          "itemId": "cobblemon:burn_heal",
+          "price": 250,
+          "description": "Cures burns"
+        },
+        {
+          "id": "ice_heal",
+          "name": "Ice Heal",
+          "itemId": "cobblemon:ice_heal",
+          "price": 250,
+          "description": "Cures freezing"
+        },
+        {
+          "id": "awakening",
+          "name": "Awakening",
+          "itemId": "cobblemon:awakening",
+          "price": 250,
+          "description": "Cures sleep"
+        },
+        {
+          "id": "paralyze_heal",
+          "name": "Paralyze Heal",
+          "itemId": "cobblemon:paralyze_heal",
+          "price": 250,
+          "description": "Cures paralysis"
+        }
+      ]
+    },
+    {
+      "id": "vitamins",
+      "name": "Vitamins & Enhancers",
+      "description": "Items that boost Pokemon stats",
+      "items": [
+        {
+          "id": "hp_up",
+          "name": "HP Up",
+          "itemId": "cobblemon:hp_up",
+          "price": 2500,
+          "description": "Increases HP base points"
+        },
+        {
+          "id": "protein",
+          "name": "Protein",
+          "itemId": "cobblemon:protein",
+          "price": 2500,
+          "description": "Increases Attack base points"
+        },
+        {
+          "id": "iron",
+          "name": "Iron",
+          "itemId": "cobblemon:iron",
+          "price": 2500,
+          "description": "Increases Defense base points"
+        },
+        {
+          "id": "calcium",
+          "name": "Calcium",
+          "itemId": "cobblemon:calcium",
+          "price": 2500,
+          "description": "Increases Special Attack base points"
+        },
+        {
+          "id": "zinc",
+          "name": "Zinc",
+          "itemId": "cobblemon:zinc",
+          "price": 2500,
+          "description": "Increases Special Defense base points"
+        },
+        {
+          "id": "carbos",
+          "name": "Carbos",
+          "itemId": "cobblemon:carbos",
+          "price": 2500,
+          "description": "Increases Speed base points"
+        },
+        {
+          "id": "pp_up",
+          "name": "PP Up",
+          "itemId": "cobblemon:pp_up",
+          "price": 2500,
+          "description": "Increases PP of a move"
+        },
+        {
+          "id": "pp_max",
+          "name": "PP Max",
+          "itemId": "cobblemon:pp_max",
+          "price": 3500,
+          "description": "Maximizes PP of a move"
+        }
+      ]
+    },
+    {
+      "id": "special_items",
+      "name": "Special Items",
+      "description": "Rare and special items",
+      "items": [
+        {
+          "id": "relic_coin",
+          "name": "Relic Coin",
+          "itemId": "cobblemon:relic_coin",
+          "price": 50,
+          "description": "Ancient coin with historical value"
+        },
+        {
+          "id": "relic_coin_pouch",
+          "name": "Relic Coin Pouch",
+          "itemId": "cobblemon:relic_coin_pouch",
+          "price": 475,
+          "description": "A pouch containing relic coins"
+        },
+        {
+          "id": "relic_coin_sack",
+          "name": "Relic Coin Sack",
+          "itemId": "cobblemon:relic_coin_sack",
+          "price": 4500,
+          "description": "A large sack filled with relic coins"
+        },
+        {
+          "id": "trainer_card",
+          "name": "Trainer Card",
+          "itemId": "rctmod:trainer_card",
+          "price": 500,
+          "description": "Official trainer identification card"
+        },
+        {
+          "id": "store_card",
+          "name": "Store Card",
+          "itemId": "lumymon:store_card",
+          "price": 999,
+          "description": "Premium store membership card"
+        },
+        {
+          "id": "elytra",
+          "name": "Elytra",
+          "itemId": "minecraft:elytra",
+          "price": 25000,
+          "description": "Rare wings that allow flight"
+        }
+      ]
+    },
+    {
+      "id": "mob_drops",
+      "name": "Mob Drops & Materials",
+      "description": "Common materials dropped by mobs",
+      "items": [
+        {
+          "id": "egg",
+          "name": "Egg",
+          "itemId": "minecraft:egg",
+          "price": 250,
+          "description": "Fresh egg from a chicken"
+        },
+        {
+          "id": "feather",
+          "name": "Feather",
+          "itemId": "minecraft:feather",
+          "price": 300,
+          "description": "Soft feather from a bird"
+        },
+        {
+          "id": "rabbit_hide",
+          "name": "Rabbit Hide",
+          "itemId": "minecraft:rabbit_hide",
+          "price": 350,
+          "description": "Hide from a rabbit"
+        },
+        {
+          "id": "ink_sac",
+          "name": "Ink Sac",
+          "itemId": "minecraft:ink_sac",
+          "price": 400,
+          "description": "Dark ink from a squid"
+        },
+        {
+          "id": "bone",
+          "name": "Bone",
+          "itemId": "minecraft:bone",
+          "price": 450,
+          "description": "Bone from a skeleton"
+        },
+        {
+          "id": "glow_ink_sac",
+          "name": "Glow Ink Sac",
+          "itemId": "minecraft:glow_ink_sac",
+          "price": 550,
+          "description": "Glowing ink from a glow squid"
+        },
+        {
+          "id": "gunpowder",
+          "name": "Gunpowder",
+          "itemId": "minecraft:gunpowder",
+          "price": 600,
+          "description": "Explosive powder from a creeper"
+        },
+        {
+          "id": "leather",
+          "name": "Leather",
+          "itemId": "minecraft:leather",
+          "price": 700,
+          "description": "Processed animal hide"
+        },
+        {
+          "id": "slime_ball",
+          "name": "Slime Ball",
+          "itemId": "minecraft:slime_ball",
+          "price": 800,
+          "description": "Bouncy slime from a slime"
+        },
+        {
+          "id": "ender_pearl",
+          "name": "Ender Pearl",
+          "itemId": "minecraft:ender_pearl",
+          "price": 1600,
+          "description": "Mysterious pearl from an enderman"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "name": "Food & Berries",
+      "description": "Edible items and Pokemon food",
+      "items": [
+        {
+          "id": "poke_cake",
+          "name": "Poke Cake",
+          "itemId": "cobblemon:poke_cake",
+          "price": 120,
+          "description": "Delicious cake for Pokemon"
+        },
+        {
+          "id": "old_gateau",
+          "name": "Old Gateau",
+          "itemId": "cobblemon:old_gateau",
+          "price": 40,
+          "description": "Traditional cake from Hearthome City"
+        },
+        {
+          "id": "smoked_tail_curry",
+          "name": "Smoked Tail Curry",
+          "itemId": "cobblemon:smoked_tail_curry",
+          "price": 70,
+          "description": "Spicy curry made with smoked tail"
+        },
+        {
+          "id": "candied_apple",
+          "name": "Candied Apple",
+          "itemId": "cobblemon:candied_apple",
+          "price": 33,
+          "description": "Sweet apple coated in candy"
+        },
+        {
+          "id": "rage_candy_bar",
+          "name": "Rage Candy Bar",
+          "itemId": "cobblemon:rage_candy_bar",
+          "price": 40,
+          "description": "Popular candy from Mahogany Town"
+        },
+        {
+          "id": "lumiose_galette",
+          "name": "Lumiose Galette",
+          "itemId": "cobblemon:lumiose_galette",
+          "price": 30,
+          "description": "Crispy snack from Lumiose City"
+        },
+        {
+          "id": "candied_berry",
+          "name": "Candied Berry",
+          "itemId": "cobblemon:candied_berry",
+          "price": 30,
+          "description": "Berry coated in sweet candy"
+        },
+        {
+          "id": "jubilife_muffin",
+          "name": "Jubilife Muffin",
+          "itemId": "cobblemon:jubilife_muffin",
+          "price": 40,
+          "description": "Fresh muffin from Jubilife City"
+        },
+        {
+          "id": "casteliacone",
+          "name": "Casteliacone",
+          "itemId": "cobblemon:casteliacone",
+          "price": 30,
+          "description": "Ice cream cone from Castelia City"
+        },
+        {
+          "id": "ponigiri",
+          "name": "Ponigiri",
+          "itemId": "cobblemon:ponigiri",
+          "price": 30,
+          "description": "Traditional rice ball"
+        },
+        {
+          "id": "vivichoke_dip",
+          "name": "Vivichoke Dip",
+          "itemId": "cobblemon:vivichoke_dip",
+          "price": 75,
+          "description": "Healthy dip made with vivichoke"
+        },
+        {
+          "id": "lava_cookie",
+          "name": "Lava Cookie",
+          "itemId": "cobblemon:lava_cookie",
+          "price": 10,
+          "description": "Hard cookie that cures status problems"
+        },
+        {
+          "id": "big_malasada",
+          "name": "Big Malasada",
+          "itemId": "cobblemon:big_malasada",
+          "price": 35,
+          "description": "Large fried dough from Alola"
+        },
+        {
+          "id": "pewter_crunchies",
+          "name": "Pewter Crunchies",
+          "itemId": "cobblemon:pewter_crunchies",
+          "price": 40,
+          "description": "Crunchy snack from Pewter City"
+        },
+        {
+          "id": "potato_mochi",
+          "name": "Potato Mochi",
+          "itemId": "cobblemon:potato_mochi",
+          "price": 25,
+          "description": "Soft mochi made with potato"
+        },
+        {
+          "id": "open_faced_sandwich",
+          "name": "Open-faced Sandwich",
+          "itemId": "cobblemon:open_faced_sandwich",
+          "price": 70,
+          "description": "Gourmet sandwich with various toppings"
+        },
+        {
+          "id": "tasty_tail",
+          "name": "Tasty Tail",
+          "itemId": "cobblemon:tasty_tail",
+          "price": 49,
+          "description": "Delicious tail dish"
+        }
+      ]
+    }
+  ]
+}

@@ -1033,3 +1033,280 @@ function getFormId(formName: string, baseId: number): number {
   // Check all mappings
   return megaIds[formName] || gmaxIds[formName] || otherFormIds[formName] || baseId
 }
+
+// ========================================
+// MOVE API FUNCTIONS
+// ========================================
+
+/**
+ * Fetches move data by name
+ */
+export async function fetchMoveByName(name: string) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/move/${name}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch move: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingMove', { name }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches move data by ID
+ */
+export async function fetchMoveById(id: number) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/move/${id}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch move: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingMoveId', { id }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches all moves (with pagination)
+ */
+export async function fetchAllMoves(limit: number = 20, offset: number = 0) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/move?limit=${limit}&offset=${offset}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch moves: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingMoves'), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches ALL moves (no limit)
+ */
+export async function fetchAllMovesComplete() {
+  try {
+    let allMoves: any[] = []
+    let nextUrl = 'https://pokeapi.co/api/v2/move?limit=1000'
+    
+    while (nextUrl) {
+      const response = await fetch(nextUrl)
+      if (!response.ok) {
+        throw new Error(`Failed to fetch moves: ${response.statusText}`)
+      }
+      const data = await response.json()
+      allMoves = [...allMoves, ...data.results]
+      nextUrl = data.next
+    }
+    
+    return {
+      results: allMoves,
+      count: allMoves.length,
+      next: null,
+      previous: null
+    }
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingMoves'), error)
+    throw error
+  }
+}
+
+// ========================================
+// ABILITY API FUNCTIONS
+// ========================================
+
+/**
+ * Fetches ability data by name
+ */
+export async function fetchAbilityByName(name: string) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/ability/${name}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ability: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingAbility', { name }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches ability data by ID
+ */
+export async function fetchAbilityById(id: number) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/ability/${id}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ability: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingAbilityId', { id }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches all abilities (with pagination)
+ */
+export async function fetchAllAbilities(limit: number = 20, offset: number = 0) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/ability?limit=${limit}&offset=${offset}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch abilities: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingAbilities'), error)
+    throw error
+  }
+}
+
+// ========================================
+// ITEM API FUNCTIONS
+// ========================================
+
+/**
+ * Fetches item data by name
+ */
+export async function fetchItemByName(name: string) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/item/${name}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch item: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingItem', { name }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches item data by ID
+ */
+export async function fetchItemById(id: number) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/item/${id}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch item: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingItemId', { id }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches all items (with pagination)
+ */
+export async function fetchAllItems(limit: number = 20, offset: number = 0) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/item?limit=${limit}&offset=${offset}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch items: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingItems'), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches items by category
+ */
+export async function fetchItemsByCategory(categoryId: number, limit: number = 20, offset: number = 0) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/item-category/${categoryId}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch item category: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingItemCategory', { categoryId }), error)
+    throw error
+  }
+}
+
+// ========================================
+// NATURE API FUNCTIONS
+// ========================================
+
+/**
+ * Fetches nature data by name
+ */
+export async function fetchNatureByName(name: string) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/nature/${name}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch nature: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingNature', { name }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches nature data by ID
+ */
+export async function fetchNatureById(id: number) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/nature/${id}`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch nature: ${response.statusText}`)
+    }
+    return await response.json()
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingNatureId', { id }), error)
+    throw error
+  }
+}
+
+/**
+ * Fetches all natures with detailed stat information
+ */
+export async function fetchAllNatures() {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/nature?limit=100`)
+    if (!response.ok) {
+      throw new Error(`Failed to fetch natures: ${response.statusText}`)
+    }
+    const data = await response.json()
+    
+    // Fetch detailed information for each nature
+    const detailedNatures = await Promise.all(
+      data.results.map(async (nature: any) => {
+        try {
+          const detailResponse = await fetch(nature.url)
+          if (!detailResponse.ok) {
+            console.warn(`Failed to fetch details for nature: ${nature.name}`)
+            return nature
+          }
+          const detailData = await detailResponse.json()
+          return detailData
+        } catch (error) {
+          console.warn(`Error fetching details for nature ${nature.name}:`, error)
+          return nature
+        }
+      })
+    )
+    
+    return {
+      ...data,
+      results: detailedNatures
+    }
+  } catch (error) {
+    console.error(getServerTranslation('errors.errorFetchingNatures'), error)
+    throw error
+  }
+}

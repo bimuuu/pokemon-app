@@ -14,6 +14,11 @@ export const enTranslations = {
     pokemon: "Pokemon",
     teamBuilder: "Team Builder",
     typeChart: "Type Chart",
+    shop: "Shop",
+    gameData: "Move / Ability / Nature",
+    moves: "Moves",
+    abilities: "Abilities",
+    natures: "Natures",
     gymsAndElites: "Gyms & Elites"
   },
   home: {
