@@ -133,7 +133,7 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                               <div className="flex justify-between items-center">
                                 <span className="text-gray-400">Nature:</span>
                                 <button
-                                  onClick={() => setSelectedNature(pokemon.nature)}
+                                  onClick={() => setSelectedNature(pokemon.nature || null)}
                                   className="cursor-pointer transition-transform hover:scale-105"
                                 >
                                   <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-3 py-1">
