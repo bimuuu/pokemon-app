@@ -1,51 +1,120 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
-import { Search, Zap, Shield, Star } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Search, Zap, Shield, Star, X, ArrowUpDown, Activity } from 'lucide-react'
 import { Pagination } from '@/components/common'
+import { AbilityService, type PokemonWithAbility } from '@/services/abilityService'
+import { ColorUtils } from '@/utils/colorUtils'
+import { SortUtils, type AbilitySortField, type SortOrder } from '@/utils/sortUtils'
+import { FilterUtils, ITEMS_PER_PAGE } from '@/utils/filterUtils'
+import { AbilityDetailModal } from '@/components/modals/AbilityDetailModal'
+import type { Ability } from 'pokenode-ts'
 
 interface AbilitiesListClientProps {
   initialAbilities: any
 }
 
 export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientProps) {
-  const [abilities, setAbilities] = useState(initialAbilities.results || [])
+  const [abilities, setAbilities] = useState<any[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 24
+  const [selectedAbility, setSelectedAbility] = useState<Ability | null>(null)
+  const [isLoadingAbility, setIsLoadingAbility] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [pokemonWithAbility, setPokemonWithAbility] = useState<PokemonWithAbility[]>([])
+  const [isLoadingPokemon, setIsLoadingPokemon] = useState(false)
+  const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
+  const [sortBy, setSortBy] = useState<AbilitySortField>('name')
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
+  const [selectedGeneration, setSelectedGeneration] = useState<string>('all')
+  const itemsPerPage = ITEMS_PER_PAGE
 
-  const getGenerationColor = (generation: string) => {
-    const colors: Record<string, string> = {
-      'generation-i': 'bg-red-500',
-      'generation-ii': 'bg-blue-500',
-      'generation-iii': 'bg-green-500',
-      'generation-iv': 'bg-purple-500',
-      'generation-v': 'bg-yellow-500',
-      'generation-vi': 'bg-pink-500',
-      'generation-vii': 'bg-cyan-500',
-      'generation-viii': 'bg-orange-500',
-      'generation-ix': 'bg-indigo-500'
+  const generations = [
+    'all',
+    'generation-i',
+    'generation-ii', 
+    'generation-iii',
+    'generation-iv',
+    'generation-v',
+    'generation-vi',
+    'generation-vii',
+    'generation-viii',
+    'generation-ix'
+  ]
+
+  // Fetch detailed ability data on component mount
+  useEffect(() => {
+    const fetchDetailedAbilities = async () => {
+      setIsLoading(true)
+      try {
+        const detailedAbilities = await Promise.all(
+          initialAbilities.results.map(async (ability: any) => {
+            const response = await fetch(ability.url)
+            if (response.ok) {
+              return await response.json()
+            }
+            return null
+          })
+        )
+        setAbilities(detailedAbilities.filter(Boolean))
+      } catch (error) {
+        console.error('Failed to fetch detailed abilities:', error)
+        setAbilities(initialAbilities.results)
+      } finally {
+        setIsLoading(false)
+      }
     }
-    return colors[generation] || 'bg-gray-500'
+
+    if (initialAbilities.results?.length > 0) {
+      fetchDetailedAbilities()
+    }
+  }, [initialAbilities])
+
+  const handleAbilityClick = async (abilityName: string) => {
+    setIsLoadingAbility(true)
+    setIsLoadingPokemon(true)
+    try {
+      const abilityData = await AbilityService.fetchAbilityDetails(abilityName)
+      if (abilityData) {
+        setSelectedAbility(abilityData)
+        // Fetch Pokemon that have this ability
+        const pokemonData = await AbilityService.fetchPokemonWithAbility(abilityName)
+        setPokemonWithAbility(pokemonData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch ability details:', error)
+    } finally {
+      setIsLoadingAbility(false)
+      setIsLoadingPokemon(false)
+    }
   }
 
-  const filteredAbilities = abilities.filter((ability: any) =>
-    ability.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  const closeModal = () => {
+    setSelectedAbility(null)
+    setPokemonWithAbility([])
+    setPokemonSearchTerm('')
+  }
 
-  const totalPages = Math.ceil(filteredAbilities.length / itemsPerPage)
-  const startIndex = (currentPage - 1) * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-  const currentAbilities = filteredAbilities.slice(startIndex, endIndex)
+  const handleSort = (field: AbilitySortField) => {
+    const { field: newField, order: newOrder } = SortUtils.handleAbilitySort(sortBy, field, sortOrder)
+    setSortBy(newField)
+    setSortOrder(newOrder)
+    setCurrentPage(1)
+  }
+
+  // Data processing
+  const filteredAbilities = FilterUtils.filterAbilities(abilities, searchTerm, selectedGeneration)
+  const sortedAbilities = SortUtils.sortAbilities(filteredAbilities, sortBy, sortOrder)
+  const totalPages = FilterUtils.getTotalPages(sortedAbilities.length, itemsPerPage)
+  const currentAbilities = FilterUtils.paginateAbilities(sortedAbilities, currentPage, itemsPerPage)
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [searchTerm])
+  }, [searchTerm, selectedGeneration])
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -68,35 +137,101 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
               className="pl-10"
             />
           </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-muted-foreground">Generation:</span>
+            <select
+              value={selectedGeneration}
+              onChange={(e) => {
+                setSelectedGeneration(e.target.value)
+                setCurrentPage(1)
+              }}
+              className="px-3 py-2 text-sm border border-border rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            >
+              {generations.map(gen => (
+                <option key={gen} value={gen}>
+                  {gen === 'all' ? 'All Generations' : gen.replace('-', ' ').toUpperCase()}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant={sortBy === 'name' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => handleSort('name')}
+              className="flex items-center gap-1"
+            >
+              <ArrowUpDown className="h-3 w-3" />
+              A-Z
+              {sortBy === 'name' && (
+                <span className="text-xs">{sortOrder === 'asc' ? '↑' : '↓'}</span>
+              )}
+            </Button>
+            <Button
+              variant={sortBy === 'generation' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => handleSort('generation')}
+              className="flex items-center gap-1"
+            >
+              <Activity className="h-3 w-3" />
+              Generation
+              {sortBy === 'generation' && (
+                <span className="text-xs">{sortOrder === 'asc' ? '↑' : '↓'}</span>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {currentAbilities.map((ability: any) => (
-          <Link key={ability.name} href={`/abilities/${ability.name}`}>
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+      {isLoading ? (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading abilities...</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {currentAbilities.map((ability: any) => (
+            <Card 
+              key={ability.name} 
+              className="hover:shadow-lg transition-shadow cursor-pointer h-full"
+              onClick={() => handleAbilityClick(ability.name)}
+            >
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-lg capitalize">
                     {ability.name.replace('-', ' ')}
                   </CardTitle>
-                  <Zap className="h-5 w-5 text-muted-foreground" />
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
+                      <Activity className="h-3 w-3" />
+                      <span className={`text-sm ${ColorUtils.getGenerationColor(ability.generation?.name || '')}`}>
+                        {ability.generation?.name?.replace('generation-', '').toUpperCase() || '—'}
+                      </span>
+                    </div>
+                    <Zap className="h-5 w-5 text-muted-foreground" />
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
-                  <Badge className="bg-purple-500 text-white">
-                    ABILITY
-                  </Badge>
+                  <div className="flex gap-2">
+                    <Badge 
+                      className="text-white border-0"
+                      style={{ backgroundColor: ColorUtils.getGenerationColor(ability.generation?.name || '') }}
+                    >
+                      {ability.generation?.name?.replace('-', ' ').toUpperCase() || 'UNKNOWN'}
+                    </Badge>
+                  </div>
                   <p className="text-sm text-muted-foreground">
-                    Click to view detailed information about this ability
+                    {ability.flavor_text_entries?.find((f: any) => f.language.name === 'en')?.flavor_text || 
+                     ability.effect_entries?.find((e: any) => e.language.name === 'en')?.short_effect ||
+                     'Click to view detailed information about this ability'}
                   </p>
                 </div>
               </CardContent>
             </Card>
-          </Link>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {currentAbilities.length === 0 && (
         <div className="text-center py-12">
@@ -113,6 +248,16 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
           />
         </div>
       )}
+
+      {/* Ability Detail Modal */}
+      <AbilityDetailModal
+        ability={selectedAbility}
+        pokemonWithAbility={pokemonWithAbility}
+        isLoadingPokemon={isLoadingPokemon}
+        pokemonSearchTerm={pokemonSearchTerm}
+        onPokemonSearchChange={setPokemonSearchTerm}
+        onClose={closeModal}
+      />
     </div>
   )
 }
