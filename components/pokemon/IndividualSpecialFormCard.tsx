@@ -84,7 +84,7 @@ export function IndividualSpecialFormCard({
 
   if (isDisabled) {
     return (
-      <div className="relative p-3 border rounded-lg bg-gray-50 opacity-50 cursor-not-allowed">
+      <div className="relative p-3 border-2 border-gray-700 rounded-lg bg-gray-800 opacity-50 cursor-not-allowed bg-gradient-to-br from-purple-900/20 to-gray-800">
         <div className="flex items-center space-x-3">
           <img 
             src={formData.sprites?.front_default || basePokemon.sprites.front_default}
@@ -112,7 +112,7 @@ export function IndividualSpecialFormCard({
             </div>
           </div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-90 rounded-lg">
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90 rounded-lg">
           <span className="text-xs font-medium text-gray-600">{t('team.inTeam')}</span>
         </div>
       </div>
@@ -126,16 +126,16 @@ export function IndividualSpecialFormCard({
       {...listeners}
       {...attributes}
       className={`
-        relative p-3 border rounded-lg cursor-move transition-all
-        hover:shadow-md hover:scale-105 hover:bg-gray-50
-        ${isDragging ? 'opacity-50 rotate-3 scale-105 shadow-lg' : ''}
-        ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white'}
-        border-purple-300 bg-purple-50
+        relative p-3 border-2 border-gray-600 rounded-lg cursor-move transition-all
+        hover:shadow-xl hover:scale-105 hover:bg-gray-700 hover:border-gray-500 hover:shadow-purple-500/20
+        ${isDragging ? 'opacity-50 rotate-3 scale-105 shadow-2xl shadow-purple-500/30' : ''}
+        ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-800 border-2 border-gray-700' : 'bg-gray-800 shadow-lg shadow-purple-500/10'}
+        bg-gradient-to-br from-purple-900/20 to-gray-800
       `}
     >
       <div className="absolute top-1 right-1">
-        <div className="w-4 h-4 bg-purple-300 rounded-full flex items-center justify-center">
-          <svg className="w-2 h-2 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+        <div className="w-4 h-4 bg-purple-600 rounded-full flex items-center justify-center">
+          <svg className="w-2 h-2 text-purple-200" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
           </svg>
         </div>

@@ -23,6 +23,7 @@ import { IndividualSpecialFormCard } from '@/components/pokemon/IndividualSpecia
 import { getIndividualSpecialForms } from '@/lib/individual-special-forms'
 import { Pagination } from '@/components/common/Pagination'
 import { TeamLoadingSkeleton } from '@/components/loading/TeamLoadingSkeleton'
+import { SpecialFormsLoadingSkeleton } from '@/components/loading/TeamLoadingSkeleton'
 import { Pokemon, TeamAnalysis } from '@/types/pokemon'
 import { fetchCobblemonData } from '@/lib/api'
 import { calculateTypeWeaknesses, calculateTypeStrengths, formatPokemonName } from '@/lib/utils'
@@ -49,6 +50,7 @@ export default function TeamBuilderPage() {
   const [activeId, setActiveId] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [loading, setLoading] = useState(true)
+  const [loadingTypes, setLoadingTypes] = useState(true)
   const [showSpecialForms, setShowSpecialForms] = useState(false)
   const [individualSpecialForms, setIndividualSpecialForms] = useState<Pokemon[]>([])
   const [loadingSpecialForms, setLoadingSpecialForms] = useState(false)
@@ -102,6 +104,7 @@ export default function TeamBuilderPage() {
   }, [showSpecialForms, allPokemon, individualSpecialForms.length, loadingSpecialForms])
   const loadTypesInBackground = async (cobblemonData: any[]) => {
     try {
+      setLoadingTypes(true)
       const types = await getCachedTypes()
       
       if (types) {
@@ -114,8 +117,10 @@ export default function TeamBuilderPage() {
           return updated
         })
       }
+      setLoadingTypes(false)
     } catch (error) {
       console.error('Error loading types in background:', error)
+      setLoadingTypes(false)
     }
   }
 
@@ -220,8 +225,8 @@ export default function TeamBuilderPage() {
   const specialFormsStartIndex = (currentPage - 1) * POKEMON_PER_PAGE
   const paginatedSpecialForms = specialFormsPokemon.slice(specialFormsStartIndex, specialFormsStartIndex + POKEMON_PER_PAGE)
 
-  if (loading) {
-    return <TeamLoadingSkeleton onClearAll={clearAllTeam} />
+  if (loading || loadingTypes) {
+    return <TeamLoadingSkeleton onClearAll={clearAllTeam} loadingTypes={loadingTypes} />
   }
 
   return (
@@ -234,14 +239,14 @@ export default function TeamBuilderPage() {
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">{t('team.title')}</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             {t('team.subtitle')}
           </p>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
-            <div className="bg-white rounded-lg shadow-sm border p-8">
+            <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-8">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-semibold flex items-center">
                   <Users className="w-5 h-5 mr-2" />
@@ -275,7 +280,7 @@ export default function TeamBuilderPage() {
           <div className="lg:w-96">
             {teamAnalysis && (
               <div className="space-y-6">
-                <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
                   <h3 className="text-lg font-semibold mb-4 flex items-center text-green-600">
                     <Zap className="w-5 h-5 mr-2" />
                     {t('team.teamStrengths')}
@@ -296,7 +301,7 @@ export default function TeamBuilderPage() {
                   </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-sm border p-6">
+                <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
                   <h3 className="text-lg font-semibold mb-4 flex items-center text-red-600">
                     <AlertTriangle className="w-5 h-5 mr-2" />
                     {t('team.teamWeaknesses')}
@@ -323,7 +328,7 @@ export default function TeamBuilderPage() {
                 </div>
 
                 {teamAnalysis.recommendations.length > 0 && (
-                  <div className="bg-blue-50 rounded-lg p-6">
+                  <div className="bg-gray-900 rounded-lg p-6">
                     <h3 className="text-lg font-semibold mb-4 flex items-center text-blue-600">
                       <Shield className="w-5 h-5 mr-2" />
                       {t('team.recommendations')}
@@ -358,7 +363,7 @@ export default function TeamBuilderPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border p-6">
+        <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-semibold flex items-center">
               <Search className="w-5 h-5 mr-2" />
@@ -369,8 +374,8 @@ export default function TeamBuilderPage() {
               className={`
                 px-4 py-2 rounded-lg border transition-colors flex items-center gap-2
                 ${showSpecialForms 
-                  ? 'bg-purple-100 border-purple-300 text-purple-700' 
-                  : 'bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100'
+                  ? 'bg-purple-900 border-purple-700 text-purple-300' 
+                  : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
                 }
               `}
             >
@@ -381,11 +386,11 @@ export default function TeamBuilderPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4" />
               <input
                 type="text"
                 placeholder={t('team.searchPlaceholder')}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -394,7 +399,7 @@ export default function TeamBuilderPage() {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">{t('team.allTypes')}</option>
               {POKEMON_TYPES.map(type => (
@@ -407,7 +412,7 @@ export default function TeamBuilderPage() {
             <select
               value={selectedGeneration}
               onChange={(e) => setSelectedGeneration(e.target.value)}
-              className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">{t('team.allGenerations')}</option>
               <option value="Gen 1">{t('generations.gen1')}</option>
@@ -428,7 +433,7 @@ export default function TeamBuilderPage() {
                   setSelectedGeneration('')
                   setSearchTerm('')
                 }}
-                className="px-4 py-2 border rounded-lg hover:bg-gray-50 flex items-center justify-center"
+                className="px-4 py-2 border border-gray-600 bg-gray-700 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center"
               >
                 <X className="w-4 h-4 mr-2" />
                 {t('team.clearFilters')}
@@ -437,7 +442,7 @@ export default function TeamBuilderPage() {
           </div>
           
           <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-400">
               {showSpecialForms 
                 ? t('team.specialFormsFound').replace('{count}', specialFormsPokemon.length.toString())
                 : t('team.pokemonFound').replace('{count}', filteredPokemon.length.toString())
@@ -450,19 +455,17 @@ export default function TeamBuilderPage() {
             </div>
             
             {(showSpecialForms ? specialFormsTotalPages > 1 : totalPages > 1) && (
-              <div className="flex items-center gap-2 text-sm text-gray-500">
+              <div className="flex items-center gap-2 text-sm text-gray-400">
                 <span>{t('pagination.page')} {currentPage} {t('pagination.of')} {showSpecialForms ? specialFormsTotalPages : totalPages}</span>
               </div>
             )}
           </div>
 
-          <div className="border-t border-b border-gray-100 bg-gray-50/50 -mx-6 px-6 py-4 mb-6">
+          <div className="border-t border-b border-gray-700 bg-gray-900/50 -mx-6 px-6 py-4 mb-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-h-96 overflow-y-auto">
               {showSpecialForms ? (
                 loadingSpecialForms ? (
-                  <div className="col-span-full text-center py-8">
-                    <div className="text-gray-500">{t('common.loading')}</div>
-                  </div>
+                  <SpecialFormsLoadingSkeleton />
                 ) : paginatedSpecialForms.length > 0 ? (
                   paginatedSpecialForms.map(pokemon => (
                     <IndividualSpecialFormCard
@@ -475,7 +478,7 @@ export default function TeamBuilderPage() {
                   ))
                 ) : (
                   <div className="col-span-full text-center py-8">
-                    <div className="text-gray-500">{t('common.noDataFound')}</div>
+                    <div className="text-gray-400">{t('common.noDataFound')}</div>
                   </div>
                 )
               ) : (
@@ -491,8 +494,8 @@ export default function TeamBuilderPage() {
           </div>
 
           {(showSpecialForms ? specialFormsTotalPages > 1 : totalPages > 1) && (
-            <div className="flex flex-col items-center space-y-4 pt-4 border-t border-gray-100">
-              <div className="text-sm text-gray-500">
+            <div className="flex flex-col items-center space-y-4 pt-4 border-t border-gray-700">
+              <div className="text-sm text-gray-400">
                 {t('pagination.resultsPerPage')}: {POKEMON_PER_PAGE}
               </div>
               <nav aria-label={t('pagination.navigation') || 'Pagination'} className="w-full max-w-md">

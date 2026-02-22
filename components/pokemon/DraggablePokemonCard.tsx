@@ -55,7 +55,7 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
 
   if (isDisabled) {
     return (
-      <div className="relative p-3 border rounded-lg bg-gray-50 opacity-50 cursor-not-allowed">
+      <div className="relative p-3 border border-gray-600 rounded-lg bg-gray-800 opacity-50 cursor-not-allowed">
         <div className="flex items-center space-x-3">
           <img 
             src={pokemon.sprites.front_default}
@@ -85,7 +85,7 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
             )}
           </div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-90 rounded-lg">
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-90 rounded-lg">
           <span className="text-xs font-medium text-gray-600">{t('team.inTeam')}</span>
         </div>
       </div>
@@ -100,15 +100,15 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
       {...attributes}
       key={`${pokemon.id}-${pokemon.types.length}`} // Force re-render when types change
       className={`
-        relative p-3 border rounded-lg cursor-move transition-all
-        hover:shadow-md hover:scale-105 hover:bg-gray-50
-        ${isDragging ? 'opacity-50 rotate-3 scale-105 shadow-lg' : ''}
-        ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white'}
+        relative p-3 border border-gray-600 rounded-lg cursor-move transition-all
+        hover:shadow-lg hover:scale-105 hover:bg-gray-700 hover:border-gray-500
+        ${isDragging ? 'opacity-50 rotate-3 scale-105 shadow-xl' : ''}
+        ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-800 border-gray-600' : 'bg-gray-800 shadow-md'}
       `}
     >
       <div className="absolute top-1 right-1 opacity-0 hover:opacity-100 transition-opacity">
-        <div className="w-4 h-4 bg-gray-300 rounded-full flex items-center justify-center">
-          <svg className="w-2 h-2 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+        <div className="w-4 h-4 bg-gray-600 rounded-full flex items-center justify-center">
+          <svg className="w-2 h-2 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
           </svg>
         </div>
