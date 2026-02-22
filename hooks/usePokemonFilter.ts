@@ -13,6 +13,7 @@ export function usePokemonFilter({ pokemonData, pokemonTypes }: UsePokemonFilter
   const [selectedType, setSelectedType] = useState('')
   const [selectedGeneration, setSelectedGeneration] = useState('')
   const [selectedRarity, setSelectedRarity] = useState('')
+  const [selectedLocation, setSelectedLocation] = useState('')
   const [filteredData, setFilteredData] = useState<CobblemonPokemon[]>([])
 
   useEffect(() => {
@@ -60,13 +61,20 @@ export function usePokemonFilter({ pokemonData, pokemonTypes }: UsePokemonFilter
       )
     }
 
+    if (selectedLocation) {
+      filtered = filtered.filter(pokemon => 
+        pokemon.SPAWN?.toLowerCase().includes(selectedLocation.toLowerCase())
+      )
+    }
+
     setFilteredData(filtered)
-  }, [searchTerm, selectedType, selectedGeneration, selectedRarity, pokemonData, pokemonTypes])
+  }, [searchTerm, selectedType, selectedGeneration, selectedRarity, selectedLocation, pokemonData, pokemonTypes])
 
   const clearAllFilters = () => {
     setSelectedType('')
     setSelectedGeneration('')
     setSelectedRarity('')
+    setSelectedLocation('')
   }
 
   return {
@@ -74,11 +82,13 @@ export function usePokemonFilter({ pokemonData, pokemonTypes }: UsePokemonFilter
     selectedType,
     selectedGeneration,
     selectedRarity,
+    selectedLocation,
     filteredData,
     setSearchTerm,
     setSelectedType,
     setSelectedGeneration,
     setSelectedRarity,
+    setSelectedLocation,
     clearAllFilters
   }
 }

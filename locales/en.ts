@@ -28,11 +28,13 @@ export const enTranslations = {
     allTypes: "All Types",
     allGenerations: "All Generations",
     allRarities: "All Rarities",
+    allLocations: "All Locations",
     loadingPokemonData: "Loading Pokemon data...",
     loadingTypes: "Loading types...",
     generation: "Generation",
     rarity: "Rarity",
-    type: "Type"
+    type: "Type",
+    location: "Location"
   },
   pagination: {
     navigation: "Pagination",

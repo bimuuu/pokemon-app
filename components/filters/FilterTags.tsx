@@ -7,9 +7,11 @@ interface FilterTagsProps {
   selectedType: string
   selectedGeneration: string
   selectedRarity: string
+  selectedLocation: string
   onClearType: () => void
   onClearGeneration: () => void
   onClearRarity: () => void
+  onClearLocation: () => void
   onClearAll: () => void
 }
 
@@ -18,9 +20,11 @@ export function FilterTags({
   selectedType,
   selectedGeneration,
   selectedRarity,
+  selectedLocation,
   onClearType,
   onClearGeneration,
   onClearRarity,
+  onClearLocation,
   onClearAll
 }: FilterTagsProps) {
   const { t } = useLanguage()
@@ -66,7 +70,18 @@ export function FilterTags({
           </button>
         </span>
       )}
-      {(selectedType || selectedGeneration || selectedRarity) && (
+      {selectedLocation && (
+        <span className="px-2 py-1 bg-teal-100 text-teal-800 rounded-full">
+          {t('home.location')}: {selectedLocation}
+          <button 
+            onClick={onClearLocation}
+            className="ml-1 text-teal-600 hover:text-teal-800"
+          >
+            ×
+          </button>
+        </span>
+      )}
+      {(selectedType || selectedGeneration || selectedRarity || selectedLocation) && (
         <button
           onClick={onClearAll}
           className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200"

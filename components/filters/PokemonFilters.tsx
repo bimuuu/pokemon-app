@@ -10,11 +10,13 @@ interface PokemonFiltersProps {
   selectedType: string
   selectedGeneration: string
   selectedRarity: string
+  selectedLocation: string
   loadingTypes: boolean
   onSearchChange: (term: string) => void
   onTypeChange: (type: string) => void
   onGenerationChange: (generation: string) => void
   onRarityChange: (rarity: string) => void
+  onLocationChange: (location: string) => void
 }
 
 export function PokemonFilters({
@@ -22,20 +24,44 @@ export function PokemonFilters({
   selectedType,
   selectedGeneration,
   selectedRarity,
+  selectedLocation,
   loadingTypes,
   onSearchChange,
   onTypeChange,
   onGenerationChange,
-  onRarityChange
+  onRarityChange,
+  onLocationChange
 }: PokemonFiltersProps) {
   const { t } = useLanguage()
+
+  const commonLocations = [
+    'All Overworld biomes',
+    'The End',
+    'Swamp, Mangrove Swamp',
+    'Desert',
+    'Jungle, Sparse Jungle, Bamboo Jungle',
+    'All Ocean biomes',
+    'Plains, Sunflower Plains',
+    'Dark Forest',
+    'Deep Dark',
+    'River',
+    'Savanna, Savanna Plateau',
+    'Beach',
+    'Lush Caves',
+    'Badlands, Savanna',
+    'Jungle',
+    'Desert, Badlands',
+    'Frozen Ocean, Deep Frozen Ocean',
+    'Cherry Grove, Flower Forest',
+    'All Forest biomes'
+  ]
 
   const debouncedSearch = debounce((term: string) => {
     onSearchChange(term)
   }, 300)
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
         <input
@@ -88,6 +114,17 @@ export function PokemonFilters({
         <option value="">{t('home.allRarities')}</option>
         {['common', 'uncommon', 'rare', 'ultra-rare'].map(rarity => (
           <option key={rarity} value={rarity}>{t(`rarities.${rarity}`)}</option>
+        ))}
+      </select>
+
+      <select
+        value={selectedLocation}
+        onChange={(e) => onLocationChange(e.target.value)}
+        className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="">{t('home.allLocations')}</option>
+        {commonLocations.map(location => (
+          <option key={location} value={location}>{location}</option>
         ))}
       </select>
     </div>

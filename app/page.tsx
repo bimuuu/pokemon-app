@@ -118,11 +118,13 @@ export default function HomePage() {
           selectedType={pokemonFilter.selectedType}
           selectedGeneration={pokemonFilter.selectedGeneration}
           selectedRarity={pokemonFilter.selectedRarity}
+          selectedLocation={pokemonFilter.selectedLocation}
           loadingTypes={loadingTypes}
           onSearchChange={pokemonFilter.setSearchTerm}
           onTypeChange={pokemonFilter.setSelectedType}
           onGenerationChange={pokemonFilter.setSelectedGeneration}
           onRarityChange={pokemonFilter.setSelectedRarity}
+          onLocationChange={pokemonFilter.setSelectedLocation}
         />
         
         <div className="mt-4 flex justify-between items-center">
@@ -131,9 +133,11 @@ export default function HomePage() {
             selectedType={pokemonFilter.selectedType}
             selectedGeneration={pokemonFilter.selectedGeneration}
             selectedRarity={pokemonFilter.selectedRarity}
+            selectedLocation={pokemonFilter.selectedLocation}
             onClearType={() => pokemonFilter.setSelectedType('')}
             onClearGeneration={() => pokemonFilter.setSelectedGeneration('')}
             onClearRarity={() => pokemonFilter.setSelectedRarity('')}
+            onClearLocation={() => pokemonFilter.setSelectedLocation('')}
             onClearAll={pokemonFilter.clearAllFilters}
           />
           <div className="text-sm text-gray-600">

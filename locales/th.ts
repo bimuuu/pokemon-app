@@ -28,11 +28,13 @@ export const thTranslations = {
     allTypes: "ทุกธาตุ",
     allGenerations: "ทุกรุ่น",
     allRarities: "ทุกระดับความหายาก",
+    allLocations: "ทุกสถานที่",
     loadingPokemonData: "กำลังโหลดข้อมูลโปเกม่อน...",
     loadingTypes: "กำลังโหลดข้อมูลธาตุ...",
     generation: "รุ่น",
     rarity: "ความหายาก",
-    type: "ธาตุ"
+    type: "ธาตุ",
+    location: "สถานที่"
   },
   pagination: {
     navigation: "การนำทาง",
