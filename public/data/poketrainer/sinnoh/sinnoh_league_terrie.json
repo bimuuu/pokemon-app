@@ -53,7 +53,7 @@
     },
     {
       "moveset": [
-        "headsmash"
+        "head-smash"
       ],
       "ivs": {
         "spe": 31,
@@ -79,10 +79,10 @@
     },
     {
       "moveset": [
-        "rockpolish",
-        "heavyslam",
+        "rock-polish",
+        "heavy-slam",
         "earthquake",
-        "stoneedge"
+        "stone-edge"
       ],
       "ivs": {
         "spe": 31,
@@ -109,9 +109,9 @@
     {
       "moveset": [
         "rest",
-        "icebeam",
-        "earthpower",
-        "hydropump"
+        "ice-beam",
+        "earth-power",
+        "hydro-pump"
       ],
       "ivs": {
         "spe": 31,
@@ -137,7 +137,7 @@
     },
     {
       "moveset": [
-        "icefang",
+        "ice-fang",
         "earthquake",
         "crunch",
         "rest"
@@ -167,7 +167,7 @@
     {
       "moveset": [
         "recover",
-        "earthpower",
+        "earth-power",
         "scald",
         "toxic"
       ],

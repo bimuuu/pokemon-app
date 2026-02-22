@@ -24,9 +24,9 @@
   "team": [
     {
       "moveset": [
-        "iciclecrash",
-        "stompingtantrum",
-        "closecombat",
+        "icicle-crash",
+        "stomping-tantrum",
+        "close-combat",
         "protect"
       ],
       "ivs": {
@@ -56,7 +56,7 @@
         "snowscape",
         "thunderwave",
         "hex",
-        "destinybond"
+        "destiny-bond"
       ],
       "ivs": {
         "spe": 31,
@@ -83,8 +83,8 @@
     {
       "moveset": [
         "psychic",
-        "icebeam",
-        "focusblast",
+        "ice-beam",
+        "focus-blast",
         "hail"
       ],
       "ivs": {
@@ -112,9 +112,9 @@
     {
       "moveset": [
         "earthquake",
-        "icebeam",
-        "knockoff",
-        "icywind"
+        "ice-beam",
+        "knock-off",
+        "icy-wind"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "icebeam",
-        "originpulse",
-        "bodyslam",
-        "confuseray"
+        "ice-beam",
+        "origin-pulse",
+        "body-slam",
+        "confuse-ray"
       ],
       "ivs": {
         "spe": 31,
@@ -172,7 +172,7 @@
         "iceshard",
         "hydropump",
         "surf",
-        "poisonjab"
+        "poison-jab"
       ],
       "ivs": {
         "spe": 31,

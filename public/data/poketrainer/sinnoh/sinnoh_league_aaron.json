@@ -25,9 +25,9 @@
     {
       "moveset": [
         "toxic",
-        "bugbuzz",
+        "bug-buzz",
         "moonlight",
-        "lightscreen"
+        "light-screen"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "bugbuzz",
-        "shadowball",
+        "bug-buzz",
+        "shadow-ball",
         "psychic",
-        "quiverdance"
+        "quiver-dance"
       ],
       "ivs": {
         "spe": 31,
@@ -83,9 +83,9 @@
     {
       "moveset": [
         "acrobatics",
-        "attackorder",
-        "aerialace",
-        "defendorder"
+        "attack-order",
+        "aerial-ace",
+        "defend-order"
       ],
       "ivs": {
         "spe": 31,
@@ -112,9 +112,9 @@
     {
       "moveset": [
         "earthquake",
-        "rockslide",
+        "rock-slide",
         "facade",
-        "brickbreak"
+        "brick-break"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "crosspoison",
-        "nightslash",
+        "cross-poison",
+        "night-slash",
         "earthquake",
-        "swordsdance"
+        "sword-dance"
       ],
       "ivs": {
         "spe": 31,
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "bugbuzz",
-        "airslash",
+        "bug-buzz",
+        "air-slash",
         "protect",
-        "gigadrain"
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,

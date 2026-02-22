@@ -24,9 +24,9 @@
   "team": [
     {
       "moveset": [
-        "mudshot",
-        "burningjealousy",
-        "gyroball",
+        "mud-shot",
+        "burning-jealousy",
+        "gyro-ball",
         "reflect"
       ],
       "ivs": {
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "thunderfang",
-        "trailblaze",
+        "thunder-fang",
+        "trail-blaze",
         "flamethrower",
-        "sludgebomb"
+        "sludge-bomb"
       ],
       "ivs": {
         "spe": 31,
@@ -85,10 +85,10 @@
     },
     {
       "moveset": [
-        "flashcannon",
-        "highhorsepower",
-        "lashout",
-        "temperflare"
+        "flash-cannon",
+        "high-horsepower",
+        "lash-out",
+        "temper-flare"
       ],
       "ivs": {
         "spe": 30,
@@ -114,9 +114,9 @@
     },
     {
       "moveset": [
-        "smartstrike",
+        "smart-strike",
         "flamethrower",
-        "poisonjab",
+        "poison-jab",
         "protect"
       ],
       "ivs": {

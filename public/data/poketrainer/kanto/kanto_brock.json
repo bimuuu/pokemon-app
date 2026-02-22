@@ -25,8 +25,8 @@
     {
       "moveset": [
         "protect",
-        "rocktomb",
-        "rockthrow",
+        "rock-tomb",
+        "rock-throw",
         "bulldoze"
       ],
       "ivs": {
@@ -50,7 +50,7 @@
     {
       "moveset": [
         "block",
-        "rockthrow",
+        "rock-throw",
         "flail",
         "copycat"
       ],
@@ -77,10 +77,10 @@
     },
     {
       "moveset": [
-        "rocktomb",
+        "rock-tomb",
         "bulldoze",
-        "sleeptalk",
-        "rockslide"
+        "sleep-talk",
+        "rock-slide"
       ],
       "ivs": {
         "spe": 31,
@@ -106,8 +106,8 @@
     {
       "moveset": [
         "takedown",
-        "rocktomb",
-        "rocksmash",
+        "rock-tomb",
+        "rock-smash",
         "headbutt"
       ],
       "ivs": {

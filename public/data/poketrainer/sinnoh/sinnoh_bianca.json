@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "woodhammer",
-        "icepunch",
-        "leechseed",
-        "auroraveil"
+        "wood-hammer",
+        "ice-punch",
+        "leech-seed",
+        "aurora-veil"
       ],
       "ivs": {
         "spd": 31,
@@ -54,9 +54,9 @@
     {
       "moveset": [
         "blizzard",
-        "focusblast",
+        "focus-blast",
         "psychic",
-        "shadowball"
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "iceshard",
+        "ice-shard",
         "earthquake",
-        "knockoff",
+        "knock-off",
         "protect"
       ],
       "ivs": {
@@ -112,9 +112,9 @@
     {
       "moveset": [
         "blizzard",
-        "shadowball",
-        "doubleteam",
-        "auroraveil"
+        "shadow-ball",
+        "double-team",
+        "aurora-veil"
       ],
       "ivs": {
         "spe": 31,
@@ -141,8 +141,8 @@
     {
       "moveset": [
         "blizzard",
-        "freezedry",
-        "babydolleyes",
+        "freeze-dry",
+        "baby-doll-eyes",
         "protect"
       ],
       "ivs": {
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "iceshard",
-        "nightslash",
-        "brickbreak",
-        "xscissor"
+        "ice-shard",
+        "night-slash",
+        "brick-break",
+        "x-scissor"
       ],
       "ivs": {
         "spe": 31,

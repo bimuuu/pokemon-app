@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "trickroom",
-        "expandingforce",
-        "drainingkiss",
-        "mysticalfire"
+        "trick-room",
+        "expanding-force",
+        "draining-kiss",
+        "mystical-fire"
       ],
       "ivs": {
         "spd": 31,
@@ -54,7 +54,7 @@
         "barrier",
         "psybeam",
         "psychic",
-        "suckerpunch"
+        "sucker-punch"
       ],
       "ivs": {
         "spd": 31,
@@ -81,8 +81,8 @@
       "moveset": [
         "psychic",
         "psyshock",
-        "shadowball",
-        "drainpunch"
+        "shadow-ball",
+        "drain-punch"
       ],
       "ivs": {
         "spd": 31,
@@ -106,10 +106,10 @@
     },
     {
       "moveset": [
-        "megahorn",
-        "dazzlinggleam",
+        "mega-horn",
+        "dazzling-gleam",
         "psychic",
-        "highhorsepower"
+        "high-horsepower"
       ],
       "ivs": {
         "spd": 31,

@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "bodypress",
-        "flamewheel",
-        "zenheadbutt",
-        "earthpower"
+        "body-press",
+        "flame-wheel",
+        "zen-headbutt",
+        "earth-power"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "thunderfang",
-        "playrough",
-        "flameburst",
-        "closecombat"
+        "thunder-fang",
+        "play-rough",
+        "flame-burst",
+        "close-combat"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "brickbreak",
+        "brick-break",
         "earthquake",
         "flamethrower",
-        "thunderpunch"
+        "thunder-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -113,8 +113,8 @@
       "moveset": [
         "eruption",
         "flamethrower",
-        "hiddenpower",
-        "focusblast"
+        "hidden-power",
+        "focus-blast"
       ],
       "ivs": {
         "spe": 31,
@@ -141,8 +141,8 @@
       "moveset": [
         "ember",
         "flamethrower",
-        "ancientpower",
-        "lavaplume"
+        "ancient-power",
+        "lava-plume"
       ],
       "ivs": {
         "spe": 31,
@@ -169,9 +169,9 @@
     {
       "moveset": [
         "flamethrower",
-        "airslash",
-        "solarbeam",
-        "dragonpulse"
+        "air-slash",
+        "solar-beam",
+        "dragon-pulse"
       ],
       "ivs": {
         "spe": 31,

@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "dragonclaw",
+        "dragon-claw",
         "fly",
-        "rockslide",
-        "gigadrain"
+        "rock-slide",
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "sludgebomb",
-        "dragonpulse",
+        "sludge-bomb",
+        "dragon-pulse",
         "surf",
-        "shadowball"
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "raindance",
-        "sludgewave",
-        "dragonclaw",
+        "rain-dance",
+        "sludge-wave",
+        "dragon-claw",
         "surf"
       ],
       "ivs": {
@@ -111,8 +111,8 @@
     },
     {
       "moveset": [
-        "steelwing",
-        "hypervoice",
+        "steel-wing",
+        "hyper-voice",
         "protect",
         "bulldoze"
       ],
@@ -140,9 +140,9 @@
     },
     {
       "moveset": [
-        "dragonclaw",
+        "dragon-claw",
         "earthquake",
-        "ironhead",
+        "iron-head",
         "return"
       ],
       "ivs": {
@@ -172,10 +172,10 @@
     },
     {
       "moveset": [
-        "dragonpulse",
-        "flashcannon",
-        "uturn",
-        "rocktomb"
+        "dragon-pulse",
+        "flash-cannon",
+        "u-turn",
+        "rock-tomb"
       ],
       "ivs": {
         "spe": 31,

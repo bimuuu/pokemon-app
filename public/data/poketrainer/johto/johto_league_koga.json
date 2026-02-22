@@ -25,9 +25,9 @@
     {
       "moveset": [
         "flamethrower",
-        "dragonpulse",
-        "sludgewave",
-        "darkpulse"
+        "dragon-pulse",
+        "sludge-wave",
+        "dark-pulse"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "drillrun",
-        "xscissor",
-        "gigadrain",
-        "poisonjab"
+        "drill-run",
+        "x-scissor",
+        "giga-drain",
+        "poison-jab"
       ],
       "ivs": {
         "spe": 31,
@@ -85,10 +85,10 @@
     },
     {
       "moveset": [
-        "crosspoison",
-        "steelwing",
-        "shadowball",
-        "heatwave"
+        "cross-poison",
+        "steel-wing",
+        "shadow-ball",
+        "heat-wave"
       ],
       "ivs": {
         "spe": 31,
@@ -115,9 +115,9 @@
     {
       "moveset": [
         "crunch",
-        "shadowclaw",
-        "poisonjab",
-        "playrough"
+        "shadow-claw",
+        "poison-jab",
+        "play-rough"
       ],
       "ivs": {
         "spe": 31,
@@ -143,10 +143,10 @@
     },
     {
       "moveset": [
-        "sludgebomb",
-        "uturn",
-        "bugbuzz",
-        "gigadrain"
+        "sludge-bomb",
+        "u-turn",
+        "bug-buzz",
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,
@@ -172,8 +172,8 @@
     },
     {
       "moveset": [
-        "throatchop",
-        "icepunch",
+        "throat-chop",
+        "ice-punch",
         "earthquake",
         "toxic"
       ],

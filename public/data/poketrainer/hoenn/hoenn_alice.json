@@ -25,9 +25,9 @@
     {
       "moveset": [
         "fly",
-        "playrough",
-        "flamethrower",
-        "icebeam"
+        "play-rough",
+        "flame-thrower",
+        "ice-beam"
       ],
       "ivs": {
         "spe": 31,
@@ -56,10 +56,10 @@
     },
     {
       "moveset": [
-        "sunnyday",
-        "gigadrain",
-        "stompingtantrum",
-        "zenheadbutt"
+        "sunny-day",
+        "giga-drain",
+        "stomping-tantrum",
+        "zen-headbutt"
       ],
       "ivs": {
         "spe": 31,
@@ -85,10 +85,10 @@
     },
     {
       "moveset": [
-        "ironhead",
-        "darkpulse",
-        "aerialace",
-        "bravebird"
+        "iron-head",
+        "dark-pulse",
+        "aerial-ace",
+        "brave-bird"
       ],
       "ivs": {
         "spe": 31,
@@ -114,10 +114,10 @@
     },
     {
       "moveset": [
-        "raindance",
-        "hydropump",
+        "rain-dance",
+        "hydro-pump",
         "fly",
-        "seedbomb"
+        "seed-bomb"
       ],
       "ivs": {
         "spe": 31,
@@ -143,10 +143,10 @@
     },
     {
       "moveset": [
-        "extrasensory",
-        "shadowball",
-        "hypervoice",
-        "aircutter"
+        "extra-sensory",
+        "shadow-ball",
+        "hyper-voice",
+        "air-cutter"
       ],
       "ivs": {
         "spe": 31,

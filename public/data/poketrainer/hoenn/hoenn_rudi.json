@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "lowsweep",
-        "knockoff",
+        "low-sweep",
+        "knock-off",
         "earthquake",
-        "icepunch"
+        "ice-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "closecombat",
-        "knockoff",
+        "close-combat",
+        "knock-off",
         "facade",
-        "bulletpunch"
+        "bullet-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "stoneedge",
-        "brickbreak",
-        "hornattack",
+        "stone-edge",
+        "brick-break",
+        "horn-attack",
         "bulldoze"
       ],
       "ivs": {
@@ -114,10 +114,10 @@
     },
     {
       "moveset": [
-        "stoneedge",
-        "brickbreak",
-        "seismictoss",
-        "knockoff"
+        "stone-edge",
+        "brick-break",
+        "seismic-toss",
+        "knock-off"
       ],
       "ivs": {
         "spe": 31,

@@ -25,9 +25,9 @@
     {
       "moveset": [
         "surf",
-        "icebeam",
+        "ice-beam",
         "scald",
-        "perishsong"
+        "perish-song"
       ],
       "ivs": {
         "spe": 31,
@@ -53,9 +53,9 @@
     },
     {
       "moveset": [
-        "hydropump",
-        "dragonpulse",
-        "icebeam",
+        "hydro-pump",
+        "dragon-pulse",
+        "ice-beam",
         "rest"
       ],
       "ivs": {
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "energyball",
-        "hydropump",
+        "energy-ball",
+        "hydro-pump",
         "substitute",
-        "raindance"
+        "rain-dance"
       ],
       "ivs": {
         "spe": 31,
@@ -112,9 +112,9 @@
     {
       "moveset": [
         "crunch",
-        "aquatail",
-        "icefang",
-        "shellsmash"
+        "aqua-tail",
+        "ice-fang",
+        "shell-smash"
       ],
       "ivs": {
         "spe": 31,
@@ -141,9 +141,9 @@
     {
       "moveset": [
         "waterfall",
-        "stoneedge",
+        "stone-edge",
         "earthquake",
-        "dragondance"
+        "dragon-dance"
       ],
       "ivs": {
         "spe": 31,
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "aquatail",
-        "brickbreak",
+        "aqua-tail",
+        "brick-break",
         "crunch",
-        "icefang"
+        "ice-fang"
       ],
       "ivs": {
         "spe": 31,

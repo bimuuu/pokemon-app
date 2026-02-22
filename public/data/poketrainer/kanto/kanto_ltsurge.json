@@ -25,8 +25,8 @@
     {
       "moveset": [
         "psyshock",
-        "thunderpunch",
-        "irontail",
+        "thunder-punch",
+        "iron-tail",
         "thunderbolt"
       ],
       "ivs": {
@@ -55,8 +55,8 @@
     {
       "moveset": [
         "spark",
-        "thundershock",
-        "gyroball",
+        "thunder-shock",
+        "gyro-ball",
         "barrier"
       ],
       "ivs": {
@@ -83,10 +83,10 @@
     },
     {
       "moveset": [
-        "electroball",
-        "thundershock",
+        "electro-ball",
+        "thunder-shock",
         "discharge",
-        "quickattack"
+        "quick-attack"
       ],
       "ivs": {
         "spe": 31,
@@ -113,10 +113,10 @@
     },
     {
       "moveset": [
-        "thunderfang",
-        "firefang",
-        "icefang",
-        "psychicfangs"
+        "thunder-fang",
+        "fire-fang",
+        "ice-fang",
+        "psychic-fangs"
       ],
       "ivs": {
         "spe": 31,

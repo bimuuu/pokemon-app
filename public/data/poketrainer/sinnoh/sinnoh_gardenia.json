@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "solarbeam",
-        "weatherball",
-        "sunnyday",
-        "hiddenpower"
+        "solar-beam",
+        "weather-ball",
+        "sunny-day",
+        "hidden-power"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "dazzlinggleam",
-        "solarbeam",
+        "dazzling-gleam",
+        "solar-beam",
         "growth",
-        "sunnyday"
+        "sunny-day"
       ],
       "ivs": {
         "spe": 31,
@@ -82,8 +82,8 @@
     },
     {
       "moveset": [
-        "focuspunch",
-        "leechseed",
+        "focus-punch",
+        "leech-seed",
         "substitute",
         "spore"
       ],
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "woodhammer",
+        "wood-hammer",
         "earthquake",
         "synthesis",
-        "leechseed"
+        "leech-seed"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "solarbeam",
-        "sludgebomb",
-        "grassyterrain",
-        "sunnyday"
+        "solar-beam",
+        "sludge-bomb",
+        "grassy-terrain",
+        "sunny-day"
       ],
       "ivs": {
         "spe": 31,

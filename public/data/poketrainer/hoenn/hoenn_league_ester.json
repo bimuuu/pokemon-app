@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "phantomforce",
-        "darkpulse",
+        "phantom-force",
+        "dark-pulse",
         "psychic",
-        "icebeam"
+        "ice-beam"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "terablast",
+        "tera-blast",
         "psychic",
-        "shadowball",
-        "fireblast"
+        "shadow-ball",
+        "fire-blast"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "phantomforce",
-        "suckerpunch",
+        "phantom-force",
+        "sucker-punch",
         "facade",
-        "dazzlinggleam"
+        "dazzling-gleam"
       ],
       "ivs": {
         "spe": 31,
@@ -114,8 +114,8 @@
     },
     {
       "moveset": [
-        "airslash",
-        "shadowball",
+        "air-slash",
+        "shadow-ball",
         "psychic",
         "thunderbolt"
       ],
@@ -143,10 +143,10 @@
     },
     {
       "moveset": [
-        "dazzlinggleam",
-        "sludgewave",
-        "shadowball",
-        "drainpunch"
+        "dazzling-gleam",
+        "sludge-wave",
+        "shadow-ball",
+        "drain-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -172,10 +172,10 @@
     },
     {
       "moveset": [
-        "woodhammer",
-        "phantomforce",
+        "wood-hammer",
+        "phantom-force",
         "earthquake",
-        "knockoff"
+        "knock-off"
       ],
       "ivs": {
         "spe": 31,

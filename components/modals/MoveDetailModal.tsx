@@ -10,6 +10,8 @@ import { ColorUtils } from '@/utils/colorUtils'
 import { formatPokemonName } from '@/lib/utils'
 import type { Move } from 'pokenode-ts'
 import type { PokemonWithMove } from '@/services/moveService'
+import { MoveService } from '@/services/moveService'
+import { useState, useEffect } from 'react'
 
 interface MoveDetailModalProps {
   move: Move | null
@@ -18,6 +20,7 @@ interface MoveDetailModalProps {
   pokemonSearchTerm: string
   onPokemonSearchChange: (value: string) => void
   onClose: () => void
+  hidePokemonSection?: boolean
 }
 
 export function MoveDetailModal({ 
@@ -26,9 +29,42 @@ export function MoveDetailModal({
   isLoadingPokemon, 
   pokemonSearchTerm,
   onPokemonSearchChange,
-  onClose 
+  onClose,
+  hidePokemonSection = false
 }: MoveDetailModalProps) {
-  if (!move) return null
+  const [fullMoveData, setFullMoveData] = useState<Move | null>(null)
+  const [isLoadingMove, setIsLoadingMove] = useState(false)
+
+  useEffect(() => {
+    async function fetchMoveData() {
+      if (move?.name) {
+        setIsLoadingMove(true)
+        try {
+          const data = await MoveService.fetchMoveDetails(move.name)
+          setFullMoveData(data)
+          
+          // Also fetch Pokemon with this move
+          if (data) {
+            const pokemon = await MoveService.fetchPokemonWithMove(move.name)
+            // We can't update pokemonWithMove from here since it's passed as prop
+            // But we can log it for debugging
+            console.log('Pokemon with move:', pokemon)
+          }
+        } catch (error) {
+          console.error('Failed to fetch move data:', error)
+        } finally {
+          setIsLoadingMove(false)
+        }
+      }
+    }
+
+    fetchMoveData()
+  }, [move?.name])
+
+  // Use fullMoveData if available, otherwise fall back to the basic move
+  const displayMove = fullMoveData || move
+  
+  if (!displayMove) return null
 
   // Filter Pokemon based on search term
   const filteredPokemon = pokemonWithMove.filter(pokemon =>
@@ -42,15 +78,19 @@ export function MoveDetailModal({
         {/* Modal Header */}
         <div className="sticky top-0 bg-card border-b p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <h2 className="text-3xl font-bold capitalize">{move.name.replace('-', ' ')}</h2>
-            <Badge 
-              className="text-white border-0"
-              style={{ backgroundColor: getTypeColor(move.type.name) }}
-            >
-              {move.type.name.toUpperCase()}
-            </Badge>
-            <Badge className={`${ColorUtils.getDamageClassColor(move.damage_class?.name || 'status')} text-white`}>
-              {move.damage_class?.name.toUpperCase() || 'STATUS'}
+            <h2 className="text-3xl font-bold capitalize">
+              {isLoadingMove ? 'Loading...' : displayMove.name.replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')}
+            </h2>
+            {displayMove.type && (
+              <Badge 
+                className="text-white border-0"
+                style={{ backgroundColor: getTypeColor(displayMove.type.name) }}
+              >
+                {displayMove.type.name.toUpperCase()}
+              </Badge>
+            )}
+            <Badge className={`${ColorUtils.getDamageClassColor(displayMove.damage_class?.name || 'status')} text-white`}>
+              {displayMove.damage_class?.name.toUpperCase() || 'STATUS'}
             </Badge>
           </div>
           <button
@@ -70,8 +110,8 @@ export function MoveDetailModal({
                 <Sword className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className={`text-2xl font-bold ${ColorUtils.getPowerColor(move.power)}`}>
-                  {move.power || '—'}
+                <div className={`text-2xl font-bold ${ColorUtils.getPowerColor(displayMove.power)}`}>
+                  {isLoadingMove ? '—' : (displayMove.power || '—')}
                 </div>
               </CardContent>
             </Card>
@@ -82,8 +122,8 @@ export function MoveDetailModal({
                 <Target className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className={`text-2xl font-bold ${ColorUtils.getAccuracyColor(move.accuracy || 0)}`}>
-                  {move.accuracy ? `${move.accuracy}%` : '—'}
+                <div className={`text-2xl font-bold ${ColorUtils.getAccuracyColor(displayMove.accuracy || 0)}`}>
+                  {isLoadingMove ? '—' : (displayMove.accuracy ? `${displayMove.accuracy}%` : '—')}
                 </div>
               </CardContent>
             </Card>
@@ -95,7 +135,7 @@ export function MoveDetailModal({
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-blue-600">
-                  {move.pp}
+                  {isLoadingMove ? '—' : (displayMove.pp || '—')}
                 </div>
               </CardContent>
             </Card>
@@ -111,15 +151,17 @@ export function MoveDetailModal({
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                {move.flavor_text_entries?.find((f: any) => f.language.name === 'en')?.flavor_text || 
-                 move.effect_entries?.find((e: any) => e.language.name === 'en')?.short_effect || 
-                 'No description available.'}
+                {isLoadingMove ? 'Loading description...' : (
+                  displayMove.flavor_text_entries?.find((f: any) => f.language.name === 'en')?.flavor_text || 
+                  displayMove.effect_entries?.find((e: any) => e.language.name === 'en')?.short_effect || 
+                  'No description available.'
+                )}
               </p>
             </CardContent>
           </Card>
 
           {/* Effect Details */}
-          {move.effect_entries?.find((e: any) => e.language.name === 'en')?.effect && (
+          {displayMove.effect_entries?.find((e: any) => e.language.name === 'en')?.effect && (
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -129,84 +171,88 @@ export function MoveDetailModal({
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground whitespace-pre-line">
-                  {move.effect_entries?.find((e: any) => e.language.name === 'en')?.effect}
+                  {isLoadingMove ? 'Loading effect details...' : (
+                    displayMove.effect_entries?.find((e: any) => e.language.name === 'en')?.effect
+                  )}
                 </p>
               </CardContent>
             </Card>
           )}
 
           {/* Pokemon That Can Learn This Move */}
-          <Card>
-            <CardHeader>
-              <div className="flex flex-col gap-4">
-                <CardTitle className="text-lg">Pokemon That Can Learn This Move</CardTitle>
-                {pokemonWithMove.length > 0 && (
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                    <Input
-                      placeholder="Search Pokemon by name..."
-                      value={pokemonSearchTerm}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => onPokemonSearchChange(e.target.value)}
-                      className="pl-10"
-                    />
-                  </div>
-                )}
-              </div>
-            </CardHeader>
-            <CardContent>
-              {isLoadingPokemon ? (
-                <div className="text-center py-4">
-                  <p className="text-muted-foreground">Loading Pokemon...</p>
-                </div>
-              ) : filteredPokemon.length > 0 ? (
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3">
-                  {filteredPokemon.slice(0, 200).map((pokemon) => (
-                    <Link 
-                      key={pokemon.id} 
-                      href={`/pokemon/${formatPokemonName(pokemon.name)}`}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onClose()
-                      }}
-                    >
-                      <div className="flex flex-col items-center p-2 border rounded-lg hover:bg-muted hover:shadow-md transition-all cursor-pointer h-full">
-                        <img 
-                          src={pokemon.sprites.front_default}
-                          alt={pokemon.name}
-                          className="w-12 h-12 object-contain mb-1"
-                        />
-                        <span className="text-xs font-medium capitalize text-center">
-                          {pokemon.name.replace('-', ' ')}
-                        </span>
-                        <div className="flex gap-1 mt-1">
-                          {pokemon.types.map((type: any) => (
-                            <Badge 
-                              key={type.type.name} 
-                              className="text-white border-0 text-xs"
-                              style={{ backgroundColor: getTypeColor(type.type.name) }}
-                            >
-                              {type.type.name.slice(0, 3).toUpperCase()}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                  {filteredPokemon.length > 200 && (
-                    <div className="flex items-center justify-center text-sm text-muted-foreground col-span-full">
-                      +{filteredPokemon.length - 200} more
+          {!hidePokemonSection && (
+            <Card>
+              <CardHeader>
+                <div className="flex flex-col gap-4">
+                  <CardTitle className="text-lg">Pokemon That Can Learn This Move</CardTitle>
+                  {pokemonWithMove.length > 0 && (
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                      <Input
+                        placeholder="Search Pokemon by name..."
+                        value={pokemonSearchTerm}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => onPokemonSearchChange(e.target.value)}
+                        className="pl-10"
+                      />
                     </div>
                   )}
                 </div>
-              ) : (
-                <div className="text-center py-4">
-                  <p className="text-muted-foreground">
-                    {pokemonSearchTerm ? 'No Pokemon found matching your search.' : 'No Pokemon found that can learn this move'}
-                  </p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                {isLoadingPokemon ? (
+                  <div className="text-center py-4">
+                    <p className="text-muted-foreground">Loading Pokemon...</p>
+                  </div>
+                ) : filteredPokemon.length > 0 ? (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3">
+                    {filteredPokemon.slice(0, 200).map((pokemon) => (
+                      <Link 
+                        key={pokemon.id} 
+                        href={`/pokemon/${formatPokemonName(pokemon.name)}`}
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          onClose()
+                        }}
+                      >
+                        <div className="flex flex-col items-center p-2 border rounded-lg hover:bg-muted hover:shadow-md transition-all cursor-pointer h-full">
+                          <img 
+                            src={pokemon.sprites.front_default}
+                            alt={pokemon.name}
+                            className="w-12 h-12 object-contain mb-1"
+                          />
+                          <span className="text-xs font-medium capitalize text-center">
+                            {pokemon.name.replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')}
+                          </span>
+                          <div className="flex gap-1 mt-1">
+                            {pokemon.types.map((type: any) => (
+                              <Badge 
+                                key={type.type.name} 
+                                className="text-white border-0 text-xs"
+                                style={{ backgroundColor: getTypeColor(type.type.name) }}
+                              >
+                                {type.type.name.slice(0, 3).toUpperCase()}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                    {filteredPokemon.length > 200 && (
+                      <div className="flex items-center justify-center text-sm text-muted-foreground col-span-full">
+                        +{filteredPokemon.length - 200} more
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-center py-4">
+                    <p className="text-muted-foreground">
+                      {pokemonSearchTerm ? 'No Pokemon found matching your search.' : 'No Pokemon found that can learn this move'}
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </div>

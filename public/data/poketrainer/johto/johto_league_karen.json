@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "playrough",
-        "stoneedge",
-        "darkpulse",
-        "shadowball"
+        "play-rough",
+        "stone-edge",
+        "dark-pulse",
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -54,9 +54,9 @@
     {
       "moveset": [
         "flamethrower",
-        "thunderfang",
-        "darkpulse",
-        "shadowball"
+        "thunder-fang",
+        "dark-pulse",
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "shadowball",
-        "darkpulse",
-        "waterpulse",
+        "shadow-ball",
+        "dark-pulse",
+        "water-pulse",
         "psychic"
       ],
       "ivs": {
@@ -112,8 +112,8 @@
     {
       "moveset": [
         "psychic",
-        "darkpulse",
-        "shadowball",
+        "dark-pulse",
+        "shadow-ball",
         "dig"
       ],
       "ivs": {
@@ -141,9 +141,9 @@
     {
       "moveset": [
         "surf",
-        "shadowclaw",
-        "icebeam",
-        "throatchop"
+        "shadow-claw",
+        "ice-beam",
+        "throat-chop"
       ],
       "ivs": {
         "spe": 31,
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "steelwing",
-        "aerialace",
-        "shadowball",
-        "darkpulse"
+        "steel-wing",
+        "aerial-ace",
+        "shadow-ball",
+        "dark-pulse"
       ],
       "ivs": {
         "spe": 31,

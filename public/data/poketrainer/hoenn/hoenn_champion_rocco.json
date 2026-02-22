@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "ironhead",
+        "iron-head",
         "waterfall",
         "earthquake",
-        "ancientpower"
+        "ancient-power"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "firepunch",
-        "thunderpunch",
-        "rocktomb",
-        "zenheadbutt"
+        "fire-punch",
+        "thunder-punch",
+        "rock-tomb",
+        "zen-headbutt"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "alluringvoice",
-        "grassknot",
-        "psyshock",
-        "aurasphere"
+        "alluring-voice",
+        "grass-knot",
+        "psychic-noise",
+        "aura-sphere"
       ],
       "ivs": {
         "spe": 31,
@@ -111,9 +111,9 @@
     },
     {
       "moveset": [
-        "energyball",
-        "psychicnoise",
-        "dragonpulse",
+        "energy-ball",
+        "psychic-noise",
+        "dragon-pulse",
         "fly"
       ],
       "ivs": {
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "drainpunch",
-        "poisonjab",
-        "thunderpunch",
-        "zenheadbutt"
+        "drain-punch",
+        "poison-jab",
+        "thunder-punch",
+        "zen-headbutt"
       ],
       "ivs": {
         "spe": 31,
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "ironhead",
+        "iron-head",
         "earthquake",
-        "bodypress",
-        "shadowclaw"
+        "body-press",
+        "shadow-claw"
       ],
       "ivs": {
         "spe": 31,

@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "trickroom",
-        "willowisp",
-        "payback",
-        "brickbreak"
+        "trick-room",
+        "will-o-wisp",
+        "pay-back",
+        "brick-break"
       ],
       "ivs": {
         "spe": 31,
@@ -54,8 +54,8 @@
     },
     {
       "moveset": [
-        "stickyweb",
-        "stealthrock",
+        "sticky-web",
+        "stealth-rock",
         "encore",
         "toxic"
       ],
@@ -83,9 +83,9 @@
     },
     {
       "moveset": [
-        "stealthrock",
-        "rapidspin",
-        "lavaplume",
+        "stealth-rock",
+        "rapid-spin",
+        "lava-plume",
         "toxic"
       ],
       "ivs": {
@@ -112,10 +112,10 @@
     },
     {
       "moveset": [
-        "rapidspin",
+        "rapid-spin",
         "toxic",
         "psychic",
-        "earthpower"
+        "earth-power"
       ],
       "ivs": {
         "spe": 31,
@@ -141,9 +141,9 @@
     },
     {
       "moveset": [
-        "poisonjab",
-        "knockoff",
-        "poisonfang",
+        "poison-jab",
+        "knock-off",
+        "poison-fang",
         "earthquake"
       ],
       "ivs": {

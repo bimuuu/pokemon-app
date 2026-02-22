@@ -24,9 +24,9 @@
   "team": [
     {
       "moveset": [
-        "steelwing",
-        "stealthrock",
-        "irondefense",
+        "steel-wing",
+        "stealth-rock",
+        "iron-defense",
         "taunt"
       ],
       "ivs": {
@@ -53,9 +53,9 @@
     },
     {
       "moveset": [
-        "heavyslam",
+        "heavy-slam",
         "earthquake",
-        "icefang",
+        "ice-fang",
         "crunch"
       ],
       "ivs": {
@@ -83,9 +83,9 @@
     {
       "moveset": [
         "thunderbolt",
-        "flashcannon",
-        "lightscreen",
-        "magnetrise"
+        "flash-cannon",
+        "light-screen",
+        "magnet-rise"
       ],
       "ivs": {
         "spd": 31,
@@ -111,8 +111,8 @@
     {
       "moveset": [
         "surf",
-        "flashcannon",
-        "icebeam",
+        "flash-cannon",
+        "ice-beam",
         "roar"
       ],
       "ivs": {
@@ -139,10 +139,10 @@
     },
     {
       "moveset": [
-        "headsmash",
-        "ironhead",
+        "head-smash",
+        "iron-head",
         "earthquake",
-        "icepunch"
+        "ice-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -168,10 +168,10 @@
     },
     {
       "moveset": [
-        "heavyslam",
-        "metalburst",
+        "heavy-slam",
+        "metal-burst",
         "roar",
-        "stealthrock"
+        "stealth-rock"
       ],
       "ivs": {
         "spe": 31,

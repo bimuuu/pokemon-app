@@ -24,9 +24,9 @@
   "team": [
     {
       "moveset": [
-        "venoshock",
-        "airslash",
-        "poisonfang",
+        "veno-shock",
+        "air-slash",
+        "poison-fang",
         "astonish"
       ],
       "ivs": {
@@ -56,7 +56,7 @@
         "spite",
         "sludge",
         "belch",
-        "sludgebomb"
+        "sludge-bomb"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "poisonfang",
+        "poison-fang",
         "psychic",
-        "zenheadbutt",
+        "zen-headbutt",
         "supersonic"
       ],
       "ivs": {
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "nightslash",
+        "night-slash",
         "crunch",
-        "poisonfang",
-        "poisongas"
+        "poison-fang",
+        "poison-gas"
       ],
       "ivs": {
         "spe": 31,
@@ -140,9 +140,9 @@
     },
     {
       "moveset": [
-        "voltswitch",
-        "boomburst",
-        "sludgebomb",
+        "volt-switch",
+        "boom-burst",
+        "sludge-bomb",
         "overdrive"
       ],
       "ivs": {

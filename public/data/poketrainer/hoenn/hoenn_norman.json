@@ -25,9 +25,9 @@
     {
       "moveset": [
         "psychic",
-        "shockwave",
+        "shock-wave",
         "uproar",
-        "shadowball"
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "zenheadbutt",
-        "bodyslam",
-        "rocktomb",
-        "seedbomb"
+        "zen-headbutt",
+        "body-slam",
+        "rock-tomb",
+        "seed-bomb"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "aerialace",
+        "aerial-ace",
         "earthquake",
         "strength",
-        "drainpunch"
+        "drain-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -114,8 +114,8 @@
     },
     {
       "moveset": [
-        "disarmingvoice",
-        "lifedew",
+        "disarming-voice",
+        "life-dew",
         "covet",
         "sing"
       ],
@@ -144,7 +144,7 @@
     {
       "moveset": [
         "facade",
-        "shadowclaw",
+        "shadow-claw",
         "dig",
         "protect"
       ],

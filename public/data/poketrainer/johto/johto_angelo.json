@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "brickbreak",
-        "shadowpunch",
-        "rocktomb",
-        "thunderpunch"
+        "brick-break",
+        "shadow-punch",
+        "rock-tomb",
+        "thunder-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "disarmingvoice",
-        "waterpulse",
-        "shadowball",
-        "icebeam"
+        "disarming-voice",
+        "water-pulse",
+        "shadow-ball",
+        "ice-beam"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "focusblast",
+        "focus-blast",
         "toxic",
-        "shadowball",
-        "gigadrain"
+        "shadow-ball",
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "phantomforce",
+        "phantom-force",
         "psychic",
-        "mysticalfire",
-        "dazzlinggleam"
+        "mystical-fire",
+        "dazzling-gleam"
       ],
       "ivs": {
         "spe": 31,
@@ -141,10 +141,10 @@
     },
     {
       "moveset": [
-        "focuspunch",
-        "shadowpunch",
-        "firepunch",
-        "highhorsepower"
+        "focus-punch",
+        "shadow-punch",
+        "fire-punch",
+        "high-horsepower"
       ],
       "ivs": {
         "spe": 31,

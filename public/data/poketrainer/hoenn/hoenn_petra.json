@@ -24,9 +24,9 @@
   "team": [
     {
       "moveset": [
-        "rockthrow",
+        "rock-throw",
         "bulldoze",
-        "thunderpunch",
+        "thunder-punch",
         "flamethrower"
       ],
       "ivs": {
@@ -55,7 +55,7 @@
       "moveset": [
         "smackdown",
         "earthquake",
-        "irontail",
+        "iron-tail",
         "facade"
       ],
       "ivs": {
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "watergun",
-        "icebeam",
-        "ancientpower",
+        "water-gun",
+        "ice-beam",
+        "ancient-power",
         "surf"
       ],
       "ivs": {
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "powergem",
+        "power-gem",
         "thunderbolt",
-        "earthpower",
-        "terablast"
+        "earth-power",
+        "tera-blast"
       ],
       "ivs": {
         "spe": 31,

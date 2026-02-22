@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "hydropump",
+        "hydro-pump",
         "hurricane",
-        "icebeam",
-        "uturn"
+        "ice-beam",
+        "u-turn"
       ],
       "ivs": {
         "spe": 31,
@@ -55,8 +55,8 @@
       "moveset": [
         "thunder",
         "surf",
-        "focusblast",
-        "voltswitch"
+        "focus-blast",
+        "volt-switch"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "icefang",
-        "playrough",
-        "voltswitch",
-        "electricterrain"
+        "ice-fang",
+        "play-rough",
+        "volt-switch",
+        "electric-terrain"
       ],
       "ivs": {
         "spe": 31,
@@ -113,8 +113,8 @@
       "moveset": [
         "thunder",
         "surf",
-        "icebeam",
-        "voltswitch"
+        "ice-beam",
+        "volt-switch"
       ],
       "ivs": {
         "spe": 31,
@@ -142,8 +142,8 @@
       "moveset": [
         "thunder",
         "reflect",
-        "shadowball",
-        "voltswitch"
+        "shadow-ball",
+        "volt-switch"
       ],
       "ivs": {
         "spe": 31,
@@ -171,7 +171,7 @@
       "moveset": [
         "thunder",
         "flamethrower",
-        "crosschop",
+        "cross-chop",
         "earthquake"
       ],
       "ivs": {

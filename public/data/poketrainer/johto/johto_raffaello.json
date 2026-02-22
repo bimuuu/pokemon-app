@@ -25,9 +25,9 @@
     {
       "moveset": [
         "psybeam",
-        "stunspore",
-        "quickattack",
-        "bugbuzz"
+        "stun-spore",
+        "quick-attack",
+        "bug-buzz"
       ],
       "ivs": {
         "spe": 31,
@@ -54,7 +54,7 @@
     {
       "moveset": [
         "venoshock",
-        "gigadrain",
+        "giga-drain",
         "furycutter",
         "endure"
       ],
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "stoneedge",
-        "focuspunch",
-        "hornattack",
+        "stone-edge",
+        "focus-punch",
+        "horn-attack",
         "bulldoze"
       ],
       "ivs": {
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "aerialace",
+        "aerial-ace",
         "xscissor",
         "thief",
-        "brickbreak"
+        "brick-break"
       ],
       "ivs": {
         "spe": 31,

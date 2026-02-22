@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "dazzlinggleam",
-        "gigadrain",
-        "venoshock",
-        "energyball"
+        "dazzling-gleam",
+        "giga-drain",
+        "veno-shock",
+        "energy-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -54,8 +54,8 @@
     {
       "moveset": [
         "toxic",
-        "gigadrain",
-        "magicalleaf",
+        "giga-drain",
+        "magical-leaf",
         "moonblast"
       ],
       "ivs": {
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "poisonjab",
-        "bugbite",
-        "leafstorm",
-        "gigadrain"
+        "poison-jab",
+        "bug-bite",
+        "leaf-storm",
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,
@@ -111,9 +111,9 @@
     },
     {
       "moveset": [
-        "gigadrain",
+        "giga-drain",
         "toxic",
-        "petalblizzard",
+        "petal-blizzard",
         "moonblast"
       ],
       "ivs": {

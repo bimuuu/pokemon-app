@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "shadowball",
-        "darkpulse",
-        "willowisp",
-        "suckerpunch"
+        "shadow-ball",
+        "dark-pulse",
+        "will-o-wisp",
+        "sucker-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -53,9 +53,9 @@
     },
     {
       "moveset": [
-        "triattack",
-        "shadowball",
-        "icebeam",
+        "tri-attack",
+        "shadow-ball",
+        "ice-beam",
         "thunderbolt"
       ],
       "ivs": {
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "airslash",
-        "dazzlinggleam",
-        "aurasphere",
-        "thunderwave"
+        "air-slash",
+        "dazzling-gleam",
+        "aura-sphere",
+        "thunder-wave"
       ],
       "ivs": {
         "spe": 31,
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "closecombat",
-        "meteormash",
+        "close-combat",
+        "meteor-mash",
         "earthquake",
-        "extremespeed"
+        "extreme-speed"
       ],
       "ivs": {
         "spe": 31,
@@ -141,8 +141,8 @@
     {
       "moveset": [
         "recover",
-        "mirrorcoat",
-        "icebeam",
+        "mirror-coat",
+        "ice-beam",
         "scald"
       ],
       "ivs": {
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "dragonclaw",
+        "dragon-claw",
         "earthquake",
-        "swordsdance",
-        "poisonjab"
+        "sword-dance",
+        "poison-jab"
       ],
       "ivs": {
         "spe": 31,

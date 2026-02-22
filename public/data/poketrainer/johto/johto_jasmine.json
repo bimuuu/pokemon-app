@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "rockslide",
+        "rock-slide",
         "psychic",
-        "grassknot",
-        "ironhead"
+        "grass-knot",
+        "iron-head"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "flashcannon",
+        "flash-cannon",
         "earthquake",
-        "darkpulse",
-        "icefang"
+        "dark-pulse",
+        "ice-fang"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "meteormash",
-        "zenheadbutt",
-        "rockslide",
+        "meteor-mash",
+        "zen-headbutt",
+        "rock-slide",
         "earthquake"
       ],
       "ivs": {
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "rocktomb",
-        "steelwing",
-        "darkpulse",
-        "aerialace"
+        "rock-tomb",
+        "steel-wing",
+        "dark-pulse",
+        "aerial-ace"
       ],
       "ivs": {
         "spe": 31,
@@ -141,9 +141,9 @@
     {
       "moveset": [
         "thunderbolt",
-        "flashcannon",
-        "thunderwave",
-        "shockwave"
+        "flash-cannon",
+        "thunder-wave",
+        "shock-wave"
       ],
       "ivs": {
         "spe": 31,

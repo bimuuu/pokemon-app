@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "closecombat",
-        "stoneedge",
-        "suckerpunch",
-        "knockoff"
+        "close-combat",
+        "stone-edge",
+        "sucker-punch",
+        "knock-off"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "megahorn",
-        "closecombat",
+        "mega-horn",
+        "close-combat",
         "facade",
-        "stoneedge"
+        "stone-edge"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "flareblitz",
-        "closecombat",
-        "thunderpunch",
-        "swordsdance"
+        "flare-blitz",
+        "close-combat",
+        "thunder-punch",
+        "sword-dance"
       ],
       "ivs": {
         "spe": 31,
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "highjumpkick",
-        "zenheadbutt",
-        "firepunch",
-        "thunderpunch"
+        "high-jump-kick",
+        "zen-headbutt",
+        "fire-punch",
+        "thunder-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "aurasphere",
-        "flashcannon",
-        "waterpulse",
-        "vacuumwave"
+        "aura-sphere",
+        "flash-cannon",
+        "water-pulse",
+        "vacuum-wave"
       ],
       "ivs": {
         "spe": 31,

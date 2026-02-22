@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "zenheadbutt",
+        "zen-headbutt",
         "stomp",
-        "shadowball",
-        "milkdrink"
+        "shadow-ball",
+        "milk-drink"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "disarmingvoice",
-        "waterpulse",
-        "shadowball",
-        "icebeam"
+        "disarming-voice",
+        "water-pulse",
+        "shadow-ball",
+        "ice-beam"
       ],
       "ivs": {
         "spe": 31,
@@ -82,9 +82,9 @@
     },
     {
       "moveset": [
-        "doublekick",
+        "double-kick",
         "thunderbolt",
-        "shadowball",
+        "shadow-ball",
         "dig"
       ],
       "ivs": {

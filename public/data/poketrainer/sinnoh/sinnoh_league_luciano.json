@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "lightscreen",
+        "light-screen",
         "reflect",
         "psychic",
-        "dazzlinggleam"
+        "dazzling-gleam"
       ],
       "ivs": {
         "spe": 31,
@@ -53,9 +53,9 @@
     {
       "moveset": [
         "psychic",
-        "thunderwave",
-        "batonpass",
-        "nastyplot"
+        "thunder-wave",
+        "baton-pass",
+        "nasty-plot"
       ],
       "ivs": {
         "spe": 31,
@@ -80,10 +80,10 @@
     },
     {
       "moveset": [
-        "gyroball",
+        "gyro-ball",
         "earthquake",
-        "payback",
-        "rockslide"
+        "pay-back",
+        "rock-slide"
       ],
       "ivs": {
         "spd": 31,
@@ -106,10 +106,10 @@
     },
     {
       "moveset": [
-        "nastyplot",
+        "nasty-plot",
         "psychic",
-        "dazzlinggleam",
-        "shadowball"
+        "dazzling-gleam",
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -134,10 +134,10 @@
     },
     {
       "moveset": [
-        "highjumpkick",
-        "thunderpunch",
-        "zenheadbutt",
-        "fakeout"
+        "high-jump-kick",
+        "thunder-punch",
+        "zen-headbutt",
+        "fake-out"
       ],
       "ivs": {
         "spe": 31,
@@ -163,10 +163,10 @@
     },
     {
       "moveset": [
-        "closecombat",
-        "psychocut",
-        "poisonjab",
-        "shadowsneak"
+        "close-combat",
+        "psycho-cut",
+        "poison-jab",
+        "shadow-sneak"
       ],
       "ivs": {
         "spe": 31,

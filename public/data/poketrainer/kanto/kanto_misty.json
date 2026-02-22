@@ -24,8 +24,8 @@
   "team": [
     {
       "moveset": [
-        "flashcannon",
-        "waterpulse",
+        "flash-cannon",
+        "water-pulse",
         "blizzard",
         "waterfall"
       ],
@@ -51,7 +51,7 @@
         "psyshock",
         "surf",
         "psywave",
-        "watergun"
+        "water-gun"
       ],
       "ivs": {
         "spe": 31,
@@ -72,10 +72,10 @@
     },
     {
       "moveset": [
-        "watergun",
+        "water-gun",
         "confusion",
-        "aquatail",
-        "zenheadbutt"
+        "aqua-tail",
+        "zen-headbutt"
       ],
       "ivs": {
         "spe": 31,
@@ -96,10 +96,10 @@
     },
     {
       "moveset": [
-        "waterpulse",
+        "water-pulse",
         "peck",
-        "aquaring",
-        "hornattack"
+        "aqua-ring",
+        "horn-attack"
       ],
       "ivs": {
         "spe": 31,

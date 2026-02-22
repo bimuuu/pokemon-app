@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "thunderpunch",
+        "thunder-punch",
         "trailblaze",
-        "gyroball",
-        "poisonjab"
+        "gyro-ball",
+        "poison-jab"
       ],
       "ivs": {
         "spe": 31,
@@ -55,8 +55,8 @@
       "moveset": [
         "spark",
         "trailblaze",
-        "highhorsepower",
-        "smartstrike"
+        "high-horsepower",
+        "smart-strike"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "shockwave",
+        "shock-wave",
         "thunderbolt",
         "flamethrower",
-        "irontail"
+        "iron-tail"
       ],
       "ivs": {
         "spe": 31,
@@ -114,10 +114,10 @@
     },
     {
       "moveset": [
-        "icepunch",
+        "ice-punch",
         "thunderbolt",
-        "powergem",
-        "dazzlinggleam"
+        "power-gem",
+        "dazzling-gleam"
       ],
       "ivs": {
         "spe": 31,

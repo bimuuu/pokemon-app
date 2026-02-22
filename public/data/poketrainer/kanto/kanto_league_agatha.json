@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "suckerpunch",
-        "shadowball",
-        "dazzlinggleam",
-        "gunkshot"
+        "sucker-punch",
+        "shadow-ball",
+        "dazzling-gleam",
+        "gunk-shot"
       ],
       "ivs": {
         "spe": 31,
@@ -53,9 +53,9 @@
     },
     {
       "moveset": [
-        "shadowball",
-        "hiddenpower",
-        "rocktomb",
+        "shadow-ball",
+        "hidden-power",
+        "rock-tomb",
         "psyshock"
       ],
       "ivs": {
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "darkpulse",
-        "leechlife",
-        "shadowball",
-        "destinybond"
+        "dark-pulse",
+        "leech-life",
+        "shadow-ball",
+        "destiny-bond"
       ],
       "ivs": {
         "spe": 31,
@@ -111,10 +111,10 @@
     },
     {
       "moveset": [
-        "dazzlinggleam",
+        "dazzling-gleam",
         "psybeam",
-        "phantomforce",
-        "darkpulse"
+        "phantom-force",
+        "dark-pulse"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "playrough",
-        "phantomforce",
+        "play-rough",
+        "phantom-force",
         "bulldoze",
-        "psychicfangs"
+        "psychic-fangs"
       ],
       "ivs": {
         "spe": 31,
@@ -169,9 +169,9 @@
     },
     {
       "moveset": [
-        "shadowball",
-        "sludgewave",
-        "nastyplot",
+        "shadow-ball",
+        "sludge-wave",
+        "nasty-plot",
         "thunderbolt"
       ],
       "ivs": {

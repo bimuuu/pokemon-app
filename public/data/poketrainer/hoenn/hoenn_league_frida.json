@@ -25,9 +25,9 @@
     {
       "moveset": [
         "bulldoze",
-        "waterpulse",
-        "ironhead",
-        "darkpulse"
+        "water-pulse",
+        "iron-head",
+        "dark-pulse"
       ],
       "ivs": {
         "spe": 31,
@@ -56,8 +56,8 @@
     },
     {
       "moveset": [
-        "drainingkiss",
-        "shadowball",
+        "draining-kiss",
+        "shadow-ball",
         "avalanche",
         "thunderbolt"
       ],
@@ -85,10 +85,10 @@
     },
     {
       "moveset": [
-        "icefang",
-        "rockslide",
-        "brickbreak",
-        "xscissor"
+        "ice-fang",
+        "rock-slide",
+        "brick-break",
+        "x-scissor"
       ],
       "ivs": {
         "spe": 31,
@@ -114,10 +114,10 @@
     },
     {
       "moveset": [
-        "woodhammer",
-        "bodypress",
-        "icespinner",
-        "stompingtantrum"
+        "wood-hammer",
+        "body-press",
+        "ice-spinner",
+        "stomping-tantrum"
       ],
       "ivs": {
         "spe": 31,
@@ -144,8 +144,8 @@
     {
       "moveset": [
         "round",
-        "ancientpower",
-        "aurorabeam",
+        "ancient-power",
+        "aura-beam",
         "bulldoze"
       ],
       "ivs": {
@@ -172,10 +172,10 @@
     },
     {
       "moveset": [
-        "dragonclaw",
-        "icefang",
-        "aerialace",
-        "ironhead"
+        "dragon-claw",
+        "ice-fang",
+        "aerial-ace",
+        "iron-head"
       ],
       "ivs": {
         "spe": 31,

@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "brickbreak",
-        "closecombat",
-        "rockslide",
-        "thunderpunch"
+        "brick-break",
+        "close-combat",
+        "rock-slide",
+        "thunder-punch"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "vitalthrow",
-        "icepunch",
-        "fling",
-        "stompingtantrum"
+        "vital-throw",
+        "ice-punch",
+        "flying",
+        "stomping-tantrum"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "forcepalm",
-        "rocktomb",
+        "force-palm",
+        "rock-tomb",
         "earthquake",
-        "closecombat"
+        "close-combat"
       ],
       "ivs": {
         "spe": 31,
@@ -111,9 +111,9 @@
     },
     {
       "moveset": [
-        "seismictoss",
+        "seismic-toss",
         "thief",
-        "brickbreak",
+        "brick-break",
         "thunderbolt"
       ],
       "ivs": {
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "drainpunch",
+        "drain-punch",
         "surf",
-        "poisonjab",
-        "rocktomb"
+        "poison-jab",
+        "rock-tomb"
       ],
       "ivs": {
         "spe": 31,

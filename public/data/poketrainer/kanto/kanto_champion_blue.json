@@ -25,9 +25,9 @@
     {
       "moveset": [
         "discharge",
-        "aircutter",
+        "air-cutter",
         "thunderbolt",
-        "ancientpower"
+        "ancient-power"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "ancientpower",
-        "aerialace",
-        "waterpulse",
-        "icebeam"
+        "ancient-power",
+        "aerial-ace",
+        "water-pulse",
+        "ice-beam"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "scorchingsands",
+        "scorching-sands",
         "flamethrower",
-        "aerialace",
-        "bravebird"
+        "aerial-ace",
+        "brave-bird"
       ],
       "ivs": {
         "spe": 31,
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "sludgebomb",
-        "earthpower",
-        "energyball",
-        "gigadrain"
+        "sludge-bomb",
+        "earth-power",
+        "energy-ball",
+        "giga-drain"
       ],
       "ivs": {
         "spe": 31,

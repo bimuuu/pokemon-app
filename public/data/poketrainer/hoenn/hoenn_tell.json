@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "gyroball",
-        "shadowball",
+        "gyro-ball",
+        "shadow-ball",
         "psychic",
-        "stoneedge"
+        "stone-edge"
       ],
       "ivs": {
         "spe": 31,
@@ -53,10 +53,10 @@
     },
     {
       "moveset": [
-        "moonblast",
-        "icebeam",
+        "moon-blast",
+        "ice-beam",
         "bulldoze",
-        "grassknot"
+        "grass-knot"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "drainingkiss",
-        "sacredsword",
-        "psychocut",
-        "nightshade"
+        "draining-kiss",
+        "sacred-sword",
+        "psychic",
+        "night-shade"
       ],
       "ivs": {
         "spe": 31,
@@ -114,10 +114,10 @@
     },
     {
       "moveset": [
-        "lifedew",
-        "mistyterrain",
-        "moonblast",
-        "shadowball"
+        "life-dew",
+        "misty-terrain",
+        "moon-blast",
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,
@@ -146,10 +146,10 @@
     },
     {
       "moveset": [
-        "earthpower",
-        "extrasensory",
+        "earth-power",
+        "extra-sensory",
         "substitute",
-        "dazzlinggleam"
+        "dazzling-gleam"
       ],
       "ivs": {
         "spe": 31,
@@ -175,10 +175,10 @@
     },
     {
       "moveset": [
-        "zenheadbutt",
-        "drainpunch",
-        "darkpulse",
-        "shadowball"
+        "zen-headbutt",
+        "drain-punch",
+        "dark-pulse",
+        "shadow-ball"
       ],
       "ivs": {
         "spe": 31,

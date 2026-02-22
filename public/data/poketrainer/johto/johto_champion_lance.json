@@ -24,8 +24,8 @@
   "team": [
     {
       "moveset": [
-        "ironhead",
-        "dragonpulse",
+        "iron-head",
+        "dragon-pulse",
         "flamethrower",
         "bulldoze"
       ],
@@ -53,7 +53,7 @@
     },
     {
       "moveset": [
-        "temperflare",
+        "temper-flare",
         "earthquake",
         "waterfall",
         "thunder"
@@ -86,10 +86,10 @@
     },
     {
       "moveset": [
-        "zenheadbutt",
+        "zen-headbutt",
         "earthquake",
         "outrage",
-        "bodypress"
+        "body-press"
       ],
       "ivs": {
         "spe": 31,
@@ -115,9 +115,9 @@
     },
     {
       "moveset": [
-        "ironhead",
-        "thunderfang",
-        "dragonclaw",
+        "iron-head",
+        "thunder-fang",
+        "dragon-claw",
         "earthquake"
       ],
       "ivs": {
@@ -144,10 +144,10 @@
     },
     {
       "moveset": [
-        "ironhead",
+        "iron-head",
         "flamethrower",
-        "icebeam",
-        "dragonclaw"
+        "ice-beam",
+        "dragon-claw"
       ],
       "ivs": {
         "spe": 31,
@@ -172,10 +172,10 @@
     },
     {
       "moveset": [
-        "dragonpulse",
+        "dragon-pulse",
         "bulldoze",
         "psychic",
-        "steelwing"
+        "steel-wing"
       ],
       "ivs": {
         "spe": 31,

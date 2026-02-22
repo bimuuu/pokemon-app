@@ -24,10 +24,10 @@
   "team": [
     {
       "moveset": [
-        "airslash",
-        "dazzlinggleam",
-        "shadowball",
-        "zenheadbutt"
+        "air-slash",
+        "dazzling-gleam",
+        "shadow-ball",
+        "zen-headbutt"
       ],
       "ivs": {
         "spe": 31,
@@ -54,9 +54,9 @@
     {
       "moveset": [
         "psychic",
-        "shadowball",
+        "shadow-ball",
         "moonblast",
-        "drainingkiss"
+        "draining-kiss"
       ],
       "ivs": {
         "spe": 31,
@@ -82,10 +82,10 @@
     },
     {
       "moveset": [
-        "focuspunch",
+        "focus-punch",
         "psychic",
-        "shadowball",
-        "powergem"
+        "shadow-ball",
+        "power-gem"
       ],
       "ivs": {
         "spe": 31,
@@ -111,7 +111,7 @@
     },
     {
       "moveset": [
-        "zenheadbutt",
+        "zen-headbutt",
         "earthquake",
         "scald",
         "surf"
@@ -140,10 +140,10 @@
     },
     {
       "moveset": [
-        "gigadrain",
+        "giga-drain",
         "psychic",
-        "dualchop",
-        "sludgebomb"
+        "dual-chop",
+        "sludge-bomb"
       ],
       "ivs": {
         "spe": 31,
@@ -169,10 +169,10 @@
     },
     {
       "moveset": [
-        "dazzlinggleam",
-        "shadowball",
+        "dazzling-gleam",
+        "shadow-ball",
         "psyshock",
-        "mysticalfire"
+        "mystical-fire"
       ],
       "ivs": {
         "spe": 31,

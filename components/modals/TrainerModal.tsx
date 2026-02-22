@@ -1,8 +1,17 @@
 import { X, Trophy, Shield, Zap, Star, Activity } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
+import { Badge } from '@/components/ui/badge'
 import { TeamRecommendation } from '@/components/team/TeamRecommendation'
+import { AbilityDetailModal } from '@/components/modals/AbilityDetailModal'
+import { MoveDetailModal } from '@/components/modals/MoveDetailModal'
+import { NatureDetailModal } from '@/components/modals/NatureDetailModal'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { formatPokemonName } from '@/lib/utils'
+import { useState } from 'react'
+import type { Ability } from 'pokenode-ts'
+import type { Move } from 'pokenode-ts'
+import type { PokemonWithAbility } from '@/services/abilityService'
+import type { PokemonWithMove } from '@/services/moveService'
 
 interface TrainerModalProps {
   trainer: Trainer | null
@@ -41,6 +50,14 @@ interface ExtendedPokemon extends Pokemon {
 }
 
 export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose }: TrainerModalProps) {
+  const [selectedAbility, setSelectedAbility] = useState<Ability | null>(null)
+  const [selectedMove, setSelectedMove] = useState<Move | null>(null)
+  const [selectedNature, setSelectedNature] = useState<string | null>(null)
+  const [pokemonWithAbility, setPokemonWithAbility] = useState<PokemonWithAbility[]>([])
+  const [pokemonWithMove, setPokemonWithMove] = useState<PokemonWithMove[]>([])
+  const [isLoadingPokemon, setIsLoadingPokemon] = useState(false)
+  const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
+
   if (!trainer) return null
 
   return (
@@ -100,15 +117,29 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                           {/* Basic Info */}
                           <div className="space-y-2">
                             {pokemon.ability && (
-                              <div className="flex justify-between">
+                              <div className="flex justify-between items-center">
                                 <span className="text-gray-400">Ability:</span>
-                                <span className="font-medium capitalize">{pokemon.ability}</span>
+                                <button
+                                  onClick={() => setSelectedAbility({ name: pokemon.ability } as Ability)}
+                                  className="cursor-pointer transition-transform hover:scale-105"
+                                >
+                                  <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-3 py-1">
+                                    {pokemon.ability.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                  </Badge>
+                                </button>
                               </div>
                             )}
                             {pokemon.nature && (
-                              <div className="flex justify-between">
+                              <div className="flex justify-between items-center">
                                 <span className="text-gray-400">Nature:</span>
-                                <span className="font-medium capitalize">{pokemon.nature}</span>
+                                <button
+                                  onClick={() => setSelectedNature(pokemon.nature)}
+                                  className="cursor-pointer transition-transform hover:scale-105"
+                                >
+                                  <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-3 py-1">
+                                    {pokemon.nature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                  </Badge>
+                                </button>
                               </div>
                             )}
                             {pokemon.heldItem && pokemon.heldItem.length > 0 && (
@@ -123,13 +154,15 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                           {pokemon.ivs && (
                             <div>
                               <div className="font-medium text-gray-300 mb-1">IVs:</div>
-                              <div className="grid grid-cols-3 gap-x-4 gap-y-1 text-xs">
-                                <div>HP: {pokemon.ivs.hp}</div>
-                                <div>ATK: {pokemon.ivs.atk}</div>
-                                <div>DEF: {pokemon.ivs.def}</div>
-                                <div>SPA: {pokemon.ivs.spa}</div>
-                                <div>SPD: {pokemon.ivs.spd}</div>
-                                <div>SPE: {pokemon.ivs.spe}</div>
+                              <div className="border border-blue-500 rounded-md p-2 bg-blue-950/40">
+                                <div className="grid grid-cols-3 gap-x-3 gap-y-1 text-xs">
+                                  <div className="font-semibold">HP: {pokemon.ivs.hp}</div>
+                                  <div className="font-semibold">ATK: {pokemon.ivs.atk}</div>
+                                  <div className="font-semibold">DEF: {pokemon.ivs.def}</div>
+                                  <div className="font-semibold">SPA: {pokemon.ivs.spa}</div>
+                                  <div className="font-semibold">SPD: {pokemon.ivs.spd}</div>
+                                  <div className="font-semibold">SPE: {pokemon.ivs.spe}</div>
+                                </div>
                               </div>
                             </div>
                           )}
@@ -144,12 +177,13 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                             </div>
                             <div className="flex flex-wrap gap-1">
                               {pokemon.moveset.map((move, moveIndex) => (
-                                <span 
+                                <button
                                   key={moveIndex}
-                                  className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs font-medium capitalize"
+                                  onClick={() => setSelectedMove({ name: move } as Move)}
+                                  className="px-2 py-1 bg-gray-700 hover:bg-gray-600 text-gray-200 hover:text-white rounded text-xs font-medium capitalize transition-colors cursor-pointer"
                                 >
-                                  {move.replace(/_/g, ' ')}
-                                </span>
+                                  {move.replace(/_/g, ' ').replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')}
+                                </button>
                               ))}
                             </div>
                           </div>
@@ -157,15 +191,17 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                         
                         {/* EVs */}
                         {pokemon.evs && (
-                          <div className="mt-3 text-xs">
+                          <div className="mt-3">
                             <div className="font-medium text-gray-300 mb-1">EVs:</div>
-                            <div className="flex gap-x-4">
-                              {pokemon.evs.hp > 0 && <span>HP: {pokemon.evs.hp}</span>}
-                              {pokemon.evs.atk > 0 && <span>ATK: {pokemon.evs.atk}</span>}
-                              {pokemon.evs.def > 0 && <span>DEF: {pokemon.evs.def}</span>}
-                              {pokemon.evs.spa > 0 && <span>SPA: {pokemon.evs.spa}</span>}
-                              {pokemon.evs.spd > 0 && <span>SPD: {pokemon.evs.spd}</span>}
-                              {pokemon.evs.spe > 0 && <span>SPE: {pokemon.evs.spe}</span>}
+                            <div className="border border-green-500 rounded-md p-2 bg-green-950/40">
+                              <div className="flex gap-x-3">
+                                {pokemon.evs.hp > 0 && <span className="font-semibold text-xs">HP: {pokemon.evs.hp}</span>}
+                                {pokemon.evs.atk > 0 && <span className="font-semibold text-xs">ATK: {pokemon.evs.atk}</span>}
+                                {pokemon.evs.def > 0 && <span className="font-semibold text-xs">DEF: {pokemon.evs.def}</span>}
+                                {pokemon.evs.spa > 0 && <span className="font-semibold text-xs">SPA: {pokemon.evs.spa}</span>}
+                                {pokemon.evs.spd > 0 && <span className="font-semibold text-xs">SPD: {pokemon.evs.spd}</span>}
+                                {pokemon.evs.spe > 0 && <span className="font-semibold text-xs">SPE: {pokemon.evs.spe}</span>}
+                              </div>
                             </div>
                           </div>
                         )}
@@ -176,76 +212,61 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
               </div>
             </div>
 
+            {/* Team Recommendations */}
             {matchup && (
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Battle Analysis</h3>
-                  <div className="space-y-4">
-                    <div className="bg-blue-950 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2 flex items-center text-blue-200">
-                        <Shield className="w-4 h-4 mr-2" />
-                        Team Stats
-                      </h4>
-                      <div className="text-sm space-y-1">
-                        <div>Team Size: {trainerPokemon.length} Pokemon</div>
-                        <div>Average Level: {matchup.averageLevel}</div>
-                        <div>Battle Format: {trainer.battleFormat}</div>
-                      </div>
-                    </div>
-
-                    <div className="bg-green-950 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2 flex items-center text-green-200">
-                        <Zap className="w-4 h-4 mr-2" />
-                        Strong Against
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {matchup.strengths.map(type => (
-                          <TypeBadge key={type} type={type} />
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="bg-red-950 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2 flex items-center text-red-200">
-                        <Star className="w-4 h-4 mr-2" />
-                        Weak Against
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {matchup.weaknesses.map(type => (
-                          <TypeBadge key={type} type={type} />
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="bg-yellow-950 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2 text-yellow-200">Battle Tips</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Bring Pokemon that are strong against {matchup.weaknesses.slice(0, 2).join(' and ')} types</li>
-                        <li>• Be prepared for {matchup.strengths.slice(0, 2).join(' and ')} type moves</li>
-                        <li>• Recommended level: {matchup.averageLevel + 5}+ for easier battles</li>
-                        {trainer.bag.length > 0 && (
-                          <li>• Trainer has healing items: {trainer.bag.map((item: any) => item.item).join(', ')}</li>
-                        )}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Team Recommendations */}
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Team Recommendations</h3>
-                  <TeamRecommendation
-                    trainerTeam={trainerPokemon}
-                    trainerWeaknesses={matchup.weaknesses}
-                    trainerStrengths={matchup.strengths}
-                    averageLevel={matchup.averageLevel}
-                  />
-                </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-4">Team Recommendations</h3>
+                <TeamRecommendation
+                  trainerTeam={trainerPokemon}
+                  trainerWeaknesses={matchup.weaknesses}
+                  trainerStrengths={matchup.strengths}
+                  averageLevel={matchup.averageLevel}
+                />
               </div>
             )}
           </div>
         </div>
       </div>
+      
+      {/* Modals */}
+      {selectedAbility && (
+        <AbilityDetailModal
+          ability={selectedAbility}
+          pokemonWithAbility={pokemonWithAbility}
+          isLoadingPokemon={isLoadingPokemon}
+          pokemonSearchTerm={pokemonSearchTerm}
+          onPokemonSearchChange={setPokemonSearchTerm}
+          hideGenerationAndPokemon={true}
+          onClose={() => {
+            setSelectedAbility(null)
+            setPokemonWithAbility([])
+            setPokemonSearchTerm('')
+          }}
+        />
+      )}
+      
+      {selectedMove && (
+        <MoveDetailModal
+          move={selectedMove}
+          pokemonWithMove={pokemonWithMove}
+          isLoadingPokemon={isLoadingPokemon}
+          pokemonSearchTerm={pokemonSearchTerm}
+          onPokemonSearchChange={setPokemonSearchTerm}
+          hidePokemonSection={true}
+          onClose={() => {
+            setSelectedMove(null)
+            setPokemonWithMove([])
+            setPokemonSearchTerm('')
+          }}
+        />
+      )}
+      
+      {selectedNature && (
+        <NatureDetailModal
+          nature={selectedNature}
+          onClose={() => setSelectedNature(null)}
+        />
+      )}
     </div>
   )
 }
