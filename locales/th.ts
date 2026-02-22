@@ -14,8 +14,8 @@ export const thTranslations = {
     pokemon: "โปเกม่อน",
     teamBuilder: "สร้างทีม",
     typeChart: "ตารางธาตุ",
-    shop: "ร้านค้า",
     gameData: "ท่าต่อสู้ / ความสามารถ / นิสัย",
+    items: "ไอเท็ม",
     moves: "ท่าต่อสู้",
     abilities: "ความสามารถ",
     natures: "นิสัย",
@@ -556,6 +556,20 @@ export const thTranslations = {
       arctovishDesc: "Gmax Arctovish - ชนิดน้ำ/น้ำแข็ง ท่า Gmax Hailstorm",
       gmaxBattle: "Gigantamax เฉพาะในการต่อสู้ในภูมิภาค Galar"
     }
+  },
+  items: {
+    title: "ไอเท็มที่ขายได้",
+    subtitle: "รายการไอเท็มที่สามารถขายได้เพื่อ cobbleDollar ในเกม ค้นหามูลค่าของแต่ละไอเท็มและวางแผนกลยุทธ์การขายของคุณ",
+    itemName: "ชื่อไอเท็ม",
+    price: "ราคา",
+    cobbleDollar: "cobbleDollar",
+    searchPlaceholder: "ค้นหาไอเท็ม...",
+    sortByPrice: "เรียงตามราคา",
+    sortAscending: "ต่ำไปสูง",
+    sortDescending: "สูงไปต่ำ",
+    noItemsFound: "ไม่พบไอเท็มที่ตรงกับเงื่อนไข",
+    totalItems: "ไอเท็มทั้งหมด",
+    totalValue: "มูลค่ารวม"
   },
   errors: {
     failedToFetchCobblemonData: "ไม่สามารถดึงข้อมูล cobblemon ได้",

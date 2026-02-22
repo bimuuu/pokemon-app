@@ -65,9 +65,9 @@ export function ClientLayoutContent({ children }: { children: React.ReactNode })
               </Link>
             </li>
             <li>
-              <Link href="/shop" className={getNavLinkClass('/shop')}>
-                {t('navigation.shop')}
-                {getActiveIndicator('/shop')}
+              <Link href="/items" className={getNavLinkClass('/items')}>
+                {t('navigation.items')}
+                {getActiveIndicator('/items')}
               </Link>
             </li>
             <li>

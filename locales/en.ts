@@ -14,8 +14,8 @@ export const enTranslations = {
     pokemon: "Pokemon",
     teamBuilder: "Team Builder",
     typeChart: "Type Chart",
-    shop: "Shop",
     gameData: "Move / Ability / Nature",
+    items: "Items",
     moves: "Moves",
     abilities: "Abilities",
     natures: "Natures",
@@ -551,6 +551,20 @@ export const enTranslations = {
       arctovishDesc: "Gmax Arctovish - Water/Ice type, Gmax Hailstorm move",
       gmaxBattle: "Gigantamax during battle only in Galar region"
     }
+  },
+  items: {
+    title: "Sellable Items",
+    subtitle: "List of items that can be sold for cobbleDollars in the game. Find the value of each item and plan your selling strategy.",
+    itemName: "Item Name",
+    price: "Price",
+    cobbleDollar: "cobbleDollar",
+    searchPlaceholder: "Search items...",
+    sortByPrice: "Sort by Price",
+    sortAscending: "Low to High",
+    sortDescending: "High to Low",
+    noItemsFound: "No items found matching your criteria.",
+    totalItems: "Total items",
+    totalValue: "Total value"
   },
   errors: {
     failedToFetchCobblemonData: "Failed to fetch cobblemon data",
