@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { formatPokemonName } from '@/lib/utils'
+import { parseEvolutionConditions, type ParsedEvolutionCondition } from '@/lib/evolution-utils'
 
 interface EvolutionStageProps {
   evolution: any
@@ -12,16 +13,8 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
   const pokemonId = evolution.species.url.split('/')[6]
   const hasMultipleEvolutions = evolution.evolves_to.length > 1
 
-  const getEvolutionCondition = (details: any[]) => {
-    if (!details || details.length === 0) return null
-    const detail = details[0]
-    
-    if (detail.min_level) return `Level ${detail.min_level}` 
-    if (detail.item) return formatPokemonName(detail.item.name.replace('-', ' '))
-    if (detail.trigger?.name === 'trade') {
-      return detail.trade_species ? `Trade with ${formatPokemonName(detail.trade_species.name)}` : 'Trade'
-    }
-    return detail.trigger?.name || 'Unknown'
+  const getEvolutionConditions = (details: any[], pokemonName?: string): ParsedEvolutionCondition[] => {
+    return parseEvolutionConditions(details, pokemonName)
   }
 
   return (
@@ -58,12 +51,21 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
           <div className="text-gray-400 text-2xl mb-2">↓</div>
           
           {/* Evolution Conditions */}
-          <div className="flex flex-wrap justify-center gap-2 mb-4">
+          <div className="flex flex-wrap justify-center gap-2 mb-4 max-w-md">
             {evolution.evolves_to.map((evo: any, index: number) => {
-              const condition = getEvolutionCondition(evo.evolution_details)
+              const conditions = getEvolutionConditions(evo.evolution_details, evo.species.name)
+              if (conditions.length === 0) return null
+              
               return (
-                <div key={index} className="text-xs text-gray-600 bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">
-                  {condition}
+                <div key={index} className="flex flex-wrap justify-center gap-1">
+                  {conditions.map((condition, condIndex) => (
+                    <div 
+                      key={condIndex} 
+                      className="text-xs text-gray-200 bg-gray-800 border border-gray-600 px-3 py-1.5 rounded-full whitespace-nowrap font-medium shadow-sm"
+                    >
+                      {condition.icon} {condition.description}
+                    </div>
+                  ))}
                 </div>
               )
             })}

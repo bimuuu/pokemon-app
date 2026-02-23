@@ -66,8 +66,8 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
             <p className="font-medium text-sm truncate">{formatPokemonName(pokemon.name)}</p>
             <div className="flex flex-wrap gap-1 mt-1">
               {pokemon.types && pokemon.types.length > 0 ? (
-                pokemon.types.map(type => (
-                  <TypeBadge key={type.type.name} type={type.type.name} className="text-xs leading-none" />
+                pokemon.types.map((type, index) => (
+                  <TypeBadge key={`${type.type.name}-${index}`} type={type.type.name} className="text-xs leading-none" />
                 ))
               ) : (
                 <div className="flex gap-1">
@@ -106,7 +106,7 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
         ${isDisabled ? 'opacity-50 cursor-not-allowed bg-gray-800 border-gray-600' : 'bg-gray-800 shadow-md'}
       `}
     >
-      <div className="absolute top-1 right-1 opacity-0 hover:opacity-100 transition-opacity">
+      <div key="drag-handle" className="absolute top-1 right-1 opacity-0 hover:opacity-100 transition-opacity">
         <div className="w-4 h-4 bg-gray-600 rounded-full flex items-center justify-center">
           <svg className="w-2 h-2 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"/>
@@ -114,7 +114,7 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
         </div>
       </div>
       
-      <div className="flex items-center space-x-3">
+      <div key="pokemon-content" className="flex items-center space-x-3">
         <img 
           src={pokemon.sprites.front_default}
           alt={pokemon.name}
@@ -123,8 +123,8 @@ export function DraggablePokemonCard({ pokemon, isDisabled = false }: DraggableP
         <div className="flex-1 min-w-0">
           <p className="font-medium text-sm truncate">{formatPokemonName(pokemon.name)}</p>
           <div className="flex flex-wrap gap-1 mt-1">
-            {pokemon.types.map(type => (
-              <TypeBadge key={type.type.name} type={type.type.name} className="text-xs leading-none" />
+            {pokemon.types.map((type, index) => (
+              <TypeBadge key={`${type.type.name}-${index}`} type={type.type.name} className="text-xs leading-none" />
             ))}
           </div>
           {hasMultipleForms && !loadingForms && (

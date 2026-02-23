@@ -24,13 +24,12 @@ export function TeamAnalysis({ teamAnalysis }: TeamAnalysisProps) {
           {t('team.teamStrengths')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {teamAnalysis.strengths.map(strength => (
-            <div key={strength.type} className="flex items-center gap-1">
+          {teamAnalysis.strengths.map((strength, index) => (
+            <div key={`${strength.type}-${index}`} className="flex items-center gap-1">
               <TypeBadge type={strength.type} />
               <span className={`text-xs font-bold ${
-                strength.multiplier >= 2 ? 'text-green-700' : 
-                strength.multiplier >= 1.5 ? 'text-green-600' : 
-                'text-green-500'
+                strength.multiplier >= 2 ? 'text-green-600' : 
+                strength.multiplier <= 0.5 ? 'text-red-600' : 'text-gray-600'
               }`}>
                 {strength.multiplier}x
               </span>
@@ -45,8 +44,8 @@ export function TeamAnalysis({ teamAnalysis }: TeamAnalysisProps) {
           {t('team.teamWeaknesses')}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {teamAnalysis.weaknesses.map(weakness => (
-            <div key={weakness.type} className="flex items-center gap-1">
+          {teamAnalysis.weaknesses.map((weakness, index) => (
+            <div key={`${weakness.type}-${index}`} className="flex items-center gap-1">
               <TypeBadge type={weakness.type} />
               <span className={`text-xs font-bold ${
                 weakness.multiplier >= 2 ? 'text-red-700' : 
@@ -83,8 +82,8 @@ export function TeamAnalysis({ teamAnalysis }: TeamAnalysisProps) {
                       {rec.text}
                       {rec.types && (
                         <span className="flex gap-1 ml-2">
-                          {rec.types.map(type => (
-                            <TypeBadge key={type} type={type} className="text-xs" />
+                          {rec.types.map((type, typeIndex) => (
+                            <TypeBadge key={`${type}-${typeIndex}`} type={type} className="text-xs" />
                           ))}
                         </span>
                       )}
