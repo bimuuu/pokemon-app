@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 19,
       "nature": "modest",
-      "ability": "shellarmor"
+      "ability": "shell-armor"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 21,
       "nature": "quiet",
-      "ability": "magnetpull"
+      "ability": "magnet-pull"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

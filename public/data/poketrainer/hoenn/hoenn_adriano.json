@@ -81,7 +81,7 @@
       "gender": "MALE",
       "level": 70,
       "nature": "timid",
-      "ability": "clearbody"
+      "ability": "clear-body"
     },
     {
       "moveset": [
@@ -110,7 +110,7 @@
       "gender": "FEMALE",
       "level": 70,
       "nature": "modest",
-      "ability": "marvelscale"
+      "ability": "marvel-scale"
     },
     {
       "moveset": [

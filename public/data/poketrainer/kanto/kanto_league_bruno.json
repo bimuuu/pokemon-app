@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 80,
       "nature": "adamant",
-      "ability": "thickfat"
+      "ability": "thick-fat"
     },
     {
       "moveset": [
@@ -135,7 +135,7 @@
       "gender": "MALE",
       "level": 80,
       "nature": "impish",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     },
     {
       "moveset": [
@@ -193,7 +193,7 @@
       "gender": "MALE",
       "level": 80,
       "nature": "timid",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

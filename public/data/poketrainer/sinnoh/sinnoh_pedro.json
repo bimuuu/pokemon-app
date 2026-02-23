@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 26,
       "nature": "modest",
-      "ability": "sandforce"
+      "ability": "sand-force"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 27,
       "nature": "adamant",
-      "ability": "rockhead"
+      "ability": "rock-head"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "MALE",
       "level": 30,
       "nature": "adamant",
-      "ability": "sheerforce"
+      "ability": "sheer-force"
     }
   ],
   "identity": "Gym Leader Pedro",

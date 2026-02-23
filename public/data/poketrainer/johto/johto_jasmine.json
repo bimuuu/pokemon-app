@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 59,
       "nature": "bold",
-      "ability": "heatproof"
+      "ability": "heat-proof"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 58,
       "nature": "calm",
-      "ability": "clearbody"
+      "ability": "clear-body"
     },
     {
       "moveset": [

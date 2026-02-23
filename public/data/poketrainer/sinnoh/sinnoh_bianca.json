@@ -49,7 +49,7 @@
       "gender": "FEMALE",
       "level": 67,
       "nature": "brave",
-      "ability": "snowwarning"
+      "ability": "snow-warning"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 66,
       "nature": "modest",
-      "ability": "dryskin"
+      "ability": "dry-skin"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "FEMALE",
       "level": 67,
       "nature": "adamant",
-      "ability": "snowcloak"
+      "ability": "snow-cloak"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 67,
       "nature": "modest",
-      "ability": "snowcloak"
+      "ability": "snow-cloak"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "FEMALE",
       "level": 66,
       "nature": "modest",
-      "ability": "icebody"
+      "ability": "ice-body"
     },
     {
       "moveset": [

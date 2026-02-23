@@ -6,17 +6,21 @@ import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown, Searc
 import Link from 'next/link'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { EvolutionStage } from '@/components/pokemon/EvolutionStage'
-import { Pokemon, CobblemonPokemon, EvolutionChain, PokemonForm, PokemonFormData, FormTransformationCondition } from '@/types/pokemon'
+import { Pokemon, CobblemonPokemon, EvolutionChain, PokemonForm, PokemonFormData, FormTransformationCondition, PokemonVariety } from '@/types/pokemon'
 import { formatPokemonId, formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
+import { renderStatBar, renderAbilities, renderTypeMatchups, renderTransformationConditions, renderFormTypeBadge, formatStatName } from '@/utils/pokemon-detail-utils'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { usePokemonCache } from '@/contexts/PokemonCacheContext'
 import { translateCondition } from '@/lib/i18n'
-import { fetchPokemonForms, fetchAllFormsData, getFormTransformationConditions, getFormDisplayName, getGmaxMoveName } from '@/lib/pokemon-api'
+import { fetchPokemonForms, fetchAllFormsData, getFormTransformationConditions, getFormDisplayName, getGmaxMoveName, fetchPokemonVarietiesWithDetails, getCobbleverseTransformationConditions } from '@/lib/pokemon-api'
+import { fetchPokemonSpeciesByName } from '@/lib/api'
 import { FormTransformationService } from '@/lib/form-transformations'
 import { PokemonMovesService, type MoveLearnMethod } from '@/services/pokemonMovesService'
 import { MoveDetailModal } from '@/components/modals/MoveDetailModal'
+import { AbilityDetailModal } from '@/components/modals/AbilityDetailModal'
 import { MoveService, type PokemonWithMove } from '@/services/moveService'
-import type { Move } from 'pokenode-ts'
+import { AbilityService, type PokemonWithAbility } from '@/services/abilityService'
+import type { Move, Ability } from 'pokenode-ts'
 
 export default function PokemonDetailPage() {
   const { t } = useLanguage()
@@ -33,6 +37,13 @@ export default function PokemonDetailPage() {
   const [loadingForms, setLoadingForms] = useState(false)
   const [selectedForm, setSelectedForm] = useState<PokemonForm | null>(null)
   const [showFormDetails, setShowFormDetails] = useState(false)
+  const [pokemonSpecies, setPokemonSpecies] = useState<any>(null)
+  const [loadingSpecies, setLoadingSpecies] = useState(false)
+  const [varieties, setVarieties] = useState<PokemonVariety[]>([])
+  const [loadingVarieties, setLoadingVarieties] = useState(false)
+  const [showAllVarieties, setShowAllVarieties] = useState(false)
+  const [selectedVariety, setSelectedVariety] = useState<PokemonVariety | null>(null)
+  const [cobbleverseConditions, setCobbleverseConditions] = useState<any[]>([])
   const [pokemonMoves, setPokemonMoves] = useState<{
     levelUp: MoveLearnMethod[]
     tm: MoveLearnMethod[]
@@ -47,6 +58,12 @@ export default function PokemonDetailPage() {
   const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
   const [moveSearchTerm, setMoveSearchTerm] = useState('')
   const [selectedMoveCategory, setSelectedMoveCategory] = useState<string>('all')
+  
+  // Ability modal states
+  const [selectedAbility, setSelectedAbility] = useState<Ability | null>(null)
+  const [pokemonWithAbility, setPokemonWithAbility] = useState<PokemonWithAbility[]>([])
+  const [isLoadingPokemonForAbility, setIsLoadingPokemonForAbility] = useState(false)
+  const [pokemonSearchTermForAbility, setPokemonSearchTermForAbility] = useState('')
 
   useEffect(() => {
     const loadData = async () => {
@@ -63,6 +80,9 @@ export default function PokemonDetailPage() {
             await loadFormsData(cachedData.pokemon.id)
           }
           
+          // Load Pokemon species data for varieties
+          await loadPokemonSpecies()
+          
           // Load Pokemon moves
           await loadPokemonMoves()
         }
@@ -77,6 +97,36 @@ export default function PokemonDetailPage() {
       loadData()
     }
   }, [pokemonName, getCachedPokemon])
+  
+  // ESC key handler to close modals
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        if (selectedMove) {
+          closeModal()
+        }
+        if (selectedAbility) {
+          closeAbilityModal()
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleEscKey)
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [selectedMove, selectedAbility])
+
+  // Load Cobbleverse conditions
+  const loadCobbleverseConditions = async (pokemonName: string) => {
+    try {
+      const conditions = await getCobbleverseTransformationConditions(pokemonName)
+      setCobbleverseConditions(conditions)
+    } catch (error) {
+      console.error('Error loading Cobbleverse conditions:', error)
+      setCobbleverseConditions([])
+    }
+  }
 
   // Load forms data
   const loadFormsData = async (pokemonId: number) => {
@@ -112,6 +162,28 @@ export default function PokemonDetailPage() {
     }
   }
 
+  // Load Pokemon species data for varieties
+  const loadPokemonSpecies = async () => {
+    setLoadingSpecies(true)
+    setLoadingVarieties(true)
+    try {
+      const speciesData = await fetchPokemonSpeciesByName(pokemonName)
+      setPokemonSpecies(speciesData)
+      
+      // Load varieties data
+      const varietiesData = await fetchPokemonVarietiesWithDetails(pokemonName)
+      setVarieties(varietiesData)
+      
+      // Load Cobbleverse conditions
+      await loadCobbleverseConditions(pokemonName)
+    } catch (error) {
+      console.error('Error loading Pokemon species:', error)
+    } finally {
+      setLoadingSpecies(false)
+      setLoadingVarieties(false)
+    }
+  }
+
   // Handle move click to show modal
   const handleMoveClick = async (moveName: string) => {
     setIsLoadingPokemon(true)
@@ -134,9 +206,38 @@ export default function PokemonDetailPage() {
 
   // Close modal
   const closeModal = () => {
+    console.log('Closing move modal')
     setSelectedMove(null)
     setPokemonWithMove([])
     setPokemonSearchTerm('')
+  }
+  
+  // Close ability modal
+  const closeAbilityModal = () => {
+    console.log('Closing ability modal')
+    setSelectedAbility(null)
+    setPokemonWithAbility([])
+    setPokemonSearchTermForAbility('')
+  }
+  
+  // Handle ability click to show modal
+  const handleAbilityClick = async (abilityName: string) => {
+    setIsLoadingPokemonForAbility(true)
+    try {
+      // Convert ability name with spaces to API-friendly format (replace spaces with hyphens)
+      const apiAbilityName = abilityName.replace(' ', '-').toLowerCase()
+      const abilityData = await AbilityService.fetchAbilityDetails(apiAbilityName)
+      if (abilityData) {
+        setSelectedAbility(abilityData)
+        // Fetch Pokemon that have this ability
+        const pokemonData = await AbilityService.fetchPokemonWithAbility(apiAbilityName)
+        setPokemonWithAbility(pokemonData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch ability details:', error)
+    } finally {
+      setIsLoadingPokemonForAbility(false)
+    }
   }
 
   // Filter moves based on search term and category
@@ -315,237 +416,6 @@ export default function PokemonDetailPage() {
         </div>
       </section>
 
-      {/* Forms Section */}
-      {forms.length > 1 && (
-        <section className="bg-white rounded-lg shadow-sm border p-8">
-          <h2 className="text-xl font-semibold mb-6 flex items-center">
-            <Layers className="w-5 h-5 mr-2" />
-            {t('pokemon.formTransformation') || 'Form Transformation'}
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Forms Gallery */}
-            <div>
-              <h3 className="font-medium mb-4">{t('pokemon.availableForms') || 'Available Forms'} ({forms.length})</h3>
-              <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
-                {forms.map((form, index) => {
-                  const formData = formsData[form.name]
-                  const isSelected = selectedForm?.name === form.name
-                  const displayName = getFormDisplayName(form.name)
-                  
-                  return (
-                    <div
-                      key={form.name}
-                      className={`
-                        relative cursor-pointer border-2 rounded-lg p-2 transition-all
-                        hover:scale-105 hover:shadow-md
-                        ${isSelected ? 'border-purple-500 bg-purple-50' : 'border-gray-200'}
-                      `}
-                      onClick={() => setSelectedForm(form)}
-                    >
-                      <div className="w-16 h-16 mx-auto mb-1 bg-gray-100 rounded flex items-center justify-center">
-                        <img
-                          src={formData?.sprites?.front_default || pokemon.sprites.front_default}
-                          alt={displayName}
-                          className="w-12 h-12 object-contain"
-                        />
-                      </div>
-                      <p className="text-xs text-center font-medium truncate">
-                        {displayName || 'Default'}
-                      </p>
-                      {formData?.is_default && (
-                        <span className="absolute top-0 right-0 text-xs bg-blue-500 text-white px-1 rounded">
-                          {t('common.default') || 'Default'}
-                        </span>
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Form Details */}
-            <div>
-              <h3 className="font-medium mb-4">{t('pokemon.formDetails') || 'Form Details'}</h3>
-              {selectedForm && (
-                <div className="space-y-4">
-                  {/* Large Pokemon Sprite Preview */}
-                  <div className="bg-gray-700 p-6 rounded-lg border border-gray-600">
-                    <div className="flex flex-col items-center">
-                      <div className="w-48 h-48 bg-gray-800 rounded-lg shadow-sm border border-gray-700 flex items-center justify-center mb-4">
-                        <img
-                          src={formsData[selectedForm.name]?.sprites?.front_default || pokemon.sprites.front_default}
-                          alt={getFormDisplayName(selectedForm.name)}
-                          className="w-40 h-40 object-contain"
-                        />
-                      </div>
-                      <h4 className="text-lg font-bold text-gray-200 mb-2">
-                        {getFormDisplayName(selectedForm.name) || 'Default Form'}
-                      </h4>
-                      {/* Type Badges in Image */}
-                      {formsData[selectedForm.name]?.types && (
-                        <div className="flex gap-2 mt-3">
-                          {formsData[selectedForm.name].types.map(type => (
-                            <TypeBadge key={type.type.name} type={type.type.name} />
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Form Stats Comparison */}
-                  <div className="bg-gray-700 p-4 rounded-lg">
-                    <h4 className="font-medium mb-3 text-gray-300">{t('pokemon.formStats') || 'Form Stats Comparison'}</h4>
-                    {(() => {
-                      const formStats = formsData[selectedForm?.name]?.stats || pokemon.stats
-                      
-                      if (!formStats || formStats.length === 0) {
-                        return (
-                          <p className="text-sm text-gray-600">
-                            {t('pokemon.noFormStats') || 'No stats data available for this form'}
-                          </p>
-                        )
-                      }
-                      
-                      return (
-                        <div className="space-y-2">
-                          {formStats.map(stat => {
-                            const formStatValue = stat.base_stat
-                            const baseStat = pokemon.stats.find(s => s.stat.name === stat.stat.name)
-                            const baseStatValue = baseStat?.base_stat || 0
-                            const difference = formStatValue - baseStatValue
-                            const percentage = (formStatValue / 255) * 100
-                            
-                            return (
-                              <div key={stat.stat.name}>
-                                <div className="flex justify-between items-center text-sm mb-1">
-                                  <span className="font-medium">
-                                    {(() => {
-                                      const statKey = stat.stat.name.replace('-', '')
-                                      const translationKey = `pokemon.${statKey === 'specialattack' ? 'spAttack' : statKey === 'specialdefense' ? 'spDefense' : statKey}`
-                                      const translation = t(translationKey)
-                                      return translation !== translationKey ? translation : stat.stat.name.toUpperCase()
-                                    })()}
-                                  </span>
-                                  <div className="flex items-center gap-2">
-                                    <span className="font-medium">{formStatValue}</span>
-                                    {difference !== 0 && (
-                                      <span className={`text-xs font-medium ${difference > 0 ? 'text-green-600' : 'text-red-600'}`}>
-                                        ({difference > 0 ? '+' : ''}{difference})
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="w-full bg-gray-200 rounded-full h-2">
-                                  <div 
-                                    className={`h-2 rounded-full ${difference > 0 ? 'bg-green-500' : difference < 0 ? 'bg-red-500' : 'bg-blue-500'}`}
-                                    style={{ width: `${percentage}%` }}
-                                  />
-                                </div>
-                              </div>
-                            )
-                          })}
-                        </div>
-                      )
-                    })()}
-                  </div>
-
-                  {/* Form Abilities */}
-                  {formsData[selectedForm.name]?.abilities && (
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-2">{t('pokemon.abilities') || 'Abilities'}</h4>
-                      <div className="space-y-2">
-                        {formsData[selectedForm.name].abilities.map(ability => (
-                          <div key={ability.ability.name} className="flex items-center justify-between text-sm">
-                            <span className="font-medium capitalize">
-                              {ability.ability.name.replace('-', ' ')}
-                            </span>
-                            {ability.is_hidden && (
-                              <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
-                                {t('pokemon.hidden') || 'Hidden'}
-                              </span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Form Type Matchups */}
-                  {formsData[selectedForm.name]?.types && (
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h4 className="font-medium mb-3">{t('pokemon.formTypeMatchups') || 'Form Type Matchups'}</h4>
-                      {(() => {
-                        const formTypes = formsData[selectedForm.name].types.map(t => t.type.name)
-                        const formWeaknesses = calculateTypeWeaknesses(formTypes)
-                        const formStrengths = calculateTypeStrengths(formTypes)
-                        
-                        return (
-                          <div className="grid grid-cols-2 gap-4">
-                            <div>
-                              <h5 className="font-medium text-green-600 mb-2 text-sm">{t('pokemon.strongAgainst') || 'Strong Against'}</h5>
-                              <div className="flex flex-wrap gap-1">
-                                {Object.entries(formStrengths)
-                                  .sort(([_, a], [__, b]) => b - a)
-                                  .map(([type, multiplier]) => (
-                                    <div key={type} className="flex items-center gap-1">
-                                      <TypeBadge type={type} className="text-xs" />
-                                      <span className={`text-xs font-medium ${
-                                        multiplier >= 2 ? 'text-green-700' : 
-                                        multiplier > 1 ? 'text-green-600' : 
-                                        multiplier === 1 ? 'text-gray-500' : 'text-gray-400'
-                                      }`}>×{multiplier}</span>
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                            <div>
-                              <h5 className="font-medium text-red-600 mb-2 text-sm">{t('pokemon.weakAgainst') || 'Weak Against'}</h5>
-                              <div className="flex flex-wrap gap-1">
-                                {Object.entries(formWeaknesses)
-                                  .sort(([_, a], [__, b]) => b - a)
-                                  .map(([type, multiplier]) => (
-                                    <div key={type} className="flex items-center gap-1">
-                                      <TypeBadge type={type} className="text-xs" />
-                                      <span className={`text-xs font-medium ${
-                                        multiplier >= 2 ? 'text-red-700' : 
-                                        multiplier > 1 ? 'text-red-600' : 
-                                        multiplier === 1 ? 'text-gray-500' : 'text-gray-400'
-                                      }`}>×{multiplier}</span>
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                          </div>
-                        )
-                      })()}
-                    </div>
-                  )}
-
-                  {/* Transformation Conditions */}
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h4 className="font-medium mb-2">{t('pokemon.transformationConditions') || 'Transformation Conditions'}</h4>
-                    <div className="space-y-2">
-                      {(() => {
-                        const conditions = FormTransformationService.getFormTransformationConditions(selectedForm.name)
-                        if (conditions.length === 0) {
-                          return <p className="text-sm text-gray-600">No special transformation conditions</p>
-                        }
-                        return conditions.map((condition, index) => (
-                          <div key={index} className="text-sm">
-                            <span className="font-medium capitalize">{condition.type}:</span> {condition.description}
-                          </div>
-                        ))
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Abilities Section */}
       <section className="bg-white rounded-lg shadow-sm border p-8">
         <h2 className="text-xl font-semibold mb-6 flex items-center">
@@ -556,9 +426,9 @@ export default function PokemonDetailPage() {
         {pokemon.abilities && pokemon.abilities.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {pokemon.abilities.map((ability, index) => (
-              <Link 
+              <div 
                 key={index} 
-                href={`/abilities/${ability.ability.name.replace(' ', '-')}`}
+                onClick={() => handleAbilityClick(ability.ability.name)}
                 className="flex flex-col p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
               >
                 <div className="flex items-center justify-between mb-2">
@@ -574,7 +444,7 @@ export default function PokemonDetailPage() {
                 <div className="text-xs text-gray-500">
                   Slot {ability.slot}
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         ) : (
@@ -583,6 +453,211 @@ export default function PokemonDetailPage() {
           </div>
         )}
       </section>
+
+      {/* Varieties Section */}
+      {varieties.length > 1 && (
+        <section className="bg-white rounded-lg shadow-sm border p-8">
+          <h2 className="text-xl font-semibold mb-6 flex items-center">
+            <Layers className="w-5 h-5 mr-2" />
+            {t('pokemon.formTransformation') || 'Form Transformation'}
+          </h2>
+          
+          {loadingVarieties ? (
+            <div className="text-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading varieties data...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Stats Section - Left Side */}
+              <div className="lg:col-span-2">
+                {selectedVariety ? (
+                  <div className="space-y-6">
+                    {/* Selected Variety Header */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                          <img
+                            src={selectedVariety.sprites.front_default || pokemon.sprites.front_default}
+                            alt={selectedVariety.display_name}
+                            className="w-12 h-12 object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-lg">{selectedVariety.display_name}</h4>
+                          {renderFormTypeBadge(selectedVariety)}
+                        </div>
+                      </div>
+                      
+                      {/* Types */}
+                      <div className="flex gap-2">
+                        {selectedVariety.types.map(type => (
+                          <TypeBadge key={type.type.name} type={type.type.name} />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Stats Comparison */}
+                    <div>
+                      <h4 className="font-medium mb-3 text-sm">{t('pokemon.stats') || 'Stats'}</h4>
+                      <div className="space-y-2">
+                        {selectedVariety.stats.map(stat => {
+                          const baseStat = pokemon.stats.find(s => s.stat.name === stat.stat.name)
+                          const baseStatValue = baseStat?.base_stat || 0
+                          const difference = stat.base_stat - baseStatValue
+                          const percentage = (stat.base_stat / 255) * 100
+                          
+                          return (
+                            <div key={stat.stat.name}>
+                              <div className="flex justify-between items-center text-xs mb-1">
+                                <span className="font-medium">
+                                  {(() => {
+                                    const statKey = stat.stat.name.replace('-', '')
+                                    const translationKey = `pokemon.${statKey === 'specialattack' ? 'spAttack' : statKey === 'specialdefense' ? 'spDefense' : statKey}`
+                                    const translation = t(translationKey)
+                                    return translation !== translationKey ? translation : stat.stat.name.toUpperCase()
+                                  })()}
+                                </span>
+                                <div className="flex items-center gap-2">
+                                  <span className="font-medium">{stat.base_stat}</span>
+                                  {difference !== 0 && (
+                                    <span className={`text-xs font-medium ${difference > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                      ({difference > 0 ? '+' : ''}{difference})
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="w-full bg-gray-200 rounded-full h-1.5">
+                                <div 
+                                  className={`h-1.5 rounded-full ${difference > 0 ? 'bg-green-500' : difference < 0 ? 'bg-red-500' : 'bg-blue-500'}`}
+                                  style={{ width: `${percentage}%` }}
+                                />
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Abilities */}
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm">{t('pokemon.abilities') || 'Abilities'}</h4>
+                      {renderAbilities(selectedVariety.abilities, handleAbilityClick, t)}
+                    </div>
+
+                    {/* Type Matchups */}
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm">{t('pokemon.typeMatchups') || 'Type Matchups'}</h4>
+                      {renderTypeMatchups(selectedVariety.types.map(t => t.type.name), t)}
+                    </div>
+
+                    {/* Transformation Conditions */}
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm">{t('pokemon.transformationConditions') || 'Transformation Conditions'}</h4>
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                        {renderTransformationConditions(
+                          FormTransformationService.getFormTransformationConditions(selectedVariety.name),
+                          cobbleverseConditions,
+                          t
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <h3 className="font-medium mb-4">{t('pokemon.baseStats') || 'Base Stats'}</h3>
+                    {pokemon.stats.map(stat => renderStatBar(stat))}
+
+                    {/* Base Pokemon Transformation Conditions */}
+                    {(() => {
+                      const formConditions = FormTransformationService.getFormTransformationConditions(pokemon.name)
+                      const allConditions = [...formConditions, ...cobbleverseConditions]
+                      
+                      if (allConditions.length > 0) {
+                        return (
+                          <div className="mt-6">
+                            <h4 className="font-medium mb-2 text-sm">{t('pokemon.transformationConditions') || 'Transformation Conditions'}</h4>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                              {renderTransformationConditions(formConditions, cobbleverseConditions, t)}
+                            </div>
+                          </div>
+                        )
+                      }
+                      return null
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Available Forms - Right Side */}
+              <div>
+                <h3 className="font-medium mb-4">{t('pokemon.availableForms') || 'Available Forms'} ({varieties.length})</h3>
+                <div className="space-y-3">
+                  {(showAllVarieties ? varieties : varieties.slice(0, 4)).map((variety) => (
+                    <div
+                      key={variety.name}
+                      onClick={() => setSelectedVariety(variety)}
+                      className={`
+                        relative border-2 rounded-lg p-3 transition-all cursor-pointer
+                        hover:scale-105 hover:shadow-md
+                        ${variety.is_default ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'}
+                        ${selectedVariety?.name === variety.name ? 'ring-2 ring-purple-500 shadow-lg' : ''}
+                      `}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <img
+                            src={variety.sprites.front_default || pokemon.sprites.front_default}
+                            alt={variety.display_name}
+                            className="w-10 h-10 object-contain"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate mb-1">
+                            {variety.display_name}
+                          </p>
+                          
+                          {/* Form Type Badge */}
+                          {renderFormTypeBadge(variety)}
+                        </div>
+                        
+                        {/* Types */}
+                        <div className="flex gap-1 flex-shrink-0">
+                          {variety.types.map(type => (
+                            <TypeBadge key={type.type.name} type={type.type.name} className="text-xs" />
+                          ))}
+                        </div>
+                      </div>
+                      
+                      {variety.is_default && (
+                        <span className="absolute top-0 right-0 text-xs bg-blue-500 text-white px-1 rounded">
+                          {t('common.default') || 'Default'}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Show More/Less Button */}
+                {varieties.length > 4 && (
+                  <div className="text-center mt-4">
+                    <button
+                      onClick={() => setShowAllVarieties(!showAllVarieties)}
+                      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium w-full"
+                    >
+                      {showAllVarieties 
+                        ? `Show Less (${varieties.length - 4} hidden)` 
+                        : `Show More (${varieties.length - 4} more)`
+                      }
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
+
 
       {evolutionChain && (
         <section className="bg-white rounded-lg shadow-sm border p-8">
@@ -835,14 +910,28 @@ export default function PokemonDetailPage() {
       </section>
 
       {/* Move Detail Modal */}
-      <MoveDetailModal
-        move={selectedMove}
-        pokemonWithMove={pokemonWithMove}
-        isLoadingPokemon={isLoadingPokemon}
-        pokemonSearchTerm={pokemonSearchTerm}
-        onPokemonSearchChange={setPokemonSearchTerm}
-        onClose={closeModal}
-      />
+      {selectedMove && (
+        <MoveDetailModal
+          move={selectedMove}
+          pokemonWithMove={pokemonWithMove}
+          isLoadingPokemon={isLoadingPokemon}
+          pokemonSearchTerm={pokemonSearchTerm}
+          onPokemonSearchChange={setPokemonSearchTerm}
+          onClose={closeModal}
+        />
+      )}
+      
+      {/* Ability Detail Modal */}
+      {selectedAbility && (
+        <AbilityDetailModal
+          ability={selectedAbility}
+          pokemonWithAbility={pokemonWithAbility}
+          isLoadingPokemon={isLoadingPokemonForAbility}
+          pokemonSearchTerm={pokemonSearchTermForAbility}
+          onPokemonSearchChange={setPokemonSearchTermForAbility}
+          onClose={closeAbilityModal}
+        />
+      )}
     </main>
   )
 }

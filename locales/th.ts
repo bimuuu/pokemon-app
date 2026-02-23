@@ -8,7 +8,9 @@ export const thTranslations = {
     all: "ทั้งหมด",
     found: "พบ",
     noDataFound: "ไม่พบข้อมูลที่ตรงกับเงื่อนไข",
-    back: "กลับไปหน้ารายการโปเกม่อน"
+    back: "กลับไปหน้ารายการโปเกม่อน",
+    showAll: "แสดงทั้งหมด",
+    default: "ปกติ"
   },
   navigation: {
     pokemon: "โปเกม่อน",

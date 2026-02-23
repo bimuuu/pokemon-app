@@ -94,6 +94,7 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
   }
 
   const closeModal = () => {
+    console.log('Closing ability modal')
     setSelectedAbility(null)
     setPokemonWithAbility([])
     setPokemonSearchTerm('')
@@ -115,6 +116,20 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
   useEffect(() => {
     setCurrentPage(1)
   }, [searchTerm, selectedGeneration])
+  
+  // ESC key handler to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedAbility) {
+        closeModal()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscKey)
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [selectedAbility])
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -250,14 +265,16 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
       )}
 
       {/* Ability Detail Modal */}
-      <AbilityDetailModal
-        ability={selectedAbility}
-        pokemonWithAbility={pokemonWithAbility}
-        isLoadingPokemon={isLoadingPokemon}
-        pokemonSearchTerm={pokemonSearchTerm}
-        onPokemonSearchChange={setPokemonSearchTerm}
-        onClose={closeModal}
-      />
+      {selectedAbility && (
+        <AbilityDetailModal
+          ability={selectedAbility}
+          pokemonWithAbility={pokemonWithAbility}
+          isLoadingPokemon={isLoadingPokemon}
+          pokemonSearchTerm={pokemonSearchTerm}
+          onPokemonSearchChange={setPokemonSearchTerm}
+          onClose={closeModal}
+        />
+      )}
     </div>
   )
 }

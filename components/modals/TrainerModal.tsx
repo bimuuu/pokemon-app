@@ -7,7 +7,7 @@ import { MoveDetailModal } from '@/components/modals/MoveDetailModal'
 import { NatureDetailModal } from '@/components/modals/NatureDetailModal'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { formatPokemonName } from '@/lib/utils'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Ability } from 'pokenode-ts'
 import type { Move } from 'pokenode-ts'
 import type { PokemonWithAbility } from '@/services/abilityService'
@@ -58,18 +58,40 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
   const [isLoadingPokemon, setIsLoadingPokemon] = useState(false)
   const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
 
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscKey)
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [onClose])
+
   if (!trainer) return null
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-      <div className="bg-card rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-card border-b p-6 flex items-center justify-between">
-          <div className="flex items-center">
+    <div className="fixed inset-0 flex items-center justify-center z-[999999] p-4">
+      <div 
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      />
+      <div className="bg-card rounded-lg shadow-xl max-w-6xl w-full max-h-[90vh] overflow-hidden relative z-[1000000]">
+        <style jsx global>{`
+          .type-badge {
+            transform: none !important;
+          }
+        `}</style>
+        <div className="sticky top-0 bg-card border-b p-6 flex items-center justify-between z-20">
+          <div className="flex items-center overflow-hidden">
             <h2 className="text-2xl font-bold flex items-center">
               <Trophy className="w-6 h-6 mr-2 text-yellow-500" />
               {trainer.name.literal}
             </h2>
-            <span className="ml-4 px-3 py-1 bg-blue-900 text-blue-200 rounded-full font-medium">
+            <span className="ml-4 px-3 py-1 bg-blue-900 text-blue-200 rounded-full font-medium relative z-10">
               {(trainer as any).type}
             </span>
           </div>
@@ -81,7 +103,7 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-88px)]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">Team</h3>
@@ -106,9 +128,11 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                             )}
                           </div>
                         </div>
-                        <div className="flex gap-1 mb-3">
+                        <div className="flex gap-1 mb-3 relative z-10">
                           {pokemon.types.map((type: any) => (
-                            <TypeBadge key={type.type.name} type={type.type.name} className="text-xs" />
+                            <span key={type.type.name} className="inline-block">
+                              <TypeBadge type={type.type.name} className="text-xs" />
+                            </span>
                           ))}
                         </div>
                         
@@ -124,7 +148,7 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                                   className="cursor-pointer transition-transform hover:scale-105"
                                 >
                                   <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-3 py-1">
-                                    {pokemon.ability.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                    {pokemon.ability.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                                   </Badge>
                                 </button>
                               </div>
@@ -133,7 +157,7 @@ export default function TrainerModal({ trainer, trainerPokemon, matchup, onClose
                               <div className="flex justify-between items-center">
                                 <span className="text-gray-400">Nature:</span>
                                 <button
-                                  onClick={() => setSelectedNature(pokemon.nature)}
+                                  onClick={() => setSelectedNature(pokemon.nature || null)}
                                   className="cursor-pointer transition-transform hover:scale-105"
                                 >
                                   <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-3 py-1">

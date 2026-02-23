@@ -272,3 +272,23 @@ export interface FormTransformationCondition {
   ability?: string;
   location?: string;
 }
+
+export interface PokemonVariety {
+  name: string;
+  is_default: boolean;
+  form_type: string;
+  display_name: string;
+  pokemon: Pokemon;
+  forms: Record<string, PokemonFormData>;
+  sprites: PokemonSprite;
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }>;
+  abilities: PokemonAbility[];
+  types: PokemonType[];
+}

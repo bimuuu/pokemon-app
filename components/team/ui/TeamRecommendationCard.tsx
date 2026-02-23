@@ -1,4 +1,5 @@
 import { Lightbulb, BrainCircuit, Target, AlertTriangle, Shield, Users, RefreshCw } from 'lucide-react'
+import Link from 'next/link'
 import { TypeBadge, RarityBadge } from '@/components/ui'
 import { formatPokemonName } from '@/lib/utils'
 
@@ -34,7 +35,6 @@ export function TeamRecommendationCard({
         <div className="absolute top-4 right-4 text-blue-400">
           <Lightbulb className="w-6 h-6" />
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-white">Team Recommendations</h3>
         <div className="text-center py-4">
           <div className="text-gray-400">Loading recommendations...</div>
         </div>
@@ -43,12 +43,11 @@ export function TeamRecommendationCard({
   }
 
   return (
-    <div className="relative p-4 rounded-lg shadow-lg bg-gray-800 text-gray-100">
-      <div className="absolute top-4 right-4 text-blue-400">
+    <div className="relative p-4 rounded-lg shadow-lg bg-gray-800 text-gray-100 overflow-hidden">
+      <div className="absolute top-4 right-4 text-blue-400 z-10">
         <Lightbulb className="w-6 h-6" />
       </div>
-      <h3 className="text-2xl font-bold mb-4 text-white">Team Recommendations</h3>
-
+      
       {/* Battle Strategy */}
       <div className="bg-gray-700 rounded-lg p-3 mb-3">
         <h4 className="font-medium mb-2 flex items-center text-gray-300">
@@ -85,8 +84,14 @@ export function TeamRecommendationCard({
           {/* Pokemon Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
             {recommendedPokemon.map((rec, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gray-700 rounded-lg p-3 border border-gray-600 hover:shadow-md transition-shadow min-w-[80px]">
+              <Link 
+                key={index} 
+                href={`/pokemon/${rec.pokemon.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center block hover:scale-105 transition-transform"
+              >
+                <div className="bg-gray-700 rounded-lg p-3 border border-gray-600 hover:shadow-md transition-shadow min-w-[80px] cursor-pointer">
                   <img 
                     src={rec.pokemon.sprites.front_default}
                     alt={rec.pokemon.name}
@@ -102,7 +107,7 @@ export function TeamRecommendationCard({
                     </div>
                   )}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -114,10 +119,12 @@ export function TeamRecommendationCard({
           <Target className="w-4 h-4 mr-2" />
           Target These Types
         </h4>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 relative z-10">
           {trainerWeaknesses.slice(0, 4).map((type: string) => (
             <div key={type} className="flex items-center gap-1">
-              <TypeBadge type={type} />
+              <span className="inline-block">
+                <TypeBadge type={type} />
+              </span>
               <span className="text-xs font-bold text-gray-400">2x</span>
             </div>
           ))}
@@ -130,10 +137,12 @@ export function TeamRecommendationCard({
           <AlertTriangle className="w-4 h-4 mr-2" />
           Avoid These Types
         </h4>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 relative z-10">
           {trainerStrengths.slice(0, 4).map((type: string) => (
             <div key={type} className="flex items-center gap-1">
-              <TypeBadge type={type} />
+              <span className="inline-block">
+                <TypeBadge type={type} />
+              </span>
               <span className="text-xs font-bold text-gray-400">2x</span>
             </div>
           ))}

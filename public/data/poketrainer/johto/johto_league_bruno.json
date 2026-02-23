@@ -136,7 +136,7 @@
       "gender": "MALE",
       "level": 85,
       "nature": "impish",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "MALE",
       "level": 85,
       "nature": "timid",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

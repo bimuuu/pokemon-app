@@ -49,7 +49,7 @@
       "gender": "FEMALE",
       "level": 82,
       "nature": "bold",
-      "ability": "shielddust"
+      "ability": "shield-dust"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "FEMALE",
       "level": 82,
       "nature": "modest",
-      "ability": "tintedlens"
+      "ability": "tinted-lens"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

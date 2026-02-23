@@ -47,8 +47,6 @@ export function MoveDetailModal({
           if (data) {
             const pokemon = await MoveService.fetchPokemonWithMove(move.name)
             // We can't update pokemonWithMove from here since it's passed as prop
-            // But we can log it for debugging
-            console.log('Pokemon with move:', pokemon)
           }
         } catch (error) {
           console.error('Failed to fetch move data:', error)
@@ -72,11 +70,11 @@ export function MoveDetailModal({
   )
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-      <div className="bg-background/95 backdrop-blur-sm absolute inset-0" onClick={onClose} />
-      <div className="bg-card rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-10">
+    <div className="fixed inset-0 flex items-center justify-center z-[1000001] p-4">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={(e) => { e.stopPropagation(); onClose(); }} />
+      <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-[1000002]" onClick={(e) => e.stopPropagation()}>
         {/* Modal Header */}
-        <div className="sticky top-0 bg-card border-b p-6 flex items-center justify-between">
+        <div className="sticky top-0 bg-white border-b p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <h2 className="text-3xl font-bold capitalize">
               {isLoadingMove ? 'Loading...' : displayMove.name.replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')}

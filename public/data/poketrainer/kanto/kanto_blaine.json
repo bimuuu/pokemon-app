@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 57,
       "nature": "quiet",
-      "ability": "whitesmoke"
+      "ability": "white-smoke"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 60,
       "nature": "brave",
-      "ability": "flamebody"
+      "ability": "flame-body"
     },
     {
       "moveset": [
@@ -164,7 +164,7 @@
       "gender": "MALE",
       "level": 58,
       "nature": "brave",
-      "ability": "magmaarmor"
+      "ability": "magma-armor"
     },
     {
       "moveset": [

@@ -49,7 +49,7 @@
       "gender": "FEMALE",
       "level": 33,
       "nature": "modest",
-      "ability": "solarpower"
+      "ability": "solar-power"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 34,
       "nature": "modest",
-      "ability": "flowergift"
+      "ability": "flower-gift"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 32,
       "nature": "jolly",
-      "ability": "poisonheal"
+      "ability": "poison-heal"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "FEMALE",
       "level": 35,
       "nature": "modest",
-      "ability": "naturalcure"
+      "ability": "natural-cure"
     }
   ],
   "identity": "Gym Leader Gardenia",

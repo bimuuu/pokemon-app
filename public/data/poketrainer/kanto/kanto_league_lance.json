@@ -108,7 +108,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "adamant",
-      "ability": "thermalexchange"
+      "ability": "thermal-exchange"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "calm",
-      "ability": "multiscale"
+      "ability": "multi-scale"
     },
     {
       "moveset": [
@@ -193,7 +193,7 @@
       "gender": "FEMALE",
       "level": 90,
       "nature": "sassy",
-      "ability": "rockhead"
+      "ability": "rock-head"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

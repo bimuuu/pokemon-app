@@ -18,7 +18,7 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-row items-center">
       {/* Pokemon Card */}
       <div className={`text-center ${isCurrentPokemon ? 'ring-2 ring-blue-500 rounded-lg p-3 bg-blue-50' : 'p-3'}`}>
         <div className="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center mb-2">
@@ -46,12 +46,12 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
       
       {/* Evolution Path */}
       {evolution.evolves_to.length > 0 && !isLast && (
-        <div className="mt-4 flex flex-col items-center">
+        <div className="ml-4 flex flex-row items-center">
           {/* Arrow */}
-          <div className="text-gray-400 text-2xl mb-2">↓</div>
+          <div className="text-gray-400 text-2xl mr-4">→</div>
           
           {/* Evolution Conditions */}
-          <div className="flex flex-wrap justify-center gap-2 mb-4 max-w-md">
+          <div className="flex flex-wrap justify-center gap-2 mr-4 max-w-md">
             {evolution.evolves_to.map((evo: any, index: number) => {
               const conditions = getEvolutionConditions(evo.evolution_details, evo.species.name)
               if (conditions.length === 0) return null
@@ -73,10 +73,10 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
           
           {/* Branch Layout */}
           {hasMultipleEvolutions ? (
-            // Multiple evolutions - side by side
-            <div className="flex justify-center space-x-8">
+            // Multiple evolutions - stacked vertically with horizontal arrow
+            <div className="flex flex-col space-y-4">
               {evolution.evolves_to.map((evo: any, index: number) => (
-                <div key={index} className="flex flex-col items-center">
+                <div key={index} className="flex flex-row items-center">
                   <EvolutionStage 
                     evolution={evo} 
                     currentPokemonName={currentPokemonName}
@@ -86,8 +86,8 @@ export function EvolutionStage({ evolution, currentPokemonName, isLast = false }
               ))}
             </div>
           ) : (
-            // Single evolution - centered
-            <div className="flex justify-center">
+            // Single evolution - same row
+            <div className="flex flex-row items-center">
               {evolution.evolves_to.map((evo: any, index: number) => (
                 <EvolutionStage 
                   key={index} 

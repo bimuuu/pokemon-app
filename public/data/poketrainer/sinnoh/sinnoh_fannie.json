@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 54,
       "nature": "modest",
-      "ability": "flareboost"
+      "ability": "flare-boost"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 53,
       "nature": "brave",
-      "ability": "cursedbody"
+      "ability": "cursed-body"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "FEMALE",
       "level": 53,
       "nature": "timid",
-      "ability": "cursedbody"
+      "ability": "cursed-body"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "FEMALE",
       "level": 55,
       "nature": "timid",
-      "ability": "cursedbody"
+      "ability": "cursed-body"
     }
   ],
   "identity": "Gym Leader Fannie",

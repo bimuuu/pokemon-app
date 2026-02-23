@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 40,
       "nature": "adamant",
-      "ability": "purepower"
+      "ability": "pure-power"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "MALE",
       "level": 43,
       "nature": "modest",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     }
   ],
   "identity": "Gym Leader Marzia",

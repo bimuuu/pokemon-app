@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 47,
       "nature": "timid",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 47,
       "nature": "modest",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 46,
       "nature": "jolly",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "FEMALE",
       "level": 45,
       "nature": "jolly",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     }
   ],
   "identity": "Gym Leader Omar",

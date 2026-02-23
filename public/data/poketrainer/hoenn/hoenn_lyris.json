@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 73,
       "nature": "jolly",
-      "ability": "naturalcure"
+      "ability": "natural-cure"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 74,
       "nature": "jolly",
-      "ability": "rockhead"
+      "ability": "rock-head"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 73,
       "nature": "adamant",
-      "ability": "sapsipper"
+      "ability": "sap-sipper"
     },
     {
       "moveset": [

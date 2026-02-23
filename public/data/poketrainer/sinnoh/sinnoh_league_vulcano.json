@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "jolly",
-      "ability": "flamebody"
+      "ability": "flame-body"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "adamant",
-      "ability": "sheerforce"
+      "ability": "sheer-force"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "jolly",
-      "ability": "ironfist"
+      "ability": "iron-fist"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "jolly",
-      "ability": "flamebody"
+      "ability": "flame-body"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"
