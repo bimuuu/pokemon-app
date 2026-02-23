@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -24,17 +25,19 @@ interface NaturesListClientProps {
 }
 
 export function NaturesListClient({ initialNatures }: NaturesListClientProps) {
+  const searchParams = useSearchParams()
   const [natures, setNatures] = useState(initialNatures.results || [])
   const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(false)
 
-  // Debug: Log the initial data structure
+  // Handle URL search parameter
   useEffect(() => {
-    console.log('Initial natures data:', initialNatures)
-    if (initialNatures.results && initialNatures.results.length > 0) {
-      console.log('First nature data structure:', initialNatures.results[0])
+    const searchFromUrl = searchParams.get('search')
+    if (searchFromUrl) {
+      setSearchTerm(searchFromUrl)
     }
-  }, [initialNatures])
+  }, [searchParams])
+
 
   const getNatureDescription = (name: string) => {
     const descriptions: Record<string, string> = {

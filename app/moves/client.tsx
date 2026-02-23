@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -20,6 +21,7 @@ interface MovesListClientProps {
 }
 
 export function MovesListClient({ initialMoves }: MovesListClientProps) {
+  const searchParams = useSearchParams()
   const [moves, setMoves] = useState<any[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -35,6 +37,14 @@ export function MovesListClient({ initialMoves }: MovesListClientProps) {
   const itemsPerPage = ITEMS_PER_PAGE
 
   const pokemonTypes = POKEMON_TYPES
+
+  // Handle URL search parameter
+  useEffect(() => {
+    const searchFromUrl = searchParams.get('search')
+    if (searchFromUrl) {
+      setSearchTerm(searchFromUrl)
+    }
+  }, [searchParams])
 
   // Fetch detailed move data on component mount
   useEffect(() => {
@@ -84,7 +94,6 @@ export function MovesListClient({ initialMoves }: MovesListClientProps) {
   }
 
   const closeModal = () => {
-    console.log('Closing move modal')
     setSelectedMove(null)
     setPokemonWithMove([])
     setPokemonSearchTerm('')

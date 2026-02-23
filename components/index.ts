@@ -17,7 +17,7 @@ export { FilterTags, PokemonFilters } from './filters'
 export { PokemonLibrary } from './library'
 
 // Modal Components
-export { TrainerModal } from './modals'
+export { AbilityDetailModal, MoveDetailModal, TrainerSlidePanel } from './modals'
 
 // Common Components
 export * from './common'

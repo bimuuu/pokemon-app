@@ -69,7 +69,6 @@ export default function TeamBuilderPage() {
       try {
         const pokemonData = await PokemonDataService.loadBasicPokemonData()
         
-        console.log(`Loaded ${pokemonData.length} Pokemon for team builder`)
         setAllPokemon(pokemonData)
         setLoading(false)
         
@@ -92,7 +91,6 @@ export default function TeamBuilderPage() {
       getIndividualSpecialForms(allPokemon)
         .then(forms => {
           setIndividualSpecialForms(forms)
-          console.log(`Loaded ${forms.length} individual special forms`)
         })
         .catch(error => {
           console.error('Error loading individual special forms:', error)
@@ -113,7 +111,6 @@ export default function TeamBuilderPage() {
           const updated = PokemonDataService.updatePokemonWithTypes(prev, cobblemonData, types)
           
           const withTypes = updated.filter(p => p.types.length > 0)
-          console.log(`Team page: Updated ${withTypes.length}/${updated.length} Pokemon with types`)
           return updated
         })
       }
@@ -186,20 +183,7 @@ export default function TeamBuilderPage() {
     analyzeTeam()
   }, [team])
 
-  // Debug: Log when allPokemon changes
-  useEffect(() => {
-    const pokemonWithTypes = allPokemon.filter(p => p.types && p.types.length > 0)
-    if (pokemonWithTypes.length > 0) {
-      // Log first few Pokemon with types for debugging
-      console.log('Sample Pokemon with types:', pokemonWithTypes.slice(0, 3).map(p => ({
-        name: p.name,
-        types: p.types.map(t => t.type.name)
-      })))
-    } else if (allPokemon.length > 0) {
-      console.log('Team page: No Pokemon have types yet, showing first 3:', allPokemon.slice(0, 3).map(p => p.name))
-    }
-  }, [allPokemon])
-
+  
   const analyzeTeam = () => {
     const analysis = TeamAnalysisService.analyzeTeam(team)
     setTeamAnalysis(analysis)

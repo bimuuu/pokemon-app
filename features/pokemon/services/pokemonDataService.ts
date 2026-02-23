@@ -66,7 +66,6 @@ export class PokemonDataService {
         }
       }
       
-      // TODO: Implement rarity filtering when available
       let matchesRarity = true
       
       return matchesSearch && matchesType && matchesGeneration && matchesRarity

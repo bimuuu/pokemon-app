@@ -16,11 +16,16 @@ import { fetchPokemonForms, fetchAllFormsData, getFormTransformationConditions, 
 import { fetchPokemonSpeciesByName } from '@/lib/api'
 import { FormTransformationService } from '@/lib/form-transformations'
 import { PokemonMovesService, type MoveLearnMethod } from '@/services/pokemonMovesService'
-import { MoveDetailModal } from '@/components/modals/MoveDetailModal'
-import { AbilityDetailModal } from '@/components/modals/AbilityDetailModal'
-import { MoveService, type PokemonWithMove } from '@/services/moveService'
-import { AbilityService, type PokemonWithAbility } from '@/services/abilityService'
-import type { Move, Ability } from 'pokenode-ts'
+
+// Utility function to format search terms
+const formatSearchTerm = (term: string): string => {
+  return term
+    .replace(/_/g, ' ')
+    .replace(/-/g, ' ')
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/\b\w/g, l => l.toUpperCase())
+    .replace(/ /g, '-')
+}
 
 export default function PokemonDetailPage() {
   const { t } = useLanguage()
@@ -52,18 +57,8 @@ export default function PokemonDetailPage() {
     other: MoveLearnMethod[]
   } | null>(null)
   const [loadingMoves, setLoadingMoves] = useState(false)
-  const [selectedMove, setSelectedMove] = useState<Move | null>(null)
-  const [pokemonWithMove, setPokemonWithMove] = useState<PokemonWithMove[]>([])
-  const [isLoadingPokemon, setIsLoadingPokemon] = useState(false)
-  const [pokemonSearchTerm, setPokemonSearchTerm] = useState('')
   const [moveSearchTerm, setMoveSearchTerm] = useState('')
   const [selectedMoveCategory, setSelectedMoveCategory] = useState<string>('all')
-  
-  // Ability modal states
-  const [selectedAbility, setSelectedAbility] = useState<Ability | null>(null)
-  const [pokemonWithAbility, setPokemonWithAbility] = useState<PokemonWithAbility[]>([])
-  const [isLoadingPokemonForAbility, setIsLoadingPokemonForAbility] = useState(false)
-  const [pokemonSearchTermForAbility, setPokemonSearchTermForAbility] = useState('')
 
   useEffect(() => {
     const loadData = async () => {
@@ -98,25 +93,7 @@ export default function PokemonDetailPage() {
     }
   }, [pokemonName, getCachedPokemon])
   
-  // ESC key handler to close modals
-  useEffect(() => {
-    const handleEscKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        if (selectedMove) {
-          closeModal()
-        }
-        if (selectedAbility) {
-          closeAbilityModal()
-        }
-      }
-    }
-
-    document.addEventListener('keydown', handleEscKey)
-    return () => {
-      document.removeEventListener('keydown', handleEscKey)
-    }
-  }, [selectedMove, selectedAbility])
-
+  
   // Load Cobbleverse conditions
   const loadCobbleverseConditions = async (pokemonName: string) => {
     try {
@@ -184,60 +161,16 @@ export default function PokemonDetailPage() {
     }
   }
 
-  // Handle move click to show modal
-  const handleMoveClick = async (moveName: string) => {
-    setIsLoadingPokemon(true)
-    try {
-      // Convert move name with spaces to API-friendly format (replace spaces with hyphens)
-      const apiMoveName = moveName.replace(' ', '-').toLowerCase()
-      const moveData = await MoveService.fetchMoveDetails(apiMoveName)
-      if (moveData) {
-        setSelectedMove(moveData)
-        // Fetch Pokemon that can learn this move
-        const pokemonData = await MoveService.fetchPokemonWithMove(apiMoveName)
-        setPokemonWithMove(pokemonData)
-      }
-    } catch (error) {
-      console.error('Failed to fetch move details:', error)
-    } finally {
-      setIsLoadingPokemon(false)
-    }
+  // Handle move click to navigate to moves page
+  const handleMoveClick = (moveName: string) => {
+    const formattedMove = formatSearchTerm(moveName)
+    window.open(`/moves?search=${encodeURIComponent(formattedMove)}`, '_blank')
   }
 
-  // Close modal
-  const closeModal = () => {
-    console.log('Closing move modal')
-    setSelectedMove(null)
-    setPokemonWithMove([])
-    setPokemonSearchTerm('')
-  }
-  
-  // Close ability modal
-  const closeAbilityModal = () => {
-    console.log('Closing ability modal')
-    setSelectedAbility(null)
-    setPokemonWithAbility([])
-    setPokemonSearchTermForAbility('')
-  }
-  
-  // Handle ability click to show modal
-  const handleAbilityClick = async (abilityName: string) => {
-    setIsLoadingPokemonForAbility(true)
-    try {
-      // Convert ability name with spaces to API-friendly format (replace spaces with hyphens)
-      const apiAbilityName = abilityName.replace(' ', '-').toLowerCase()
-      const abilityData = await AbilityService.fetchAbilityDetails(apiAbilityName)
-      if (abilityData) {
-        setSelectedAbility(abilityData)
-        // Fetch Pokemon that have this ability
-        const pokemonData = await AbilityService.fetchPokemonWithAbility(apiAbilityName)
-        setPokemonWithAbility(pokemonData)
-      }
-    } catch (error) {
-      console.error('Failed to fetch ability details:', error)
-    } finally {
-      setIsLoadingPokemonForAbility(false)
-    }
+  // Handle ability click to navigate to abilities page
+  const handleAbilityClick = (abilityName: string) => {
+    const formattedAbility = formatSearchTerm(abilityName)
+    window.open(`/abilities?search=${encodeURIComponent(formattedAbility)}`, '_blank')
   }
 
   // Filter moves based on search term and category
@@ -909,30 +842,7 @@ export default function PokemonDetailPage() {
         )}
       </section>
 
-      {/* Move Detail Modal */}
-      {selectedMove && (
-        <MoveDetailModal
-          move={selectedMove}
-          pokemonWithMove={pokemonWithMove}
-          isLoadingPokemon={isLoadingPokemon}
-          pokemonSearchTerm={pokemonSearchTerm}
-          onPokemonSearchChange={setPokemonSearchTerm}
-          onClose={closeModal}
-        />
-      )}
-      
-      {/* Ability Detail Modal */}
-      {selectedAbility && (
-        <AbilityDetailModal
-          ability={selectedAbility}
-          pokemonWithAbility={pokemonWithAbility}
-          isLoadingPokemon={isLoadingPokemonForAbility}
-          pokemonSearchTerm={pokemonSearchTermForAbility}
-          onPokemonSearchChange={setPokemonSearchTermForAbility}
-          onClose={closeAbilityModal}
-        />
-      )}
-    </main>
+      </main>
   )
 }
 

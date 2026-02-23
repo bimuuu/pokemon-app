@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -19,6 +20,7 @@ interface AbilitiesListClientProps {
 }
 
 export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientProps) {
+  const searchParams = useSearchParams()
   const [abilities, setAbilities] = useState<any[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -32,6 +34,14 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
   const [sortOrder, setSortOrder] = useState<SortOrder>('asc')
   const [selectedGeneration, setSelectedGeneration] = useState<string>('all')
   const itemsPerPage = ITEMS_PER_PAGE
+
+  // Handle URL search parameter
+  useEffect(() => {
+    const searchFromUrl = searchParams.get('search')
+    if (searchFromUrl) {
+      setSearchTerm(searchFromUrl)
+    }
+  }, [searchParams])
 
   const generations = [
     'all',
@@ -94,7 +104,6 @@ export function AbilitiesListClient({ initialAbilities }: AbilitiesListClientPro
   }
 
   const closeModal = () => {
-    console.log('Closing ability modal')
     setSelectedAbility(null)
     setPokemonWithAbility([])
     setPokemonSearchTerm('')

@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Trophy, Users, MapPin, Star, Shield, Zap } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
-import TrainerModal from '@/components/modals/TrainerModal'
+import { SlidePanel } from '@/components/ui/SlidePanel'
+import TrainerSlidePanel from '@/components/modals/TrainerSlidePanel'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { fetchTrainerData, fetchPokemonByName } from '@/lib/api'
 import { REGIONS } from '@/lib/constants'
@@ -206,12 +207,18 @@ export default function GymsPage() {
         )}
       </div>
 
-      <TrainerModal
-        trainer={selectedTrainer}
-        trainerPokemon={trainerPokemon}
-        matchup={matchup}
+      <SlidePanel 
+        isOpen={showModal} 
         onClose={closeModal}
-      />
+        width="w-[600px]"
+      >
+        <TrainerSlidePanel
+          trainer={selectedTrainer}
+          trainerPokemon={trainerPokemon}
+          matchup={matchup}
+          onClose={closeModal}
+        />
+      </SlidePanel>
     </div>
   )
 }
