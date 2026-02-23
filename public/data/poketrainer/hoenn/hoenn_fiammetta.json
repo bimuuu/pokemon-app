@@ -49,7 +49,7 @@
       "gender": "FEMALE",
       "level": 39,
       "nature": "adamant",
-      "ability": "flamebody"
+      "ability": "flame-body"
     },
     {
       "moveset": [
@@ -81,7 +81,7 @@
       "gender": "FEMALE",
       "level": 38,
       "nature": "brave",
-      "ability": "earlybird"
+      "ability": "early-bird"
     },
     {
       "moveset": [
@@ -110,7 +110,7 @@
       "gender": "MALE",
       "level": 42,
       "nature": "timid",
-      "ability": "angerpoint"
+      "ability": "anger-point"
     },
     {
       "moveset": [
@@ -139,7 +139,7 @@
       "gender": "FEMALE",
       "level": 41,
       "nature": "jolly",
-      "ability": "flashfire"
+      "ability": "flash-fire"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

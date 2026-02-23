@@ -107,7 +107,7 @@
       "gender": "FEMALE",
       "level": 100,
       "nature": "timid",
-      "ability": "serenegrace"
+      "ability": "serene-grace"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "FEMALE",
       "level": 100,
       "nature": "bold",
-      "ability": "marvelscale"
+      "ability": "marvel-scale"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "FEMALE",
       "level": 100,
       "nature": "jolly",
-      "ability": "roughskin"
+      "ability": "rough-skin"
     }
   ],
   "identity": "Champion Camilla",

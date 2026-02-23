@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 64,
       "nature": "jolly",
-      "ability": "thickfat"
+      "ability": "thick-fat"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 64,
       "nature": "modest",
-      "ability": "snowwarning"
+      "ability": "snow-warning"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "MALE",
       "level": 63,
       "nature": "brave",
-      "ability": "icebody"
+      "ability": "ice-body"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "MALE",
       "level": 65,
       "nature": "modest",
-      "ability": "icebody"
+      "ability": "ice-body"
     },
     {
       "moveset": [

@@ -84,8 +84,8 @@ export function TeamSlot({ pokemon, slotNumber, slotIndex, onRemove, onAdd }: Te
                 <div className="font-bold text-sm mb-1">{displayName}</div>
                 <div className="flex justify-center gap-1">
                   {pokemon.types && pokemon.types.length > 0 && (
-                    pokemon.types.map(type => (
-                      <TypeBadge key={type.type.name} type={type.type.name} className="text-xs" />
+                    pokemon.types.map((type, index) => (
+                      <TypeBadge key={`${type.type.name}-${index}`} type={type.type.name} className="text-xs" />
                     ))
                   )}
                 </div>
@@ -139,8 +139,8 @@ export function TeamSlot({ pokemon, slotNumber, slotIndex, onRemove, onAdd }: Te
             <h4 className="font-semibold text-sm">{displayName}</h4>
             <div className="flex justify-center gap-1 mt-1">
               {pokemon.types && pokemon.types.length > 0 ? (
-                pokemon.types.map(type => (
-                  <TypeBadge key={type.type.name} type={type.type.name} className="text-xs" />
+                pokemon.types.map((type, index) => (
+                  <TypeBadge key={`${type.type.name}-${index}`} type={type.type.name} className="text-xs" />
                 ))
               ) : (
                 <div className="flex gap-1">

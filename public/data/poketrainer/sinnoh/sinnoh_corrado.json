@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 75,
       "nature": "timid",
-      "ability": "lightningrod"
+      "ability": "lightning-rod"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 75,
       "nature": "modest",
-      "ability": "voltabsorb"
+      "ability": "volt-absorb"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "MALE",
       "level": 75,
       "nature": "timid",
-      "ability": "quickfeet"
+      "ability": "quick-feet"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "MALE",
       "level": 75,
       "nature": "hasty",
-      "ability": "motordrive"
+      "ability": "motor-drive"
     }
   ],
   "identity": "Gym Leader Corrado",

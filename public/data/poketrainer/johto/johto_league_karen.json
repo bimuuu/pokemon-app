@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "timid",
-      "ability": "superluck"
+      "ability": "super-luck"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "relaxed",
-      "ability": "flashfire"
+      "ability": "flash-fire"
     },
     {
       "moveset": [
@@ -194,7 +194,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "jolly",
-      "ability": "superluck"
+      "ability": "super-luck"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

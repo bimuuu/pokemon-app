@@ -8,7 +8,9 @@ export const enTranslations = {
     all: "All",
     found: "found",
     noDataFound: "No data found matching your criteria.",
-    back: "Back to Pokemon list"
+    back: "Back to Pokemon list",
+    showAll: "Show All",
+    default: "Default"
   },
   navigation: {
     pokemon: "Pokemon",

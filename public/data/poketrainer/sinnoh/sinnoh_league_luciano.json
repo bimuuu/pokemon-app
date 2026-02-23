@@ -76,7 +76,7 @@
       "gender": "FEMALE",
       "level": 90,
       "nature": "timid",
-      "ability": "magicbounce"
+      "ability": "magic-bounce"
     },
     {
       "moveset": [
@@ -130,7 +130,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "timid",
-      "ability": "magicguard"
+      "ability": "magic-guard"
     },
     {
       "moveset": [
@@ -159,7 +159,7 @@
       "gender": "MALE",
       "level": 90,
       "nature": "jolly",
-      "ability": "purepower"
+      "ability": "pure-power"
     },
     {
       "moveset": [

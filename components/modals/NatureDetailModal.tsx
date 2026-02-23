@@ -79,9 +79,9 @@ export function NatureDetailModal({ nature, onClose }: NatureDetailModalProps) {
   const isNeutral = natureData.increased === 'None' && natureData.decreased === 'None'
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 flex items-center justify-center z-[1000001] p-4">
       <div className="bg-background/95 backdrop-blur-sm absolute inset-0" onClick={onClose} />
-      <div className="bg-card rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative z-10">
+      <div className="bg-card rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative z-[1000002]">
         {/* Modal Header */}
         <div className="sticky top-0 bg-card border-b p-6 flex items-center justify-between">
           <div className="flex items-center gap-4">

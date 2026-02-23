@@ -49,7 +49,7 @@
       "gender": "FEMALE",
       "level": 84,
       "nature": "impish",
-      "ability": "waterabsorb"
+      "ability": "water-absorb"
     },
     {
       "moveset": [
@@ -75,7 +75,7 @@
       "gender": "MALE",
       "level": 84,
       "nature": "adamant",
-      "ability": "rockhead"
+      "ability": "rock-head"
     },
     {
       "moveset": [
@@ -162,7 +162,7 @@
       "gender": "MALE",
       "level": 84,
       "nature": "adamant",
-      "ability": "sandstream"
+      "ability": "sand-stream"
     },
     {
       "moveset": [
@@ -191,7 +191,7 @@
       "gender": "FEMALE",
       "level": 84,
       "nature": "calm",
-      "ability": "stormdrain"
+      "ability": "storm-drain"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

@@ -49,7 +49,7 @@
       "gender": "MALE",
       "level": 75,
       "nature": "brave",
-      "ability": "chillingneigh"
+      "ability": "chilling-neigh"
     },
     {
       "moveset": [
@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 75,
       "nature": "timid",
-      "ability": "snowcloak"
+      "ability": "snow-cloak"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "FEMALE",
       "level": 75,
       "nature": "timid",
-      "ability": "dryskin"
+      "ability": "dry-skin"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 75,
       "nature": "jolly",
-      "ability": "thickfat"
+      "ability": "thick-fat"
     },
     {
       "moveset": [

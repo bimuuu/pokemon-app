@@ -20,7 +20,7 @@ import {
 export const createSimplePokemon = async (cobblemon: any, index: number, types: Record<string, string[]>): Promise<Pokemon> => {
   const pokemonName = cobblemon.POKÉMON.toLowerCase()
   
-  // Get Pokemon data from API
+  // Get Pokemon data from API with better error handling
   const pokemonData = await getPokemonDataFromAPI(pokemonName)
   const pokemonId = pokemonData?.id || 1
   

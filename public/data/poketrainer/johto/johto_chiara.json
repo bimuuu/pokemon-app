@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 34,
       "nature": "brave",
-      "ability": "cutecharm"
+      "ability": "cute-charm"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "FEMALE",
       "level": 34,
       "nature": "careful",
-      "ability": "cutecharm"
+      "ability": "cute-charm"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "MALE",
       "level": 33,
       "nature": "careful",
-      "ability": "owntempo"
+      "ability": "own-tempo"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

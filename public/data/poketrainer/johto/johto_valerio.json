@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 20,
       "nature": "brave",
-      "ability": "keeneye"
+      "ability": "keen-eye"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "MALE",
       "level": 19,
       "nature": "careful",
-      "ability": "hypercutter"
+      "ability": "hyper-cutter"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

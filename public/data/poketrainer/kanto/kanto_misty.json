@@ -92,7 +92,7 @@
       "gender": "MALE",
       "level": 23,
       "nature": "bold",
-      "ability": "cloudnine"
+      "ability": "cloud-nine"
     },
     {
       "moveset": [
@@ -116,7 +116,7 @@
       "gender": "FEMALE",
       "level": 24,
       "nature": "hasty",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

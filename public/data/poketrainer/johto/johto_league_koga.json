@@ -168,7 +168,7 @@
       "gender": "FEMALE",
       "level": 80,
       "nature": "modest",
-      "ability": "tintedlens"
+      "ability": "tinted-lens"
     },
     {
       "moveset": [
@@ -197,7 +197,7 @@
       "gender": "MALE",
       "level": 80,
       "nature": "impish",
-      "ability": "poisontouch"
+      "ability": "poison-touch"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

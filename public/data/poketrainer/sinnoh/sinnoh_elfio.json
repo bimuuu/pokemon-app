@@ -76,7 +76,7 @@
       "gender": "MALE",
       "level": 69,
       "nature": "adamant",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [
@@ -103,7 +103,7 @@
       "gender": "FEMALE",
       "level": 69,
       "nature": "relaxed",
-      "ability": "stormdrain"
+      "ability": "storm-drain"
     },
     {
       "moveset": [
@@ -156,7 +156,7 @@
       "gender": "FEMALE",
       "level": 69,
       "nature": "timid",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [

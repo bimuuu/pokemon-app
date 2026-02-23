@@ -847,6 +847,32 @@ export function getFormTransformationConditions(formName: string): FormTransform
  * Gets form display name (formatted for UI)
  */
 export function getFormDisplayName(formName: string): string {
+  // Special handling for Arceus plate forms
+  if (formName.startsWith('arceus-')) {
+    const type = formName.replace('arceus-', '')
+    const typeNames: Record<string, string> = {
+      'fire': 'Fire Arceus',
+      'water': 'Water Arceus', 
+      'electric': 'Electric Arceus',
+      'grass': 'Grass Arceus',
+      'ice': 'Ice Arceus',
+      'fighting': 'Fighting Arceus',
+      'poison': 'Poison Arceus',
+      'ground': 'Ground Arceus',
+      'flying': 'Flying Arceus',
+      'psychic': 'Psychic Arceus',
+      'bug': 'Bug Arceus',
+      'rock': 'Rock Arceus',
+      'ghost': 'Ghost Arceus',
+      'dragon': 'Dragon Arceus',
+      'dark': 'Dark Arceus',
+      'steel': 'Steel Arceus',
+      'fairy': 'Fairy Arceus',
+      'normal': 'Normal Arceus'
+    }
+    return typeNames[type] || formName
+  }
+  
   const displayName = formName.split('-').map(word => 
     word.charAt(0).toUpperCase() + word.slice(1)
   ).join(' ')
@@ -1309,4 +1335,365 @@ export async function fetchAllNatures() {
     console.error(getServerTranslation('errors.errorFetchingNatures'), error)
     throw error
   }
+}
+
+/**
+ * Fetches Pokemon varieties from species endpoint
+ */
+export async function fetchPokemonVarieties(speciesName: string) {
+  try {
+    const species = await fetchPokemonSpeciesByName(speciesName)
+    
+    // Get all varieties from the species data
+    const varieties = species.varieties || []
+    
+    // Fetch detailed data for each variety
+    const varietyDetails = await Promise.allSettled(
+      varieties.map(async (variety) => {
+        try {
+          const pokemonData = await fetchPokemonByName(variety.pokemon.name)
+          return {
+            name: variety.pokemon.name,
+            is_default: variety.is_default,
+            pokemon: pokemonData
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch variety ${variety.pokemon.name}:`, error)
+          return null
+        }
+      })
+    )
+    
+    // Filter out failed requests and return successful ones
+    const successfulVarieties = varietyDetails
+      .filter((result): result is PromiseFulfilledResult<any> => 
+        result.status === 'fulfilled' && result.value !== null
+      )
+      .map(result => result.value)
+    
+    return successfulVarieties
+  } catch (error) {
+    console.error(`Error fetching varieties for ${speciesName}:`, error)
+    return []
+  }
+}
+
+/**
+ * Fetches comprehensive variety data with forms, stats, abilities, and sprites
+ */
+export async function fetchPokemonVarietiesWithDetails(speciesName: string) {
+  try {
+    // Special handling for Arceus - generate plate-based forms
+    if (speciesName.toLowerCase() === 'arceus') {
+      return await fetchArceusForms()
+    }
+    
+    const varieties = await fetchPokemonVarieties(speciesName)
+    
+    // Enhance each variety with additional details
+    const enhancedVarieties = await Promise.allSettled(
+      varieties.map(async (variety) => {
+        try {
+          // Get forms data for this variety
+          const formsData = await fetchAllFormsData(variety.pokemon.id)
+          
+          // Determine form type (mega, gmax, regional, etc.)
+          const formType = getFormType(variety.name, variety.is_default)
+          
+          return {
+            name: variety.name,
+            is_default: variety.is_default,
+            form_type: formType,
+            display_name: getFormDisplayName(variety.name),
+            pokemon: variety.pokemon,
+            forms: formsData,
+            sprites: variety.pokemon.sprites,
+            stats: variety.pokemon.stats,
+            abilities: variety.pokemon.abilities,
+            types: variety.pokemon.types
+          }
+        } catch (error) {
+          console.warn(`Failed to enhance variety ${variety.name}:`, error)
+          return {
+            name: variety.name,
+            is_default: variety.is_default,
+            form_type: 'unknown',
+            display_name: getFormDisplayName(variety.name),
+            pokemon: variety.pokemon,
+            forms: {},
+            sprites: variety.pokemon.sprites,
+            stats: variety.pokemon.stats,
+            abilities: variety.pokemon.abilities,
+            types: variety.pokemon.types
+          }
+        }
+      })
+    )
+    
+    // Filter out failed requests
+    const successfulVarieties = enhancedVarieties
+      .filter((result): result is PromiseFulfilledResult<any> => 
+        result.status === 'fulfilled'
+      )
+      .map(result => result.value)
+    
+    return successfulVarieties
+  } catch (error) {
+    console.error(`Error fetching detailed varieties for ${speciesName}:`, error)
+    return []
+  }
+}
+
+/**
+ * Fetches Arceus plate-based forms dynamically
+ */
+async function fetchArceusForms() {
+  try {
+    // Get base Arceus data
+    const baseArceus = await fetchPokemonByName('arceus')
+    
+    // Define plate-to-type mapping
+    const plateTypes = {
+      'flame-plate': { type: 'fire', name: 'Fire Arceus', thaiName: 'อาร์เซียสรูปแบบไฟ' },
+      'splash-plate': { type: 'water', name: 'Water Arceus', thaiName: 'อาร์เซียสรูปแบบน้ำ' },
+      'zap-plate': { type: 'electric', name: 'Electric Arceus', thaiName: 'อาร์เซียสรูปแบบไฟฟ้า' },
+      'meadow-plate': { type: 'grass', name: 'Grass Arceus', thaiName: 'อาร์เซียสรูปแบบพืช' },
+      'icicle-plate': { type: 'ice', name: 'Ice Arceus', thaiName: 'อาร์เซียสรูปแบบน้ำแข็ง' },
+      'fist-plate': { type: 'fighting', name: 'Fighting Arceus', thaiName: 'อาร์เซียสรูปแบบต่อสู้' },
+      'toxic-plate': { type: 'poison', name: 'Poison Arceus', thaiName: 'อาร์เซียสรูปแบบพิษ' },
+      'earth-plate': { type: 'ground', name: 'Ground Arceus', thaiName: 'อาร์เซียสรูปแบบดิน' },
+      'sky-plate': { type: 'flying', name: 'Flying Arceus', thaiName: 'อาร์เซียสรูปแบบบิน' },
+      'mind-plate': { type: 'psychic', name: 'Psychic Arceus', thaiName: 'อาร์เซียสรูปแบบพลังจิต' },
+      'insect-plate': { type: 'bug', name: 'Bug Arceus', thaiName: 'อาร์เซียสรูปแบบแมลง' },
+      'stone-plate': { type: 'rock', name: 'Rock Arceus', thaiName: 'อาร์เซียสรูปแบบหิน' },
+      'spooky-plate': { type: 'ghost', name: 'Ghost Arceus', thaiName: 'อาร์เซียสรูปแบบผี' },
+      'draco-plate': { type: 'dragon', name: 'Dragon Arceus', thaiName: 'อาร์เซียสรูปแบบมังกร' },
+      'dread-plate': { type: 'dark', name: 'Dark Arceus', thaiName: 'อาร์เซียสรูปแบบความมืด' },
+      'iron-plate': { type: 'steel', name: 'Steel Arceus', thaiName: 'อาร์เซียสรูปแบบเหล็ก' },
+      'pixie-plate': { type: 'fairy', name: 'Fairy Arceus', thaiName: 'อาร์เซียสรูปแบบภูติ' }
+    }
+    
+    // Generate Arceus forms for each plate
+    const arceusForms = Object.entries(plateTypes).map(([plate, { type, name, thaiName }]) => {
+      // Create a copy of base Arceus with modified type
+      const arceusForm = {
+        name: `arceus-${type}`,
+        is_default: type === 'normal', // Normal type is default
+        form_type: 'plate',
+        display_name: name,
+        pokemon: {
+          ...baseArceus,
+          types: [{ type: { name: type }, slot: 1 }],
+          name: `arceus-${type}`
+        },
+        forms: {},
+        sprites: baseArceus.sprites,
+        stats: baseArceus.stats,
+        abilities: baseArceus.abilities,
+        types: [{ type: { name: type }, slot: 1 }]
+      }
+      
+      return arceusForm
+    })
+    
+    // Add the default Normal form first
+    const normalArceus = {
+      name: 'arceus',
+      is_default: true,
+      form_type: 'default',
+      display_name: 'Normal Arceus',
+      pokemon: baseArceus,
+      forms: {},
+      sprites: baseArceus.sprites,
+      stats: baseArceus.stats,
+      abilities: baseArceus.abilities,
+      types: baseArceus.types
+    }
+    
+    return [normalArceus, ...arceusForms]
+  } catch (error) {
+    console.error('Error fetching Arceus forms:', error)
+    return []
+  }
+}
+
+/**
+ * Fetches Cobbleverse form data from the JSON file
+ */
+export async function fetchCobbleverseFormData() {
+  try {
+    const response = await fetch('/data/cobbleverseData.json')
+    if (!response.ok) {
+      throw new Error('Failed to fetch Cobbleverse data')
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching Cobbleverse form data:', error)
+    return []
+  }
+}
+
+/**
+ * Gets form information for a specific Pokemon from Cobbleverse data
+ */
+export async function getFormInfoFromCobbleverse(pokemonName: string) {
+  try {
+    const cobbleverseData = await fetchCobbleverseFormData()
+    const pokemonEntry = cobbleverseData.find((entry: any) => 
+      entry.POKÉMON?.toLowerCase() === pokemonName.toLowerCase()
+    )
+    
+    if (pokemonEntry && pokemonEntry.FORMS) {
+      return {
+        forms: pokemonEntry.FORMS,
+        spawn: pokemonEntry.SPAWN,
+        condition: pokemonEntry.CONDITION,
+        rarity: pokemonEntry.RARITY
+      }
+    }
+    
+    return null
+  } catch (error) {
+    console.error(`Error getting form info for ${pokemonName}:`, error)
+    return null
+  }
+}
+
+/**
+ * Gets form transformation conditions from Cobbleverse data
+ */
+export async function getCobbleverseTransformationConditions(pokemonName: string, formName?: string) {
+  try {
+    const formInfo = await getFormInfoFromCobbleverse(pokemonName)
+    
+    // Skip if no forms data or forms field is empty
+    if (!formInfo || !formInfo.forms || formInfo.forms.trim() === '') {
+      return []
+    }
+    
+    const conditions = []
+    const formsText = formInfo.forms
+    
+    // Parse different form types from the FORMS field
+    if (formsText.includes('Alolan')) {
+      const alolanMatch = formsText.match(/Alolan form[^:]*:?\s*([^\\n]*)/)
+      if (alolanMatch && alolanMatch[1]) {
+        const locations = alolanMatch[1].trim()
+        conditions.push({
+          type: 'location',
+          trigger: 'alolan',
+          description: `Alolan form spawns in: ${locations}`
+        })
+      } else {
+        conditions.push({
+          type: 'location',
+          trigger: 'alolan',
+          description: 'Alolan form available in specific locations'
+        })
+      }
+    }
+    
+    if (formsText.includes('Galarian')) {
+      const galarianMatch = formsText.match(/Galarian [^:]*:?\s*([^\\n]*)/)
+      if (galarianMatch && galarianMatch[1]) {
+        const locations = galarianMatch[1].trim()
+        conditions.push({
+          type: 'location', 
+          trigger: 'galarian',
+          description: `Galarian form spawns in: ${locations}`
+        })
+      } else {
+        conditions.push({
+          type: 'location', 
+          trigger: 'galarian',
+          description: 'Galarian form available in specific locations'
+        })
+      }
+    }
+    
+    if (formsText.includes('Hisuian')) {
+      const hisuianMatch = formsText.match(/Hisuian [^:]*:?\s*([^\\n]*)/)
+      if (hisuianMatch && hisuianMatch[1]) {
+        const locations = hisuianMatch[1].trim()
+        conditions.push({
+          type: 'location',
+          trigger: 'hisuian', 
+          description: `Hisuian form spawns in: ${locations}`
+        })
+      } else {
+        conditions.push({
+          type: 'location',
+          trigger: 'hisuian', 
+          description: 'Hisuian form available in specific locations'
+        })
+      }
+    }
+    
+    if (formsText.includes('Paldean')) {
+      const paldeanMatch = formsText.match(/Paldean [^:]*:?\s*([^\\n]*)/)
+      if (paldeanMatch && paldeanMatch[1]) {
+        const locations = paldeanMatch[1].trim()
+        conditions.push({
+          type: 'location',
+          trigger: 'paldean',
+          description: `Paldean form spawns in: ${locations}`
+        })
+      } else {
+        conditions.push({
+          type: 'location',
+          trigger: 'paldean',
+          description: 'Paldean form available in specific locations'
+        })
+      }
+    }
+    
+    // Add time/weather condition only if forms data exists
+    if (formInfo.condition && conditions.length > 0) {
+      conditions.push({
+        type: formInfo.condition.includes('Day') ? 'time' : 
+              formInfo.condition.includes('Night') ? 'time' :
+              formInfo.condition.includes('Weather') ? 'weather' : 'condition',
+        trigger: formInfo.condition.toLowerCase(),
+        description: `Condition: ${formInfo.condition}`
+      })
+    }
+    
+    return conditions
+  } catch (error) {
+    console.error(`Error getting Cobbleverse conditions for ${pokemonName}:`, error)
+    return []
+  }
+}
+function getFormType(name: string, isDefault: boolean): string {
+  if (isDefault) return 'default'
+  
+  const lowerName = name.toLowerCase()
+  
+  if (lowerName.includes('mega')) return 'mega'
+  if (lowerName.includes('gmax')) return 'gigantamax'
+  if (lowerName.includes('primal')) return 'primal'
+  if (lowerName.includes('plate')) return 'plate'
+  if (lowerName.includes('alola')) return 'alolan'
+  if (lowerName.includes('galar')) return 'galarian'
+  if (lowerName.includes('hisui')) return 'hisuian'
+  if (lowerName.includes('paldea')) return 'paldean'
+  if (lowerName.includes('origin')) return 'origin'
+  if (lowerName.includes('attack')) return 'attack'
+  if (lowerName.includes('defense')) return 'defense'
+  if (lowerName.includes('speed')) return 'speed'
+  if (lowerName.includes('plant')) return 'plant'
+  if (lowerName.includes('sandy')) return 'sandy'
+  if (lowerName.includes('trash')) return 'trash'
+  if (lowerName.includes('sky')) return 'sky'
+  if (lowerName.includes('land')) return 'land'
+  if (lowerName.includes('sunshine')) return 'sunshine'
+  if (lowerName.includes('moon')) return 'moon'
+  if (lowerName.includes('blade')) return 'blade'
+  if (lowerName.includes('shield')) return 'shield'
+  if (lowerName.includes('complete')) return 'complete'
+  if (lowerName.includes('ten-percent')) return 'ten-percent'
+  if (lowerName.includes('fifty-percent')) return 'fifty-percent'
+  
+  return 'regional'
 }

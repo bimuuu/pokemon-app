@@ -139,7 +139,7 @@
       "gender": "FEMALE",
       "level": 48,
       "nature": "timid",
-      "ability": "naturalcure"
+      "ability": "natural-cure"
     },
     {
       "moveset": [
@@ -168,7 +168,7 @@
       "gender": "MALE",
       "level": 49,
       "nature": "adamant",
-      "ability": "quickfeet"
+      "ability": "quick-feet"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

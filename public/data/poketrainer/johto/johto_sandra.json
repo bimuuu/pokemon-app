@@ -78,7 +78,7 @@
       "gender": "MALE",
       "level": 70,
       "nature": "adamant",
-      "ability": "swiftswim"
+      "ability": "swift-swim"
     },
     {
       "moveset": [
@@ -107,7 +107,7 @@
       "gender": "FEMALE",
       "level": 70,
       "nature": "adamant",
-      "ability": "innerfocus"
+      "ability": "inner-focus"
     },
     {
       "moveset": [
@@ -136,7 +136,7 @@
       "gender": "FEMALE",
       "level": 70,
       "nature": "modest",
-      "ability": "naturalcure"
+      "ability": "natural-cure"
     },
     {
       "moveset": [
@@ -165,7 +165,7 @@
       "gender": "MALE",
       "level": 70,
       "nature": "adamant",
-      "ability": "roughskin"
+      "ability": "rough-skin"
     },
     {
       "moveset": [

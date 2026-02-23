@@ -84,6 +84,7 @@ export function MovesListClient({ initialMoves }: MovesListClientProps) {
   }
 
   const closeModal = () => {
+    console.log('Closing move modal')
     setSelectedMove(null)
     setPokemonWithMove([])
     setPokemonSearchTerm('')
@@ -105,6 +106,20 @@ export function MovesListClient({ initialMoves }: MovesListClientProps) {
   useEffect(() => {
     setCurrentPage(1)
   }, [searchTerm, selectedType])
+  
+  // ESC key handler to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedMove) {
+        closeModal()
+      }
+    }
+
+    document.addEventListener('keydown', handleEscKey)
+    return () => {
+      document.removeEventListener('keydown', handleEscKey)
+    }
+  }, [selectedMove])
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -300,14 +315,16 @@ export function MovesListClient({ initialMoves }: MovesListClientProps) {
       )}
 
       {/* Move Detail Modal */}
-      <MoveDetailModal
-        move={selectedMove}
-        pokemonWithMove={pokemonWithMove}
-        isLoadingPokemon={isLoadingPokemon}
-        pokemonSearchTerm={pokemonSearchTerm}
-        onPokemonSearchChange={setPokemonSearchTerm}
-        onClose={closeModal}
-      />
+      {selectedMove && (
+        <MoveDetailModal
+          move={selectedMove}
+          pokemonWithMove={pokemonWithMove}
+          isLoadingPokemon={isLoadingPokemon}
+          pokemonSearchTerm={pokemonSearchTerm}
+          onPokemonSearchChange={setPokemonSearchTerm}
+          onClose={closeModal}
+        />
+      )}
     </div>
   )
 }

@@ -73,7 +73,7 @@
       "gender": "MALE",
       "level": 16,
       "nature": "mild",
-      "ability": "rockhead"
+      "ability": "rock-head"
     },
     {
       "moveset": [
@@ -126,7 +126,7 @@
       "gender": "MALE",
       "level": 18,
       "nature": "impish",
-      "ability": "moldbreaker"
+      "ability": "mold-breaker"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

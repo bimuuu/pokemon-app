@@ -3,10 +3,14 @@
 // Cache for Pokemon data to avoid repeated API calls
 const POKEMON_CACHE = new Map<string, { id: number, generation: number }>()
 
+// Import the normalize function from pokemon-api
+const { normalizePokemonName } = await import('@/lib/pokemon-api')
+
 // Helper function to get Pokemon data from PokeAPI
 export const getPokemonDataFromAPI = async (pokemonName: string): Promise<{ id: number, generation: number } | null> => {
   try {
-    const normalizedName = pokemonName.toLowerCase().trim()
+    // Use proper normalization from pokemon-api
+    const normalizedName = normalizePokemonName(pokemonName)
     
     // Check cache first
     if (POKEMON_CACHE.has(normalizedName)) {
@@ -16,6 +20,7 @@ export const getPokemonDataFromAPI = async (pokemonName: string): Promise<{ id: 
     // Fetch from PokeAPI
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${normalizedName}`)
     if (!response.ok) {
+      console.warn(`Pokemon not found: ${pokemonName} (normalized: ${normalizedName}) - Status: ${response.status}`)
       return null
     }
     
@@ -74,7 +79,86 @@ export const getPokemonSpriteUrlByName = async (pokemonName: string): Promise<st
 
 // Helper function to get Pokemon sprite URL by name (synchronous fallback for immediate use)
 export const getPokemonSpriteUrlByNameSync = (pokemonName: string): string => {
-  const normalizedName = pokemonName.toLowerCase().trim()
+  // Use proper normalization from pokemon-api (synchronously approximate)
+  let normalizedName = pokemonName
+    .replace(/%c3%a9/g, 'e') // é
+    .replace(/%c3%a8/g, 'e') // è
+    .replace(/%c3%aa/g, 'e') // ê
+    .replace(/%c3%a7/g, 'c') // ç
+    .replace(/%c3%b1/g, 'n') // ñ
+    .replace(/%e2%99%82/g, 'm') // male symbol
+    .replace(/%e2%99%80/g, 'f') // female symbol
+    .replace(/%20/g, '-') // space
+    .replace(/\./g, '-') // dot
+    .replace(/['']/g, '') // apostrophes
+    .replace(/\s+/g, '-') // spaces
+    .replace(/[^a-z0-9-]/gi, '') // remove special characters except hyphens
+    .toLowerCase()
+    .trim()
+  
+  // Apply special case mappings (simplified version)
+  const specialCases: { [key: string]: string } = {
+    'nidoran': 'nidoran-m',
+    'nidoran♂': 'nidoran-m',
+    'nidoran♀': 'nidoran-f',
+    'mr. rime': 'mr-rime',
+    'mime jr.': 'mime-jr',
+    'mrmime': 'mr-mime',
+    'fluttermane': 'flutter-mane',
+    'porygonz': 'porygon-z',
+    'flabébé': 'flabebe',
+    'deoxys': 'deoxys-normal',
+    'wormadam': 'wormadam-plant',
+    'shaymin': 'shaymin-land',
+    'giratina': 'giratina-altered',
+    'basculin': 'basculin-red-striped',
+    'darmanitan': 'darmanitan-standard',
+    'tornadus': 'tornadus-incarnate',
+    'thundurus': 'thundurus-incarnate',
+    'landorus': 'landorus-incarnate',
+    'keldeo': 'keldeo-ordinary',
+    'meloetta': 'meloetta-aria',
+    'lycanroc': 'lycanroc-midday',
+    'wishiwashi': 'wishiwashi-school',
+    'oricorio': 'oricorio-baile',
+    'mimikyu': 'mimikyu-disguised',
+    'gourgeist': 'gourgeist-average',
+    'meowstic': 'meowstic-male',
+    'aegislash': 'aegislash-shield',
+    'pumpkaboo': 'pumpkaboo-average',
+    'zygarde': 'zygarde-10',
+    'toxtricity': 'toxtricity-amped',
+    'eiscue': 'eiscue-ice',
+    'indeedee': 'indeedee-male',
+    'morpeko': 'morpeko-full-belly',
+    'urshifu': 'urshifu-single-strike',
+    'enamorus': 'enamorus-incarnate',
+    'basculegion': 'basculegion-male',
+    'maushold': 'maushold-family-of-four',
+    'oinkologne': 'oinkologne-male',
+    'tatsugiri': 'tatsugiri-curly',
+    'dudunsparce': 'dudunsparce-two-segment',
+    'palafin': 'palafin-zero',
+    'vivillion': 'vivillon',
+    'kricket': 'kricketot',
+    'crabomibale': 'crabominable',
+    'squawkabilly': 'squawkabilly-green-plumage',
+    'minior': 'minior-red-meteor',
+    'iron hands': 'iron-hands',
+    'iron jugulis': 'iron-jugulis',
+    'iron moth': 'iron-moth',
+    'iron thorns': 'iron-thorns',
+    'iron bundle': 'iron-bundle',
+    'iron treads': 'iron-treads',
+    'iron valiant': 'iron-valiant',
+    'iron leaves': 'iron-leaves',
+    'iron crown': 'iron-crown'
+  }
+  
+  // Check if name matches any special case (case-insensitive)
+  if (specialCases[normalizedName]) {
+    normalizedName = specialCases[normalizedName]
+  }
   
   // Check cache first
   if (POKEMON_CACHE.has(normalizedName)) {

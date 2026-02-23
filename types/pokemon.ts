@@ -102,8 +102,12 @@ export interface EvolutionChain {
         url: string;
       };
       evolution_details: Array<{
-        min_level: number | null;
-        item: {
+        min_level?: number | null;
+        item?: {
+          name: string;
+          url: string;
+        } | null;
+        held_item?: {
           name: string;
           url: string;
         } | null;
@@ -111,6 +115,37 @@ export interface EvolutionChain {
           name: string;
           url: string;
         };
+        trade_species?: {
+          name: string;
+          url: string;
+        } | null;
+        time_of_day?: string;
+        min_happiness?: number | null;
+        location?: {
+          name: string;
+          url: string;
+        } | null;
+        gender?: number | null;
+        known_move?: {
+          name: string;
+          url: string;
+        } | null;
+        known_move_type?: {
+          name: string;
+          url: string;
+        } | null;
+        needs_overworld_rain?: boolean;
+        party_species?: {
+          name: string;
+          url: string;
+        } | null;
+        party_type?: {
+          name: string;
+          url: string;
+        } | null;
+        relative_physical_stats?: number | null;
+        min_beauty?: number | null;
+        min_affection?: number | null;
       }>;
       evolves_to: any[];
     }>;
@@ -236,4 +271,24 @@ export interface FormTransformationCondition {
   item?: string;
   ability?: string;
   location?: string;
+}
+
+export interface PokemonVariety {
+  name: string;
+  is_default: boolean;
+  form_type: string;
+  display_name: string;
+  pokemon: Pokemon;
+  forms: Record<string, PokemonFormData>;
+  sprites: PokemonSprite;
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }>;
+  abilities: PokemonAbility[];
+  types: PokemonType[];
 }

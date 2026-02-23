@@ -78,7 +78,7 @@
       "gender": "FEMALE",
       "level": 60,
       "nature": "adamant",
-      "ability": "sheerforce"
+      "ability": "sheer-force"
     },
     {
       "moveset": [
@@ -164,7 +164,7 @@
       "gender": "FEMALE",
       "level": 58,
       "nature": "jolly",
-      "ability": "rockhead"
+      "ability": "rock-head"
     },
     {
       "moveset": [

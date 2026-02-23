@@ -52,7 +52,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "jolly",
-      "ability": "icebody"
+      "ability": "ice-body"
     },
     {
       "moveset": [
@@ -81,7 +81,7 @@
       "gender": "FEMALE",
       "level": 86,
       "nature": "jolly",
-      "ability": "cursedbody"
+      "ability": "cursed-body"
     },
     {
       "moveset": [
@@ -110,7 +110,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "adamant",
-      "ability": "slushrush"
+      "ability": "slush-rush"
     },
     {
       "moveset": [
@@ -139,7 +139,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "hardy",
-      "ability": "snowwarning"
+      "ability": "snow-warning"
     },
     {
       "moveset": [
@@ -197,7 +197,7 @@
       "gender": "MALE",
       "level": 86,
       "nature": "adamant",
-      "ability": "icebody"
+      "ability": "ice-body"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"

@@ -108,7 +108,7 @@
       "gender": "MALE",
       "level": 67,
       "nature": "bold",
-      "ability": "shellarmor"
+      "ability": "shell-armor"
     },
     {
       "moveset": [
@@ -167,7 +167,7 @@
       "gender": "MALE",
       "level": 65,
       "nature": "jolly",
-      "ability": "battlearmor"
+      "ability": "battle-armor"
     }
   ],
   "battleFormat": "GEN_9_SINGLES"
