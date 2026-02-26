@@ -1,0 +1,6419 @@
+{
+  "Adriano": {
+    "region": "hoenn",
+    "name": "Adriano",
+    "data": {
+      "name": {
+        "literal": "Adriano"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "waterfall",
+            "earthquake",
+            "dragon-dance",
+            "crunch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "mega_showdown:gyaradosite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "gyarados",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "adamant",
+          "ability": "intimidate"
+        },
+        {
+          "moveset": [
+            "surf",
+            "sludge-bomb",
+            "toxic-spikes",
+            "thief"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "tentacruel",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "timid",
+          "ability": "clear-body"
+        },
+        {
+          "moveset": [
+            "surf",
+            "ice-beam",
+            "recover",
+            "dragon-tail"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "weakness-policy"
+          ],
+          "species": "milotic",
+          "gender": "FEMALE",
+          "level": 70,
+          "nature": "modest",
+          "ability": "marvel-scale"
+        },
+        {
+          "moveset": [
+            "waterfall",
+            "knock-off",
+            "poison-jab",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 6,
+            "atk": 252
+          },
+          "heldItem": [
+            "mega_showdown:swampertite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "swampert",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "adamant",
+          "ability": "damp"
+        },
+        {
+          "moveset": [
+            "rain-dance",
+            "disarming-voice",
+            "energy-ball",
+            "surf"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "ludicolo",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "timid",
+          "ability": "rain-dish"
+        },
+        {
+          "moveset": [
+            "earthquake",
+            "water-spout",
+            "avalanche",
+            "water-pulse"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 252,
+            "atk": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "wailord",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "calm",
+          "ability": "pressure"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Water",
+      "badge": "Rain Badge",
+      "gym_location": "Cold Ocean",
+      "item_spawn": "Water Rod",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Alice": {
+    "region": "hoenn",
+    "name": "Alice",
+    "data": {
+      "name": {
+        "literal": "Alice"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "fly",
+            "play-rough",
+            "flame-thrower",
+            "ice-beam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "mega_showdown:altarianite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "altaria",
+          "gender": "FEMALE",
+          "level": 52,
+          "nature": "modest",
+          "ability": "natural-cure"
+        },
+        {
+          "moveset": [
+            "sunny-day",
+            "giga-drain",
+            "stomping-tantrum",
+            "zen-headbutt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "miracle_seed"
+          ],
+          "species": "tropius",
+          "gender": "FEMALE",
+          "level": 53,
+          "nature": "gentle",
+          "ability": "chlorophyll"
+        },
+        {
+          "moveset": [
+            "iron-head",
+            "dark-pulse",
+            "aerial-ace",
+            "brave-bird"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spd": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "skarmory",
+          "gender": "MALE",
+          "level": 56,
+          "nature": "hasty",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "rain-dance",
+            "hydro-pump",
+            "fly",
+            "seed-bomb"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "scope_lens"
+          ],
+          "species": "pelipper",
+          "gender": "MALE",
+          "level": 53,
+          "nature": "modest",
+          "ability": "rain-dish"
+        },
+        {
+          "moveset": [
+            "extra-sensory",
+            "shadow-ball",
+            "hyper-voice",
+            "air-cutter"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 6,
+            "spa": 252,
+            "def": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "noctowl",
+          "gender": "MALE",
+          "level": 54,
+          "nature": "naughty",
+          "ability": "tintedlens"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Flying",
+      "badge": "Feather Badge",
+      "gym_location": "Moonlight Grove",
+      "item_spawn": "Flying Feather",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Fiammetta": {
+    "region": "hoenn",
+    "name": "Fiammetta",
+    "data": {
+      "name": {
+        "literal": "Fiammetta"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "mud-shot",
+            "burning-jealousy",
+            "gyro-ball",
+            "reflect"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "weakness-policy"
+          ],
+          "species": "magcargo",
+          "gender": "FEMALE",
+          "level": 39,
+          "nature": "adamant",
+          "ability": "flame-body"
+        },
+        {
+          "moveset": [
+            "thunder-fang",
+            "trail-blaze",
+            "flame-thrower",
+            "sludge-bomb"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 30,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "mega_showdown:houndoominite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "houndoom",
+          "gender": "FEMALE",
+          "level": 38,
+          "nature": "brave",
+          "ability": "early-bird"
+        },
+        {
+          "moveset": [
+            "flash-cannon",
+            "high-horsepower",
+            "lash-out",
+            "temper-flare"
+          ],
+          "ivs": {
+            "spe": 30,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "camerupt",
+          "gender": "MALE",
+          "level": 42,
+          "nature": "timid",
+          "ability": "anger-point"
+        },
+        {
+          "moveset": [
+            "smart-strike",
+            "flame-thrower",
+            "poison-jab",
+            "protect"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 6,
+            "atk": 252
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "rapidash",
+          "gender": "FEMALE",
+          "level": 41,
+          "nature": "jolly",
+          "ability": "flash-fire"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Fire",
+      "badge": "Heat Badge",
+      "gym_location": "Forested Highlands",
+      "item_spawn": "Fire Lighter",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Lyris": {
+    "region": "hoenn",
+    "name": "Lyris",
+    "data": {
+      "name": {
+        "literal": "Lyris"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "hurricane",
+            "beam-burst",
+            "focus-blast",
+            "dragon-pulse"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "def": 4
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "noivern",
+          "gender": "FEMALE",
+          "level": 72,
+          "nature": "timid",
+          "ability": "infiltrator"
+        },
+        {
+          "moveset": [
+            "dragon-dance",
+            "return",
+            "earthquake",
+            "roost"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 4,
+            "atk": 252
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "altaria",
+          "gender": "FEMALE",
+          "level": 73,
+          "nature": "jolly",
+          "ability": "natural-cure"
+        },
+        {
+          "moveset": [
+            "dragon-claw",
+            "head-smash",
+            "high-horsepower",
+            "iron-head"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "tyrantrum",
+          "gender": "MALE",
+          "level": 74,
+          "nature": "jolly",
+          "ability": "rock-head"
+        },
+        {
+          "moveset": [
+            "dragon-hammer",
+            "fire-punch",
+            "power-whip",
+            "iron-tail"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "assault_vest"
+          ],
+          "species": "goodra",
+          "gender": "FEMALE",
+          "level": 73,
+          "nature": "adamant",
+          "ability": "sap-sipper"
+        },
+        {
+          "moveset": [
+            "double-edge",
+            "dragon-claw",
+            "earthquake",
+            "fire-blast"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 4,
+            "atk": 252
+          },
+          "heldItem": [
+            "mega_showdown:salamencite"
+          ],
+          "species": "salamence",
+          "gender": "MALE",
+          "level": 75,
+          "nature": "naive",
+          "ability": "intimidate"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    }
+  },
+  "Norman": {
+    "region": "hoenn",
+    "name": "Norman",
+    "data": {
+      "name": {
+        "literal": "Norman"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "psychic",
+            "shock-wave",
+            "uproar",
+            "shadow-ball"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "spinda",
+          "gender": "MALE",
+          "level": 48,
+          "nature": "bold",
+          "ability": "contrary"
+        },
+        {
+          "moveset": [
+            "zen-headbutt",
+            "body-slam",
+            "rock-tomb",
+            "seed-bomb"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spd": 252,
+            "def": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "slaking",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "timid",
+          "ability": "truant"
+        },
+        {
+          "moveset": [
+            "aerial-ace",
+            "earthquake",
+            "strength",
+            "drain-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "mega_showdown:kangaskhanite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "kangaskhan",
+          "gender": "FEMALE",
+          "level": 50,
+          "nature": "jolly",
+          "ability": "scrappy"
+        },
+        {
+          "moveset": [
+            "disarming-voice",
+            "life-dew",
+            "covet",
+            "sing"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "def": 252
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "blissey",
+          "gender": "FEMALE",
+          "level": 48,
+          "nature": "timid",
+          "ability": "natural-cure"
+        },
+        {
+          "moveset": [
+            "facade",
+            "shadow-claw",
+            "dig",
+            "protect"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 252,
+            "atk": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "linoone",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "adamant",
+          "ability": "quick-feet"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Normal",
+      "badge": "Balance Badge",
+      "gym_location": "Brushland",
+      "item_spawn": "Normal Tablet",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Pat": {
+    "region": "hoenn",
+    "name": "Pat",
+    "data": {
+      "name": {
+        "literal": "Pat"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "transform"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "species": "ditto",
+          "gender": "MALE",
+          "level": 100,
+          "nature": "jolly",
+          "ability": "thick-fat"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Psychic",
+      "badge": "Mind Badge",
+      "gym_location": "Amethyst Rainforest",
+      "item_spawn": "Psychic Medallion",
+      "unique_drop": "",
+      "is_pair": true,
+      "partner": "Tell"
+    }
+  },
+  "Petra": {
+    "region": "hoenn",
+    "name": "Petra",
+    "data": {
+      "name": {
+        "literal": "Petra"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 1
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 1
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "rock-throw",
+            "bulldoze",
+            "thunder-punch",
+            "flame-thrower"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "def": 92,
+            "hp": 92
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "geodude",
+          "gender": "MALE",
+          "level": 20,
+          "nature": "relaxed",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "smackdown",
+            "earthquake",
+            "iron-tail",
+            "facade"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 252,
+            "hp": 124
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "onix",
+          "gender": "MALE",
+          "level": 20,
+          "nature": "jolly",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "water-gun",
+            "ice-beam",
+            "ancient-power",
+            "surf"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "atk": 80,
+            "hp": 180
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "omanyte",
+          "gender": "MALE",
+          "level": 19,
+          "nature": "modest",
+          "ability": "shell-armor"
+        },
+        {
+          "moveset": [
+            "power-gem",
+            "thunder-bolt",
+            "earth-power",
+            "tera-blast"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "atk": 6,
+            "hp": 252
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "nosepass",
+          "gender": "FEMALE",
+          "level": 21,
+          "nature": "quiet",
+          "ability": "magnet-pull"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Rock",
+      "badge": "Stone Badge",
+      "gym_location": "Rocky Mountains",
+      "item_spawn": "Rock Tome",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Rudi": {
+    "region": "hoenn",
+    "name": "Rudi",
+    "data": {
+      "name": {
+        "literal": "Rudi"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 1
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 1
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "low-sweep",
+            "knock-off",
+            "earthquake",
+            "ice-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spd": 150,
+            "hp": 4
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "conkeldurr",
+          "gender": "MALE",
+          "level": 29,
+          "nature": "adamant",
+          "ability": "guts"
+        },
+        {
+          "moveset": [
+            "close-combat",
+            "knock-off",
+            "facade",
+            "bullet-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 100,
+            "hp": 100
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "hariyama",
+          "gender": "MALE",
+          "level": 28,
+          "nature": "adamant",
+          "ability": "thick-fat"
+        },
+        {
+          "moveset": [
+            "stone-edge",
+            "brick-break",
+            "horn-attack",
+            "bulldoze"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 100,
+            "hp": 6
+          },
+          "heldItem": [
+            "mega_showdown:heracronite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "heracross",
+          "gender": "MALE",
+          "level": 27,
+          "nature": "adamant",
+          "ability": "moxie"
+        },
+        {
+          "moveset": [
+            "stone-edge",
+            "brick-break",
+            "seismic-toss",
+            "knock-off"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "def": 6,
+            "atk": 100
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "machamp",
+          "gender": "FEMALE",
+          "level": 30,
+          "nature": "adamant",
+          "ability": "guts"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Fighting",
+      "badge": "Knuckle Badge",
+      "gym_location": "Yosemite Cliffs",
+      "item_spawn": "Fighting Glove",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Tell": {
+    "region": "hoenn",
+    "name": "Tell",
+    "data": {
+      "name": {
+        "literal": "Tell"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "gyro-ball",
+            "shadow-ball",
+            "psychic",
+            "stone-edge"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "scope_lens"
+          ],
+          "species": "solrock",
+          "gender": "GENDERLESS",
+          "level": 61,
+          "nature": "modest",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "moon-blast",
+            "ice-beam",
+            "bulldoze",
+            "grass-knot"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "def": 252
+          },
+          "heldItem": [
+            "choice_scarf"
+          ],
+          "species": "lunatone",
+          "gender": "GENDERLESS",
+          "level": 62,
+          "nature": "modest",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "draining-kiss",
+            "sacred-sword",
+            "psychic",
+            "night-shade"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 6,
+            "hp": 252
+          },
+          "heldItem": [
+            "mega_showdown:galladite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "gallade",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "brave",
+          "ability": "justified"
+        },
+        {
+          "moveset": [
+            "life-dew",
+            "misty-terrain",
+            "moon-blast",
+            "shadow-ball"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "mega_showdown:gardevoirite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "gardevoir",
+          "gender": "FEMALE",
+          "level": 62,
+          "nature": "modest",
+          "ability": "synchronize"
+        },
+        {
+          "moveset": [
+            "earth-power",
+            "extra-sensory",
+            "substitute",
+            "dazzling-gleam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "atk": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "choice_scarf"
+          ],
+          "species": "claydol",
+          "gender": "GENDERLESS",
+          "level": 62,
+          "nature": "mild",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "zen-headbutt",
+            "drain-punch",
+            "dark-pulse",
+            "shadow-ball"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "def": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "gothitelle",
+          "gender": "FEMALE",
+          "level": 61,
+          "nature": "adamant",
+          "ability": "competitive"
+        }
+      ],
+      "battleFormat": "GEN_9_DOUBLES"
+    },
+    "location": {
+      "type": "Psychic",
+      "badge": "Mind Badge",
+      "gym_location": "Amethyst Rainforest",
+      "item_spawn": "Psychic Medallion",
+      "unique_drop": "",
+      "is_pair": true,
+      "partner": "Pat"
+    }
+  },
+  "Walter": {
+    "region": "hoenn",
+    "name": "Walter",
+    "data": {
+      "name": {
+        "literal": "Walter"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "thunder-punch",
+            "trail-blaze",
+            "gyro-ball",
+            "poison-jab"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spd": 252,
+            "def": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "toxtricity",
+          "gender": "MALE",
+          "level": 34,
+          "nature": "modest",
+          "ability": "technician"
+        },
+        {
+          "moveset": [
+            "spark",
+            "trail-blaze",
+            "high-horsepower",
+            "smart-strike"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 6,
+            "hp": 252
+          },
+          "heldItem": [
+            "air_balloon"
+          ],
+          "species": "zebstrika",
+          "gender": "MALE",
+          "level": 36,
+          "nature": "hardy",
+          "ability": "sap-sipper"
+        },
+        {
+          "moveset": [
+            "shock-wave",
+            "thunder-bolt",
+            "flame-thrower",
+            "iron-tail"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spd": 120,
+            "hp": 100
+          },
+          "heldItem": [
+            "mega_showdown:manectite"
+          ],
+          "gimmicks": {
+            "mega": true
+          },
+          "species": "manectric",
+          "gender": "MALE",
+          "level": 35,
+          "nature": "timid",
+          "ability": "static"
+        },
+        {
+          "moveset": [
+            "ice-punch",
+            "thunder-bolt",
+            "power-gem",
+            "dazzling-gleam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "atk": 6,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "ampharos",
+          "gender": "FEMALE",
+          "level": 33,
+          "nature": "quirky",
+          "ability": "static"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Electric",
+      "badge": "Dynamo Badge",
+      "gym_location": "Arid Highlands",
+      "item_spawn": "Electric Connector",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Alfredo": {
+    "region": "johto",
+    "name": "Alfredo",
+    "data": {
+      "name": {
+        "literal": "Alfredo"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "earthquake",
+            "stone-edge",
+            "ice-fang",
+            "avalanche"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "mamoswine",
+          "gender": "MALE",
+          "level": 64,
+          "nature": "jolly",
+          "ability": "thick-fat"
+        },
+        {
+          "moveset": [
+            "avalanche",
+            "ice-crash",
+            "weather-ball",
+            "astonish"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "vanilluxe",
+          "gender": "MALE",
+          "level": 64,
+          "nature": "modest",
+          "ability": "snow-warning"
+        },
+        {
+          "moveset": [
+            "ice-fang",
+            "stomping-tantrum",
+            "surf",
+            "hail"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "spa": 252,
+            "atk": 4
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "avalugg",
+          "gender": "MALE",
+          "level": 63,
+          "nature": "brave",
+          "ability": "ice-body"
+        },
+        {
+          "moveset": [
+            "hail",
+            "water-pulse",
+            "blizzard",
+            "iron-tail"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "dewgong",
+          "gender": "MALE",
+          "level": 65,
+          "nature": "modest",
+          "ability": "ice-body"
+        },
+        {
+          "moveset": [
+            "shadow-ball",
+            "drain-punch",
+            "psychic",
+            "ice-beam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "jynx",
+          "gender": "FEMALE",
+          "level": 64,
+          "nature": "adamant",
+          "ability": "levitate"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Ice",
+      "badge": "Glacier Badge",
+      "gym_location": "Ice Spikes",
+      "item_spawn": "Winter Staff",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Angelo": {
+    "region": "johto",
+    "name": "Angelo",
+    "data": {
+      "name": {
+        "literal": "Angelo"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "brick-break",
+            "shadow-punch",
+            "rock-tomb",
+            "thunder-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 120,
+            "atk": 100,
+            "hp": 120
+          },
+          "heldItem": [
+            "spell_tag"
+          ],
+          "species": "dusknoir",
+          "gender": "MALE",
+          "level": 43,
+          "nature": "hardy",
+          "ability": "pressure"
+        },
+        {
+          "moveset": [
+            "disarming-voice",
+            "water-pulse",
+            "shadow-ball",
+            "ice-beam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 120,
+            "atk": 120,
+            "hp": 10
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "sableye",
+          "gender": "MALE",
+          "level": 43,
+          "nature": "brave",
+          "ability": "keeneye"
+        },
+        {
+          "moveset": [
+            "focus-blast",
+            "toxic",
+            "shadow-ball",
+            "giga-drain"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 100,
+            "spa": 130,
+            "atk": 130
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "gengar",
+          "gender": "MALE",
+          "level": 45,
+          "nature": "timid",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "phantom-force",
+            "psychic",
+            "mystical-fire",
+            "dazzling-gleam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "spd": 100,
+            "spa": 100,
+            "hp": 100
+          },
+          "heldItem": [
+            "spell_tag"
+          ],
+          "species": "mismagius",
+          "gender": "FEMALE",
+          "level": 44,
+          "nature": "modest",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "focus-punch",
+            "shadow-punch",
+            "fire-punch",
+            "high-horsepower"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 130,
+            "def": 130,
+            "atk": 180
+          },
+          "heldItem": [
+            "colbur_berry"
+          ],
+          "species": "golurk",
+          "gender": "MALE",
+          "level": 44,
+          "nature": "modest",
+          "ability": "iron-fist"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Ghost",
+      "badge": "Fog Badge",
+      "gym_location": "Lush Cave",
+      "item_spawn": "Spirit Scarf",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Chiara": {
+    "region": "johto",
+    "name": "Chiara",
+    "data": {
+      "name": {
+        "literal": "Chiara"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "zen-headbutt",
+            "stomp",
+            "shadow-ball",
+            "milk-drink"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "miltank",
+          "gender": "FEMALE",
+          "level": 35,
+          "nature": "brave",
+          "ability": "scrappy"
+        },
+        {
+          "moveset": [
+            "disarming-voice",
+            "water-pulse",
+            "shadow-ball",
+            "ice-beam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 120,
+            "atk": 120,
+            "hp": 10
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "clefairy",
+          "gender": "FEMALE",
+          "level": 34,
+          "nature": "brave",
+          "ability": "cute-charm"
+        },
+        {
+          "moveset": [
+            "double-kick",
+            "thunder-bolt",
+            "shadow-ball",
+            "dig"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "atk": 80,
+            "hp": 6
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "lopunny",
+          "gender": "FEMALE",
+          "level": 34,
+          "nature": "careful",
+          "ability": "cute-charm"
+        },
+        {
+          "moveset": [
+            "lick",
+            "stomp",
+            "shadow-ball",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 100,
+            "atk": 252,
+            "hp": 100
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "lickitung",
+          "gender": "MALE",
+          "level": 33,
+          "nature": "careful",
+          "ability": "own-tempo"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Normal",
+      "badge": "Plain Badge",
+      "gym_location": "Cherry Grove",
+      "item_spawn": "Sweet Milk",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Furio": {
+    "region": "johto",
+    "name": "Furio",
+    "data": {
+      "name": {
+        "literal": "Furio"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "brick-break",
+            "close-combat",
+            "rock-slide",
+            "thunder-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 130,
+            "atk": 130,
+            "hp": 100
+          },
+          "heldItem": [
+            "black_belt"
+          ],
+          "species": "sawk",
+          "gender": "MALE",
+          "level": 48,
+          "nature": "adamant",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "vital-throw",
+            "ice-punch",
+            "flying",
+            "stomping-tantrum"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 120,
+            "def": 130,
+            "atk": 120
+          },
+          "heldItem": [
+            "iron_ball"
+          ],
+          "species": "throh",
+          "gender": "MALE",
+          "level": 48,
+          "nature": "brave",
+          "ability": "guts"
+        },
+        {
+          "moveset": [
+            "force-palm",
+            "rock-tomb",
+            "earthquake",
+            "close-combat"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 130,
+            "atk": 140,
+            "hp": 120
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "hariyama",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "adamant",
+          "ability": "thickfat"
+        },
+        {
+          "moveset": [
+            "seismic-toss",
+            "thief",
+            "brick-break",
+            "thunder-bolt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 150,
+            "spd": 120,
+            "atk": 150
+          },
+          "heldItem": [
+            "choice-band"
+          ],
+          "species": "primeape",
+          "gender": "MALE",
+          "level": 48,
+          "nature": "adamant",
+          "ability": "defiant"
+        },
+        {
+          "moveset": [
+            "drain-punch",
+            "surf",
+            "poison-jab",
+            "rock-tomb"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "def": 100,
+            "atk": 200
+          },
+          "heldItem": [
+            "assault_vest"
+          ],
+          "species": "poliwrath",
+          "gender": "MALE",
+          "level": 50,
+          "nature": "adamant",
+          "ability": "water-absorb"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Fighting",
+      "badge": "Storm Badge",
+      "gym_location": "Desert",
+      "item_spawn": "Heavy Dumbbell",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Jasmine": {
+    "region": "johto",
+    "name": "Jasmine",
+    "data": {
+      "name": {
+        "literal": "Jasmine"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "rock-slide",
+            "psychic",
+            "grass-knot",
+            "iron-head"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 252,
+            "atk": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "rocky_helmet"
+          ],
+          "species": "bronzong",
+          "gender": "MALE",
+          "level": 59,
+          "nature": "bold",
+          "ability": "heat-proof"
+        },
+        {
+          "moveset": [
+            "flash-cannon",
+            "earthquake",
+            "dark-pulse",
+            "ice-fang"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "steelix",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "brave",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "meteor-mash",
+            "zen-headbutt",
+            "rock-slide",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "metagross",
+          "gender": "MALE",
+          "level": 58,
+          "nature": "calm",
+          "ability": "clear-body"
+        },
+        {
+          "moveset": [
+            "rock-tomb",
+            "steel-wing",
+            "dark-pulse",
+            "aerial-ace"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "choice-band"
+          ],
+          "species": "skarmory",
+          "gender": "MALE",
+          "level": 58,
+          "nature": "adamant",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "thunder-bolt",
+            "flash-cannon",
+            "thunder-wave",
+            "shock-wave"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "magnezone",
+          "gender": "MALE",
+          "level": 59,
+          "nature": "adamant",
+          "ability": "levitate"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Steel",
+      "badge": "Mineral Badge",
+      "gym_location": "Taiga",
+      "item_spawn": "Secret Medicine",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Raffaello": {
+    "region": "johto",
+    "name": "Raffaello",
+    "data": {
+      "name": {
+        "literal": "Raffaello"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 1
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 1
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "psybeam",
+            "stun-spore",
+            "quick-attack",
+            "bug-buzz"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "spd": 6,
+            "spa": 100
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "butterfree",
+          "gender": "FEMALE",
+          "level": 29,
+          "nature": "modest",
+          "ability": "compound-eyes"
+        },
+        {
+          "moveset": [
+            "venoshock",
+            "giga-drain",
+            "furycutter",
+            "endure"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 100,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "beedrill",
+          "gender": "MALE",
+          "level": 28,
+          "nature": "jolly",
+          "ability": "sniper"
+        },
+        {
+          "moveset": [
+            "stone-edge",
+            "focus-punch",
+            "horn-attack",
+            "bulldoze"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 100,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "heracross",
+          "gender": "MALE",
+          "level": 27,
+          "nature": "adamant",
+          "ability": "unnerve"
+        },
+        {
+          "moveset": [
+            "aerial-ace",
+            "xscissor",
+            "thief",
+            "brick-break"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "def": 6,
+            "atk": 100
+          },
+          "heldItem": [
+            "choice-band"
+          ],
+          "species": "scyther",
+          "gender": "FEMALE",
+          "level": 30,
+          "nature": "adamant",
+          "ability": "swarm"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Bug",
+      "badge": "Hive Badge",
+      "gym_location": "Sparse Jungle",
+      "item_spawn": "Magnifying Glass",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Sandra": {
+    "region": "johto",
+    "name": "Sandra",
+    "data": {
+      "name": {
+        "literal": "Sandra"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "earthquake",
+            "dragon-pulse",
+            "dark-pulse",
+            "ice-fang"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "gyarados",
+          "gender": "FEMALE",
+          "level": 70,
+          "nature": "jolly",
+          "ability": "intimidate"
+        },
+        {
+          "moveset": [
+            "water-gun",
+            "twister",
+            "flash-cannon",
+            "dragon-pulse"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "dragon_fang"
+          ],
+          "species": "kingdra",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "adamant",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "outrage",
+            "dragon-rush",
+            "dragon-tail",
+            "thunder-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "weakness-policy"
+          ],
+          "species": "dragonite",
+          "gender": "FEMALE",
+          "level": 70,
+          "nature": "adamant",
+          "ability": "inner-focus"
+        },
+        {
+          "moveset": [
+            "dazzling-gleam",
+            "dragon-pulse",
+            "steel-wing",
+            "flame-thrower"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "altaria",
+          "gender": "FEMALE",
+          "level": 70,
+          "nature": "modest",
+          "ability": "natural-cure"
+        },
+        {
+          "moveset": [
+            "earthquake",
+            "iron-tail",
+            "dragon-claw",
+            "crunch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "garchomp",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "adamant",
+          "ability": "rough-skin"
+        },
+        {
+          "moveset": [
+            "flame-thrower",
+            "steel-wing",
+            "brick-break",
+            "dragon-pulse"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "salamence",
+          "gender": "FEMALE",
+          "level": 70,
+          "nature": "timid",
+          "ability": "moxie"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Dragon",
+      "badge": "Rising Badge",
+      "gym_location": "Soul Sand Valley",
+      "item_spawn": "Pearl Choker",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Valerio": {
+    "region": "johto",
+    "name": "Valerio",
+    "data": {
+      "name": {
+        "literal": "Valerio"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 1
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 1
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "air-slash",
+            "psychic",
+            "pluck",
+            "steel-wing"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "atk": 80,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "hoothoot",
+          "gender": "MALE",
+          "level": 19,
+          "nature": "naughty",
+          "ability": "insomnia"
+        },
+        {
+          "moveset": [
+            "aerial-ace",
+            "quick-attack",
+            "pluck",
+            "u-turn"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 100,
+            "atk": 100,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "pidgeotto",
+          "gender": "MALE",
+          "level": 20,
+          "nature": "brave",
+          "ability": "keen-eye"
+        },
+        {
+          "moveset": [
+            "pluck",
+            "roost",
+            "rock-smash",
+            "hone-claws"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "atk": 80,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "corvisquire",
+          "gender": "FEMALE",
+          "level": 18,
+          "nature": "careful",
+          "ability": "unnerve"
+        },
+        {
+          "moveset": [
+            "tail-whip",
+            "bulldoze",
+            "dig",
+            "acrobatics"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 80,
+            "atk": 80,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "gligar",
+          "gender": "MALE",
+          "level": 19,
+          "nature": "careful",
+          "ability": "hyper-cutter"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Flying",
+      "badge": "Zephyr Badge",
+      "gym_location": "Windswept Hills",
+      "item_spawn": "Raptor Bracer",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Blaine": {
+    "region": "kanto",
+    "name": "Blaine",
+    "data": {
+      "name": {
+        "literal": "Blaine"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "body-press",
+            "flame-wheel",
+            "zen-headbutt",
+            "earth-power"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "covert_cloak"
+          ],
+          "species": "torkoal",
+          "gender": "MALE",
+          "level": 57,
+          "nature": "quiet",
+          "ability": "white-smoke"
+        },
+        {
+          "moveset": [
+            "thunder-fang",
+            "play-rough",
+            "flame-burst",
+            "close-combat"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "charcoal_stick"
+          ],
+          "species": "arcanine",
+          "gender": "MALE",
+          "level": 59,
+          "nature": "jolly",
+          "ability": "flashfire"
+        },
+        {
+          "moveset": [
+            "brick-break",
+            "earthquake",
+            "flame-thrower",
+            "thunder-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "magmortar",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "brave",
+          "ability": "flame-body"
+        },
+        {
+          "moveset": [
+            "eruption",
+            "flame-thrower",
+            "hidden-power",
+            "focus-blast"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "shell_bell"
+          ],
+          "species": "typhlosion",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "modest",
+          "ability": "flashfire"
+        },
+        {
+          "moveset": [
+            "ember",
+            "flame-thrower",
+            "ancient-power",
+            "lava-plume"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "magcargo",
+          "gender": "MALE",
+          "level": 58,
+          "nature": "brave",
+          "ability": "magma-armor"
+        },
+        {
+          "moveset": [
+            "flame-thrower",
+            "air-slash",
+            "solar-beam",
+            "dragon-pulse"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "charcoal_stick"
+          ],
+          "species": "charizard",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "timid",
+          "ability": "blaze"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Fire",
+      "badge": "Volcano Badge",
+      "gym_location": "Crimson Forest",
+      "item_spawn": "Cinnabar Glasses",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Brock": {
+    "region": "kanto",
+    "name": "Brock",
+    "data": {
+      "name": {
+        "literal": "Brock"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "protect",
+            "rock-tomb",
+            "rock-throw",
+            "bulldoze"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 40,
+            "hp": 100
+          },
+          "species": "geodude",
+          "gender": "MALE",
+          "level": 16,
+          "nature": "bashful",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "block",
+            "rock-throw",
+            "flail",
+            "copycat"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 40,
+            "hp": 80
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "bonsly",
+          "gender": "MALE",
+          "level": 16,
+          "nature": "mild",
+          "ability": "rock-head"
+        },
+        {
+          "moveset": [
+            "rock-tomb",
+            "bulldoze",
+            "sleep-talk",
+            "rock-slide"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 40,
+            "hp": 100
+          },
+          "heldItem": [
+            "rocky_helmet"
+          ],
+          "species": "onix",
+          "gender": "MALE",
+          "level": 20,
+          "nature": "bashful",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "takedown",
+            "rock-tomb",
+            "rock-smash",
+            "headbutt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 40,
+            "hp": 100
+          },
+          "species": "cranidos",
+          "gender": "MALE",
+          "level": 18,
+          "nature": "impish",
+          "ability": "mold-breaker"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Rock",
+      "badge": "Boulder Badge",
+      "gym_location": "Plains",
+      "item_spawn": "Onyx Stone",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Erika": {
+    "region": "kanto",
+    "name": "Erika",
+    "data": {
+      "name": {
+        "literal": "Erika"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "dazzling-gleam",
+            "giga-drain",
+            "veno-shock",
+            "energy-ball"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 4,
+            "atk": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "roserade",
+          "gender": "FEMALE",
+          "level": 39,
+          "nature": "adamant",
+          "ability": "poison-point"
+        },
+        {
+          "moveset": [
+            "toxic",
+            "giga-drain",
+            "magical-leaf",
+            "moonblast"
+          ],
+          "ivs": {
+            "spe": 30,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "def": 4
+          },
+          "heldItem": [
+            "weakness-policy"
+          ],
+          "species": "bellossom",
+          "gender": "FEMALE",
+          "level": 38,
+          "nature": "docile",
+          "ability": "chlorophyll"
+        },
+        {
+          "moveset": [
+            "poison-jab",
+            "bug-bite",
+            "leaf-storm",
+            "giga-drain"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "poison_barb"
+          ],
+          "species": "victreebel",
+          "gender": "FEMALE",
+          "level": 39,
+          "nature": "timid",
+          "ability": "chlorophyll"
+        },
+        {
+          "moveset": [
+            "giga-drain",
+            "toxic",
+            "petal-blizzard",
+            "moonblast"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 30,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "def": 4
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "vileplume",
+          "gender": "FEMALE",
+          "level": 40,
+          "nature": "brave",
+          "ability": "chlorophyll"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Grass",
+      "badge": "Rainbow Badge",
+      "gym_location": "Flower Forest",
+      "item_spawn": "Nature Fan",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Giovanni": {
+    "region": "kanto",
+    "name": "Giovanni",
+    "data": {
+      "name": {
+        "literal": "Giovanni"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "mega-horn",
+            "thunder-fang",
+            "earthquake",
+            "stone-edge"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "rocky_helmet"
+          ],
+          "species": "rhyperior",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "careful",
+          "ability": "solid-rock"
+        },
+        {
+          "moveset": [
+            "thunder-fang",
+            "dark-pulse",
+            "rock-throw",
+            "ice-fang"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "dragon_fang"
+          ],
+          "species": "tyranitar",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "adamant",
+          "ability": "sand-veil"
+        },
+        {
+          "moveset": [
+            "feint-attack",
+            "play-rough",
+            "captivate",
+            "night-slash"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "quick_claw"
+          ],
+          "species": "persian",
+          "gender": "MALE",
+          "level": 68,
+          "nature": "mild",
+          "ability": "limber"
+        },
+        {
+          "moveset": [
+            "mega-horn",
+            "toxic",
+            "earth-power",
+            "thrash"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "atk": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "choice_specs"
+          ],
+          "species": "nidoking",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "lax",
+          "ability": "rivalry"
+        },
+        {
+          "moveset": [
+            "toxic",
+            "crunch",
+            "earth-power",
+            "body-slam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "power_herb"
+          ],
+          "species": "nidoqueen",
+          "gender": "FEMALE",
+          "level": 69,
+          "nature": "rash",
+          "ability": "rivalry"
+        },
+        {
+          "moveset": [
+            "expanding-force",
+            "psy-strike",
+            "aura-sphere",
+            "flame-thrower"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "power_herb"
+          ],
+          "species": "mewtwo",
+          "gender": "GENDERLESS",
+          "level": 70,
+          "nature": "timid",
+          "ability": "pressure"
+        }
+      ],
+      "battleFormat": "GEN_9_DOUBLES"
+    },
+    "location": {
+      "type": "Ground",
+      "badge": "Earth badge",
+      "gym_location": "Deep Dark",
+      "item_spawn": "Boss Ring",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Koga": {
+    "region": "kanto",
+    "name": "Koga",
+    "data": {
+      "name": {
+        "literal": "Koga"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "veno-shock",
+            "air-slash",
+            "poison-fang",
+            "astonish"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "black_sludge"
+          ],
+          "species": "crobat",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "sassy",
+          "ability": "inner-focus"
+        },
+        {
+          "moveset": [
+            "spite",
+            "sludge",
+            "belch",
+            "sludge-bomb"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "oran_berry"
+          ],
+          "species": "weezing",
+          "gender": "MALE",
+          "level": 50,
+          "nature": "mild",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "poison-fang",
+            "psychic",
+            "zen-headbutt",
+            "supersonic"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "black_sludge"
+          ],
+          "species": "venomoth",
+          "gender": "FEMALE",
+          "level": 50,
+          "nature": "calm",
+          "ability": "tinted-lens"
+        },
+        {
+          "moveset": [
+            "night-slash",
+            "crunch",
+            "poison-fang",
+            "poison-gas"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "drapion",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "timid",
+          "ability": "battle-armor"
+        },
+        {
+          "moveset": [
+            "volt-switch",
+            "boom-burst",
+            "sludge-bomb",
+            "overdrive"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "toxtricity",
+          "gender": "MALE",
+          "level": 49,
+          "nature": "timid",
+          "ability": "plus"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Poison",
+      "badge": "Soul Badge",
+      "gym_location": "Swamp",
+      "item_spawn": "Ninja Poison",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Lt. Surge": {
+    "region": "kanto",
+    "name": "Lt. Surge",
+    "data": {
+      "name": {
+        "literal": "Lt. Surge"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "psyshock",
+            "thunder-punch",
+            "iron-tail",
+            "thunder-bolt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 40,
+            "atk": 16,
+            "hp": 24
+          },
+          "heldItem": [
+            "wise_glasses"
+          ],
+          "species": "raichu",
+          "gender": "MALE",
+          "level": 35,
+          "nature": "modest",
+          "ability": "static"
+        },
+        {
+          "moveset": [
+            "spark",
+            "thunder-shock",
+            "gyro-ball",
+            "barrier"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "spa": 100,
+            "hp": 100
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "magnezone",
+          "gender": "MALE",
+          "level": 33,
+          "nature": "modest",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "electro-ball",
+            "thunder-shock",
+            "discharge",
+            "quick-attack"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 40,
+            "spa": 100,
+            "atk": 100,
+            "hp": 100
+          },
+          "heldItem": [
+            "quick_claw"
+          ],
+          "species": "electabuzz",
+          "gender": "MALE",
+          "level": 34,
+          "nature": "relaxed",
+          "ability": "static"
+        },
+        {
+          "moveset": [
+            "thunder-fang",
+            "fire-fang",
+            "ice-fang",
+            "psychic-fangs"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 100,
+            "hp": 100
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "boltund",
+          "gender": "MALE",
+          "level": 32,
+          "nature": "jolly",
+          "ability": "strong-jaw"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Electric",
+      "badge": "Thunder Badge",
+      "gym_location": "Savanna Plateau",
+      "item_spawn": "Lieutenant Medal",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Misty": {
+    "region": "kanto",
+    "name": "Misty",
+    "data": {
+      "name": {
+        "literal": "Misty"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "flash-cannon",
+            "water-pulse",
+            "blizzard",
+            "waterfall"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 31,
+            "atk": 30,
+            "hp": 31
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "horsea",
+          "gender": "MALE",
+          "level": 23,
+          "nature": "jolly",
+          "ability": "sniper"
+        },
+        {
+          "moveset": [
+            "psyshock",
+            "surf",
+            "psywave",
+            "water-gun"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "heldItem": [
+            "twisted_spoon"
+          ],
+          "species": "starmie",
+          "gender": "GENDERLESS",
+          "level": 25,
+          "nature": "timid",
+          "ability": "analytic"
+        },
+        {
+          "moveset": [
+            "water-gun",
+            "confusion",
+            "aqua-tail",
+            "zen-headbutt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 29,
+            "atk": 29,
+            "hp": 31
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "psyduck",
+          "gender": "MALE",
+          "level": 23,
+          "nature": "bold",
+          "ability": "cloud-nine"
+        },
+        {
+          "moveset": [
+            "water-pulse",
+            "peck",
+            "aqua-ring",
+            "horn-attack"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 30,
+            "def": 29,
+            "atk": 29,
+            "hp": 31
+          },
+          "heldItem": [
+            "scope_lens"
+          ],
+          "species": "goldeen",
+          "gender": "FEMALE",
+          "level": 24,
+          "nature": "hasty",
+          "ability": "swift-swim"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Water",
+      "badge": "Cascade Badge",
+      "gym_location": "Lukewarm ocean",
+      "item_spawn": "Cerulean Star",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Sabrina": {
+    "region": "kanto",
+    "name": "Sabrina",
+    "data": {
+      "name": {
+        "literal": "Sabrina"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "trick-room",
+            "expanding-force",
+            "draining-kiss",
+            "mystical-fire"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "def": 4,
+            "hp": 252
+          },
+          "heldItem": [
+            "weakness-policy"
+          ],
+          "species": "hatterene",
+          "gender": "FEMALE",
+          "level": 54,
+          "nature": "quiet",
+          "ability": "magic-bounce"
+        },
+        {
+          "moveset": [
+            "barrier",
+            "psybeam",
+            "psychic",
+            "sucker-punch"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 4,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "mrmime",
+          "gender": "FEMALE",
+          "level": 53,
+          "nature": "gentle",
+          "ability": "filter"
+        },
+        {
+          "moveset": [
+            "psychic",
+            "psyshock",
+            "shadow-ball",
+            "drain-punch"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "scope_lens"
+          ],
+          "species": "alakazam",
+          "gender": "MALE",
+          "level": 55,
+          "nature": "gentle",
+          "ability": "synchronize"
+        },
+        {
+          "moveset": [
+            "mega-horn",
+            "dazzling-gleam",
+            "psychic",
+            "high-horsepower"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 4,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "twisted_spoon"
+          ],
+          "aspects": [
+            "galarian"
+          ],
+          "species": "rapidash",
+          "gender": "FEMALE",
+          "level": 52,
+          "nature": "naughty",
+          "ability": "synchronize"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Psychic",
+      "badge": "Marsh Badge",
+      "gym_location": "Dark Forest",
+      "item_spawn": "Hypnotic Whip",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Bianca": {
+    "region": "sinnoh",
+    "name": "Bianca",
+    "data": {
+      "name": {
+        "literal": "Bianca"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "wood-hammer",
+            "ice-punch",
+            "leech-seed",
+            "aurora-veil"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "def": 12,
+            "atk": 252,
+            "hp": 240
+          },
+          "heldItem": [
+            "icy_rock"
+          ],
+          "species": "abomasnow",
+          "gender": "FEMALE",
+          "level": 67,
+          "nature": "brave",
+          "ability": "snow-warning"
+        },
+        {
+          "moveset": [
+            "blizzard",
+            "focus-blast",
+            "psychic",
+            "shadow-ball"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "jynx",
+          "gender": "FEMALE",
+          "level": 66,
+          "nature": "modest",
+          "ability": "dry-skin"
+        },
+        {
+          "moveset": [
+            "ice-shard",
+            "earthquake",
+            "knock-off",
+            "protect"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "mamoswine",
+          "gender": "FEMALE",
+          "level": 67,
+          "nature": "adamant",
+          "ability": "snow-cloak"
+        },
+        {
+          "moveset": [
+            "blizzard",
+            "shadow-ball",
+            "double-team",
+            "aurora-veil"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "froslass",
+          "gender": "FEMALE",
+          "level": 67,
+          "nature": "modest",
+          "ability": "snow-cloak"
+        },
+        {
+          "moveset": [
+            "blizzard",
+            "freeze-dry",
+            "baby-doll-eyes",
+            "protect"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "glaceon",
+          "gender": "FEMALE",
+          "level": 66,
+          "nature": "modest",
+          "ability": "ice-body"
+        },
+        {
+          "moveset": [
+            "ice-shard",
+            "night-slash",
+            "brick-break",
+            "x-scissor"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "weavile",
+          "gender": "MALE",
+          "level": 67,
+          "nature": "adamant",
+          "ability": "pressure"
+        }
+      ],
+      "identity": "Gym Leader Bianca",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Ice",
+      "badge": "Icicle Badge",
+      "gym_location": "Glacial Chasm",
+      "item_spawn": "Ice Ribbon",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Buck": {
+    "region": "sinnoh",
+    "name": "Buck",
+    "data": {
+      "name": {
+        "literal": "Buck"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "trick-room",
+            "will-o-wisp",
+            "pay-back",
+            "brick-break"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 144,
+            "atk": 112,
+            "hp": 252
+          },
+          "heldItem": [
+            "mega_showdown:darkinium_z",
+            "leftovers"
+          ],
+          "species": "dusknoir",
+          "gender": "MALE",
+          "level": 67,
+          "nature": "relaxed",
+          "ability": "frisk"
+        },
+        {
+          "moveset": [
+            "sticky-web",
+            "stealth-rock",
+            "encore",
+            "toxic"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 252,
+            "def": 8,
+            "hp": 248
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "shuckle",
+          "gender": "FEMALE",
+          "level": 65,
+          "nature": "careful",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "stealth-rock",
+            "rapid-spin",
+            "lava-plume",
+            "toxic"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 28,
+            "def": 232,
+            "hp": 248
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "torkoal",
+          "gender": "MALE",
+          "level": 67,
+          "nature": "bold",
+          "ability": "shell-armor"
+        },
+        {
+          "moveset": [
+            "rapid-spin",
+            "toxic",
+            "psychic",
+            "earth-power"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 120,
+            "def": 120,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "claydol",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "bold",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "poison-jab",
+            "knock-off",
+            "poison-fang",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "mega_showdown:poisonium_z",
+            "life-orb"
+          ],
+          "species": "drapion",
+          "gender": "MALE",
+          "level": 65,
+          "nature": "jolly",
+          "ability": "battle-armor"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    }
+  },
+  "Corrado": {
+    "region": "sinnoh",
+    "name": "Corrado",
+    "data": {
+      "name": {
+        "literal": "Corrado"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 6
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 6
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "hydro-pump",
+            "hurricane",
+            "ice-beam",
+            "u-turn"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 36,
+            "spa": 252,
+            "hp": 220
+          },
+          "heldItem": [
+            "damp_rock"
+          ],
+          "species": "pelipper",
+          "gender": "FEMALE",
+          "level": 75,
+          "nature": "modest",
+          "ability": "drizzle"
+        },
+        {
+          "moveset": [
+            "thunder",
+            "surf",
+            "focus-blast",
+            "volt-switch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "choice_scarf"
+          ],
+          "species": "raichu",
+          "gender": "FEMALE",
+          "level": 75,
+          "nature": "timid",
+          "ability": "lightning-rod"
+        },
+        {
+          "moveset": [
+            "ice-fang",
+            "play-rough",
+            "volt-switch",
+            "electric-terrain"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "luxray",
+          "gender": "MALE",
+          "level": 75,
+          "nature": "adamant",
+          "ability": "intimidate"
+        },
+        {
+          "moveset": [
+            "thunder",
+            "surf",
+            "ice-beam",
+            "volt-switch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "lanturn",
+          "gender": "FEMALE",
+          "level": 75,
+          "nature": "modest",
+          "ability": "volt-absorb"
+        },
+        {
+          "moveset": [
+            "thunder",
+            "reflect",
+            "shadow-ball",
+            "volt-switch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "jolteon",
+          "gender": "MALE",
+          "level": 75,
+          "nature": "timid",
+          "ability": "quick-feet"
+        },
+        {
+          "moveset": [
+            "thunder",
+            "flame-thrower",
+            "cross-chop",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "electivire",
+          "gender": "MALE",
+          "level": 75,
+          "nature": "hasty",
+          "ability": "motor-drive"
+        }
+      ],
+      "identity": "Gym Leader Corrado",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Electric",
+      "badge": "Beacon Badge",
+      "gym_location": "Shrublands",
+      "item_spawn": "Electric Fuse",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Elfio": {
+    "region": "sinnoh",
+    "name": "Elfio",
+    "data": {
+      "name": {
+        "literal": "Elfio"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "scald",
+            "roost",
+            "hurricane",
+            "u-turn"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "pelipper",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "bold",
+          "ability": "drizzle"
+        },
+        {
+          "moveset": [
+            "liquidation",
+            "ice-punch",
+            "aqua-jet",
+            "crunch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "floatzel",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "adamant",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "scald",
+            "earth-power",
+            "recover",
+            "toxic"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 4,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "gastrodon",
+          "gender": "FEMALE",
+          "level": 69,
+          "nature": "relaxed",
+          "ability": "storm-drain"
+        },
+        {
+          "moveset": [
+            "flash-cannon",
+            "hydro-pump",
+            "ice-beam",
+            "grass-knot"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 4,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "assault_vest"
+          ],
+          "species": "empoleon",
+          "gender": "MALE",
+          "level": 69,
+          "nature": "modest",
+          "ability": "torrent"
+        },
+        {
+          "moveset": [
+            "scald",
+            "tailwind",
+            "u-turn",
+            "defog"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "def": 4,
+            "hp": 252
+          },
+          "species": "lumineon",
+          "gender": "FEMALE",
+          "level": 69,
+          "nature": "timid",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "waterfall",
+            "earthquake",
+            "ice-fang",
+            "dragon-dance"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 4
+          },
+          "heldItem": [
+            "mystic_water"
+          ],
+          "species": "gyarados",
+          "gender": "MALE",
+          "level": 70,
+          "nature": "jolly",
+          "ability": "intimidate"
+        }
+      ],
+      "battleFormat": "GEN_9_SINGLES"
+    }
+  },
+  "Fannie": {
+    "region": "sinnoh",
+    "name": "Fannie",
+    "data": {
+      "name": {
+        "literal": "Fannie"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 4
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 4
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "shadow-ball",
+            "thunder-bolt",
+            "psychic",
+            "strength-sap"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "flame_orb"
+          ],
+          "species": "drifblim",
+          "gender": "MALE",
+          "level": 54,
+          "nature": "modest",
+          "ability": "flare-boost"
+        },
+        {
+          "moveset": [
+            "shadow-sneak",
+            "sucker-punch",
+            "snatch",
+            "trick"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 12,
+            "atk": 252,
+            "hp": 244
+          },
+          "heldItem": [
+            "iron_ball"
+          ],
+          "species": "banette",
+          "gender": "MALE",
+          "level": 53,
+          "nature": "brave",
+          "ability": "cursed-body"
+        },
+        {
+          "moveset": [
+            "shadow-sneak",
+            "earthquake",
+            "will-o-wisp",
+            "confuse-ray"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 136,
+            "def": 120,
+            "hp": 252
+          },
+          "heldItem": [
+            "sitrus_berry"
+          ],
+          "species": "dusknoir",
+          "gender": "FEMALE",
+          "level": 55,
+          "nature": "adamant",
+          "ability": "pressure"
+        },
+        {
+          "moveset": [
+            "shadow-ball",
+            "energy-ball",
+            "mystical-fire",
+            "dazzling-gleam"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "mismagius",
+          "gender": "FEMALE",
+          "level": 54,
+          "nature": "timid",
+          "ability": "levitate"
+        },
+        {
+          "moveset": [
+            "hex",
+            "frost-breath",
+            "will-o-wisp",
+            "destiny-bond"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "froslass",
+          "gender": "FEMALE",
+          "level": 53,
+          "nature": "timid",
+          "ability": "cursed-body"
+        },
+        {
+          "moveset": [
+            "hex",
+            "sludge-bomb",
+            "focus-blast",
+            "toxic"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "gengar",
+          "gender": "FEMALE",
+          "level": 55,
+          "nature": "timid",
+          "ability": "cursed-body"
+        }
+      ],
+      "identity": "Gym Leader Fannie",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Ghost",
+      "badge": "Relic Badge",
+      "gym_location": "Lavender Valley",
+      "item_spawn": "Ghost Pendant",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Ferruccio": {
+    "region": "sinnoh",
+    "name": "Ferruccio",
+    "data": {
+      "name": {
+        "literal": "Ferruccio"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 5
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 5
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "steel-wing",
+            "stealth-rock",
+            "iron-defense",
+            "taunt"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "def": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "skarmory",
+          "gender": "MALE",
+          "level": 57,
+          "nature": "impish",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "heavy-slam",
+            "earthquake",
+            "ice-fang",
+            "crunch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 180,
+            "atk": 252,
+            "hp": 76
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "steelix",
+          "gender": "FEMALE",
+          "level": 60,
+          "nature": "adamant",
+          "ability": "sheer-force"
+        },
+        {
+          "moveset": [
+            "thunder-bolt",
+            "flash-cannon",
+            "light-screen",
+            "magnet-rise"
+          ],
+          "ivs": {
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 8,
+            "spa": 252,
+            "hp": 248
+          },
+          "heldItem": [
+            "air_balloon"
+          ],
+          "species": "magnezone",
+          "gender": "GENDERLESS",
+          "level": 59,
+          "nature": "quiet",
+          "ability": "analytic"
+        },
+        {
+          "moveset": [
+            "surf",
+            "flash-cannon",
+            "ice-beam",
+            "roar"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 12,
+            "spa": 252,
+            "hp": 244
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "empoleon",
+          "gender": "MALE",
+          "level": 59,
+          "nature": "modest",
+          "ability": "torrent"
+        },
+        {
+          "moveset": [
+            "head-smash",
+            "iron-head",
+            "earthquake",
+            "ice-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "choice_scarf"
+          ],
+          "species": "aggron",
+          "gender": "FEMALE",
+          "level": 58,
+          "nature": "jolly",
+          "ability": "rock-head"
+        },
+        {
+          "moveset": [
+            "heavy-slam",
+            "metal-burst",
+            "roar",
+            "stealth-rock"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 240,
+            "def": 16,
+            "hp": 252
+          },
+          "heldItem": [
+            "lum_berry"
+          ],
+          "species": "bastiodon",
+          "gender": "MALE",
+          "level": 60,
+          "nature": "brave",
+          "ability": "sturdy"
+        }
+      ],
+      "identity": "Gym Leader Ferruccio",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Steel",
+      "badge": "Mine Badge",
+      "gym_location": "Volcanic Crater",
+      "item_spawn": "Steel Spade",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Gardenia": {
+    "region": "sinnoh",
+    "name": "Gardenia",
+    "data": {
+      "name": {
+        "literal": "Gardenia"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "solar-beam",
+            "weather-ball",
+            "sunny-day",
+            "hidden-power"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "sunflora",
+          "gender": "FEMALE",
+          "level": 33,
+          "nature": "modest",
+          "ability": "solar-power"
+        },
+        {
+          "moveset": [
+            "dazzling-gleam",
+            "solar-beam",
+            "growth",
+            "sunny-day"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "spa": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "cherrim",
+          "gender": "MALE",
+          "level": 34,
+          "nature": "modest",
+          "ability": "flower-gift"
+        },
+        {
+          "moveset": [
+            "focus-punch",
+            "leech-seed",
+            "substitute",
+            "spore"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 138,
+            "hp": 120
+          },
+          "heldItem": [
+            "toxic_orb"
+          ],
+          "species": "breloom",
+          "gender": "MALE",
+          "level": 32,
+          "nature": "jolly",
+          "ability": "poison-heal"
+        },
+        {
+          "moveset": [
+            "wood-hammer",
+            "earthquake",
+            "synthesis",
+            "leech-seed"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "def": 60,
+            "atk": 252,
+            "hp": 196
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "torterra",
+          "gender": "MALE",
+          "level": 36,
+          "nature": "adamant",
+          "ability": "overgrow"
+        },
+        {
+          "moveset": [
+            "solar-beam",
+            "sludge-bomb",
+            "grassy-terrain",
+            "sunny-day"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "power_herb"
+          ],
+          "species": "roserade",
+          "gender": "FEMALE",
+          "level": 35,
+          "nature": "modest",
+          "ability": "natural-cure"
+        }
+      ],
+      "identity": "Gym Leader Gardenia",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Grass",
+      "badge": "Forest Badge",
+      "gym_location": "Blooming Valley",
+      "item_spawn": "Grass Aroma",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Marzia": {
+    "region": "sinnoh",
+    "name": "Marzia",
+    "data": {
+      "name": {
+        "literal": "Marzia"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "close-combat",
+            "stone-edge",
+            "sucker-punch",
+            "knock-off"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 6,
+            "atk": 252,
+            "hp": 252
+          },
+          "heldItem": [
+            "expert_belt"
+          ],
+          "species": "hitmontop",
+          "gender": "FEMALE",
+          "level": 43,
+          "nature": "jolly",
+          "ability": "intimidate"
+        },
+        {
+          "moveset": [
+            "mega-horn",
+            "close-combat",
+            "facade",
+            "stone-edge"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "flame_orb"
+          ],
+          "species": "heracross",
+          "gender": "MALE",
+          "level": 42,
+          "nature": "adamant",
+          "ability": "guts"
+        },
+        {
+          "moveset": [
+            "flare-blitz",
+            "close-combat",
+            "thunder-punch",
+            "sword-dance"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "infernape",
+          "gender": "FEMALE",
+          "level": 41,
+          "nature": "adamant",
+          "ability": "blaze"
+        },
+        {
+          "moveset": [
+            "high-jump-kick",
+            "zen-headbutt",
+            "fire-punch",
+            "thunder-punch"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "choice-band"
+          ],
+          "species": "medicham",
+          "gender": "FEMALE",
+          "level": 40,
+          "nature": "adamant",
+          "ability": "pure-power"
+        },
+        {
+          "moveset": [
+            "aura-sphere",
+            "flash-cannon",
+            "water-pulse",
+            "vacuum-wave"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "lucario",
+          "gender": "MALE",
+          "level": 43,
+          "nature": "modest",
+          "ability": "inner-focus"
+        }
+      ],
+      "identity": "Gym Leader Marzia",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Fighting",
+      "badge": "Cobble Badge",
+      "gym_location": "Lush Desert",
+      "item_spawn": "Fighting Bandage",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Omar": {
+    "region": "sinnoh",
+    "name": "Omar",
+    "data": {
+      "name": {
+        "literal": "Omar"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 3
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 3
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "surf",
+            "ice-beam",
+            "scald",
+            "perish-song"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 60,
+            "spd": 196,
+            "hp": 252
+          },
+          "heldItem": [
+            "damp_rock"
+          ],
+          "species": "politoed",
+          "gender": "MALE",
+          "level": 48,
+          "nature": "timid",
+          "ability": "drizzle"
+        },
+        {
+          "moveset": [
+            "hydro-pump",
+            "dragon-pulse",
+            "ice-beam",
+            "rest"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "chesto_berry"
+          ],
+          "species": "kingdra",
+          "gender": "FEMALE",
+          "level": 47,
+          "nature": "timid",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "energy-ball",
+            "hydro-pump",
+            "substitute",
+            "rain-dance"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "spa": 152,
+            "hp": 104
+          },
+          "heldItem": [
+            "sitrus_berry"
+          ],
+          "species": "ludicolo",
+          "gender": "MALE",
+          "level": 47,
+          "nature": "modest",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "crunch",
+            "aqua-tail",
+            "ice-fang",
+            "shell-smash"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "huntail",
+          "gender": "FEMALE",
+          "level": 46,
+          "nature": "jolly",
+          "ability": "swift-swim"
+        },
+        {
+          "moveset": [
+            "waterfall",
+            "stone-edge",
+            "earthquake",
+            "dragon-dance"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 168,
+            "atk": 252,
+            "hp": 88
+          },
+          "heldItem": [
+            "wacan_berry"
+          ],
+          "species": "gyarados",
+          "gender": "FEMALE",
+          "level": 49,
+          "nature": "jolly",
+          "ability": "intimidate"
+        },
+        {
+          "moveset": [
+            "aqua-tail",
+            "brick-break",
+            "crunch",
+            "ice-fang"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 252,
+            "atk": 252,
+            "hp": 6
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "floatzel",
+          "gender": "FEMALE",
+          "level": 45,
+          "nature": "jolly",
+          "ability": "swift-swim"
+        }
+      ],
+      "identity": "Gym Leader Omar",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Water",
+      "badge": "Fen Badge",
+      "gym_location": "Beach",
+      "item_spawn": "Water Mask",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  },
+  "Pedro": {
+    "region": "sinnoh",
+    "name": "Pedro",
+    "data": {
+      "name": {
+        "literal": "Pedro"
+      },
+      "ai": {
+        "type": "rct",
+        "data": {
+          "moveBias": 1,
+          "switchBias": 0.5,
+          "statMoveBias": 1,
+          "itemBias": 0.8,
+          "maxSelectMargin": 0.15
+        }
+      },
+      "battleRules": {
+        "maxItemUses": 2
+      },
+      "bag": [
+        {
+          "item": "cobblemon:full_restore",
+          "quantity": 2
+        }
+      ],
+      "team": [
+        {
+          "moveset": [
+            "stealth-rock",
+            "rock-slide",
+            "protect",
+            "earthquake"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 128,
+            "def": 128,
+            "hp": 252
+          },
+          "heldItem": [
+            "rocky_helmet"
+          ],
+          "species": "onix",
+          "gender": "MALE",
+          "level": 28,
+          "nature": "impish",
+          "ability": "sturdy"
+        },
+        {
+          "moveset": [
+            "power-gem",
+            "flash-cannon",
+            "body-press",
+            "discharge"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spe": 4,
+            "spa": 252,
+            "def": 252
+          },
+          "heldItem": [
+            "focus_sash"
+          ],
+          "species": "probopass",
+          "gender": "MALE",
+          "level": 26,
+          "nature": "modest",
+          "ability": "sand-force"
+        },
+        {
+          "moveset": [
+            "head-smash",
+            "waterfall",
+            "earthquake",
+            "stone-edge"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spd": 128,
+            "atk": 252,
+            "hp": 128
+          },
+          "heldItem": [
+            "leftovers"
+          ],
+          "species": "relicanth",
+          "gender": "MALE",
+          "level": 27,
+          "nature": "adamant",
+          "ability": "rock-head"
+        },
+        {
+          "moveset": [
+            "rock-slide",
+            "iron-tail",
+            "zen-headbutt",
+            "head-smash"
+          ],
+          "ivs": {
+            "spe": 31,
+            "spd": 31,
+            "spa": 31,
+            "def": 31,
+            "atk": 31,
+            "hp": 31
+          },
+          "evs": {
+            "spa": 32,
+            "def": 216,
+            "atk": 252
+          },
+          "heldItem": [
+            "life-orb"
+          ],
+          "species": "rampardos",
+          "gender": "MALE",
+          "level": 30,
+          "nature": "adamant",
+          "ability": "sheer-force"
+        }
+      ],
+      "identity": "Gym Leader Pedro",
+      "battleFormat": "GEN_9_SINGLES"
+    },
+    "location": {
+      "type": "Rock",
+      "badge": "Coal Badge",
+      "gym_location": "Volcanic Peaks",
+      "item_spawn": "Rock Casque",
+      "unique_drop": "",
+      "is_pair": false
+    }
+  }
+}

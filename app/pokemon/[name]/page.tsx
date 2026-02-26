@@ -6,6 +6,9 @@ import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown, Searc
 import Link from 'next/link'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { EvolutionStage } from '@/components/pokemon/EvolutionStage'
+import { AbilityTooltip } from '@/components/common/AbilityTooltip'
+import { NatureTooltip } from '@/components/common/NatureTooltip'
+import { MoveTooltip } from '@/components/common/MoveTooltip'
 import { Pokemon, CobblemonPokemon, EvolutionChain, PokemonForm, PokemonFormData, FormTransformationCondition, PokemonVariety } from '@/types/pokemon'
 import { formatPokemonId, formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
 import { renderStatBar, renderAbilities, renderTypeMatchups, renderTransformationConditions, renderFormTypeBadge, formatStatName } from '@/utils/pokemon-detail-utils'
@@ -359,25 +362,26 @@ export default function PokemonDetailPage() {
         {pokemon.abilities && pokemon.abilities.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {pokemon.abilities.map((ability, index) => (
-              <div 
-                key={index} 
-                onClick={() => handleAbilityClick(ability.ability.name)}
-                className="flex flex-col p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium capitalize text-sm">
-                    {ability.ability.name.replace('-', ' ')}
-                  </span>
-                  {ability.is_hidden && (
-                    <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
-                      {t('pokemon.hidden') || 'Hidden'}
+              <AbilityTooltip key={index} ability={ability.ability}>
+                <div 
+                  onClick={() => handleAbilityClick(ability.ability.name)}
+                  className="flex flex-col p-4 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-medium capitalize text-sm">
+                      {ability.ability.name.replace('-', ' ')}
                     </span>
-                  )}
+                    {ability.is_hidden && (
+                      <span className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">
+                        {t('pokemon.hidden') || 'Hidden'}
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    Slot {ability.slot}
+                  </div>
                 </div>
-                <div className="text-xs text-gray-500">
-                  Slot {ability.slot}
-                </div>
-              </div>
+              </AbilityTooltip>
             ))}
           </div>
         ) : (
@@ -734,14 +738,15 @@ export default function PokemonDetailPage() {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {filteredMoves.levelUp.map((move, index) => (
-                            <div 
-                              key={index} 
-                              onClick={() => handleMoveClick(move.name)}
-                              className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-                            >
-                              <span className="font-medium capitalize text-sm">{move.name}</span>
-                              <span className="text-sm font-semibold text-blue-600">Lv. {move.level}</span>
-                            </div>
+                            <MoveTooltip key={index} move={{ name: move.name }}>
+                              <div 
+                                onClick={() => handleMoveClick(move.name)}
+                                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                              >
+                                <span className="font-medium capitalize text-sm">{move.name}</span>
+                                <span className="text-sm font-semibold text-blue-600">Lv. {move.level}</span>
+                              </div>
+                            </MoveTooltip>
                           ))}
                         </div>
                       </div>
@@ -756,13 +761,14 @@ export default function PokemonDetailPage() {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {filteredMoves.tm.map((move, index) => (
-                            <div 
-                              key={index} 
-                              onClick={() => handleMoveClick(move.name)}
-                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-                            >
-                              <span className="font-medium capitalize text-sm">{move.name}</span>
-                            </div>
+                            <MoveTooltip key={index} move={{ name: move.name }}>
+                              <div 
+                                onClick={() => handleMoveClick(move.name)}
+                                className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                              >
+                                <span className="font-medium capitalize text-sm">{move.name}</span>
+                              </div>
+                            </MoveTooltip>
                           ))}
                         </div>
                       </div>
@@ -777,13 +783,14 @@ export default function PokemonDetailPage() {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {filteredMoves.egg.map((move, index) => (
-                            <div 
-                              key={index} 
-                              onClick={() => handleMoveClick(move.name)}
-                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-                            >
-                              <span className="font-medium capitalize text-sm">{move.name}</span>
-                            </div>
+                            <MoveTooltip key={index} move={{ name: move.name }}>
+                              <div 
+                                onClick={() => handleMoveClick(move.name)}
+                                className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                              >
+                                <span className="font-medium capitalize text-sm">{move.name}</span>
+                              </div>
+                            </MoveTooltip>
                           ))}
                         </div>
                       </div>
@@ -798,13 +805,14 @@ export default function PokemonDetailPage() {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {filteredMoves.tutor.map((move, index) => (
-                            <div 
-                              key={index} 
-                              onClick={() => handleMoveClick(move.name)}
-                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-                            >
-                              <span className="font-medium capitalize text-sm">{move.name}</span>
-                            </div>
+                            <MoveTooltip key={index} move={{ name: move.name }}>
+                              <div 
+                                onClick={() => handleMoveClick(move.name)}
+                                className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                              >
+                                <span className="font-medium capitalize text-sm">{move.name}</span>
+                              </div>
+                            </MoveTooltip>
                           ))}
                         </div>
                       </div>
@@ -819,13 +827,14 @@ export default function PokemonDetailPage() {
                         </h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                           {filteredMoves.other.map((move, index) => (
-                            <div 
-                              key={index} 
-                              onClick={() => handleMoveClick(move.name)}
-                              className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
-                            >
-                              <span className="font-medium capitalize text-sm">{move.name}</span>
-                            </div>
+                            <MoveTooltip key={index} move={{ name: move.name }}>
+                              <div 
+                                onClick={() => handleMoveClick(move.name)}
+                                className="block p-3 bg-gray-50 rounded-lg border hover:bg-gray-100 hover:shadow-md transition-all cursor-pointer"
+                              >
+                                <span className="font-medium capitalize text-sm">{move.name}</span>
+                              </div>
+                            </MoveTooltip>
                           ))}
                         </div>
                       </div>

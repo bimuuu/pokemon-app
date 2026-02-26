@@ -18,3 +18,9 @@ export {
   TableCell,
   TableCaption,
 } from './table'
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './tooltip'

@@ -1,23 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Trophy, Users, MapPin, Star, Shield, Zap } from 'lucide-react'
+import { Trophy, Users, MapPin } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
-import { SlidePanel } from '@/components/ui/SlidePanel'
-import TrainerSlidePanel from '@/components/modals/TrainerSlidePanel'
 import { Trainer, Pokemon } from '@/types/pokemon'
-import { fetchTrainerData, fetchPokemonByName } from '@/lib/api'
+import { fetchTrainersByType } from '@/lib/api'
 import { REGIONS } from '@/lib/constants'
-import { REGION_TRAINERS } from '@/lib/trainers'
-import { formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
 
 export default function GymsPage() {
   const [selectedRegion, setSelectedRegion] = useState('kanto')
   const [trainers, setTrainers] = useState<Trainer[]>([])
-  const [selectedTrainer, setSelectedTrainer] = useState<Trainer | null>(null)
-  const [trainerPokemon, setTrainerPokemon] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
-  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     loadRegionTrainers()
@@ -26,13 +19,72 @@ export default function GymsPage() {
   const loadRegionTrainers = async () => {
     setLoading(true)
     try {
-      const trainerData = await Promise.all(
-        REGION_TRAINERS[selectedRegion as keyof typeof REGION_TRAINERS].map(async (trainerInfo: any) => {
-          const data = await fetchTrainerData(selectedRegion, trainerInfo.file)
-          return data ? { ...data, type: trainerInfo.type } : null
-        })
-      )
-      setTrainers(trainerData.filter((t: any) => t !== null) as Trainer[])
+      // Load all trainer types from consolidated files
+      const [gymLeadersData, eliteFourData, championsData] = await Promise.all([
+        fetchTrainersByType('gym_leaders'),
+        fetchTrainersByType('elite_four'),
+        fetchTrainersByType('champions')
+      ])
+
+      // Filter trainers by selected region and format data
+      const allTrainers: any[] = []
+      
+      // Process gym leaders
+      Object.entries(gymLeadersData).forEach(([key, trainer]: [string, any]) => {
+        if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
+          allTrainers.push({
+            ...trainer.data,
+            id: key,
+            location: trainer.location,
+            type: 'Gym Leader'
+          })
+        }
+      })
+
+      // Process elite four
+      Object.entries(eliteFourData).forEach(([key, trainer]: [string, any]) => {
+        if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
+          allTrainers.push({
+            ...trainer.data,
+            id: key,
+            location: {
+              gym_location: `${selectedRegion.charAt(0).toUpperCase() + selectedRegion.slice(1)} Elite Four Tower`,
+              type: "Elite Four",
+              badge: "Elite Four Medal"
+            },
+            type: 'Elite Four'
+          })
+        }
+      })
+
+      // Process champions
+      Object.entries(championsData).forEach(([key, trainer]: [string, any]) => {
+        if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
+          allTrainers.push({
+            ...trainer.data,
+            id: key,
+            location: {
+              gym_location: `${selectedRegion.charAt(0).toUpperCase() + selectedRegion.slice(1)} Championship Hall`,
+              type: "Champion",
+              badge: "Champion Trophy"
+            },
+            type: 'Champion'
+          })
+        }
+      })
+
+      // Calculate average level for each trainer and sort
+      const trainersWithAvgLevel = allTrainers.map(trainer => ({
+        ...trainer,
+        avgLevel: trainer.data && trainer.data.team && trainer.data.team.length > 0 
+          ? trainer.data.team.reduce((sum: number, pokemon: any) => sum + pokemon.level, 0) / trainer.data.team.length
+          : 0
+      }))
+
+      // Sort by average level (ascending)
+      trainersWithAvgLevel.sort((a, b) => a.avgLevel - b.avgLevel)
+
+      setTrainers(trainersWithAvgLevel)
     } catch (error) {
       console.error('Error loading trainers:', error)
     } finally {
@@ -40,85 +92,9 @@ export default function GymsPage() {
     }
   }
 
-  const loadTrainerDetails = async (trainer: Trainer) => {
-    setSelectedTrainer(trainer)
-    setShowModal(true)
-    try {
-      const pokemonData = await Promise.all(
-        trainer.team.map(async (teamPokemon: any) => {
-          const pokemon = await fetchPokemonByName(teamPokemon.species)
-          if (pokemon) {
-            return {
-              ...pokemon,
-              level: teamPokemon.level,
-              moveset: teamPokemon.moveset,
-              ivs: teamPokemon.ivs,
-              evs: teamPokemon.evs,
-              ability: teamPokemon.ability,
-              nature: teamPokemon.nature,
-              heldItem: teamPokemon.heldItem,
-              gender: teamPokemon.gender
-            }
-          }
-          return null
-        })
-      )
-      setTrainerPokemon(pokemonData.filter((p: any): p is NonNullable<typeof p> => p !== null))
-    } catch (error) {
-      console.error('Error loading trainer Pokemon:', error)
-    }
+  const handleTrainerClick = (trainerId: string) => {
+    window.open(`/gyms/${trainerId}`, '_self')
   }
-
-  const closeModal = () => {
-    setShowModal(false)
-    setSelectedTrainer(null)
-    setTrainerPokemon([])
-  }
-
-  const analyzeMatchup = () => {
-    if (!selectedTrainer || trainerPokemon.length === 0) return null
-
-    const allTypes = trainerPokemon.flatMap((p: any) => p.types.map((t: any) => t.type.name))
-    const typeCount: Record<string, number> = {}
-    
-    allTypes.forEach((type: string) => {
-      typeCount[type] = (typeCount[type] || 0) + 1
-    })
-
-    const allWeaknesses: Record<string, number> = {}
-    const allStrengths: Record<string, number> = {}
-    
-    trainerPokemon.forEach((pokemon: any) => {
-      const weaknesses = calculateTypeWeaknesses(pokemon.types.map((t: any) => t.type.name))
-      const strengths = calculateTypeStrengths(pokemon.types.map((t: any) => t.type.name))
-      
-      Object.entries(weaknesses).forEach(([type, multiplier]) => {
-        if (multiplier > 1) {
-          allWeaknesses[type] = (allWeaknesses[type] || 0) + multiplier
-        }
-      })
-      
-      Object.entries(strengths).forEach(([type, multiplier]) => {
-        if (multiplier > 1) {
-          allStrengths[type] = Math.max(allStrengths[type] || 0, multiplier)
-        }
-      })
-    })
-
-    return {
-      weaknesses: Object.entries(allWeaknesses)
-        .sort(([, a], [, b]) => b - a)
-        .slice(0, 5)
-        .map(([type]) => type),
-      strengths: Object.entries(allStrengths)
-        .sort(([, a], [, b]) => b - a)
-        .slice(0, 5)
-        .map(([type]) => type),
-      averageLevel: Math.round(trainerPokemon.reduce((sum, p) => sum + (p as any).level, 0) / trainerPokemon.length)
-    }
-  }
-
-  const matchup = analyzeMatchup()
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
@@ -177,7 +153,7 @@ export default function GymsPage() {
                     {categoryTrainers.map((trainer, index) => (
                       <button
                         key={index}
-                        onClick={() => loadTrainerDetails(trainer)}
+                        onClick={() => handleTrainerClick((trainer as any).id)}
                         className="p-4 border rounded-lg text-left hover:bg-gray-50 transition-colors hover:shadow-md"
                       >
                         <div className="flex items-center justify-between mb-2">
@@ -192,10 +168,33 @@ export default function GymsPage() {
                         </div>
                         <div className="flex items-center text-sm text-gray-600 mb-2">
                           <Users className="w-4 h-4 mr-1" />
-                          {trainer.team.length} Pokemon
+                          {(trainer as any).data && (trainer as any).data.team ? (trainer as any).data.team.length : 0} Pokemon
                         </div>
+                        {(trainer as any).location && (
+                          <div className="flex items-center text-sm text-gray-600 mb-2">
+                            <MapPin className="w-4 h-4 mr-1" />
+                            {(trainer as any).location.gym_location || (trainer as any).location.type}
+                          </div>
+                        )}
+                        {(trainer as any).location && (trainer as any).location.badge && (trainer as any).location.badge.trim() !== "" && (
+                          <div className="flex items-center text-sm text-gray-600 mb-2">
+                            <Trophy className="w-4 h-4 mr-1" />
+                            <span className="font-medium">Reward:</span>
+                            <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${
+                              (trainer as any).type === 'Gym Leader' ? 'bg-slate-700 text-white border border-slate-800' :
+                              (trainer as any).type === 'Elite Four' ? 'bg-purple-700 text-white border border-purple-800' :
+                              (trainer as any).type === 'Champion' ? 'bg-amber-700 text-white border border-amber-800' :
+                              'bg-gray-700 text-white'
+                            }`}>
+                              {(trainer as any).location.badge}
+                            </span>
+                          </div>
+                        )}
                         <div className="text-xs text-gray-500">
-                          Levels: {Math.min(...trainer.team.map(p => p.level))} - {Math.max(...trainer.team.map(p => p.level))}
+                          Levels: {(trainer as any).data && (trainer as any).data.team && (trainer as any).data.team.length > 0 
+                            ? `${Math.min(...(trainer as any).data.team.map((p: any) => p.level))} - ${Math.max(...(trainer as any).data.team.map((p: any) => p.level))}`
+                            : 'N/A'
+                          }
                         </div>
                       </button>
                     ))}
@@ -206,19 +205,6 @@ export default function GymsPage() {
           </div>
         )}
       </div>
-
-      <SlidePanel 
-        isOpen={showModal} 
-        onClose={closeModal}
-        width="w-[600px]"
-      >
-        <TrainerSlidePanel
-          trainer={selectedTrainer}
-          trainerPokemon={trainerPokemon}
-          matchup={matchup}
-          onClose={closeModal}
-        />
-      </SlidePanel>
     </div>
   )
 }

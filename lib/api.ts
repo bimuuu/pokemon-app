@@ -56,7 +56,7 @@ export const fetchCobblemonData = cache(async (): Promise<CobblemonPokemon[]> =>
 
 export const fetchTrainerData = cache(async (region: string, trainerName: string) => {
   try {
-    const response = await fetch(`/data/poketrainer/${region}/${trainerName}`, {
+    const response = await fetch(`/data/trainers/${trainerName}`, {
       next: { 
         revalidate: 86400, // Cache for 24 hours
         tags: ['trainer-data', `trainer-${region}-${trainerName}`]
@@ -69,6 +69,25 @@ export const fetchTrainerData = cache(async (region: string, trainerName: string
   } catch (error) {
     console.error(getServerTranslation('errors.errorFetchingTrainerData'), error)
     return null
+  }
+})
+
+export const fetchTrainersByType = cache(async (trainerType: 'gym_leaders' | 'elite_four' | 'champions') => {
+  try {
+    const response = await fetch(`/data/trainers/${trainerType}.json`, {
+      next: { 
+        revalidate: 86400, // Cache for 24 hours
+        tags: ['trainer-data', `trainers-${trainerType}`]
+      }
+    })
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${trainerType}`)
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error(`Error fetching ${trainerType}:`, error)
+    return {}
   }
 })
 

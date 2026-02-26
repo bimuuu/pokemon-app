@@ -1,6 +1,7 @@
 import { Lightbulb, BrainCircuit, Target, AlertTriangle, Shield, Users, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
 import { TypeBadge, RarityBadge } from '@/components/ui'
+import { LocationTooltip } from '@/components/common'
 import { formatPokemonName } from '@/lib/utils'
 
 interface RecommendedPokemon {
@@ -84,30 +85,31 @@ export function TeamRecommendationCard({
           {/* Pokemon Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
             {recommendedPokemon.map((rec, index) => (
-              <Link 
-                key={index} 
-                href={`/pokemon/${rec.pokemon.name}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center block hover:scale-105 transition-transform"
-              >
-                <div className="bg-gray-700 rounded-lg p-3 border border-gray-600 hover:shadow-md transition-shadow min-w-[80px] cursor-pointer">
-                  <img 
-                    src={rec.pokemon.sprites.front_default}
-                    alt={rec.pokemon.name}
-                    className="w-12 h-12 mx-auto mb-2 object-contain"
-                  />
-                  <div className="text-xs font-medium text-gray-200 leading-tight min-h-[2.5em] flex items-center justify-center mb-2">
-                    {formatPokemonName(rec.pokemon.name)}
-                  </div>
-                  {/* Rarity Badge */}
-                  {rec.rarity && (
-                    <div className="flex justify-center">
-                      <RarityBadge rarity={rec.rarity} />
+              <LocationTooltip key={index} pokemonName={rec.pokemon.name}>
+                <Link 
+                  href={`/pokemon/${rec.pokemon.name}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center block hover:scale-105 transition-transform"
+                >
+                  <div className="bg-gray-700 rounded-lg p-3 border border-gray-600 hover:shadow-md transition-shadow min-w-[80px] cursor-pointer">
+                    <img 
+                      src={rec.pokemon.sprites.front_default}
+                      alt={rec.pokemon.name}
+                      className="w-12 h-12 mx-auto mb-2 object-contain"
+                    />
+                    <div className="text-xs font-medium text-gray-200 leading-tight min-h-[2.5em] flex items-center justify-center mb-2">
+                      {formatPokemonName(rec.pokemon.name)}
                     </div>
-                  )}
-                </div>
-              </Link>
+                    {/* Rarity Badge */}
+                    {rec.rarity && (
+                      <div className="flex justify-center">
+                        <RarityBadge rarity={rec.rarity} />
+                      </div>
+                    )}
+                  </div>
+                </Link>
+              </LocationTooltip>
             ))}
           </div>
         </div>

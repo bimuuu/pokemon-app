@@ -1,5 +1,6 @@
 import React from 'react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
+import { AbilityTooltip } from '@/components/common/AbilityTooltip'
 import { PokemonVariety, FormTransformationCondition } from '@/types/pokemon'
 import { calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
 
@@ -50,19 +51,21 @@ export const renderAbilities = (abilities: any[], onAbilityClick: (name: string)
   return (
     <div className="space-y-1">
       {abilities.map(ability => (
-        <div key={ability.ability.name} className="flex items-center justify-between text-xs">
-          <span 
-            className="font-medium capitalize hover:text-blue-600 cursor-pointer"
-            onClick={() => onAbilityClick(ability.ability.name)}
-          >
-            {ability.ability.name.replace('-', ' ')}
-          </span>
-          {ability.is_hidden && (
-            <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
-              {t('pokemon.hidden') || 'Hidden'}
+        <AbilityTooltip key={ability.ability.name} ability={ability.ability}>
+          <div className="flex items-center justify-between text-xs">
+            <span 
+              className="font-medium capitalize hover:text-blue-600 cursor-pointer"
+              onClick={() => onAbilityClick(ability.ability.name)}
+            >
+              {ability.ability.name.replace('-', ' ')}
             </span>
-          )}
-        </div>
+            {ability.is_hidden && (
+              <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
+                {t('pokemon.hidden') || 'Hidden'}
+              </span>
+            )}
+          </div>
+        </AbilityTooltip>
       ))}
     </div>
   )

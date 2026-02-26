@@ -27,12 +27,13 @@ export function SlidePanel({
 
     if (isOpen) {
       document.addEventListener('keydown', handleEscKey)
-      document.body.style.overflow = 'hidden'
+      // Use CSS class instead of inline styles
+      document.body.classList.add('slide-panel-open')
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscKey)
-      document.body.style.overflow = 'unset'
+      document.body.classList.remove('slide-panel-open')
     }
   }, [isOpen, onClose])
 
@@ -42,19 +43,18 @@ export function SlidePanel({
     <>
       {/* Light overlay */}
       <div 
-        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300"
+        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 slide-panel-overlay"
         onClick={onClose}
       />
       
       {/* Slide Panel */}
       <div className={`
         fixed top-0 h-full bg-white shadow-2xl 
-        transform transition-all duration-300 ease-in-out
-        z-50 overflow-y-auto
+        z-50 overflow-visible slide-panel-content
         ${width}
         ${position === 'right' 
-          ? isOpen ? 'translate-x-0 right-0' : 'translate-x-full right-0'
-          : isOpen ? 'translate-x-0 left-0' : '-translate-x-full left-0'
+          ? `right-0 slide-in-right`
+          : `left-0 slide-in-left`
         }
       `}>
         {/* Header with close button */}
@@ -69,7 +69,7 @@ export function SlidePanel({
         </div>
         
         {/* Content */}
-        <div className="p-4">
+        <div className="p-4 overflow-y-auto h-[calc(100%-80px)]">
           {children}
         </div>
       </div>

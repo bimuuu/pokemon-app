@@ -1,10 +1,13 @@
 'use client'
 
 import { useState, memo, useMemo, useCallback } from 'react'
-import { Trophy, Shield, Zap, Star, Activity, ChevronDown, ChevronUp } from 'lucide-react'
+import { Trophy, Shield, Zap, Star, Activity, ChevronDown, ChevronUp, MapPin } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { Badge } from '@/components/ui/badge'
 import { LazyTeamRecommendation } from '@/components/team/LazyTeamRecommendation'
+import { AbilityTooltip } from '@/components/common/AbilityTooltip'
+import { NatureTooltip } from '@/components/common/NatureTooltip'
+import { MoveTooltip } from '@/components/common/MoveTooltip'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { formatPokemonName } from '@/lib/utils'
 
@@ -54,7 +57,7 @@ interface ExtendedPokemon extends Pokemon {
   gender?: string
 }
 
-// Memoized Pokemon Card Component
+// Memoized Pokemon Card Component with better comparison
 const PokemonCard = memo(({ pokemon }: { pokemon: ExtendedPokemon }) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -73,6 +76,7 @@ const PokemonCard = memo(({ pokemon }: { pokemon: ExtendedPokemon }) => {
     window.open(`/natures?search=${encodeURIComponent(formattedNature)}`, '_blank')
   }, [])
 
+  // Memoize expensive calculations
   const formattedMoves = useMemo(() => 
     pokemon.moveset?.map(move => 
       move.replace(/_/g, ' ').replace(/-/g, ' ').replace(/([a-z])([A-Z])/g, '$1 $2')
@@ -80,8 +84,14 @@ const PokemonCard = memo(({ pokemon }: { pokemon: ExtendedPokemon }) => {
     [pokemon.moveset]
   )
 
+  // Create stable key for memoization
+  const pokemonKey = useMemo(() => 
+    `${pokemon.name}-${pokemon.level}-${pokemon.ability}-${pokemon.nature}`,
+    [pokemon.name, pokemon.level, pokemon.ability, pokemon.nature]
+  )
+
   return (
-    <div className="border border-gray-200 rounded-lg p-4 space-y-3">
+    <div className="border border-gray-200 rounded-lg p-4 space-y-3 pokemon-card">
       {/* Pokemon Header */}
       <div className="flex items-start space-x-3">
         <img 
@@ -128,27 +138,31 @@ const PokemonCard = memo(({ pokemon }: { pokemon: ExtendedPokemon }) => {
             {pokemon.ability && (
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Ability:</span>
-                <button
-                  onClick={() => handleAbilityClick(pokemon.ability!)}
-                  className="cursor-pointer transition-transform hover:scale-105"
-                >
-                  <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-2 py-1 text-xs">
-                    {pokemon.ability.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                  </Badge>
-                </button>
+                <AbilityTooltip ability={{ name: pokemon.ability }}>
+                  <button
+                    onClick={() => handleAbilityClick(pokemon.ability!)}
+                    className="cursor-pointer transition-transform hover:scale-105"
+                  >
+                    <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-2 py-1 text-xs">
+                      {pokemon.ability.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    </Badge>
+                  </button>
+                </AbilityTooltip>
               </div>
             )}
             {pokemon.nature && (
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">Nature:</span>
-                <button
-                  onClick={() => handleNatureClick(pokemon.nature!)}
-                  className="cursor-pointer transition-transform hover:scale-105"
-                >
-                  <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-2 py-1 text-xs">
-                    {pokemon.nature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
-                  </Badge>
-                </button>
+                <NatureTooltip nature={pokemon.nature}>
+                  <button
+                    onClick={() => handleNatureClick(pokemon.nature!)}
+                    className="cursor-pointer transition-transform hover:scale-105"
+                  >
+                    <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-2 py-1 text-xs">
+                      {pokemon.nature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                    </Badge>
+                  </button>
+                </NatureTooltip>
               </div>
             )}
             {pokemon.heldItem && pokemon.heldItem.length > 0 && (
@@ -185,13 +199,14 @@ const PokemonCard = memo(({ pokemon }: { pokemon: ExtendedPokemon }) => {
               </div>
               <div className="flex flex-wrap gap-1">
                 {formattedMoves.map((move, moveIndex) => (
-                  <button
-                    key={moveIndex}
-                    onClick={() => handleMoveClick(pokemon.moveset![moveIndex])}
-                    className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-colors cursor-pointer"
-                  >
-                    {move}
-                  </button>
+                  <MoveTooltip key={moveIndex} move={{ name: pokemon.moveset![moveIndex] }}>
+                    <button
+                      onClick={() => handleMoveClick(pokemon.moveset![moveIndex])}
+                      className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-colors cursor-pointer"
+                    >
+                      {move}
+                    </button>
+                  </MoveTooltip>
                 ))}
               </div>
             </div>
@@ -244,7 +259,7 @@ export default function TrainerSlidePanel({ trainer, trainerPokemon, matchup, on
     <div className="space-y-6">
       {/* Trainer Header */}
       <div className="border-b pb-4">
-        <div className="flex items-center overflow-hidden">
+        <div className="flex items-center overflow-hidden mb-3">
           <h2 className="text-xl font-bold flex items-center">
             <Trophy className="w-5 h-5 mr-2 text-yellow-500" />
             {trainer.name.literal}
@@ -253,6 +268,26 @@ export default function TrainerSlidePanel({ trainer, trainerPokemon, matchup, on
             {(trainer as any).type}
           </span>
         </div>
+        {(trainer as any).location && (
+          <div className="flex items-center text-sm text-gray-600 mb-2">
+            <MapPin className="w-4 h-4 mr-1" />
+            <span className="font-medium">{(trainer as any).location.gym_location || (trainer as any).location.type}</span>
+          </div>
+        )}
+        {(trainer as any).location && (trainer as any).location.badge && (trainer as any).location.badge.trim() !== "" && (
+          <div className="flex items-center text-sm text-gray-600">
+            <Trophy className="w-4 h-4 mr-1" />
+            <span className="font-medium">Reward:</span>
+            <span className={`ml-2 px-2 py-1 rounded-full text-xs font-medium ${
+              (trainer as any).type === 'Gym Leader' ? 'bg-slate-700 text-white border border-slate-800' :
+              (trainer as any).type === 'Elite Four' ? 'bg-purple-700 text-white border border-purple-800' :
+              (trainer as any).type === 'Champion' ? 'bg-amber-700 text-white border border-amber-800' :
+              'bg-gray-700 text-white'
+            }`}>
+              {(trainer as any).location.badge}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Team Section */}
@@ -264,7 +299,7 @@ export default function TrainerSlidePanel({ trainer, trainerPokemon, matchup, on
         
         <div className="space-y-3">
           {visiblePokemon.map((pokemon, index) => (
-            <PokemonCard key={index} pokemon={pokemon} />
+            <PokemonCard key={`${pokemon.name}-${pokemon.level}-${pokemon.ability}-${pokemon.nature}`} pokemon={pokemon} />
           ))}
           
           {/* Load More Button */}
