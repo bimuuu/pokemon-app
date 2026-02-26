@@ -1247,6 +1247,69 @@ export async function fetchAllItems(limit: number = 20, offset: number = 0) {
 }
 
 /**
+ * Fetches only holdable and holdable-active items
+ */
+export async function fetchHoldableItems() {
+  try {
+    // Fetch all items first with a reasonable limit
+    const allItemsResponse = await fetch(`https://pokeapi.co/api/v2/item?limit=2000`, {
+      next: { revalidate: 3600 } // Cache for 1 hour
+    })
+    if (!allItemsResponse.ok) {
+      throw new Error(`Failed to fetch items: ${allItemsResponse.statusText}`)
+    }
+    const allItemsData = await allItemsResponse.json()
+    
+    // Filter for holdable items by checking their attributes
+    const holdableItems = []
+    const batchSize = 10 // Process items in batches to avoid overwhelming the API
+    
+    for (let i = 0; i < allItemsData.results.length; i += batchSize) {
+      const batch = allItemsData.results.slice(i, i + batchSize)
+      
+      const batchPromises = batch.map(async (item: any) => {
+        try {
+          const itemDetailResponse = await fetch(item.url, {
+            next: { revalidate: 3600 } // Cache for 1 hour
+          })
+          if (itemDetailResponse.ok) {
+            const itemDetail = await itemDetailResponse.json()
+            const attributes = itemDetail.attributes?.map((attr: any) => attr.name) || []
+            
+            if (attributes.includes('holdable') || attributes.includes('holdable-active')) {
+              return itemDetail
+            }
+          }
+        } catch (error) {
+          console.warn(`Failed to fetch item details for ${item.name}:`, error)
+        }
+        return null
+      })
+      
+      const batchResults = await Promise.all(batchPromises)
+      holdableItems.push(...batchResults.filter(Boolean))
+      
+      // Add a small delay between batches to be respectful to the API
+      if (i + batchSize < allItemsData.results.length) {
+        await new Promise(resolve => setTimeout(resolve, 100))
+      }
+    }
+    
+    return {
+      results: holdableItems,
+      count: holdableItems.length
+    }
+  } catch (error) {
+    console.error('Error fetching holdable items:', error)
+    // Return empty result as fallback
+    return {
+      results: [],
+      count: 0
+    }
+  }
+}
+
+/**
  * Fetches items by category
  */
 export async function fetchItemsByCategory(categoryId: number, limit: number = 20, offset: number = 0) {

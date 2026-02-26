@@ -34,7 +34,8 @@ export default function GymsPage() {
         if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
           allTrainers.push({
             ...trainer.data,
-            id: key,
+            id: `${selectedRegion}_${key}`, // Region-prefixed ID for navigation
+            originalId: key, // Keep original ID for reference
             location: trainer.location,
             region: trainer.region,
             type: 'Gym Leader'
@@ -47,7 +48,8 @@ export default function GymsPage() {
         if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
           allTrainers.push({
             ...trainer.data,
-            id: key,
+            id: `${selectedRegion}_${key}`, // Region-prefixed ID for navigation
+            originalId: key, // Keep original ID for reference
             location: {
               gym_location: `${selectedRegion.charAt(0).toUpperCase() + selectedRegion.slice(1)} Elite Four Tower`,
               type: "Elite Four",
@@ -64,7 +66,8 @@ export default function GymsPage() {
         if (trainer.region === selectedRegion && trainer.data && trainer.data.team) {
           allTrainers.push({
             ...trainer.data,
-            id: key,
+            id: `${selectedRegion}_${key}`, // Region-prefixed ID for navigation
+            originalId: key, // Keep original ID for reference
             location: {
               gym_location: `${trainer.region.charAt(0).toUpperCase() + trainer.region.slice(1)} Championship Hall`,
               type: "Champion",

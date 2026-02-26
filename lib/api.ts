@@ -16,6 +16,7 @@ export {
   fetchItemById,
   fetchAllItems,
   fetchItemsByCategory,
+  fetchHoldableItems,
   
   // Nature API functions
   fetchNatureByName,

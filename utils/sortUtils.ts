@@ -1,5 +1,6 @@
 export type SortField = 'name' | 'power' | 'accuracy' | 'pp' | 'priority'
 export type AbilitySortField = 'name' | 'generation'
+export type ItemSortField = 'name' | 'category'
 export type SortOrder = 'asc' | 'desc'
 
 export class SortUtils {
@@ -108,6 +109,59 @@ export class SortUtils {
     newField: AbilitySortField,
     currentOrder: SortOrder
   ): { field: AbilitySortField; order: SortOrder } {
+    if (currentField === newField) {
+      return {
+        field: newField,
+        order: currentOrder === 'asc' ? 'desc' : 'asc'
+      }
+    } else {
+      return {
+        field: newField,
+        order: 'asc'
+      }
+    }
+  }
+
+  static sortItems<T extends Record<string, any>>(
+    items: T[], 
+    sortBy: ItemSortField, 
+    sortOrder: SortOrder
+  ): T[] {
+    return [...items].sort((a, b) => {
+      let aValue: any
+      let bValue: any
+
+      switch (sortBy) {
+        case 'name':
+          aValue = a.name?.toLowerCase() || ''
+          bValue = b.name?.toLowerCase() || ''
+          break
+        case 'category':
+          aValue = a.category?.name?.toLowerCase() || ''
+          bValue = b.category?.name?.toLowerCase() || ''
+          break
+        default:
+          aValue = a.name?.toLowerCase() || ''
+          bValue = b.name?.toLowerCase() || ''
+      }
+
+      if (typeof aValue === 'string') {
+        return sortOrder === 'asc' 
+          ? aValue.localeCompare(bValue)
+          : bValue.localeCompare(aValue)
+      } else {
+        return sortOrder === 'asc' 
+          ? aValue - bValue
+          : bValue - aValue
+      }
+    })
+  }
+
+  static handleItemSort<T>(
+    currentField: ItemSortField,
+    newField: ItemSortField,
+    currentOrder: SortOrder
+  ): { field: ItemSortField; order: SortOrder } {
     if (currentField === newField) {
       return {
         field: newField,

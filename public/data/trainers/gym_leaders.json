@@ -249,7 +249,7 @@
           "moveset": [
             "fly",
             "play-rough",
-            "flame-thrower",
+            "flamethrower",
             "ice-beam"
           ],
           "ivs": {
@@ -366,7 +366,7 @@
         },
         {
           "moveset": [
-            "extra-sensory",
+            "extrasensory",
             "shadow-ball",
             "hyper-voice",
             "air-cutter"
@@ -391,7 +391,7 @@
           "gender": "MALE",
           "level": 54,
           "nature": "naughty",
-          "ability": "tintedlens"
+          "ability": "tinted-lens"
         }
       ],
       "battleFormat": "GEN_9_SINGLES"
@@ -464,8 +464,8 @@
         {
           "moveset": [
             "thunder-fang",
-            "trail-blaze",
-            "flame-thrower",
+            "trailblaze",
+            "flamethrower",
             "sludge-bomb"
           ],
           "ivs": {
@@ -525,7 +525,7 @@
         {
           "moveset": [
             "smart-strike",
-            "flame-thrower",
+            "flamethrower",
             "poison-jab",
             "protect"
           ],
@@ -1021,7 +1021,7 @@
             "rock-throw",
             "bulldoze",
             "thunder-punch",
-            "flame-thrower"
+            "flamethrower"
           ],
           "ivs": {
             "spe": 31,
@@ -1106,7 +1106,7 @@
         {
           "moveset": [
             "power-gem",
-            "thunder-bolt",
+            "thunder",
             "earth-power",
             "tera-blast"
           ],
@@ -1360,7 +1360,7 @@
         },
         {
           "moveset": [
-            "moon-blast",
+            "moonblast",
             "ice-beam",
             "bulldoze",
             "grass-knot"
@@ -1423,7 +1423,7 @@
           "moveset": [
             "life-dew",
             "misty-terrain",
-            "moon-blast",
+            "moonblast",
             "shadow-ball"
           ],
           "ivs": {
@@ -1454,7 +1454,7 @@
         {
           "moveset": [
             "earth-power",
-            "extra-sensory",
+            "extrasensory",
             "substitute",
             "dazzling-gleam"
           ],
@@ -1552,7 +1552,7 @@
         {
           "moveset": [
             "thunder-punch",
-            "trail-blaze",
+            "trailblaze",
             "gyro-ball",
             "poison-jab"
           ],
@@ -1581,7 +1581,7 @@
         {
           "moveset": [
             "spark",
-            "trail-blaze",
+            "trailblaze",
             "high-horsepower",
             "smart-strike"
           ],
@@ -1610,8 +1610,8 @@
         {
           "moveset": [
             "shock-wave",
-            "thunder-bolt",
-            "flame-thrower",
+            "thunder",
+            "flamethrower",
             "iron-tail"
           ],
           "ivs": {
@@ -1642,7 +1642,7 @@
         {
           "moveset": [
             "ice-punch",
-            "thunder-bolt",
+            "thunder",
             "power-gem",
             "dazzling-gleam"
           ],
@@ -1739,7 +1739,7 @@
         {
           "moveset": [
             "avalanche",
-            "ice-crash",
+            "icicle-crash",
             "weather-ball",
             "astonish"
           ],
@@ -1947,7 +1947,7 @@
           "gender": "MALE",
           "level": 43,
           "nature": "brave",
-          "ability": "keeneye"
+          "ability": "keen-eye"
         },
         {
           "moveset": [
@@ -2137,7 +2137,7 @@
         {
           "moveset": [
             "double-kick",
-            "thunder-bolt",
+            "thunder",
             "shadow-ball",
             "dig"
           ],
@@ -2264,7 +2264,7 @@
           "moveset": [
             "vital-throw",
             "ice-punch",
-            "flying",
+            "fly",
             "stomping-tantrum"
           ],
           "ivs": {
@@ -2316,14 +2316,14 @@
           "gender": "MALE",
           "level": 49,
           "nature": "adamant",
-          "ability": "thickfat"
+          "ability": "thick-fat"
         },
         {
           "moveset": [
             "seismic-toss",
             "thief",
             "brick-break",
-            "thunder-bolt"
+            "thunder"
           ],
           "ivs": {
             "spe": 31,
@@ -2442,7 +2442,7 @@
           "gender": "MALE",
           "level": 59,
           "nature": "bold",
-          "ability": "heat-proof"
+          "ability": "heatproof"
         },
         {
           "moveset": [
@@ -2533,7 +2533,7 @@
         },
         {
           "moveset": [
-            "thunder-bolt",
+            "thunder",
             "flash-cannon",
             "thunder-wave",
             "shock-wave"
@@ -2632,7 +2632,7 @@
           "moveset": [
             "venoshock",
             "giga-drain",
-            "furycutter",
+            "cut",
             "endure"
           ],
           "ivs": {
@@ -2689,7 +2689,7 @@
         {
           "moveset": [
             "aerial-ace",
-            "xscissor",
+            "x-scissor",
             "thief",
             "brick-break"
           ],
@@ -2846,7 +2846,7 @@
             "dazzling-gleam",
             "dragon-pulse",
             "steel-wing",
-            "flame-thrower"
+            "flamethrower"
           ],
           "ivs": {
             "spe": 31,
@@ -2901,7 +2901,7 @@
         },
         {
           "moveset": [
-            "flame-thrower",
+            "flamethrower",
             "steel-wing",
             "brick-break",
             "dragon-pulse"
@@ -3178,13 +3178,13 @@
           "gender": "MALE",
           "level": 59,
           "nature": "jolly",
-          "ability": "flashfire"
+          "ability": "flash-fire"
         },
         {
           "moveset": [
             "brick-break",
             "earthquake",
-            "flame-thrower",
+            "flamethrower",
             "thunder-punch"
           ],
           "ivs": {
@@ -3212,7 +3212,7 @@
         {
           "moveset": [
             "eruption",
-            "flame-thrower",
+            "flamethrower",
             "hidden-power",
             "focus-blast"
           ],
@@ -3235,12 +3235,12 @@
           "gender": "MALE",
           "level": 60,
           "nature": "modest",
-          "ability": "flashfire"
+          "ability": "flash-fire"
         },
         {
           "moveset": [
             "ember",
-            "flame-thrower",
+            "flamethrower",
             "ancient-power",
             "lava-plume"
           ],
@@ -3268,7 +3268,7 @@
         },
         {
           "moveset": [
-            "flame-thrower",
+            "flamethrower",
             "air-slash",
             "solar-beam",
             "dragon-pulse"
@@ -3417,7 +3417,7 @@
         },
         {
           "moveset": [
-            "takedown",
+            "take-down",
             "rock-tomb",
             "rock-smash",
             "headbutt"
@@ -3636,7 +3636,7 @@
       "team": [
         {
           "moveset": [
-            "mega-horn",
+            "megahorn",
             "thunder-fang",
             "earthquake",
             "stone-edge"
@@ -3723,7 +3723,7 @@
         },
         {
           "moveset": [
-            "mega-horn",
+            "megahorn",
             "toxic",
             "earth-power",
             "thrash"
@@ -3782,9 +3782,9 @@
         {
           "moveset": [
             "expanding-force",
-            "psy-strike",
+            "psystrike",
             "aura-sphere",
-            "flame-thrower"
+            "flamethrower"
           ],
           "ivs": {
             "spe": 31,
@@ -3966,7 +3966,7 @@
         {
           "moveset": [
             "volt-switch",
-            "boom-burst",
+            "boomburst",
             "sludge-bomb",
             "overdrive"
           ],
@@ -4036,7 +4036,7 @@
             "psyshock",
             "thunder-punch",
             "iron-tail",
-            "thunder-bolt"
+            "thunder"
           ],
           "ivs": {
             "spe": 31,
@@ -4407,7 +4407,7 @@
         },
         {
           "moveset": [
-            "mega-horn",
+            "megahorn",
             "dazzling-gleam",
             "psychic",
             "high-horsepower"
@@ -4693,7 +4693,7 @@
           "moveset": [
             "trick-room",
             "will-o-wisp",
-            "pay-back",
+            "payback",
             "brick-break"
           ],
           "ivs": {
@@ -5015,7 +5015,7 @@
         {
           "moveset": [
             "thunder",
-            "flame-thrower",
+            "flamethrower",
             "cross-chop",
             "earthquake"
           ],
@@ -5279,7 +5279,7 @@
         {
           "moveset": [
             "shadow-ball",
-            "thunder-bolt",
+            "thunder",
             "psychic",
             "strength-sap"
           ],
@@ -5550,7 +5550,7 @@
         },
         {
           "moveset": [
-            "thunder-bolt",
+            "thunder",
             "flash-cannon",
             "light-screen",
             "magnet-rise"
@@ -5919,7 +5919,7 @@
         },
         {
           "moveset": [
-            "mega-horn",
+            "megahorn",
             "close-combat",
             "facade",
             "stone-edge"
@@ -5951,7 +5951,7 @@
             "flare-blitz",
             "close-combat",
             "thunder-punch",
-            "sword-dance"
+            "swords-dance"
           ],
           "ivs": {
             "spe": 31,

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CobblemonPokemon, PokemonVariety } from '@/types/pokemon'
@@ -21,9 +21,16 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
   const id = parseInt(pokemon['N.'].replace('#', ''))
   const name = formatPokemonName(pokemon.POKÉMON.toLowerCase())
   
+  // State to track image loading errors
+  const [mainImageError, setMainImageError] = useState(false)
+  const [varietyImageErrors, setVarietyImageErrors] = useState<Set<string>>(new Set())
+  
   // Memoize sprite URL for performance
   const spriteUrl = useMemo(() => getPokemonSpriteUrl(id), [id])
   const fallbackUrl = useMemo(() => getFallbackSpriteUrl(id), [id])
+  
+  // Determine which image source to use for main sprite
+  const mainImageSrc = mainImageError ? fallbackUrl : spriteUrl
   
   return (
     <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200">
@@ -37,14 +44,15 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
         
         <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center relative">
           <Image 
-            src={spriteUrl}
+            src={mainImageSrc}
             alt={pokemon.POKÉMON}
             width={64}
             height={64}
             className="object-contain"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement
-              target.src = fallbackUrl
+            onError={() => {
+              if (!mainImageError) {
+                setMainImageError(true)
+              }
             }}
             placeholder="empty"
           />
@@ -127,24 +135,31 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
             
             {/* Mini sprites preview for varieties */}
             <div className="flex gap-1 mt-2">
-              {varieties.slice(0, 6).map((variety) => (
-                <div key={variety.name} className="relative group">
-                  <Image 
-                    src={variety.sprites.front_default || '/placeholder.png'} 
-                    alt={variety.display_name}
-                    width={24}
-                    height={24}
-                    className="object-contain rounded border border-gray-200"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.src = '/placeholder.png'
-                    }}
-                  />
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                    {variety.display_name}
+              {varieties.slice(0, 6).map((variety) => {
+                const varietyKey = variety.name
+                const hasError = varietyImageErrors.has(varietyKey)
+                const imageSrc = hasError ? '/placeholder.png' : (variety.sprites.front_default || '/placeholder.png')
+                
+                return (
+                  <div key={variety.name} className="relative group">
+                    <Image 
+                      src={imageSrc}
+                      alt={variety.display_name}
+                      width={24}
+                      height={24}
+                      className="object-contain rounded border border-gray-200"
+                      onError={() => {
+                        if (!hasError) {
+                          setVarietyImageErrors(prev => new Set(prev).add(varietyKey))
+                        }
+                      }}
+                    />
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                      {variety.display_name}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
               {varieties.length > 6 && (
                 <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">
                   +{varieties.length - 6}

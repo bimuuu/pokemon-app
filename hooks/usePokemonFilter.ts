@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
+import Fuse from 'fuse.js'
 import { CobblemonPokemon } from '@/types/pokemon'
 
 interface UsePokemonFilterProps {
@@ -16,14 +17,27 @@ export function usePokemonFilter({ pokemonData, pokemonTypes }: UsePokemonFilter
   const [selectedLocation, setSelectedLocation] = useState('')
   const [filteredData, setFilteredData] = useState<CobblemonPokemon[]>([])
 
+  // Create Fuse instance for fuzzy search
+  const fuse = useMemo(() => {
+    return new Fuse(pokemonData, {
+      keys: [
+        { name: 'POKÉMON', weight: 0.7 },
+        { name: 'N.', weight: 0.3 }
+      ],
+      threshold: 0.4,
+      includeScore: true,
+      ignoreLocation: true,
+      findAllMatches: true
+    })
+  }, [pokemonData])
+
   useEffect(() => {
     let filtered = pokemonData
 
+    // Use Fuse.js for fuzzy search
     if (searchTerm) {
-      filtered = filtered.filter(pokemon =>
-        pokemon.POKÉMON.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        pokemon['N.'].includes(searchTerm)
-      )
+      const searchResults = fuse.search(searchTerm)
+      filtered = searchResults.map(result => result.item)
     }
 
     if (selectedType) {

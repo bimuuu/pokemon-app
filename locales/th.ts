@@ -16,11 +16,12 @@ export const thTranslations = {
     pokemon: "โปเกม่อน",
     teamBuilder: "สร้างทีม",
     typeChart: "ตารางธาตุ",
-    gameData: "ท่าต่อสู้ / ความสามารถ / นิสัย",
+    gameData: "ท่าต่อสู้ / ความสามารถ / นิสัย / ไอเท็มถือ",
     items: "ไอเท็ม",
     moves: "ท่าต่อสู้",
     abilities: "ความสามารถ",
     natures: "นิสัย",
+    heldItems: "ไอเท็มถือ",
     gymsAndElites: "ยิมและเทรนเนอร์ระดับสูง"
   },
   home: {

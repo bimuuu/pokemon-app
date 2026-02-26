@@ -66,7 +66,7 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
             badge: trainer.location.badge,
             avgLevel: Math.round(avgLevel),
             completed: false,
-            current: key === currentTrainerId
+            current: `${region}_${key}` === currentTrainerId
           })
         }
       })
@@ -84,7 +84,7 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
             badge: 'Elite Four Medal',
             avgLevel: Math.round(avgLevel),
             completed: false,
-            current: key === currentTrainerId
+            current: `${region}_${key}` === currentTrainerId
           })
         }
       })
@@ -102,7 +102,7 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
             badge: 'Champion Trophy',
             avgLevel: Math.round(avgLevel),
             completed: false,
-            current: key === currentTrainerId
+            current: `${region}_${key}` === currentTrainerId
           })
         }
       })
@@ -118,37 +118,53 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
       
       const currentIndex = allItems.findIndex(item => item.current)
       
-      // Apply saved progression if available
+      // Apply saved progression if available, but ensure current item matches currentTrainerId
       if (savedProgression.length > 0) {
         allItems.forEach(item => {
-          const savedItem = savedProgression.find((saved: any) => saved.gymId === item.originalId)
+          const savedItem = savedProgression.find((saved: any) => saved.gymId === item.id)
           if (savedItem) {
             item.completed = savedItem.completed
-            item.current = savedItem.current
+            // Only use saved current state if it matches the current trainer
+            item.current = savedItem.current && item.id === currentTrainerId
           }
         })
-      } else {
-        // Default progression logic if no saved data
-        if (currentIndex > 0) {
-          for (let i = 0; i < currentIndex; i++) {
-            allItems[i].completed = true
-          }
-        }
-        // Ensure current item is marked as current
-        if (currentIndex !== -1) {
-          allItems[currentIndex].current = true
+      }
+      
+      // Always ensure the current trainer is marked as current, overriding saved progression
+      console.log('=== Current Trainer Debug ===')
+      console.log('currentTrainerId:', currentTrainerId)
+      console.log('allItems:', allItems.map(item => ({ id: item.id, name: item.name, type: item.type })))
+      
+      // Find current trainer by checking both region-prefixed ID and original ID
+      const currentTrainerIndex = allItems.findIndex(item => 
+        item.id === currentTrainerId || item.originalId === currentTrainerId
+      )
+      console.log('currentTrainerIndex:', currentTrainerIndex)
+      
+      if (currentTrainerIndex !== -1) {
+        console.log('Setting current trainer:', allItems[currentTrainerIndex].name)
+        allItems[currentTrainerIndex].current = true
+        
+        // Mark all items before current as completed
+        for (let i = 0; i < currentTrainerIndex; i++) {
+          allItems[i].completed = true
         }
         
-        // Save initial progression state
-        const initialProgression = allItems.map(item => ({
-          gymId: item.originalId,
-          completed: item.completed,
-          current: item.current
-        }))
-        
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(progressionKey, JSON.stringify(initialProgression))
+        // Mark all items after current as not completed
+        for (let i = currentTrainerIndex + 1; i < allItems.length; i++) {
+          allItems[i].completed = false
         }
+      }
+      
+      // Save updated progression state
+      const updatedProgression = allItems.map(item => ({
+        gymId: item.id,
+        completed: item.completed,
+        current: item.current
+      }))
+      
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(progressionKey, JSON.stringify(updatedProgression))
       }
 
       setTimelineItems(allItems)
@@ -168,12 +184,12 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
       ? JSON.parse(localStorage.getItem(progressionKey) || '[]')
       : []
     
-    const clickedIndex = timelineItems.findIndex(item => item.originalId === originalId)
+    const clickedIndex = timelineItems.findIndex(item => item.id === trainerId)
     
     if (clickedIndex !== -1) {
       // Create new progression state
       const newProgression = timelineItems.map((item, index) => ({
-        gymId: item.originalId,
+        gymId: item.id,
         completed: index < clickedIndex,
         current: index === clickedIndex
       }))
@@ -193,8 +209,8 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
       )
     }
     
-    // Navigate to the specific trainer using original ID, properly encoded
-    const encodedId = originalId.replace(/\./g, '%2E')
+    // Navigate to the specific trainer using region-prefixed ID, properly encoded
+    const encodedId = trainerId.replace(/\./g, '%2E')
     const navigationUrl = `/gyms/${encodedId}`
     console.log('Timeline navigating to:', navigationUrl)
     window.open(navigationUrl, '_self')
@@ -241,6 +257,11 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
           ([key, trainer]: [string, any]) => trainer.region === nextRegion && trainer.data && trainer.data.team
         )
         
+        console.log('Next region filtering results:')
+        console.log('- Gyms found:', nextRegionGyms.length, nextRegionGyms.map(([key]) => key))
+        console.log('- Elite Four found:', nextRegionEliteFour.length, nextRegionEliteFour.map(([key]) => key))
+        console.log('- Champions found:', nextRegionChampions.length, nextRegionChampions.map(([key]) => key))
+        
         // Process and sort all trainers by average level
         const processTrainer = ([key, trainer]: [string, any], type: string) => {
           const avgLevel = trainer.data.team.reduce((sum: number, p: any) => sum + p.level, 0) / trainer.data.team.length
@@ -259,16 +280,18 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
         ].sort((a, b) => a.avgLevel - b.avgLevel)
 
         console.log('All next region trainers found:', allTrainersWithLevel.length)
+        console.log('Next region trainers details:', allTrainersWithLevel.map(t => ({ name: t.trainer.data.name.literal || t.trainer.data.name, key: t.key, type: t.type, avgLevel: t.avgLevel })))
 
         if (allTrainersWithLevel.length > 0) {
           const firstTrainer = allTrainersWithLevel[0]
           const firstTrainerId = firstTrainer.key
           console.log('First trainer found:', firstTrainerId, 'Type:', firstTrainer.type, 'Level:', firstTrainer.avgLevel)
+          console.log('First trainer name:', firstTrainer.trainer.data.name.literal || firstTrainer.trainer.data.name)
           
           // Store progression in localStorage - mark current region as completed
           const currentProgressionKey = `gym-progression-${region}`
           const currentTimelineItems = timelineItems.map(item => ({
-            gymId: item.originalId,
+            gymId: item.id,
             completed: true,
             current: false
           }))
@@ -277,14 +300,15 @@ export function GymTimeline({ currentTrainerId, region, className = '', showNext
           // Initialize next region progression (all locked)
           const nextProgressionKey = `gym-progression-${nextRegion}`
           const nextRegionTrainers = allTrainersWithLevel.map((trainer: any, index: number) => ({
-            gymId: trainer.key,
+            gymId: `${nextRegion}_${trainer.key}`,
             completed: false,
             current: index === 0 // First trainer is current
           }))
           localStorage.setItem(nextProgressionKey, JSON.stringify(nextRegionTrainers))
           
-          // Navigate to the first trainer of next region
-          const encodedId = firstTrainerId.replace(/\./g, '%2E')
+          // Navigate to the first trainer of next region with region prefix
+          const regionPrefixedId = `${nextRegion}_${firstTrainerId}`
+          const encodedId = regionPrefixedId.replace(/\./g, '%2E')
           const navigationUrl = `/gyms/${encodedId}`
           console.log('About to navigate to first trainer:', navigationUrl)
           console.log('Trainer ID before encoding:', firstTrainerId)

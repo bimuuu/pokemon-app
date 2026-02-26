@@ -51,6 +51,11 @@ export default function HomePage() {
     loadData()
   }, [getCachedTypes])
 
+  // Reset to page 1 when filters change to prevent empty results
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [pokemonFilter.searchTerm, pokemonFilter.selectedType, pokemonFilter.selectedGeneration, pokemonFilter.selectedRarity, pokemonFilter.selectedLocation])
+
   // Optimized type loading with better batching
   useEffect(() => {
     const loadVisibleTypes = async () => {

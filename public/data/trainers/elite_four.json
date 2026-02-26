@@ -290,7 +290,7 @@
           "gender": "FEMALE",
           "level": 82,
           "nature": "modest",
-          "ability": "flamebody"
+          "ability": "flame-body"
         },
         {
           "moveset": [
@@ -322,7 +322,7 @@
           "gender": "FEMALE",
           "level": 82,
           "nature": "hardy",
-          "ability": "cursedbody"
+          "ability": "cursed-body"
         },
         {
           "moveset": [
@@ -380,7 +380,7 @@
           "gender": "MALE",
           "level": 82,
           "nature": "modest",
-          "ability": "cursedbody"
+          "ability": "cursed-body"
         },
         {
           "moveset": [
@@ -474,7 +474,7 @@
         },
         {
           "moveset": [
-            "extra-sensory",
+            "extrasensory",
             "giga-drain",
             "dark-pulse",
             "air-slash"
@@ -504,7 +504,7 @@
         {
           "moveset": [
             "flamethrower",
-            "extra-sensory",
+            "extrasensory",
             "sludge-bomb",
             "sucker-punch"
           ],
@@ -533,7 +533,7 @@
         {
           "moveset": [
             "knock-off",
-            "crab-hammer",
+            "crabhammer",
             "metal-claw",
             "sludge-wave"
           ],
@@ -774,7 +774,7 @@
           "moveset": [
             "round",
             "ancient-power",
-            "aura-beam",
+            "aura-sphere",
             "bulldoze"
           ],
           "ivs": {
@@ -950,7 +950,7 @@
           "moveset": [
             "low-kick",
             "ice-punch",
-            "trail-blaze",
+            "trailblaze",
             "knock-off"
           ],
           "ivs": {
@@ -1795,7 +1795,7 @@
           "gender": "FEMALE",
           "level": 85,
           "nature": "adamant",
-          "ability": "proto-synthesis"
+          "ability": "protosynthesis"
         },
         {
           "moveset": [
@@ -2029,7 +2029,7 @@
           "gender": "MALE",
           "level": 90,
           "nature": "calm",
-          "ability": "multi-scale"
+          "ability": "multiscale"
         },
         {
           "moveset": [
@@ -2237,8 +2237,8 @@
         },
         {
           "moveset": [
-            "iceshard",
-            "hydropump",
+            "ice-shard",
+            "hydro-pump",
             "surf",
             "poison-jab"
           ],
@@ -2416,7 +2416,7 @@
             "cross-poison",
             "night-slash",
             "earthquake",
-            "sword-dance"
+            "swords-dance"
           ],
           "ivs": {
             "spe": 31,
@@ -2560,7 +2560,7 @@
           "moveset": [
             "gyro-ball",
             "earthquake",
-            "pay-back",
+            "payback",
             "rock-slide"
           ],
           "ivs": {

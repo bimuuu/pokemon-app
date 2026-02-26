@@ -76,18 +76,21 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
   ) || []
 
   return (
-    <div className="border border-gray-200 rounded-lg p-4 space-y-3 pokemon-card transition-all duration-300 hover:shadow-lg hover:border-blue-200">
+    <div 
+      className="border border-gray-200 rounded-lg p-4 space-y-3 pokemon-card transition-all duration-300 hover:shadow-lg hover:border-blue-200 cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
       {/* Pokemon Header */}
       <div className="flex items-start space-x-3">
         <img 
           src={pokemon.sprites.front_default}
           alt={pokemon.name}
-          className="w-16 h-16 object-contain flex-shrink-0"
+          className="w-16 h-16 object-contain flex-shrink-0 pointer-events-none"
         />
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-2">
-            <h4 className="font-semibold text-lg truncate">{formatPokemonName(pokemon.name)}</h4>
-            <div className="text-right flex-shrink-0">
+            <h4 className="font-semibold text-lg truncate pointer-events-none">{formatPokemonName(pokemon.name)}</h4>
+            <div className="text-right flex-shrink-0 pointer-events-none">
               <span className="text-sm font-medium text-gray-600">Lv. {pokemon.level}</span>
               {pokemon.gender && (
                 <span className="ml-2 text-xs text-gray-500">
@@ -96,7 +99,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
               )}
             </div>
           </div>
-          <div className="flex gap-1 mb-2 flex-wrap">
+          <div className="flex gap-1 mb-2 flex-wrap pointer-events-none">
             {pokemon.types.map((type: any) => (
               <span key={type.type.name} className="inline-block">
                 <TypeBadge type={type.type.name} className="text-xs" />
@@ -108,7 +111,10 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
 
       {/* Expand/Collapse Button */}
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={(e) => {
+          e.stopPropagation()
+          setIsExpanded(!isExpanded)
+        }}
         className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-all duration-200 transform hover:scale-105 group"
       >
         <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
@@ -119,7 +125,10 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
 
       {/* Expanded Content */}
       {isExpanded && (
-        <div className="space-y-3 border-t pt-3 animate-in slide-in-from-top-2 duration-300 ease-out">
+        <div 
+          className="space-y-3 border-t pt-3 animate-in slide-in-from-top-2 duration-300 ease-out pointer-events-none"
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Basic Info */}
           <div className="grid grid-cols-1 gap-2 text-sm">
             {pokemon.ability && (
@@ -127,8 +136,11 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 <span className="text-gray-600">Ability:</span>
                 <AbilityTooltip ability={{ name: pokemon.ability }}>
                   <button
-                    onClick={() => handleAbilityClick(pokemon.ability!)}
-                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleAbilityClick(pokemon.ability!)
+                    }}
+                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95 pointer-events-auto"
                   >
                     <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-2 py-1 text-xs">
                       {pokemon.ability.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -142,8 +154,11 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 <span className="text-gray-600">Nature:</span>
                 <NatureTooltip nature={pokemon.nature}>
                   <button
-                    onClick={() => handleNatureClick(pokemon.nature!)}
-                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleNatureClick(pokemon.nature!)
+                    }}
+                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95 pointer-events-auto"
                   >
                     <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-2 py-1 text-xs">
                       {pokemon.nature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -188,8 +203,11 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 {formattedMoves.map((move, moveIndex) => (
                   <MoveTooltip key={moveIndex} move={{ name: pokemon.moveset![moveIndex] }}>
                     <button
-                      onClick={() => handleMoveClick(pokemon.moveset![moveIndex])}
-                      className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-all duration-200 cursor-pointer transform hover:scale-105 hover:shadow-sm active:scale-95"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleMoveClick(pokemon.moveset![moveIndex])
+                      }}
+                      className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-all duration-200 cursor-pointer transform hover:scale-105 hover:shadow-sm active:scale-95 pointer-events-auto"
                     >
                       {move}
                     </button>
@@ -229,10 +247,17 @@ export default function TrainerDetailPage() {
   const [loading, setLoading] = useState(true)
 
   const trainerId = decodeURIComponent(params.id as string).replace(/%20/g, ' ').replace(/%2E/g, '.')
+  
+  // Parse region-prefixed ID (format: region_trainerName) or legacy ID (format: trainerName)
+  const [regionPrefix, trainerName] = trainerId.includes('_') 
+    ? trainerId.split('_', 2) 
+    : [null, trainerId]
 
   console.log('=== Page.tsx ===')
   console.log('Raw params.id:', params.id)
   console.log('Decoded trainerId:', trainerId)
+  console.log('Region prefix:', regionPrefix, 'Trainer name:', trainerName)
+  console.log('Passing to GymTimeline as currentTrainerId:', trainerId)
 
   useEffect(() => {
     loadTrainerDetails()
@@ -253,54 +278,63 @@ export default function TrainerDetailPage() {
 
       // Search in gym leaders first
       for (const [key, data] of Object.entries(gymLeadersData)) {
-        if (key === trainerId) {
-          console.log('Found gym leader:', key)
-          foundTrainer = {
-            ...(data as any),
-            location: (data as any).location,
-            type: 'Gym Leader'
-          }
-          trainerType = 'gym_leaders'
-          break
-        }
-      }
-
-      // Search in champions BEFORE elite four to prioritize champion versions
-      if (!foundTrainer) {
-        for (const [key, data] of Object.entries(championsData)) {
-          if (key === trainerId) {
-            console.log('Found champion:', key)
+        if (key === trainerName) {
+          // If region prefix is specified, match it too
+          if (!regionPrefix || (data as any).region === regionPrefix) {
+            console.log('Found gym leader:', key, 'Region:', (data as any).region)
             foundTrainer = {
               ...(data as any),
-              location: {
-                gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Championship Hall`,
-                type: "Champion",
-                badge: "Champion Trophy"
-              },
-              type: 'Champion'
+              location: (data as any).location,
+              type: 'Gym Leader'
             }
-            trainerType = 'champions'
+            trainerType = 'gym_leaders'
             break
           }
         }
       }
 
-      // Search in elite four last (lower priority for name conflicts)
+      // Search in elite four with region filtering
       if (!foundTrainer) {
         for (const [key, data] of Object.entries(eliteFourData)) {
-          if (key === trainerId) {
-            console.log('Found elite four:', key)
-            foundTrainer = {
-              ...(data as any),
-              location: {
-                gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Elite Four Tower`,
-                type: "Elite Four",
-                badge: "Elite Four Medal"
-              },
-              type: 'Elite Four'
+          if (key === trainerName) {
+            // If region prefix is specified, match it too
+            if (!regionPrefix || (data as any).region === regionPrefix) {
+              console.log('Found elite four:', key, 'Region:', (data as any).region)
+              foundTrainer = {
+                ...(data as any),
+                location: {
+                  gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Elite Four Tower`,
+                  type: "Elite Four",
+                  badge: "Elite Four Medal"
+                },
+                type: 'Elite Four'
+              }
+              trainerType = 'elite_four'
+              break
             }
-            trainerType = 'elite_four'
-            break
+          }
+        }
+      }
+
+      // Search in champions last with region filtering
+      if (!foundTrainer) {
+        for (const [key, data] of Object.entries(championsData)) {
+          if (key === trainerName) {
+            // If region prefix is specified, match it too
+            if (!regionPrefix || (data as any).region === regionPrefix) {
+              console.log('Found champion:', key, 'Region:', (data as any).region)
+              foundTrainer = {
+                ...(data as any),
+                location: {
+                  gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Championship Hall`,
+                  type: "Champion",
+                  badge: "Champion Trophy"
+                },
+                type: 'Champion'
+              }
+              trainerType = 'champions'
+              break
+            }
           }
         }
       }
