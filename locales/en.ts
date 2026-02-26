@@ -121,6 +121,7 @@ export const enTranslations = {
     abilities: "Abilities",
     moves: "Moves",
     baseStats: "Base Stats",
+    totalStats: "Total Stats",
     hp: "HP",
     attack: "Attack",
     defense: "Defense",

@@ -121,6 +121,7 @@ export const thTranslations = {
     abilities: "ความสามารถ",
     moves: "ท่าต่อสู้",
     baseStats: "สถิติพื้นฐาน",
+    totalStats: "สถิติรวม",
     hp: "พลังชีวิต",
     attack: "โจมตี",
     defense: "ป้องกัน",

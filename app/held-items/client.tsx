@@ -57,9 +57,22 @@ export function HeldItemsListClient({ initialItems }: HeldItemsListClientProps) 
               if (response.ok) {
                 const itemDetail = await response.json()
                 const attributes = itemDetail.attributes?.map((attr: any) => attr.name) || []
+                const category = itemDetail.category?.name || ''
                 
                 // Only include items that are holdable or holdable-active
-                if (attributes.includes('holdable') || attributes.includes('holdable-active')) {
+                // Exclude specific categories: flutes, healing, special balls, spelunking, standard balls, status cures, vitamins
+                const excludedCategories = [
+                  'flutes',
+                  'healing', 
+                  'special-balls',
+                  'spelunking',
+                  'standard-balls',
+                  'status-cures',
+                  'vitamins'
+                ]
+                
+                if ((attributes.includes('holdable') || attributes.includes('holdable-active')) &&
+                    !excludedCategories.includes(category)) {
                   return itemDetail
                 }
               }

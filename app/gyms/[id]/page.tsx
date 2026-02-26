@@ -9,6 +9,7 @@ import { LazyTeamRecommendation } from '@/components/team/LazyTeamRecommendation
 import { AbilityTooltip } from '@/components/common/AbilityTooltip'
 import { NatureTooltip } from '@/components/common/NatureTooltip'
 import { MoveTooltip } from '@/components/common/MoveTooltip'
+import { HeldItemTooltip } from '@/components/common/HeldItemTooltip'
 import { GymTimeline } from '@/components/gym/GymTimeline'
 import { GymTip } from '@/components/common/GymTip'
 import { Trainer, Pokemon } from '@/types/pokemon'
@@ -167,10 +168,25 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 </NatureTooltip>
               </div>
             )}
-            {pokemon.heldItem && pokemon.heldItem.length > 0 && (
-              <div className="flex justify-between">
+            {pokemon.heldItem && pokemon.heldItem.length > 0 && pokemon.heldItem[0] && (
+              <div className="flex justify-between items-center">
                 <span className="text-gray-600">Held Item:</span>
-                <span className="font-medium text-xs truncate ml-2">{pokemon.heldItem[0]?.replace(/_/g, ' ')}</span>
+                <HeldItemTooltip itemName={pokemon.heldItem[0]}>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const searchTerm = pokemon.heldItem?.[0]?.replace(/_/g, ' ').replace(/ /g, '-').toLowerCase()
+                      if (searchTerm) {
+                        window.open(`/held-items?search=${encodeURIComponent(searchTerm)}`, '_blank')
+                      }
+                    }}
+                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95 pointer-events-auto"
+                  >
+                    <Badge className="bg-orange-500 hover:bg-orange-600 text-white border-0 px-2 py-1 text-xs">
+                      {pokemon.heldItem[0]?.replace(/_/g, ' ').replace(/-/g, ' ')}
+                    </Badge>
+                  </button>
+                </HeldItemTooltip>
               </div>
             )}
           </div>

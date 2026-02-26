@@ -5,6 +5,7 @@ export { NatureTooltip } from './NatureTooltip'
 export { MoveTooltip } from './MoveTooltip'
 export { LocationTooltip } from './LocationTooltip'
 export { GymTip } from './GymTip'
+export { HeldItemTooltip } from './HeldItemTooltip'
 
 // Common hooks for pagination and filtering
 export { usePagination, useFilters } from './hooks'

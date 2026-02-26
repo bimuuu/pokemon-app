@@ -231,6 +231,9 @@ export default function PokemonDetailPage() {
   const weaknesses = calculateTypeWeaknesses(pokemon.types.map(t => t.type.name))
   const strengths = calculateTypeStrengths(pokemon.types.map(t => t.type.name))
 
+  // Calculate total base stats
+  const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0)
+
   return (
     <main className="max-w-6xl mx-auto space-y-8">
       <Link href="/" className="inline-flex items-center text-blue-500 hover:underline mb-4">
@@ -303,6 +306,19 @@ export default function PokemonDetailPage() {
                     </div>
                   )
                 })}
+                {/* Total Stats */}
+                <div className="pt-3 mt-3 border-t border-gray-200">
+                  <div className="flex justify-between text-sm font-semibold">
+                    <span>{t('pokemon.totalStats')}</span>
+                    <span className="text-blue-600">{totalStats}</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                    <div 
+                      className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+                      style={{ width: `${(totalStats / (255 * 6)) * 100}%` }}
+                    />
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -473,6 +489,33 @@ export default function PokemonDetailPage() {
                             </div>
                           )
                         })}
+                        {/* Total Stats for Variety */}
+                        <div className="pt-3 mt-3 border-t border-gray-200">
+                          <div className="flex justify-between items-center text-xs font-semibold">
+                            <span>{t('pokemon.totalStats')}</span>
+                            <div className="flex items-center gap-2">
+                              <span className="text-blue-600">
+                                {selectedVariety.stats.reduce((sum, stat) => sum + stat.base_stat, 0)}
+                              </span>
+                              {(() => {
+                                const baseTotal = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0)
+                                const varietyTotal = selectedVariety.stats.reduce((sum, stat) => sum + stat.base_stat, 0)
+                                const difference = varietyTotal - baseTotal
+                                return difference !== 0 ? (
+                                  <span className={`text-xs font-medium ${difference > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                                    ({difference > 0 ? '+' : ''}{difference})
+                                  </span>
+                                ) : null
+                              })()}
+                            </div>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                            <div 
+                              className="h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+                              style={{ width: `${(selectedVariety.stats.reduce((sum, stat) => sum + stat.base_stat, 0) / (255 * 6)) * 100}%` }}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
 
