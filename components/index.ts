@@ -22,5 +22,8 @@ export { AbilityDetailModal, MoveDetailModal, TrainerSlidePanel } from './modals
 // Common Components
 export * from './common'
 
+// Gym Components
+export { GymTimeline } from './gym'
+
 // Loading Components
 export { FiltersSkeleton, PokemonCardSkeleton, LoadingGrid, PokemonPageLoading, TeamLoadingSkeleton } from './loading'

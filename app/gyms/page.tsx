@@ -36,6 +36,7 @@ export default function GymsPage() {
             ...trainer.data,
             id: key,
             location: trainer.location,
+            region: trainer.region,
             type: 'Gym Leader'
           })
         }
@@ -52,6 +53,7 @@ export default function GymsPage() {
               type: "Elite Four",
               badge: "Elite Four Medal"
             },
+            region: trainer.region,
             type: 'Elite Four'
           })
         }
@@ -64,10 +66,11 @@ export default function GymsPage() {
             ...trainer.data,
             id: key,
             location: {
-              gym_location: `${selectedRegion.charAt(0).toUpperCase() + selectedRegion.slice(1)} Championship Hall`,
+              gym_location: `${trainer.region.charAt(0).toUpperCase() + trainer.region.slice(1)} Championship Hall`,
               type: "Champion",
               badge: "Champion Trophy"
             },
+            region: trainer.region,
             type: 'Champion'
           })
         }
@@ -76,12 +79,12 @@ export default function GymsPage() {
       // Calculate average level for each trainer and sort
       const trainersWithAvgLevel = allTrainers.map(trainer => ({
         ...trainer,
-        avgLevel: trainer.data && trainer.data.team && trainer.data.team.length > 0 
-          ? trainer.data.team.reduce((sum: number, pokemon: any) => sum + pokemon.level, 0) / trainer.data.team.length
+        avgLevel: trainer.team && trainer.team.length > 0 
+          ? trainer.team.reduce((sum: number, pokemon: any) => sum + pokemon.level, 0) / trainer.team.length
           : 0
       }))
 
-      // Sort by average level (ascending)
+      // Sort trainers by level (low to high) by default
       trainersWithAvgLevel.sort((a, b) => a.avgLevel - b.avgLevel)
 
       setTrainers(trainersWithAvgLevel)
@@ -91,6 +94,7 @@ export default function GymsPage() {
       setLoading(false)
     }
   }
+
 
   const handleTrainerClick = (trainerId: string) => {
     window.open(`/gyms/${trainerId}`, '_self')
@@ -107,21 +111,25 @@ export default function GymsPage() {
 
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <div className="mb-6">
-          <label className="block text-sm font-medium mb-2">Select Region:</label>
-          <div className="flex gap-2">
-            {Object.entries(REGIONS).map(([key, value]) => (
-              <button
-                key={key}
-                onClick={() => setSelectedRegion(key)}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                  selectedRegion === key 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-gray-200 hover:bg-gray-300'
-                }`}
-              >
-                {value}
-              </button>
-            ))}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1">
+              <label className="block text-sm font-medium mb-2">Select Region:</label>
+              <div className="flex gap-2">
+                {Object.entries(REGIONS).map(([key, value]) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedRegion(key)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                      selectedRegion === key 
+                        ? 'bg-blue-500 text-white' 
+                        : 'bg-gray-200 hover:bg-gray-300'
+                    }`}
+                  >
+                    {value}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -157,18 +165,25 @@ export default function GymsPage() {
                         className="p-4 border rounded-lg text-left hover:bg-gray-50 transition-colors hover:shadow-md"
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-semibold">{trainer.name.literal}</h3>
-                          <span className={`text-xs px-2 py-1 rounded-full ${
-                            category === 'Gym Leader' ? 'bg-gray-100 text-gray-800' :
-                            category === 'Elite Four' ? 'bg-purple-100 text-purple-800' :
-                            'bg-yellow-100 text-yellow-800'
-                          }`}>
-                            {(trainer as any).type}
-                          </span>
+                          <h3 className="font-semibold">
+                          {typeof trainer.name === 'string' ? trainer.name : (trainer.name?.literal || trainer.name?.toString() || 'Unknown')}
+                        </h3>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                              Avg Lv. {Math.round((trainer as any).avgLevel)}
+                            </span>
+                            <span className={`text-xs px-2 py-1 rounded-full ${
+                              category === 'Gym Leader' ? 'bg-gray-100 text-gray-800' :
+                              category === 'Elite Four' ? 'bg-purple-100 text-purple-800' :
+                              'bg-yellow-100 text-yellow-800'
+                            }`}>
+                              {(trainer as any).type}
+                            </span>
+                          </div>
                         </div>
                         <div className="flex items-center text-sm text-gray-600 mb-2">
                           <Users className="w-4 h-4 mr-1" />
-                          {(trainer as any).data && (trainer as any).data.team ? (trainer as any).data.team.length : 0} Pokemon
+                          {(trainer as any).team ? (trainer as any).team.length : 0} Pokemon
                         </div>
                         {(trainer as any).location && (
                           <div className="flex items-center text-sm text-gray-600 mb-2">
@@ -191,8 +206,8 @@ export default function GymsPage() {
                           </div>
                         )}
                         <div className="text-xs text-gray-500">
-                          Levels: {(trainer as any).data && (trainer as any).data.team && (trainer as any).data.team.length > 0 
-                            ? `${Math.min(...(trainer as any).data.team.map((p: any) => p.level))} - ${Math.max(...(trainer as any).data.team.map((p: any) => p.level))}`
+                          Levels: {(trainer as any).team && (trainer as any).team.length > 0 
+                            ? `${Math.min(...(trainer as any).team.map((p: any) => p.level))} - ${Math.max(...(trainer as any).team.map((p: any) => p.level))}`
                             : 'N/A'
                           }
                         </div>

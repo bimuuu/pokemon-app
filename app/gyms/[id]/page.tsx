@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { Trophy, Shield, Zap, Star, Activity, ChevronDown, ChevronUp, MapPin, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Trophy, Shield, Zap, Star, Activity, ChevronDown, ChevronUp, MapPin, ArrowLeft, Target, CheckCircle } from 'lucide-react'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { Badge } from '@/components/ui/badge'
 import { LazyTeamRecommendation } from '@/components/team/LazyTeamRecommendation'
 import { AbilityTooltip } from '@/components/common/AbilityTooltip'
 import { NatureTooltip } from '@/components/common/NatureTooltip'
 import { MoveTooltip } from '@/components/common/MoveTooltip'
+import { GymTimeline } from '@/components/gym/GymTimeline'
+import { GymTip } from '@/components/common/GymTip'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { fetchTrainerData, fetchTrainersByType, fetchPokemonByName } from '@/lib/api'
 import { formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
@@ -19,6 +21,7 @@ const formatSearchTerm = (term: string): string => {
     .replace(/_/g, ' ')
     .replace(/-/g, ' ')
     .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/\./g, '.') // Keep dots as-is
     .replace(/\b\w/g, l => l.toUpperCase())
     .replace(/ /g, '-')
 }
@@ -73,7 +76,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
   ) || []
 
   return (
-    <div className="border border-gray-200 rounded-lg p-4 space-y-3 pokemon-card">
+    <div className="border border-gray-200 rounded-lg p-4 space-y-3 pokemon-card transition-all duration-300 hover:shadow-lg hover:border-blue-200">
       {/* Pokemon Header */}
       <div className="flex items-start space-x-3">
         <img 
@@ -106,15 +109,17 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
       {/* Expand/Collapse Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
+        className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-all duration-200 transform hover:scale-105 group"
       >
-        {isExpanded ? <ChevronUp className="w-4 h-4 mr-1" /> : <ChevronDown className="w-4 h-4 mr-1" />}
-        {isExpanded ? 'Show Less' : 'Show Details'}
+        <div className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+          {isExpanded ? <ChevronUp className="w-4 h-4 mr-1" /> : <ChevronDown className="w-4 h-4 mr-1" />}
+        </div>
+        <span className="transition-colors duration-200">{isExpanded ? 'Show Less' : 'Show Details'}</span>
       </button>
 
       {/* Expanded Content */}
       {isExpanded && (
-        <div className="space-y-3 border-t pt-3">
+        <div className="space-y-3 border-t pt-3 animate-in slide-in-from-top-2 duration-300 ease-out">
           {/* Basic Info */}
           <div className="grid grid-cols-1 gap-2 text-sm">
             {pokemon.ability && (
@@ -123,7 +128,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 <AbilityTooltip ability={{ name: pokemon.ability }}>
                   <button
                     onClick={() => handleAbilityClick(pokemon.ability!)}
-                    className="cursor-pointer transition-transform hover:scale-105"
+                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95"
                   >
                     <Badge className="bg-blue-500 hover:bg-blue-600 text-white border-0 px-2 py-1 text-xs">
                       {pokemon.ability.replace(/_/g, ' ').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -138,7 +143,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                 <NatureTooltip nature={pokemon.nature}>
                   <button
                     onClick={() => handleNatureClick(pokemon.nature!)}
-                    className="cursor-pointer transition-transform hover:scale-105"
+                    className="cursor-pointer transition-all duration-200 transform hover:scale-105 hover:shadow-md active:scale-95"
                   >
                     <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 px-2 py-1 text-xs">
                       {pokemon.nature.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
@@ -184,7 +189,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
                   <MoveTooltip key={moveIndex} move={{ name: pokemon.moveset![moveIndex] }}>
                     <button
                       onClick={() => handleMoveClick(pokemon.moveset![moveIndex])}
-                      className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-colors cursor-pointer"
+                      className="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 rounded text-xs font-medium capitalize transition-all duration-200 cursor-pointer transform hover:scale-105 hover:shadow-sm active:scale-95"
                     >
                       {move}
                     </button>
@@ -222,71 +227,16 @@ export default function TrainerDetailPage() {
   const [trainer, setTrainer] = useState<Trainer | null>(null)
   const [trainerPokemon, setTrainerPokemon] = useState<ExtendedPokemon[]>([])
   const [loading, setLoading] = useState(true)
-  const [allTrainers, setAllTrainers] = useState<any[]>([])
-  const [currentTrainerIndex, setCurrentTrainerIndex] = useState(-1)
 
-  const trainerId = params.id as string
+  const trainerId = decodeURIComponent(params.id as string).replace(/%20/g, ' ').replace(/%2E/g, '.')
+
+  console.log('=== Page.tsx ===')
+  console.log('Raw params.id:', params.id)
+  console.log('Decoded trainerId:', trainerId)
 
   useEffect(() => {
-    loadAllTrainers()
     loadTrainerDetails()
   }, [trainerId])
-
-  const loadAllTrainers = async () => {
-    try {
-      // Load all trainer types from consolidated files
-      const [gymLeadersData, eliteFourData, championsData] = await Promise.all([
-        fetchTrainersByType('gym_leaders'),
-        fetchTrainersByType('elite_four'),
-        fetchTrainersByType('champions')
-      ])
-
-      // Get all trainers and sort by name
-      const allTrainersList: any[] = []
-      
-      // Process gym leaders
-      Object.entries(gymLeadersData).forEach(([key, trainer]: [string, any]) => {
-        allTrainersList.push({
-          id: key,
-          name: trainer.data.name.literal,
-          type: 'Gym Leader',
-          region: trainer.region
-        })
-      })
-
-      // Process elite four
-      Object.entries(eliteFourData).forEach(([key, trainer]: [string, any]) => {
-        allTrainersList.push({
-          id: key,
-          name: trainer.data.name.literal,
-          type: 'Elite Four',
-          region: trainer.region
-        })
-      })
-
-      // Process champions
-      Object.entries(championsData).forEach(([key, trainer]: [string, any]) => {
-        allTrainersList.push({
-          id: key,
-          name: trainer.data.name.literal,
-          type: 'Champion',
-          region: trainer.region
-        })
-      })
-
-      // Sort by name alphabetically
-      allTrainersList.sort((a, b) => a.name.localeCompare(b.name))
-      
-      setAllTrainers(allTrainersList)
-      
-      // Find current trainer index
-      const currentIndex = allTrainersList.findIndex(t => t.id === trainerId)
-      setCurrentTrainerIndex(currentIndex)
-      
-    } catch (error) {
-      console.error('Error loading all trainers:', error)
-    }
-  }
 
   const loadTrainerDetails = async () => {
     setLoading(true)
@@ -301,9 +251,10 @@ export default function TrainerDetailPage() {
       let foundTrainer: any = null
       let trainerType = ''
 
-      // Search in gym leaders
+      // Search in gym leaders first
       for (const [key, data] of Object.entries(gymLeadersData)) {
         if (key === trainerId) {
+          console.log('Found gym leader:', key)
           foundTrainer = {
             ...(data as any),
             location: (data as any).location,
@@ -314,10 +265,31 @@ export default function TrainerDetailPage() {
         }
       }
 
-      // Search in elite four
+      // Search in champions BEFORE elite four to prioritize champion versions
+      if (!foundTrainer) {
+        for (const [key, data] of Object.entries(championsData)) {
+          if (key === trainerId) {
+            console.log('Found champion:', key)
+            foundTrainer = {
+              ...(data as any),
+              location: {
+                gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Championship Hall`,
+                type: "Champion",
+                badge: "Champion Trophy"
+              },
+              type: 'Champion'
+            }
+            trainerType = 'champions'
+            break
+          }
+        }
+      }
+
+      // Search in elite four last (lower priority for name conflicts)
       if (!foundTrainer) {
         for (const [key, data] of Object.entries(eliteFourData)) {
           if (key === trainerId) {
+            console.log('Found elite four:', key)
             foundTrainer = {
               ...(data as any),
               location: {
@@ -333,24 +305,7 @@ export default function TrainerDetailPage() {
         }
       }
 
-      // Search in champions
-      if (!foundTrainer) {
-        for (const [key, data] of Object.entries(championsData)) {
-          if (key === trainerId) {
-            foundTrainer = {
-              ...(data as any),
-              location: {
-                gym_location: `${(data as any).region.charAt(0).toUpperCase() + (data as any).region.slice(1)} Championship Hall`,
-                type: "Champion",
-                badge: "Champion Trophy"
-              },
-              type: 'Champion'
-            }
-            trainerType = 'champions'
-            break
-          }
-        }
-      }
+      console.log('Final foundTrainer:', foundTrainer?.name || 'None found')
 
       if (!foundTrainer) {
         router.push('/gyms')
@@ -434,37 +389,6 @@ export default function TrainerDetailPage() {
 
   const matchup = analyzeMatchup()
 
-  const getNextTrainerName = () => {
-    if (currentTrainerIndex >= 0 && currentTrainerIndex < allTrainers.length - 1) {
-      return allTrainers[currentTrainerIndex + 1]?.name
-    }
-    return null
-  }
-
-  const getPreviousTrainerName = () => {
-    if (currentTrainerIndex > 0) {
-      return allTrainers[currentTrainerIndex - 1]?.name
-    }
-    return null
-  }
-
-  const goToNextGym = () => {
-    if (currentTrainerIndex >= 0 && currentTrainerIndex < allTrainers.length - 1) {
-      const nextTrainer = allTrainers[currentTrainerIndex + 1]
-      router.push(`/gyms/${nextTrainer.id}`)
-    }
-  }
-
-  const goToPreviousGym = () => {
-    if (currentTrainerIndex > 0) {
-      const previousTrainer = allTrainers[currentTrainerIndex - 1]
-      router.push(`/gyms/${previousTrainer.id}`)
-    }
-  }
-
-  const nextTrainerName = getNextTrainerName()
-  const previousTrainerName = getPreviousTrainerName()
-
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -495,67 +419,46 @@ export default function TrainerDetailPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto p-6">
-        {/* Navigation Buttons */}
-        <div className="flex items-center justify-between mb-6">
+        {/* Back Button */}
+        <div className="mb-6 animate-in fade-in slide-in-from-left-4 duration-500 ease-out">
           <button
             onClick={() => router.push('/gyms')}
-            className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+            className="flex items-center text-gray-600 hover:text-gray-900 transition-all duration-200 transform hover:scale-105 hover:translate-x-1 group"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Gyms
+            <ArrowLeft className="w-4 h-4 mr-2 transition-transform duration-200 group-hover:-translate-x-1" />
+            <span className="transition-colors duration-200">Back to Gyms</span>
           </button>
-          
-          <div className="flex items-center gap-4">
-            <button
-              onClick={goToPreviousGym}
-              disabled={currentTrainerIndex <= 0}
-              className="flex items-center px-3 py-2 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 disabled:text-gray-400 rounded-lg transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              {previousTrainerName || 'Previous'}
-            </button>
-            
-            <span className="text-sm text-gray-500">
-              {currentTrainerIndex >= 0 ? `${currentTrainerIndex + 1} / ${allTrainers.length}` : '- / -'}
-            </span>
-            
-            <button
-              onClick={goToNextGym}
-              disabled={currentTrainerIndex >= allTrainers.length - 1 || currentTrainerIndex < 0}
-              className="flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-300 disabled:text-gray-500 text-white rounded-lg transition-colors"
-            >
-              {nextTrainerName || 'Next'}
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </button>
-          </div>
         </div>
 
         {/* Trainer Header */}
-        <div className="bg-white rounded-lg shadow-sm border p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-sm border p-6 mb-6 animate-in fade-in slide-in-from-top-4 duration-600 ease-out hover:shadow-lg transition-shadow duration-300">
           <div className="flex items-center overflow-hidden mb-3">
-            <h1 className="text-2xl font-bold flex items-center">
-              <Trophy className="w-6 h-6 mr-3 text-yellow-500" />
-              {trainer.name.literal}
+            <h1 className="text-2xl font-bold flex items-center transition-transform duration-300 hover:scale-105">
+              <Trophy className="w-6 h-6 mr-3 text-yellow-500 transition-transform duration-300 hover:rotate-12" />
+              {typeof trainer.name === 'string' ? trainer.name : (trainer.name?.literal || trainer.name?.toString() || 'Unknown')}
             </h1>
-            <span className="ml-3 px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-medium text-sm">
+            <span className="ml-3 px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-medium text-sm transition-all duration-200 hover:scale-105 hover:bg-blue-200 hover:shadow-md cursor-default">
               {(trainer as any).type}
+            </span>
+            <span className="ml-2 px-3 py-1 bg-green-100 text-green-800 rounded-full font-medium text-sm transition-all duration-200 hover:scale-105 hover:bg-green-200 hover:shadow-md cursor-default">
+              {(trainer as any).region?.charAt(0).toUpperCase() + (trainer as any).region?.slice(1) || 'Unknown Region'}
             </span>
           </div>
           {(trainer as any).location && (
-            <div className="flex items-center text-gray-600 mb-2">
-              <MapPin className="w-5 h-5 mr-2" />
-              <span className="font-medium">{(trainer as any).location.gym_location || (trainer as any).location.type}</span>
+            <div className="flex items-center text-gray-600 mb-2 group">
+              <MapPin className="w-5 h-5 mr-2 transition-colors duration-200 group-hover:text-red-500" />
+              <span className="font-medium transition-colors duration-200 group-hover:text-gray-800">{(trainer as any).location.gym_location || (trainer as any).location.type}</span>
             </div>
           )}
           {(trainer as any).location && (trainer as any).location.badge && (trainer as any).location.badge.trim() !== "" && (
-            <div className="flex items-center text-gray-600">
-              <Trophy className="w-5 h-5 mr-2" />
-              <span className="font-medium">Reward:</span>
-              <span className={`ml-2 px-3 py-1 rounded-full text-sm font-medium ${
-                (trainer as any).type === 'Gym Leader' ? 'bg-slate-700 text-white border border-slate-800' :
-                (trainer as any).type === 'Elite Four' ? 'bg-purple-700 text-white border border-purple-800' :
-                (trainer as any).type === 'Champion' ? 'bg-amber-700 text-white border border-amber-800' :
-                'bg-gray-700 text-white'
+            <div className="flex items-center text-gray-600 group">
+              <Trophy className="w-5 h-5 mr-2 transition-colors duration-200 group-hover:text-yellow-500" />
+              <span className="font-medium transition-colors duration-200 group-hover:text-gray-800">Reward:</span>
+              <span className={`ml-2 px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 hover:shadow-md cursor-default ${
+                (trainer as any).type === 'Gym Leader' ? 'bg-slate-700 text-white border border-slate-800 hover:bg-slate-600' :
+                (trainer as any).type === 'Elite Four' ? 'bg-purple-700 text-white border border-purple-800 hover:bg-purple-600' :
+                (trainer as any).type === 'Champion' ? 'bg-amber-700 text-white border border-amber-800 hover:bg-amber-600' :
+                'bg-gray-700 text-white hover:bg-gray-600'
               }`}>
                 {(trainer as any).location.badge}
               </span>
@@ -563,27 +466,66 @@ export default function TrainerDetailPage() {
           )}
         </div>
 
+        {/* Timeline Progression */}
+        <div className="relative">
+          <GymTimeline 
+            currentTrainerId={trainerId}
+            region={(trainer as any).region || 'kanto'}
+            className="mb-6"
+            showNextRegion={(trainer as any).type === 'Champion'} // Only show next region dot for champions
+          />
+          
+          {/* Timeline Tip */}
+          <div className="absolute top-2 right-2">
+            <GymTip title="Timeline Tips">
+              <div className="space-y-2">
+                <p>
+                  <strong>🎯 Progress Tracking:</strong> The timeline shows your journey through gyms in this region.
+                </p>
+                <p>
+                  <strong>✅ Completed:</strong> Green checkmarks indicate gyms you've already conquered.
+                </p>
+                <p>
+                  <strong>🔵 Current:</strong> The blue pulsing dot shows your current position.
+                </p>
+                <p>
+                  <strong>🔒 Locked:</strong> Gray dots represent future challenges ahead.
+                </p>
+                <p>
+                  <strong>💡 Pro Tip:</strong> Click any gym in the timeline to quickly navigate there!
+                </p>
+              </div>
+            </GymTip>
+          </div>
+        </div>
+
         {/* Team and Recommendations Section */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-6">
           {/* Team Section - Left */}
-          <div className="bg-white rounded-lg shadow-sm border p-6">
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <Shield className="w-5 h-5 mr-2" />
+          <div className="bg-white rounded-lg shadow-sm border p-6 animate-in fade-in slide-in-from-left-4 duration-700 ease-out hover:shadow-lg transition-all">
+            <h2 className="text-xl font-semibold mb-4 flex items-center transition-transform duration-300 hover:scale-105">
+              <Shield className="w-5 h-5 mr-2 transition-transform duration-300 hover:rotate-12" />
               Team ({(trainer as any).data.team.length} Pokemon)
             </h2>
             
             <div className="space-y-3">
               {trainerPokemon.map((pokemon, index) => (
-                <PokemonCard key={`${pokemon.name}-${pokemon.level}-${pokemon.ability}-${pokemon.nature}`} pokemon={pokemon} />
+                <div 
+                  key={`${pokemon.name}-${pokemon.level}-${pokemon.ability}-${pokemon.nature}`} 
+                  className="animate-in fade-in slide-in-from-bottom-2 duration-500 ease-out"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <PokemonCard pokemon={pokemon} />
+                </div>
               ))}
             </div>
           </div>
 
           {/* Team Recommendations Section - Right */}
           {matchup && (
-            <div className="bg-white rounded-lg shadow-sm border p-6">
-              <h2 className="text-xl font-semibold mb-4 flex items-center">
-                <Zap className="w-5 h-5 mr-2" />
+            <div className="bg-white rounded-lg shadow-sm border p-6 animate-in fade-in slide-in-from-right-4 duration-700 ease-out hover:shadow-lg transition-all">
+              <h2 className="text-xl font-semibold mb-4 flex items-center transition-transform duration-300 hover:scale-105">
+                <Zap className="w-5 h-5 mr-2 transition-transform duration-300 hover:rotate-12" />
                 Team Recommendations
               </h2>
               
