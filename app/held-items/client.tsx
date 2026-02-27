@@ -42,7 +42,8 @@ export function HeldItemsListClient({ initialItems }: HeldItemsListClientProps) 
   const categories = [
     'all',
     'holdable',
-    'holdable-active'
+    'holdable-active',
+    'mega-stones'
   ]
 
   // Fetch detailed item data on component mount
@@ -59,8 +60,8 @@ export function HeldItemsListClient({ initialItems }: HeldItemsListClientProps) 
                 const attributes = itemDetail.attributes?.map((attr: any) => attr.name) || []
                 const category = itemDetail.category?.name || ''
                 
-                // Only include items that are holdable or holdable-active
                 // Exclude specific categories: flutes, healing, special balls, spelunking, standard balls, status cures, vitamins
+                // But allow holdable, holdable-active, and mega-stones
                 const excludedCategories = [
                   'flutes',
                   'healing', 
@@ -71,7 +72,9 @@ export function HeldItemsListClient({ initialItems }: HeldItemsListClientProps) 
                   'vitamins'
                 ]
                 
-                if ((attributes.includes('holdable') || attributes.includes('holdable-active')) &&
+                if ((attributes.includes('holdable') || 
+                    attributes.includes('holdable-active') ||
+                    category === 'mega-stones') &&
                     !excludedCategories.includes(category)) {
                   return itemDetail
                 }
@@ -184,6 +187,7 @@ export function HeldItemsListClient({ initialItems }: HeldItemsListClientProps) 
                   {category === 'all' ? 'All Categories' : 
                    category === 'holdable' ? 'Holdable Items' :
                    category === 'holdable-active' ? 'Holdable Active Items' :
+                   category === 'mega-stones' ? 'Mega Stones' :
                    category.replace('-', ' ').toUpperCase()}
                 </option>
               ))}

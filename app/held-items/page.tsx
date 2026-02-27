@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 export default async function HeldItemsPage() {
-  const itemsData = await fetchAllItems(500, 0) // Fetch first 500 items
+  const itemsData = await fetchAllItems(2000, 0) // Fetch first 2000 items
   
   return <HeldItemsListClient initialItems={itemsData} />
 }

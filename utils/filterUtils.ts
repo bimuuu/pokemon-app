@@ -48,7 +48,8 @@ export class FilterUtils {
         matchesCategory = itemCategory === selectedCategory || 
                          itemAttributes.includes(selectedCategory) ||
                          (selectedCategory === 'holdable' && itemAttributes.includes('holdable')) ||
-                         (selectedCategory === 'holdable-active' && itemAttributes.includes('holdable-active'))
+                         (selectedCategory === 'holdable-active' && itemAttributes.includes('holdable-active')) ||
+                         (selectedCategory === 'mega-stones' && itemCategory === 'mega-stones')
       }
       
       return matchesSearch && matchesCategory

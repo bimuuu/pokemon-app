@@ -84,8 +84,11 @@ export const fetchTrainersByType = cache(async (trainerType: 'gym_leaders' | 'el
     if (!response.ok) {
       throw new Error(`Failed to fetch ${trainerType}`)
     }
+    
     const data = await response.json()
-    return data
+    const cleanedData = JSON.parse(JSON.stringify(data).replace(/mega_showdown:/g, ''))
+
+    return cleanedData
   } catch (error) {
     console.error(`Error fetching ${trainerType}:`, error)
     return {}
