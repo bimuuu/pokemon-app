@@ -2,7 +2,7 @@
 
 import { Search } from 'lucide-react'
 import { POKEMON_TYPES } from '@/lib/constants'
-import { debounce } from '@/lib/utils'
+import { debounce } from '@/lib/performance'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 interface PokemonFiltersProps {

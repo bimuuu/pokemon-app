@@ -2,7 +2,7 @@
 export { TypeBadge, LanguageSwitcher } from './ui'
 
 // Pokemon Components
-export { PokemonCard, DraggablePokemonCard, IndividualSpecialFormCard, EvolutionStage } from './pokemon'
+export { PokemonCard, DraggablePokemonCard, EvolutionStage } from './pokemon'
 
 // Team Components
 export { TeamSlot, TeamAnalysis, TeamRecommendation, TeamFilters } from './team'

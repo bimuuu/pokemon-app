@@ -1,5 +1,5 @@
-// Optimized API functions for better performance
 import { CobblemonPokemon } from '@/types/pokemon'
+import { debounce } from './performance'
 
 // Simple Pokemon data structure with only what we need
 export interface SimplePokemonData {
@@ -90,16 +90,4 @@ export function preloadPokemonImages(pokemonIds: number[]): void {
     const fallbackImg = new Image()
     fallbackImg.src = getFallbackSpriteUrl(id)
   })
-}
-
-// Debounced search for better typing performance
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  delay: number
-): (...args: Parameters<T>) => void {
-  let timeoutId: NodeJS.Timeout
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => func(...args), delay)
-  }
 }

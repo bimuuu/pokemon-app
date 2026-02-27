@@ -19,11 +19,8 @@ import {
 import { TeamSlot } from '@/components/team/TeamSlot'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { DraggablePokemonCard } from '@/components/pokemon/DraggablePokemonCard'
-import { IndividualSpecialFormCard } from '@/components/pokemon/IndividualSpecialFormCard'
-import { getIndividualSpecialForms } from '@/lib/individual-special-forms'
 import { Pagination } from '@/components/common/Pagination'
 import { TeamLoadingSkeleton } from '@/components/loading/TeamLoadingSkeleton'
-import { SpecialFormsLoadingSkeleton } from '@/components/loading/TeamLoadingSkeleton'
 import { Pokemon, TeamAnalysis } from '@/types/pokemon'
 import { fetchCobblemonData } from '@/lib/api'
 import { calculateTypeWeaknesses, calculateTypeStrengths, formatPokemonName } from '@/lib/utils'
@@ -52,8 +49,6 @@ export default function TeamBuilderPage() {
   const [loading, setLoading] = useState(true)
   const [loadingTypes, setLoadingTypes] = useState(true)
   const [showSpecialForms, setShowSpecialForms] = useState(false)
-  const [individualSpecialForms, setIndividualSpecialForms] = useState<Pokemon[]>([])
-  const [loadingSpecialForms, setLoadingSpecialForms] = useState(false)
   
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -84,22 +79,6 @@ export default function TeamBuilderPage() {
     loadData()
   }, [])
 
-  // Load individual special forms when toggled
-  useEffect(() => {
-    if (showSpecialForms && individualSpecialForms.length === 0 && !loadingSpecialForms) {
-      setLoadingSpecialForms(true)
-      getIndividualSpecialForms(allPokemon)
-        .then(forms => {
-          setIndividualSpecialForms(forms)
-        })
-        .catch(error => {
-          console.error('Error loading individual special forms:', error)
-        })
-        .finally(() => {
-          setLoadingSpecialForms(false)
-        })
-    }
-  }, [showSpecialForms, allPokemon, individualSpecialForms.length, loadingSpecialForms])
   const loadTypesInBackground = async (cobblemonData: any[]) => {
     try {
       setLoadingTypes(true)
@@ -197,8 +176,8 @@ export default function TeamBuilderPage() {
     selectedRarity
   )
 
-  // Filter for special forms Pokemon
-  const specialFormsPokemon = showSpecialForms ? individualSpecialForms : []
+  // Filter for special forms Pokemon using existing filter
+  const specialFormsPokemon = showSpecialForms ? filterSpecialFormsPokemon(filteredPokemon) : []
 
   const totalPages = Math.ceil(filteredPokemon.length / POKEMON_PER_PAGE)
   const startIndex = (currentPage - 1) * POKEMON_PER_PAGE
@@ -448,15 +427,11 @@ export default function TeamBuilderPage() {
           <div className="border-t border-b border-gray-700 bg-gray-900/50 -mx-6 px-6 py-4 mb-6">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-h-96 overflow-y-auto">
               {showSpecialForms ? (
-                loadingSpecialForms ? (
-                  <SpecialFormsLoadingSkeleton />
-                ) : paginatedSpecialForms.length > 0 ? (
+                paginatedSpecialForms.length > 0 ? (
                   paginatedSpecialForms.map(pokemon => (
-                    <IndividualSpecialFormCard
+                    <DraggablePokemonCard
                       key={`special-${pokemon.id}-${pokemon.name}`}
-                      basePokemon={pokemon}
-                      formName={pokemon.name}
-                      formData={pokemon.form_data!}
+                      pokemon={pokemon}
                       isDisabled={team.some(p => p?.id === pokemon.id)}
                     />
                   ))

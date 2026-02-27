@@ -92,14 +92,3 @@ export function paginate<T>(array: T[], page: number, itemsPerPage: number): T[]
 export function getTotalPages(totalItems: number, itemsPerPage: number): number {
   return Math.ceil(totalItems / itemsPerPage)
 }
-
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: number
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func(...args), wait) as any
-  }
-}
