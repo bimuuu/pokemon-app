@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { ArrowLeft, Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { TypeBadge } from '@/components/ui/TypeBadge'
+import { motion } from 'framer-motion'
 import { Pokemon } from '@/types/pokemon'
 import { TrainingSummary } from '@/components/training/TrainingSummary'
+import { BuildPageSkeleton } from '@/components/loading/BuildPageSkeleton'
 import { formatPokemonName } from '@/lib/utils'
 import { usePokemonCache } from '@/contexts/PokemonCacheContext'
 
@@ -40,14 +38,7 @@ export default function PokemonBuildPage() {
   }
 
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <div className="text-center">
-          <Loader2 className="h-12 w-12 animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading Pokemon build data...</p>
-        </div>
-      </div>
-    )
+    return <BuildPageSkeleton />
   }
 
   if (!pokemon) {
@@ -62,34 +53,55 @@ export default function PokemonBuildPage() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto space-y-8">
-      <div className="flex items-center justify-between">
-        <Link href={`/pokemon/${pokemonName}`} className="inline-flex items-center text-blue-500 hover:underline">
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to {formatPokemonName(pokemon.name)}
-        </Link>
-        <h1 className="text-3xl font-bold">Pokemon Build</h1>
-        <div></div>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      <main className="max-w-6xl mx-auto space-y-8">
+        <motion.div 
+          className="flex items-center justify-between"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.1, duration: 0.4 }}
+        >
+          <Link href={`/pokemon/${pokemonName}`} className="inline-flex items-center text-blue-500 hover:underline">
+            <motion.div
+              whileHover={{ x: -3 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+            </motion.div>
+            Back to {formatPokemonName(pokemon.name)}
+          </Link>
+          <div></div>
+        </motion.div>
 
-      {/* Integrated Training Summary */}
-      <TrainingSummary
-        pokemon={pokemon}
-        isBuildPage={true}
-        onOptimize={() => {
-          // TODO: Implement comprehensive optimization
-          console.log('Optimize build for', pokemon.name)
-        }}
-        onExport={() => {
-          // TODO: Implement export functionality
-          console.log('Export build for', pokemon.name)
-        }}
-        onShare={() => {
-          // TODO: Implement share functionality
-          console.log('Share build for', pokemon.name)
-        }}
-      />
+        {/* Integrated Training Summary */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+        >
+          <TrainingSummary
+            pokemon={pokemon}
+            isBuildPage={true}
+            onOptimize={() => {
+              // TODO: Implement comprehensive optimization
+              console.log('Optimize build for', pokemon.name)
+            }}
+            onExport={() => {
+              // TODO: Implement export functionality
+              console.log('Export build for', pokemon.name)
+            }}
+            onShare={() => {
+              // TODO: Implement share functionality
+              console.log('Share build for', pokemon.name)
+            }}
+          />
+        </motion.div>
 
       </main>
+    </motion.div>
   )
 }
