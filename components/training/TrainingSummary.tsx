@@ -1,12 +1,10 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { Pokemon, MoveRecommendation, ItemRecommendation, EVSpread, MovesetAnalysis, ItemOptimizationAnalysis, EVAnalysis, NatureAnalysis, AbilityAnalysis } from '@/types/pokemon'
-import { formatPokemonName } from '@/lib/utils'
 import { MovesetRecommendationService } from '@/features/training/services/MovesetRecommendationService'
 import { HeldItemOptimizationService } from '@/features/training/services/HeldItemOptimizationService'
 import { EVCalculationService } from '@/features/training/services/EVCalculationService'
@@ -20,17 +18,10 @@ import { ItemSection } from './ItemSection'
 import { EVSection } from './EVSection'
 import { NatureSection } from './NatureSection'
 import { AbilitySection } from './AbilitySection'
-import { ActionButtons } from './ActionButtons'
-import { 
-  getTotalEVs,
-  getRemainingEVs,
-  isValidSpread
-} from './utils'
 import { 
   TrendingUp,
   ChevronDown,
   Loader2,
-  Star
 } from 'lucide-react'
 
 interface TrainingSummaryProps {
@@ -43,13 +34,9 @@ interface TrainingSummaryProps {
 
 export function TrainingSummary({ 
   pokemon, 
-  onOptimize,
-  onExport,
-  onShare,
   isBuildPage = false
 }: TrainingSummaryProps) {
   const [isExpanded, setIsExpanded] = useState(true)
-  const [copied, setCopied] = useState(false)
   const [activeSection, setActiveSection] = useState<'moves' | 'item' | 'evs' | 'nature' | 'ability'>('moves')
   
   // Moveset state
@@ -161,25 +148,6 @@ export function TrainingSummary({
       setIsLoading(false)
     }
   }
-
-  const handleCopyBuild = async () => {
-    const buildData = {
-      pokemon: pokemon.name,
-      moves: selectedMoves.map(m => m.name),
-      item: selectedItem?.name,
-      evs: selectedEVSpread,
-      timestamp: new Date().toISOString()
-    }
-    
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(buildData, null, 2))
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    } catch (error) {
-      console.error('Failed to copy build:', error)
-    }
-  }
-
   // Moveset handlers
   const handleMoveSelect = (move: MoveRecommendation, slotIndex: number) => {
     const newMoves = [...selectedMoves]
@@ -210,31 +178,6 @@ export function TrainingSummary({
       console.error('Failed to generate moveset:', error)
     } finally {
       setIsGeneratingMoveset(false)
-    }
-  }
-
-  const calculateMovesetDiversity = () => {
-    if (selectedMoves.length === 0) return { score: 0, categories: [] }
-    
-    const categories = selectedMoves.map(m => m.category)
-    const uniqueCategories = [...new Set(categories)]
-    const categoryCount = uniqueCategories.length
-    
-    // Higher score for having different move types
-    let diversityScore = categoryCount * 0.3
-    
-    // Bonus for having setup moves
-    if (categories.includes('buff')) diversityScore += 0.3
-    
-    // Bonus for having utility moves
-    if (categories.includes('debuff') || categories.includes('support')) diversityScore += 0.2
-    
-    // Bonus for having recovery
-    if (categories.includes('recovery')) diversityScore += 0.2
-    
-    return {
-      score: Math.min(diversityScore, 1.0),
-      categories: uniqueCategories
     }
   }
 
@@ -422,16 +365,7 @@ export function TrainingSummary({
             )}
           </AnimatePresence>
 
-          {/* Action Buttons */}
-          <ActionButtons
-            copied={copied}
-            isComplete={isComplete}
-            onCopyBuild={handleCopyBuild}
-            onExport={onExport || (() => {})}
-            onShare={onShare || (() => {})}
-            onOptimize={onOptimize || (() => {})}
-          />
-        </div>
+                  </div>
               </CardContent>
             </motion.div>
           )}

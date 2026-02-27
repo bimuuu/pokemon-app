@@ -1,0 +1,5 @@
+export { PokemonHeader } from './PokemonHeader'
+export { AbilitiesSection } from './AbilitiesSection'
+export { VarietiesSection } from './VarietiesSection'
+export { EvolutionSection } from './EvolutionSection'
+export { MovesSection } from './MovesSection'
