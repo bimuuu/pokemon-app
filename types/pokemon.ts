@@ -292,3 +292,142 @@ export interface PokemonVariety {
   abilities: PokemonAbility[];
   types: PokemonType[];
 }
+
+export interface MoveRecommendation {
+  name: string;
+  power: number;
+  type: string;
+  learnMethod: string;
+  level?: number;
+  score: number;
+  isStab: boolean;
+  reason: string;
+  category: 'attacking' | 'buff' | 'debuff' | 'support' | 'recovery' | 'weather' | 'terrain';
+  strategicValue: number;
+  synergyScore: number;
+}
+
+export interface MovesetAnalysis {
+  pokemon: string;
+  types: string[];
+  recommendations: MoveRecommendation[];
+  coverage: Record<string, number>;
+  weaknesses: Record<string, number>;
+  role: 'physical' | 'special' | 'mixed';
+}
+
+export interface TrainingPokemon extends TeamPokemon {
+  happiness: number;
+  friendship: number;
+  trainingStage: 'untrained' | 'in_training' | 'trained' | 'optimized';
+  trainingGoals: TrainingGoal[];
+  currentTraining: TrainingSession | null;
+}
+
+export interface TrainingGoal {
+  stat: keyof PokemonStats;
+  targetValue: number;
+  priority: 'high' | 'medium' | 'low';
+}
+
+export interface TrainingSession {
+  id: string;
+  startDate: Date;
+  targetDate: Date;
+  activities: TrainingActivity[];
+  progress: number;
+}
+
+export interface TrainingActivity {
+  type: 'ev_training' | 'move_practice' | 'item_optimization' | 'ability_training';
+  description: string;
+  completed: boolean;
+  progress: number;
+}
+
+export interface ItemRecommendation {
+  name: string;
+  category: string;
+  reason: string;
+  effectiveness: number;
+  synergy: number;
+  role: string;
+  transformation?: {
+    type: 'mega' | 'gmax' | 'plate' | 'form';
+    result: string;
+  };
+}
+
+export interface ItemOptimizationAnalysis {
+  pokemon: string;
+  types: string[];
+  role: 'physical' | 'special' | 'mixed' | 'tank' | 'support';
+  recommendations: ItemRecommendation[];
+  megaStones: ItemRecommendation[];
+  plates: ItemRecommendation[];
+  standardItems: ItemRecommendation[];
+}
+
+export interface EVSpread {
+  hp: number;
+  attack: number;
+  defense: number;
+  specialAttack: number;
+  specialDefense: number;
+  speed: number;
+}
+
+export interface EVRecommendation {
+  spread: EVSpread;
+  role: string;
+  reasoning: string;
+  statChanges: PokemonStats;
+  effectiveness: number;
+}
+
+export interface EVAnalysis {
+  pokemon: string;
+  baseStats: PokemonStats;
+  recommendedSpreads: EVRecommendation[];
+  optimalSpread: EVRecommendation;
+  customSpreads: EVSpread[];
+}
+
+export interface NatureRecommendation {
+  name: string;
+  increasedStat: string;
+  decreasedStat: string;
+  score: number;
+  reasoning: string;
+  role: string;
+  effectiveness: number;
+  description: string;
+}
+
+export interface NatureAnalysis {
+  pokemon: string;
+  baseStats: PokemonStats;
+  role: string;
+  recommendations: NatureRecommendation[];
+  optimalNature: NatureRecommendation;
+}
+
+export interface AbilityRecommendation {
+  name: string;
+  isHidden: boolean;
+  score: number;
+  reasoning: string;
+  synergy: number;
+  role: string;
+  effectiveness: number;
+  description: string;
+  strategicValue: number;
+}
+
+export interface AbilityAnalysis {
+  pokemon: string;
+  availableAbilities: PokemonAbility[];
+  recommendations: AbilityRecommendation[];
+  optimalAbility: AbilityRecommendation;
+  hiddenAbility: AbilityRecommendation | null;
+}

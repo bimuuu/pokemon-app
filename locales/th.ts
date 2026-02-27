@@ -82,6 +82,7 @@ export const thTranslations = {
     subtitle: "วิเคราะห์ยิมลีดเดอร์ สมาชิกโปเกม่อนลีก 4 คน และแชมเปี้ยน วางแผนกลยุทธ์ด้วยข้อมูลทีมโดยละเอียดและการจับคู่ธาตุ",
     selectRegion: "เลือกภูมิภาค:",
     loadingTrainers: "กำลังโหลดข้อมูลเทรนเนอร์...",
+    loadingTrainerDetails: "กำลังโหลดรายละเอียดผู้ฝึกสอน...",
     teamSize: "ขนาดทีม",
     averageLevel: "เลเวลเฉลี่ย",
     battleFormat: "รูปแบบการต่อสู้",

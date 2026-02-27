@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown, Search } from 'lucide-react'
+import { ArrowLeft, MapPin, Star, Zap, Shield, Heart, Layers, ChevronDown, Search, Sword } from 'lucide-react'
 import Link from 'next/link'
 import { TypeBadge } from '@/components/ui/TypeBadge'
+import { Button } from '@/components/ui/button'
 import { EvolutionStage } from '@/components/pokemon/EvolutionStage'
 import { AbilityTooltip } from '@/components/common/AbilityTooltip'
 import { NatureTooltip } from '@/components/common/NatureTooltip'
@@ -19,6 +20,7 @@ import { fetchPokemonForms, fetchAllFormsData, getFormTransformationConditions, 
 import { fetchPokemonSpeciesByName } from '@/lib/api'
 import { FormTransformationService } from '@/lib/form-transformations'
 import { PokemonMovesService, type MoveLearnMethod } from '@/services/pokemonMovesService'
+import { PokemonStats } from '@/components/pokemon/PokemonStats'
 
 // Utility function to format search terms
 const formatSearchTerm = (term: string): string => {
@@ -258,6 +260,20 @@ export default function PokemonDetailPage() {
                 <TypeBadge key={type.type.name} type={type.type.name} />
               ))}
             </div>
+
+            {/* Moveset Builder Button */}
+            <div className="mb-4">
+              <Link href={`/pokemon/${pokemon.name}/build`}>
+                <Button size="lg" className="w-full max-w-xs">
+                  <Sword className="h-4 w-4 mr-2" />
+                  Build Moveset
+                </Button>
+              </Link>
+              <p className="text-xs text-muted-foreground mt-1 text-center">
+                Create optimized moveset
+              </p>
+            </div>
+
             {cobblemonData && (
               <div className="bg-blue-50 p-4 rounded-lg text-sm">
                 <div className="flex items-center justify-center mb-2">
@@ -276,51 +292,7 @@ export default function PokemonDetailPage() {
           </div>
 
           <div className="space-y-6">
-            <section>
-              <h2 className="text-xl font-semibold mb-4 flex items-center">
-                <Zap className="w-5 h-5 mr-2" />
-                {t('pokemon.baseStats')}
-              </h2>
-              <div className="space-y-3">
-                {pokemon.stats.map(stat => {
-                  const percentage = (stat.base_stat / 255) * 100
-                  return (
-                    <div key={stat.stat.name}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="font-medium">
-                          {(() => {
-                            const statKey = stat.stat.name.replace('-', '')
-                            const translationKey = `pokemon.${statKey === 'specialattack' ? 'spAttack' : statKey === 'specialdefense' ? 'spDefense' : statKey}`
-                            const translation = t(translationKey)
-                            return translation !== translationKey ? translation : stat.stat.name.toUpperCase()
-                          })()}
-                        </span>
-                        <span>{stat.base_stat}</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className="h-2 rounded-full bg-blue-500"
-                          style={{ width: `${percentage}%` }}
-                        />
-                      </div>
-                    </div>
-                  )
-                })}
-                {/* Total Stats */}
-                <div className="pt-3 mt-3 border-t border-gray-200">
-                  <div className="flex justify-between text-sm font-semibold">
-                    <span>{t('pokemon.totalStats')}</span>
-                    <span className="text-blue-600">{totalStats}</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                    <div 
-                      className="h-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
-                      style={{ width: `${(totalStats / (255 * 6)) * 100}%` }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
+            <PokemonStats pokemon={pokemon} totalStats={totalStats} t={t} />
 
             <section>
               <h2 className="text-xl font-semibold mb-4 flex items-center">

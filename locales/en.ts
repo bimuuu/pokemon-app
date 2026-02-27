@@ -82,6 +82,7 @@ export const enTranslations = {
     subtitle: "Analyze gym leaders, elite four members, and champions. Plan your strategy with detailed team information and type matchups.",
     selectRegion: "Select Region:",
     loadingTrainers: "Loading trainers...",
+    loadingTrainerDetails: "Loading trainer details...",
     teamSize: "Team Size",
     averageLevel: "Average Level",
     battleFormat: "Battle Format",

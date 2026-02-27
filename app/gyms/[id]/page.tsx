@@ -15,6 +15,7 @@ import { GymTip } from '@/components/common/GymTip'
 import { Trainer, Pokemon } from '@/types/pokemon'
 import { fetchTrainerData, fetchTrainersByType, fetchPokemonByName } from '@/lib/api'
 import { formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 // Utility function to format search terms
 const formatSearchTerm = (term: string): string => {
@@ -258,6 +259,7 @@ const PokemonCard = ({ pokemon }: { pokemon: ExtendedPokemon }) => {
 export default function TrainerDetailPage() {
   const params = useParams()
   const router = useRouter()
+  const { t } = useLanguage()
   const [trainer, setTrainer] = useState<Trainer | null>(null)
   const [trainerPokemon, setTrainerPokemon] = useState<ExtendedPokemon[]>([])
   const [loading, setLoading] = useState(true)
@@ -444,7 +446,7 @@ export default function TrainerDetailPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading trainer details...</p>
+          <p className="text-gray-600">{t('gyms.loadingTrainerDetails')}</p>
         </div>
       </div>
     )

@@ -84,9 +84,9 @@ export function MoveTooltip({ move, children }: MoveTooltipProps) {
           {displayMove?.type && (
             <Badge 
               className="text-white border-0 text-xs"
-              style={{ backgroundColor: getTypeColor(displayMove.type.name) }}
+              style={{ backgroundColor: getTypeColor(typeof displayMove.type === 'string' ? displayMove.type : displayMove.type?.name || 'normal') }}
             >
-              {displayMove.type.name.toUpperCase()}
+              {(typeof displayMove.type === 'string' ? displayMove.type : displayMove.type?.name || 'normal').toUpperCase()}
             </Badge>
           )}
           <Badge 
