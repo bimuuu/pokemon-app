@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 import { PokemonStats } from '@/components/pokemon/PokemonStats'
 import { Pokemon, CobblemonPokemon } from '@/types/pokemon'
 import { formatPokemonId, formatPokemonName, calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
-import { useLanguage } from '@/contexts/LanguageContext'
 import { translateCondition } from '@/lib/i18n'
 import { itemVariants, containerVariants } from '../animations'
 

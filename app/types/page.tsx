@@ -1,22 +1,48 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { POKEMON_TYPES, TYPE_EFFECTIVENESS } from '@/lib/constants'
 import { getTypeColor } from '@/lib/utils'
+import { TypeSummaryCard, TypeCircle, RelationshipLines } from '@/components/type-chart'
 
 export default function TypeChartPage() {
-  const [selectedType, setSelectedType] = useState<string>('')
-  const [viewMode, setViewMode] = useState<'offensive' | 'defensive'>('offensive')
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+  const [typePositions, setTypePositions] = useState<Record<string, { x: number; y: number }>>({})
+  const containerRef = useRef<HTMLDivElement>(null)
 
   const getEffectivenessColor = (multiplier: number) => {
     switch (multiplier) {
-      case 0: return 'bg-gray-900 text-white'
-      case 0.25: return 'bg-gray-700 text-white'
-      case 0.5: return 'bg-orange-600 text-white'
-      case 1: return 'bg-gray-600 text-white'
-      case 2: return 'bg-green-600 text-white'
-      case 4: return 'bg-green-800 text-white'
-      default: return 'bg-gray-600 text-white'
+      case 0: return '#1f2937'
+      case 0.25: return '#374151'
+      case 0.5: return '#ea580c'
+      case 1: return '#4b5563'
+      case 2: return '#16a34a'
+      case 4: return '#14532d'
+      default: return '#4b5563'
+    }
+  }
+
+  const getLineColor = (multiplier: number) => {
+    switch (multiplier) {
+      case 0: return '#6b7280'
+      case 0.25: return '#9ca3af'
+      case 0.5: return '#fb923c'
+      case 1: return '#d1d5db'
+      case 2: return '#22c55e'
+      case 4: return '#16a34a'
+      default: return '#d1d5db'
+    }
+  }
+
+  const getLineWidth = (multiplier: number) => {
+    switch (multiplier) {
+      case 0: return 1
+      case 0.25: return 1
+      case 0.5: return 2
+      case 1: return 1
+      case 2: return 3
+      case 4: return 4
+      default: return 1
     }
   }
 
@@ -44,19 +70,79 @@ export default function TypeChartPage() {
     return defender.defending[attackingType as keyof typeof defender.defending] || 1
   }
 
-  const getTypeMatchups = (type: string) => {
-    const offensive = POKEMON_TYPES.map(targetType => ({
-      type: targetType,
-      effectiveness: getAttackingEffectiveness(type, targetType)
-    })).sort((a, b) => b.effectiveness - a.effectiveness)
+  const getTypeMatchups = (types: string[]) => {
+    const calculateCombinedEffectiveness = (attackingType: string, defendingTypes: string[]) => {
+      return defendingTypes.reduce((total, defendingType) => {
+        const effectiveness = getDefendingEffectiveness(defendingType, attackingType)
+        return total * effectiveness
+      }, 1)
+    }
+
+    const offensive = POKEMON_TYPES.map(targetType => {
+      let effectiveness = 1
+      if (types.length === 1) {
+        effectiveness = getAttackingEffectiveness(types[0], targetType)
+      } else if (types.length === 2) {
+        // For dual types, offensive effectiveness is the same (you attack with one type at a time)
+        effectiveness = Math.max(
+          getAttackingEffectiveness(types[0], targetType),
+          getAttackingEffectiveness(types[1], targetType)
+        )
+      }
+      return { type: targetType, effectiveness }
+    }).sort((a, b) => b.effectiveness - a.effectiveness)
 
     const defensive = POKEMON_TYPES.map(attackingType => ({
       type: attackingType,
-      effectiveness: getDefendingEffectiveness(type, attackingType)
+      effectiveness: calculateCombinedEffectiveness(attackingType, types)
     })).sort((a, b) => b.effectiveness - a.effectiveness)
 
     return { offensive, defensive }
   }
+
+  const handleTypeSelection = (type: string) => {
+    setSelectedTypes(prev => {
+      if (prev.includes(type)) {
+        // Remove type if already selected
+        return prev.filter(t => t !== type)
+      } else if (prev.length < 2) {
+        // Add type if less than 2 selected
+        return [...prev, type]
+      }
+      // If already have 2 types, replace the first one
+      return [prev[1], type]
+    })
+  }
+
+  const updateTypePositions = () => {
+    if (!containerRef.current) return
+    
+    const positions: Record<string, { x: number; y: number }> = {}
+    const typeElements = containerRef.current.querySelectorAll('[data-type]')
+    
+    typeElements.forEach((element) => {
+      const type = element.getAttribute('data-type')
+      if (type) {
+        const rect = element.getBoundingClientRect()
+        const containerRect = containerRef.current!.getBoundingClientRect()
+        positions[type] = {
+          x: rect.left - containerRect.left + rect.width / 2,
+          y: rect.top - containerRect.top + rect.height / 2
+        }
+      }
+    })
+    
+    setTypePositions(positions)
+  }
+
+  useEffect(() => {
+    if (selectedTypes.length > 0) {
+      updateTypePositions()
+      const handleResize = () => updateTypePositions()
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  }, [selectedTypes])
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 p-4">
@@ -68,95 +154,52 @@ export default function TypeChartPage() {
       </div>
 
       <div className="bg-gray-800 rounded-lg shadow-sm border p-6">
-        <div className="mb-6 bg-gray-700 p-4 rounded-lg">
-          <h4 className="font-semibold mb-3 text-gray-200">Effectiveness Legend:</h4>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-300">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center font-bold text-xs">4x</div>
-              <span>Ultra Effective</span>
+        {selectedTypes.length > 0 && (
+          <div className="mb-6 animate-fadeIn">
+            <div className="text-center mb-4">
+              <h4 className="font-semibold text-blue-400 transform transition-all duration-500 hover:scale-105">
+                {selectedTypes.length === 1 
+                  ? `${selectedTypes[0].charAt(0).toUpperCase() + selectedTypes[0].slice(1)} Type Analysis`
+                  : `${selectedTypes[0].charAt(0).toUpperCase() + selectedTypes[0].slice(1)} / ${selectedTypes[1].charAt(0).toUpperCase() + selectedTypes[1].slice(1)} Type Analysis`
+                }
+              </h4>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xs">2x</div>
-              <span>Super Effective</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center font-bold text-xs">1x</div>
-              <span>Neutral</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-orange-400 text-white rounded-full flex items-center justify-center font-bold text-xs">½x</div>
-              <span>Not Very Effective</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gray-800 text-white rounded-full flex items-center justify-center font-bold text-xs">0x</div>
-              <span>No Effect</span>
-            </div>
-          </div>
-        </div>
-
-        {selectedType && (
-          <div className="mb-6">
-            <h4 className="font-semibold mb-3 text-blue-400">Summary for {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}:</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-green-900 p-4 rounded-lg border border-green-700">
-                <h5 className="font-medium text-green-300 mb-2">Super Effective Against</h5>
-                <div className="flex flex-wrap gap-2">
-                  {getTypeMatchups(selectedType).offensive
-                    .filter(({ effectiveness }) => effectiveness > 1)
-                    .map(({ type }) => (
-                      <span 
-                        key={type}
-                        className="px-3 py-1 rounded-full text-white text-xs font-medium shadow-sm"
-                        style={{ backgroundColor: getTypeColor(type) }}
-                      >
-                        {type}
-                      </span>
-                    ))}
-                </div>
-              </div>
-              <div className="bg-orange-900 p-4 rounded-lg border border-orange-700">
-                <h5 className="font-medium text-orange-300 mb-2">Not Very Effective Against</h5>
-                <div className="flex flex-wrap gap-2">
-                  {getTypeMatchups(selectedType).offensive
-                    .filter(({ effectiveness }) => effectiveness < 1 && effectiveness > 0)
-                    .map(({ type }) => (
-                      <span 
-                        key={type}
-                        className="px-3 py-1 rounded-full text-white text-xs font-medium shadow-sm"
-                        style={{ backgroundColor: getTypeColor(type) }}
-                      >
-                        {type}
-                      </span>
-                    ))}
-                </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg border border-gray-600">
-                <h5 className="font-medium text-gray-300 mb-2">No Effect Against</h5>
-                <div className="flex flex-wrap gap-2">
-                  {getTypeMatchups(selectedType).offensive
-                    .filter(({ effectiveness }) => effectiveness === 0)
-                    .map(({ type }) => (
-                      <span 
-                        key={type}
-                        className="px-3 py-1 rounded-full text-white text-xs font-medium shadow-sm"
-                        style={{ backgroundColor: getTypeColor(type) }}
-                      >
-                        {type}
-                      </span>
-                    ))}
-                </div>
-              </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <TypeSummaryCard
+                title="Offensive Matchups"
+                icon="⚔️"
+                gradientClass="bg-gradient-to-br from-red-900 to-orange-900"
+                borderClass="border-red-700"
+                matchups={getTypeMatchups(selectedTypes).offensive}
+                type="offensive"
+              />
+              
+              <TypeSummaryCard
+                title="Defensive Matchups"
+                icon="🛡️"
+                gradientClass="bg-gradient-to-br from-blue-900 to-indigo-900"
+                borderClass="border-blue-700"
+                matchups={getTypeMatchups(selectedTypes).defensive}
+                type="defensive"
+              />
             </div>
           </div>
         )}
 
         <div className="mb-6">
-          <label className="block text-sm font-medium mb-3 text-gray-300">Select Type:</label>
+          <label className="block text-sm font-medium mb-3 text-gray-300">
+            Select Types (up to 2): {selectedTypes.length > 0 && 
+              <span className="ml-2 text-blue-400">
+                {selectedTypes.map(t => t.charAt(0).toUpperCase() + t.slice(1)).join(' / ')}
+              </span>
+            }
+          </label>
           <div className="flex flex-wrap gap-2 mb-4">
             <button
-              onClick={() => setSelectedType('')}
+              onClick={() => setSelectedTypes([])}
               className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedType === '' 
+                selectedTypes.length === 0 
                   ? 'bg-blue-600 text-white shadow-lg transform scale-105' 
                   : 'bg-gray-700 hover:bg-gray-600 text-gray-300'
               }`}
@@ -166,74 +209,125 @@ export default function TypeChartPage() {
             {POKEMON_TYPES.map(type => (
               <button
                 key={type}
-                onClick={() => setSelectedType(type)}
-                className={`px-4 py-2 rounded-lg font-medium text-white transition-all ${
-                  selectedType === type 
+                onClick={() => handleTypeSelection(type)}
+                className={`px-4 py-2 rounded-lg font-medium text-white transition-all relative ${
+                  selectedTypes.includes(type) 
                     ? 'ring-2 ring-offset-2 ring-blue-400 shadow-lg transform scale-105' 
                     : 'hover:opacity-80 hover:shadow-md'
                 }`}
                 style={{ backgroundColor: getTypeColor(type) }}
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}
+                {selectedTypes.includes(type) && (
+                  <span className="absolute -top-1 -right-1 bg-yellow-400 text-gray-900 text-xs rounded-full w-4 h-4 flex items-center justify-center font-bold">
+                    {selectedTypes.indexOf(type) + 1}
+                  </span>
+                )}
               </button>
             ))}
           </div>
         </div>
 
-        {selectedType ? (
-          <div className="space-y-6">
+        {selectedTypes.length > 0 ? (
+          <div className="space-y-6 animate-fadeIn">
             <div className="text-center">
-              <div 
-                className="inline-block px-6 py-3 rounded-lg text-white text-xl font-bold shadow-lg"
-                style={{ backgroundColor: getTypeColor(selectedType) }}
-              >
-                {selectedType.charAt(0).toUpperCase() + selectedType.slice(1)} Type
+              <div className="flex justify-center gap-2 mb-4">
+                {selectedTypes.map((type, index) => (
+                  <div 
+                    key={type}
+                    className="px-6 py-3 rounded-lg text-white text-xl font-bold shadow-lg transform transition-all duration-500 hover:scale-110 hover:rotate-3"
+                    style={{ 
+                      backgroundColor: getTypeColor(type),
+                      animation: `slideInUp 0.5s ease-out ${index * 0.2}s both`
+                    }}
+                  >
+                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                  </div>
+                ))}
+                {selectedTypes.length === 2 && (
+                  <div className="px-4 py-3 rounded-lg text-gray-300 text-xl font-bold shadow-lg bg-gray-700 transform transition-all duration-500 hover:scale-110 animate-pulse">
+                    +
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-red-900 to-orange-900 p-6 rounded-lg border border-red-700">
-                <h3 className="text-lg font-semibold mb-4 text-red-300">Offensive Matchups</h3>
-                <div className="space-y-3">
-                  {getTypeMatchups(selectedType).offensive.map(({ type, effectiveness }) => (
-                    <div key={type} className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div 
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm"
-                          style={{ backgroundColor: getTypeColor(type) }}
-                        >
-                          {type.charAt(0).toUpperCase()}
-                        </div>
-                        <span className="font-medium capitalize text-gray-300">{type}</span>
-                      </div>
-                      <div className={`px-3 py-1 rounded-full text-sm font-bold ${getEffectivenessColor(effectiveness)}`}>
-                        {getEffectivenessText(effectiveness)}
-                      </div>
-                    </div>
-                  ))}
+            <div className="relative bg-gray-900 rounded-lg p-8 transform transition-all duration-500 hover:shadow-2xl" style={{ minHeight: '600px' }} ref={containerRef}>
+              <RelationshipLines
+                selectedTypes={selectedTypes}
+                typePositions={typePositions}
+                offensiveMatchups={getTypeMatchups(selectedTypes).offensive}
+                defensiveMatchups={getTypeMatchups(selectedTypes).defensive}
+                getLineColor={getLineColor}
+                getLineWidth={getLineWidth}
+                getEffectivenessText={getEffectivenessText}
+              />
+              
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative" style={{ width: '500px', height: '500px' }}>
+                  {POKEMON_TYPES.map((type, index) => {
+                    const matchups = getTypeMatchups(selectedTypes)
+                    const offensiveMatchup = matchups.offensive.find(m => m.type === type)
+                    const defensiveMatchup = matchups.defensive.find(m => m.type === type)
+                    
+                    const offensiveEffectiveness = offensiveMatchup?.effectiveness || 1
+                    const defensiveEffectiveness = defensiveMatchup?.effectiveness || 1
+                    const isSelected = selectedTypes.includes(type)
+                    
+                    return (
+                      <TypeCircle
+                        key={type}
+                        type={type}
+                        index={index}
+                        offensiveEffectiveness={offensiveEffectiveness}
+                        defensiveEffectiveness={defensiveEffectiveness}
+                        isSelected={isSelected}
+                        selectedTypes={selectedTypes}
+                        onClick={handleTypeSelection}
+                      />
+                    )
+                  })}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-900 to-indigo-900 p-6 rounded-lg border border-blue-700">
-                <h3 className="text-lg font-semibold mb-4 text-blue-300">Defensive Matchups</h3>
-                <div className="space-y-3">
-                  {getTypeMatchups(selectedType).defensive.map(({ type, effectiveness }) => (
-                    <div key={type} className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div 
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-sm"
-                          style={{ backgroundColor: getTypeColor(type) }}
-                        >
-                          {type.charAt(0).toUpperCase()}
-                        </div>
-                        <span className="font-medium capitalize text-gray-300">{type}</span>
-                      </div>
-                      <div className={`px-3 py-1 rounded-full text-sm font-bold ${getEffectivenessColor(effectiveness)}`}>
-                        {getEffectivenessText(effectiveness)}
-                      </div>
-                    </div>
-                  ))}
+              <div className="absolute top-4 left-4 bg-gray-800 p-3 rounded-lg text-xs transform transition-all duration-300 hover:scale-105">
+                <div className="font-bold mb-2 text-gray-300">Line Legend:</div>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-green-500"></div>
+                    <span className="text-gray-400">Super Effective (2x/4x)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-orange-400"></div>
+                    <span className="text-gray-400">Not Very Effective (½x/¼x)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-gray-500" style={{ borderStyle: 'dashed' }}></div>
+                    <span className="text-gray-400">No Effect (0x)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-gray-400 opacity-30"></div>
+                    <span className="text-gray-400">Neutral (1x)</span>
+                  </div>
                 </div>
+                <div className="mt-3 pt-3 border-t border-gray-700 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-blue-500"></div>
+                    <span className="text-gray-400">Solid = Offensive</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-1 bg-blue-300" style={{ borderStyle: 'dashed' }}></div>
+                    <span className="text-gray-400">Dashed = Defensive</span>
+                  </div>
+                </div>
+                {selectedTypes.length === 2 && (
+                  <div className="mt-3 pt-3 border-t border-gray-700">
+                    <div className="font-bold mb-1 text-gray-300">Dual Type:</div>
+                    <div className="text-gray-400">
+                      Defensive = Type1 × Type2
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -245,7 +339,7 @@ export default function TypeChartPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {POKEMON_TYPES.map(type => {
-                const matchups = getTypeMatchups(type)
+                const matchups = getTypeMatchups([type])
                 const superEffective = matchups.offensive.filter(m => m.effectiveness > 1).length
                 const weakTo = matchups.defensive.filter(m => m.effectiveness > 1).length
                 const resistant = matchups.defensive.filter(m => m.effectiveness < 1 && m.effectiveness > 0).length
@@ -253,7 +347,7 @@ export default function TypeChartPage() {
                 return (
                   <div 
                     key={type}
-                    onClick={() => setSelectedType(type)}
+                    onClick={() => handleTypeSelection(type)}
                     className="bg-gray-700 border border-gray-600 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer hover:scale-105"
                   >
                     <div className="flex items-center space-x-3 mb-3">
