@@ -937,6 +937,19 @@ export function getGmaxMoveName(formName: string): string {
 }
 
 /**
+ * Fetches Pokemon moves data by Pokemon ID
+ */
+export async function fetchPokemonMoves(pokemonId: number): Promise<any[]> {
+  try {
+    const pokemon = await pokemonClient.getPokemonById(pokemonId)
+    return pokemon.moves || []
+  } catch (error) {
+    console.error('Error fetching Pokemon moves:', error)
+    return []
+  }
+}
+
+/**
  * Gets form sprite URL
  */
 export function getFormSpriteUrl(formName: string, pokemonId: number): string {

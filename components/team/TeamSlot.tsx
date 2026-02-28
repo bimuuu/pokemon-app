@@ -1,5 +1,4 @@
 import { X, Plus } from 'lucide-react'
-import { useDroppable } from '@dnd-kit/core'
 import { Pokemon } from '@/types/pokemon'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { TypeBadge } from '@/components/ui/TypeBadge'
@@ -19,14 +18,6 @@ export function TeamSlot({ pokemon, slotNumber, slotIndex, onRemove, onAdd }: Te
   const { t } = useLanguage()
   const [isHovered, setIsHovered] = useState(false)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-  
-  const { isOver, setNodeRef } = useDroppable({
-    id: `team-slot-${slotIndex}`,
-    data: {
-      type: 'team-slot',
-      slotIndex,
-    },
-  })
 
   // Handle hover with delay for smoother interaction
   const handleMouseEnter = () => {
@@ -61,15 +52,12 @@ export function TeamSlot({ pokemon, slotNumber, slotIndex, onRemove, onAdd }: Te
 
   return (
     <div
-      ref={setNodeRef}
-      key={pokemon ? `${pokemon.id}-${pokemon.types.length}` : `empty-${slotIndex}`} // Force re-render when types change
+      key={pokemon ? `${pokemon.id}-${pokemon.types.length}` : `empty-${slotIndex}`}
       className={`
         bg-white border-2 border-dashed rounded-lg p-4 transition-all relative
         ${pokemon 
           ? 'border-gray-300' 
-          : isOver 
-            ? 'border-blue-500 bg-blue-50 scale-105' 
-            : 'border-gray-300 hover:border-blue-400'
+          : 'border-gray-300 hover:border-blue-400'
         }
       `}
       onMouseEnter={handleMouseEnter}
@@ -158,9 +146,6 @@ export function TeamSlot({ pokemon, slotNumber, slotIndex, onRemove, onAdd }: Te
         >
           <Plus className="w-8 h-8 mb-2" />
           <span className="text-sm">{t('team.slot')} {slotNumber}</span>
-          {isOver && (
-            <span className="text-xs text-blue-600 mt-1">{t('team.dropPokemonHere')}</span>
-          )}
         </button>
       )}
     </div>

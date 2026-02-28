@@ -2,23 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { Search, Users, Shield, Zap, AlertTriangle, Filter, X, RotateCcw } from 'lucide-react'
-import {
-  DndContext,
-  DragEndEvent,
-  DragOverEvent,
-  DragStartEvent,
-  PointerSensor,
-  useSensor,
-  useSensors,
-  DragOverlay,
-  closestCenter,
-  CollisionDetection,
-  rectIntersection,
-  ClientRect,
-} from '@dnd-kit/core'
 import { TeamSlot } from '@/components/team/TeamSlot'
 import { TypeBadge } from '@/components/ui/TypeBadge'
-import { DraggablePokemonCard } from '@/components/pokemon/DraggablePokemonCard'
+import { ClickablePokemonCard } from '@/components/pokemon/ClickablePokemonCard'
 import { Pagination } from '@/components/common/Pagination'
 import { TeamLoadingSkeleton } from '@/components/loading/TeamLoadingSkeleton'
 import { Pokemon, TeamAnalysis } from '@/types/pokemon'
@@ -37,26 +23,14 @@ export default function TeamBuilderPage() {
   const [team, setTeam] = useState<(Pokemon | null)[]>(Array(6).fill(null))
   const [allPokemon, setAllPokemon] = useState<Pokemon[]>([])
   const [searchTerm, setSearchTerm] = useState('')
-  const [showPokemonSelector, setShowPokemonSelector] = useState(false)
-  const [selectedSlot, setSelectedSlot] = useState<number | null>(null)
   const [teamAnalysis, setTeamAnalysis] = useState<TeamAnalysis | null>(null)
   const [selectedType, setSelectedType] = useState('')
   const [selectedGeneration, setSelectedGeneration] = useState('')
   const [selectedRarity, setSelectedRarity] = useState('')
-  const [draggedPokemon, setDraggedPokemon] = useState<Pokemon | null>(null)
-  const [activeId, setActiveId] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [loading, setLoading] = useState(true)
   const [loadingTypes, setLoadingTypes] = useState(true)
-  const [showSpecialForms, setShowSpecialForms] = useState(false)
   
-  const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        distance: 8,
-      },
-    })
-  )
 
   // Load Pokemon data using service
   useEffect(() => {
@@ -100,54 +74,25 @@ export default function TeamBuilderPage() {
     }
   }
 
-  const handleDragStart = (event: DragStartEvent) => {
-    const { active } = event
-    const activeData = active.data.current
+  const handlePokemonClick = (pokemon: Pokemon) => {
+    // Find first empty slot
+    const emptySlotIndex = team.findIndex(p => p === null)
     
-    if (activeData?.type === 'pokemon') {
-      setDraggedPokemon(activeData.pokemon)
-      setActiveId(active.id as string)
-    }
-  }
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event
-    
-    if (!over) {
-      setDraggedPokemon(null)
-      setActiveId(null)
-      return
-    }
-
-    const activeData = active.data.current
-    const overData = over.data.current
-    
-    if (activeData?.type === 'pokemon' && overData?.type === 'team-slot') {
-      const pokemon = activeData.pokemon as Pokemon
-      const slotIndex = overData.slotIndex as number
-      
+    if (emptySlotIndex !== -1) {
       // Check if pokemon is already in team
       const isAlreadyInTeam = team.some(p => p?.id === pokemon.id)
       if (!isAlreadyInTeam) {
         const newTeam = [...team]
-        newTeam[slotIndex] = pokemon
+        newTeam[emptySlotIndex] = pokemon
         setTeam(newTeam)
       }
     }
-    
-    setDraggedPokemon(null)
-    setActiveId(null)
   }
 
   const removeFromTeam = (slotIndex: number) => {
     const newTeam = [...team]
     newTeam[slotIndex] = null
     setTeam(newTeam)
-  }
-
-  const openPokemonSelector = (slotIndex: number) => {
-    setSelectedSlot(slotIndex)
-    setShowPokemonSelector(true)
   }
 
   useEffect(() => {
@@ -176,29 +121,15 @@ export default function TeamBuilderPage() {
     selectedRarity
   )
 
-  // Filter for special forms Pokemon using existing filter
-  const specialFormsPokemon = showSpecialForms ? filterSpecialFormsPokemon(filteredPokemon) : []
-
   const totalPages = Math.ceil(filteredPokemon.length / POKEMON_PER_PAGE)
   const startIndex = (currentPage - 1) * POKEMON_PER_PAGE
   const paginatedPokemon = filteredPokemon.slice(startIndex, startIndex + POKEMON_PER_PAGE)
-  
-  // Separate special forms pagination
-  const specialFormsTotalPages = Math.ceil(specialFormsPokemon.length / POKEMON_PER_PAGE)
-  const specialFormsStartIndex = (currentPage - 1) * POKEMON_PER_PAGE
-  const paginatedSpecialForms = specialFormsPokemon.slice(specialFormsStartIndex, specialFormsStartIndex + POKEMON_PER_PAGE)
 
   if (loading || loadingTypes) {
     return <TeamLoadingSkeleton onClearAll={clearAllTeam} loadingTypes={loadingTypes} />
   }
 
   return (
-    <DndContext
-      sensors={sensors}
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
-      collisionDetection={closestCenter}
-    >
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">{t('team.title')}</h1>
@@ -233,7 +164,7 @@ export default function TeamBuilderPage() {
                     slotNumber={index + 1}
                     slotIndex={index}
                     onRemove={() => removeFromTeam(index)}
-                    onAdd={() => openPokemonSelector(index)}
+                    onAdd={() => {}}
                   />
                 ))}
               </div>
@@ -332,19 +263,6 @@ export default function TeamBuilderPage() {
               <Search className="w-5 h-5 mr-2" />
               {t('team.pokemonLibrary')}
             </h2>
-            <button
-              onClick={() => setShowSpecialForms(!showSpecialForms)}
-              className={`
-                px-4 py-2 rounded-lg border transition-colors flex items-center gap-2
-                ${showSpecialForms 
-                  ? 'bg-purple-900 border-purple-700 text-purple-300' 
-                  : 'bg-gray-700 border-gray-600 text-gray-300 hover:bg-gray-600'
-                }
-              `}
-            >
-              <span className="text-lg">✨</span>
-              {showSpecialForms ? t('team.showAllPokemon') : t('team.showSpecialForms')}
-            </button>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -406,53 +324,41 @@ export default function TeamBuilderPage() {
           
           <div className="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div className="text-sm text-gray-400">
-              {showSpecialForms 
-                ? t('team.specialFormsFound').replace('{count}', specialFormsPokemon.length.toString())
-                : t('team.pokemonFound').replace('{count}', filteredPokemon.length.toString())
-              }
+              {t('team.pokemonFound').replace('{count}', filteredPokemon.length.toString())}
               <span className="ml-2 text-xs text-gray-500">
                 ({t('pagination.showing').replace('{start}', ((currentPage - 1) * POKEMON_PER_PAGE + 1).toString())
-                  .replace('{end}', Math.min(currentPage * POKEMON_PER_PAGE, showSpecialForms ? specialFormsPokemon.length : filteredPokemon.length).toString())
-                  .replace('{total}', (showSpecialForms ? specialFormsPokemon.length : filteredPokemon.length).toString())})
+                  .replace('{end}', Math.min(currentPage * POKEMON_PER_PAGE, filteredPokemon.length).toString())
+                  .replace('{total}', filteredPokemon.length.toString())})
               </span>
             </div>
             
-            {(showSpecialForms ? specialFormsTotalPages > 1 : totalPages > 1) && (
+            {totalPages > 1 && (
               <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span>{t('pagination.page')} {currentPage} {t('pagination.of')} {showSpecialForms ? specialFormsTotalPages : totalPages}</span>
+                <span>{t('pagination.page')} {currentPage} {t('pagination.of')} {totalPages}</span>
               </div>
             )}
           </div>
 
-          <div className="border-t border-b border-gray-700 bg-gray-900/50 -mx-6 px-6 py-4 mb-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 max-h-96 overflow-y-auto">
-              {showSpecialForms ? (
-                paginatedSpecialForms.length > 0 ? (
-                  paginatedSpecialForms.map(pokemon => (
-                    <DraggablePokemonCard
-                      key={`special-${pokemon.id}-${pokemon.name}`}
-                      pokemon={pokemon}
-                      isDisabled={team.some(p => p?.id === pokemon.id)}
-                    />
-                  ))
-                ) : (
-                  <div className="col-span-full text-center py-8">
-                    <div className="text-gray-400">{t('common.noDataFound')}</div>
-                  </div>
-                )
-              ) : (
+          <div className="border-t border-b border-gray-700 bg-gray-900/50 -mx-6 px-6 py-6 mb-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[600px] overflow-y-auto p-2">
+              {paginatedPokemon.length > 0 ? (
                 paginatedPokemon.map(pokemon => (
-                  <DraggablePokemonCard
-                    key={`${pokemon.id}-${pokemon.types.length}`} // Force re-render when types change
+                  <ClickablePokemonCard
+                    key={`${pokemon.id}-${pokemon.types.length}`}
                     pokemon={pokemon}
                     isDisabled={team.some(p => p?.id === pokemon.id)}
+                    onClick={handlePokemonClick}
                   />
                 ))
+              ) : (
+                <div className="col-span-full text-center py-8">
+                  <div className="text-gray-400">{t('common.noDataFound')}</div>
+                </div>
               )}
             </div>
           </div>
 
-          {(showSpecialForms ? specialFormsTotalPages > 1 : totalPages > 1) && (
+          {totalPages > 1 && (
             <div className="flex flex-col items-center space-y-4 pt-4 border-t border-gray-700">
               <div className="text-sm text-gray-400">
                 {t('pagination.resultsPerPage')}: {POKEMON_PER_PAGE}
@@ -460,23 +366,13 @@ export default function TeamBuilderPage() {
               <nav aria-label={t('pagination.navigation') || 'Pagination'} className="w-full max-w-md">
                 <Pagination
                   currentPage={currentPage}
-                  totalPages={showSpecialForms ? specialFormsTotalPages : totalPages}
+                  totalPages={totalPages}
                   onPageChange={setCurrentPage}
                 />
               </nav>
             </div>
           )}
         </div>
-
-
-        <DragOverlay>
-          {draggedPokemon && (
-            <div className="opacity-90 rotate-3 scale-105">
-              <DraggablePokemonCard pokemon={draggedPokemon} isDisabled={false} />
-            </div>
-          )}
-        </DragOverlay>
       </div>
-    </DndContext>
   )
 }
