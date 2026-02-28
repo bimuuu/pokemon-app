@@ -6,6 +6,8 @@ import { TypeBadge } from '@/components/ui/TypeBadge'
 import { formatPokemonName } from '@/lib/utils'
 import { useState, useEffect } from 'react'
 import { fetchPokemonForms, getFormDisplayName, fetchPokemonByName } from '@/lib/pokemon-api'
+import { motion } from 'framer-motion'
+import { X } from 'lucide-react'
 
 interface ClickablePokemonCardProps {
   pokemon: Pokemon

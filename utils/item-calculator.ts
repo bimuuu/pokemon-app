@@ -11,7 +11,11 @@ export interface ItemCalculation {
 }
 
 export function formatItemName(itemName: string): string {
-  return itemName
+  // Remove common prefixes if present
+  const cleanName = itemName
+    .replace(/^(lumymon|cobblemon|minecraft):/i, '')
+  
+  return cleanName
     .split('_')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')

@@ -29,7 +29,7 @@ const itemVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 300,
       damping: 24
     }
@@ -43,8 +43,8 @@ const pulseVariants = {
     transition: {
       duration: 2,
       repeat: Infinity,
-      repeatType: "reverse",
-      ease: "easeInOut"
+      repeatType: "reverse" as const,
+      ease: "easeInOut" as const
     }
   }
 }
@@ -55,7 +55,7 @@ const spinVariants = {
     transition: {
       duration: 1,
       repeat: Infinity,
-      ease: "linear"
+      ease: "linear" as const
     }
   }
 }
