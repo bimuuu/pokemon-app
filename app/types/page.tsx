@@ -147,9 +147,9 @@ export default function TypeChartPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-8 p-4">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Type Chart</h1>
+        <h1 className="text-4xl font-bold mb-4">Type Relationship Chart</h1>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          Interactive type effectiveness chart. Click on any type to see detailed matchups.
+          Interactive type relationship visualization. Select types to see their effectiveness relationships.
         </p>
       </div>
 
@@ -196,16 +196,6 @@ export default function TypeChartPage() {
             }
           </label>
           <div className="flex flex-wrap gap-2 mb-4">
-            <button
-              onClick={() => setSelectedTypes([])}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedTypes.length === 0 
-                  ? 'bg-blue-600 text-white shadow-lg transform scale-105' 
-                  : 'bg-gray-700 hover:bg-gray-600 text-gray-300'
-              }`}
-            >
-              Overview
-            </button>
             {POKEMON_TYPES.map(type => (
               <button
                 key={type}
@@ -228,31 +218,9 @@ export default function TypeChartPage() {
           </div>
         </div>
 
-        {selectedTypes.length > 0 ? (
-          <div className="space-y-6 animate-fadeIn">
-            <div className="text-center">
-              <div className="flex justify-center gap-2 mb-4">
-                {selectedTypes.map((type, index) => (
-                  <div 
-                    key={type}
-                    className="px-6 py-3 rounded-lg text-white text-xl font-bold shadow-lg transform transition-all duration-500 hover:scale-110 hover:rotate-3"
-                    style={{ 
-                      backgroundColor: getTypeColor(type),
-                      animation: `slideInUp 0.5s ease-out ${index * 0.2}s both`
-                    }}
-                  >
-                    {type.charAt(0).toUpperCase() + type.slice(1)}
-                  </div>
-                ))}
-                {selectedTypes.length === 2 && (
-                  <div className="px-4 py-3 rounded-lg text-gray-300 text-xl font-bold shadow-lg bg-gray-700 transform transition-all duration-500 hover:scale-110 animate-pulse">
-                    +
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="relative bg-gray-900 rounded-lg p-8 transform transition-all duration-500 hover:shadow-2xl" style={{ minHeight: '600px' }} ref={containerRef}>
+        <div className="space-y-6">
+          <div className="relative bg-gray-900 rounded-lg p-8 transform transition-all duration-500 hover:shadow-2xl" style={{ minHeight: '600px' }} ref={containerRef}>
+            {selectedTypes.length > 0 && (
               <RelationshipLines
                 selectedTypes={selectedTypes}
                 typePositions={typePositions}
@@ -262,126 +230,82 @@ export default function TypeChartPage() {
                 getLineWidth={getLineWidth}
                 getEffectivenessText={getEffectivenessText}
               />
-              
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative" style={{ width: '500px', height: '500px' }}>
-                  {POKEMON_TYPES.map((type, index) => {
+            )}
+            
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative" style={{ width: '500px', height: '500px' }}>
+                {POKEMON_TYPES.map((type, index) => {
+                  let offensiveEffectiveness = 1
+                  let defensiveEffectiveness = 1
+                  
+                  if (selectedTypes.length > 0) {
                     const matchups = getTypeMatchups(selectedTypes)
                     const offensiveMatchup = matchups.offensive.find(m => m.type === type)
                     const defensiveMatchup = matchups.defensive.find(m => m.type === type)
                     
-                    const offensiveEffectiveness = offensiveMatchup?.effectiveness || 1
-                    const defensiveEffectiveness = defensiveMatchup?.effectiveness || 1
-                    const isSelected = selectedTypes.includes(type)
-                    
-                    return (
-                      <TypeCircle
-                        key={type}
-                        type={type}
-                        index={index}
-                        offensiveEffectiveness={offensiveEffectiveness}
-                        defensiveEffectiveness={defensiveEffectiveness}
-                        isSelected={isSelected}
-                        selectedTypes={selectedTypes}
-                        onClick={handleTypeSelection}
-                      />
-                    )
-                  })}
-                </div>
-              </div>
-
-              <div className="absolute top-4 left-4 bg-gray-800 p-3 rounded-lg text-xs transform transition-all duration-300 hover:scale-105">
-                <div className="font-bold mb-2 text-gray-300">Line Legend:</div>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-green-500"></div>
-                    <span className="text-gray-400">Super Effective (2x/4x)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-orange-400"></div>
-                    <span className="text-gray-400">Not Very Effective (½x/¼x)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-gray-500" style={{ borderStyle: 'dashed' }}></div>
-                    <span className="text-gray-400">No Effect (0x)</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-gray-400 opacity-30"></div>
-                    <span className="text-gray-400">Neutral (1x)</span>
-                  </div>
-                </div>
-                <div className="mt-3 pt-3 border-t border-gray-700 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-blue-500"></div>
-                    <span className="text-gray-400">Solid = Offensive</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-1 bg-blue-300" style={{ borderStyle: 'dashed' }}></div>
-                    <span className="text-gray-400">Dashed = Defensive</span>
-                  </div>
-                </div>
-                {selectedTypes.length === 2 && (
-                  <div className="mt-3 pt-3 border-t border-gray-700">
-                    <div className="font-bold mb-1 text-gray-300">Dual Type:</div>
-                    <div className="text-gray-400">
-                      Defensive = Type1 × Type2
-                    </div>
-                  </div>
-                )}
+                    offensiveEffectiveness = offensiveMatchup?.effectiveness || 1
+                    defensiveEffectiveness = defensiveMatchup?.effectiveness || 1
+                  }
+                  
+                  const isSelected = selectedTypes.includes(type)
+                  
+                  return (
+                    <TypeCircle
+                      key={type}
+                      type={type}
+                      index={index}
+                      offensiveEffectiveness={offensiveEffectiveness}
+                      defensiveEffectiveness={defensiveEffectiveness}
+                      isSelected={isSelected}
+                      selectedTypes={selectedTypes}
+                      onClick={handleTypeSelection}
+                    />
+                  )
+                })}
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="text-center text-gray-400">
-              <p className="text-lg">Select a type above to see detailed matchups</p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {POKEMON_TYPES.map(type => {
-                const matchups = getTypeMatchups([type])
-                const superEffective = matchups.offensive.filter(m => m.effectiveness > 1).length
-                const weakTo = matchups.defensive.filter(m => m.effectiveness > 1).length
-                const resistant = matchups.defensive.filter(m => m.effectiveness < 1 && m.effectiveness > 0).length
-                
-                return (
-                  <div 
-                    key={type}
-                    onClick={() => handleTypeSelection(type)}
-                    className="bg-gray-700 border border-gray-600 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer hover:scale-105"
-                  >
-                    <div className="flex items-center space-x-3 mb-3">
-                      <div 
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shadow-md"
-                        style={{ backgroundColor: getTypeColor(type) }}
-                      >
-                        {type.charAt(0).toUpperCase()}
-                      </div>
-                      <div>
-                        <h3 className="font-bold capitalize text-lg text-gray-200">{type}</h3>
-                        <p className="text-sm text-gray-400">Click for details</p>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2 text-xs">
-                      <div className="text-center">
-                        <div className="font-bold text-green-400">{superEffective}</div>
-                        <div className="text-gray-400">Strong vs</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-bold text-red-400">{weakTo}</div>
-                        <div className="text-gray-400">Weak to</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-bold text-orange-400">{resistant}</div>
-                        <div className="text-gray-400">Resists</div>
-                      </div>
-                    </div>
+            <div className="absolute top-4 left-4 bg-gray-800 p-3 rounded-lg text-xs transform transition-all duration-300 hover:scale-105">
+              <div className="font-bold mb-2 text-gray-300">Line Legend:</div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-green-500"></div>
+                  <span className="text-gray-400">Super Effective (2x/4x)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-orange-400"></div>
+                  <span className="text-gray-400">Not Very Effective (½x/¼x)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-gray-500" style={{ borderStyle: 'dashed' }}></div>
+                  <span className="text-gray-400">No Effect (0x)</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-gray-400 opacity-30"></div>
+                  <span className="text-gray-400">Neutral (1x)</span>
+                </div>
+              </div>
+              <div className="mt-3 pt-3 border-t border-gray-700 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-blue-500"></div>
+                  <span className="text-gray-400">Solid = Offensive</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-1 bg-blue-300" style={{ borderStyle: 'dashed' }}></div>
+                  <span className="text-gray-400">Dashed = Defensive</span>
+                </div>
+              </div>
+              {selectedTypes.length === 2 && (
+                <div className="mt-3 pt-3 border-t border-gray-700">
+                  <div className="font-bold mb-1 text-gray-300">Dual Type:</div>
+                  <div className="text-gray-400">
+                    Defensive = Type1 × Type2
                   </div>
-                )
-              })}
+                </div>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { POKEMON_TYPES } from '@/lib/constants'
 import { getTypeColor } from '@/lib/utils'
 
@@ -27,6 +28,12 @@ export default function TypeCircle({
   selectedTypes, 
   onClick 
 }: TypeCircleProps) {
+  const [isMounted, setIsMounted] = useState(false)
+  
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
   const angle = (index * 360) / POKEMON_TYPES.length
   const radius = 200
   const x = Math.cos((angle * Math.PI) / 180) * radius + 250
@@ -55,9 +62,9 @@ export default function TypeCircle({
         isSelected ? 'scale-125 z-20 animate-pulse' : 'hover:scale-110 z-10'
       }`}
       style={{
-        left: `${x}px`,
-        top: `${y}px`,
-        animation: isSelected ? 'pulse 2s infinite' : undefined,
+        left: isMounted ? `${Math.round(x)}px` : '50%',
+        top: isMounted ? `${Math.round(y)}px` : '50%',
+        animation: isMounted && isSelected ? 'pulse 2s infinite' : undefined,
       }}
     >
       <div
