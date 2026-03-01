@@ -535,6 +535,83 @@ export async function fetchPokemonForms(pokemonId: number): Promise<PokemonForm[
             })
           }
         }
+      } else if (pokemon.name === 'tornadus' || baseName === 'tornadus') {
+        // Tornadus forms
+        const tornadusForms = ['tornadus-incarnate', 'tornadus-therian']
+        for (const formName of tornadusForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'thundurus' || baseName === 'thundurus') {
+        // Thundurus forms
+        const thundurusForms = ['thundurus-incarnate', 'thundurus-therian']
+        for (const formName of thundurusForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'landorus' || baseName === 'landorus') {
+        // Landorus forms
+        const landorusForms = ['landorus-incarnate', 'landorus-therian']
+        for (const formName of landorusForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'zapdos' || baseName === 'zapdos') {
+        // Zapdos forms
+        const zapdosForms = ['zapdos', 'zapdos-galar']
+        for (const formName of zapdosForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'articuno' || baseName === 'articuno') {
+        // Articuno forms
+        const articunoForms = ['articuno', 'articuno-galar']
+        for (const formName of articunoForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'moltres' || baseName === 'moltres') {
+        // Moltres forms
+        const moltresForms = ['moltres', 'moltres-galar']
+        for (const formName of moltresForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'enamorus' || baseName === 'enamorus') {
+        // Enamorus forms
+        const enamorusForms = ['enamorus-incarnate', 'enamorus-therian']
+        for (const formName of enamorusForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
       } else if (pokemon.name === 'rotom' || baseName === 'rotom') {
         // Rotom forms
         const rotomForms = ['rotom', 'rotom-heat', 'rotom-wash', 'rotom-frost', 'rotom-fan', 'rotom-mow']
@@ -632,6 +709,39 @@ export async function fetchPokemonForms(pokemonId: number): Promise<PokemonForm[
           name: `${baseName}-gmax`,
           url: `https://pokeapi.co/api/v2/pokemon-form/${baseName}-gmax/`
         })
+      } else if (pokemon.name === 'zygarde' || baseName === 'zygarde') {
+        // Zygarde forms
+        const zygardeForms = ['zygarde-10', 'zygarde-50', 'zygarde-complete']
+        for (const formName of zygardeForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'necrozma' || baseName === 'necrozma') {
+        // Necrozma forms
+        const necrozmaForms = ['necrozma', 'necrozma-dawn', 'necrozma-dusk', 'necrozma-ultra']
+        for (const formName of necrozmaForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
+      } else if (pokemon.name === 'calyrex' || baseName === 'calyrex') {
+        // Calyrex forms
+        const calyrexForms = ['calyrex', 'calyrex-ice', 'calyrex-shadow']
+        for (const formName of calyrexForms) {
+          if (formName !== pokemon.forms[0].name) {
+            forms.push({
+              name: formName,
+              url: `https://pokeapi.co/api/v2/pokemon-form/${formName}/`
+            })
+          }
+        }
       }
       
       return forms
@@ -710,7 +820,7 @@ export async function fetchAllFormsData(pokemonId: number): Promise<Record<strin
           sprites: formData?.sprites || pokemonData.sprites,
           stats: pokemonData.stats,
           abilities: pokemonData.abilities,
-          types: pokemonData.types,
+          types: pokemonData.types.map((type: any) => type.type.name),
         }
         
         return { [form.name]: combinedData }
@@ -1066,7 +1176,10 @@ function getFormId(formName: string, baseId: number): number {
     'kyurem-black': 10016,
     'kyurem-white': 10017,
     'kyogre-primal': 10018,
-    'groudon-primal': 10019
+    'groudon-primal': 10019,
+    'zapdos-galar': 10020,
+    'articuno-galar': 10021,
+    'moltres-galar': 10022
   }
   
   // Check all mappings

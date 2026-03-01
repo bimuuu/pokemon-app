@@ -3,6 +3,7 @@
 import { useLanguage } from '@/contexts/LanguageContext'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 import { Dropdown } from '@/components/ui/dropdown'
+import { CategoryNavigation } from '@/components/navigation/CategoryNavigation'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -72,6 +73,21 @@ export function ClientLayoutContent({ children }: { children: React.ReactNode })
                 {t('navigation.pokemon')}
                 {getActiveIndicator('/')}
               </Link>
+            </motion.li>
+            <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Dropdown
+                trigger="Categories"
+                items={[
+                  { label: 'All Categories', href: '/categories' },
+                  { label: 'First Partner', href: '/categories/first-partner' },
+                  { label: 'Pseudo-Legendary', href: '/categories/pseudo-legendary' },
+                  { label: 'Legendary Pokémon', href: '/categories/legendary' },
+                  { label: 'Mythical Pokémon', href: '/categories/mythical' },
+                  { label: 'Ultra Beasts', href: '/categories/ultra-beast' },
+                  { label: 'Fossil Pokémon', href: '/categories/fossil' },
+                  { label: 'Paradox Pokémon', href: '/categories/paradox' }
+                ]}
+              />
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/team" className={getNavLinkClass('/team')}>
