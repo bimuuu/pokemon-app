@@ -1,29 +1,6 @@
-import { Pokemon, PokemonMove } from '@/types/pokemon'
+import { Pokemon, PokemonMove, MoveRecommendation, MovesetAnalysis, DefensiveRecommendation } from '@/types/pokemon'
 import { PokemonMovesService, MoveLearnMethod } from '@/services/pokemonMovesService'
-import { calculateTypeWeaknesses, calculateTypeStrengths } from '@/lib/utils'
-
-export interface MoveRecommendation {
-  name: string
-  power: number
-  type: string
-  learnMethod: string
-  level?: number
-  score: number
-  isStab: boolean
-  reason: string
-  category: 'attacking' | 'buff' | 'debuff' | 'support' | 'recovery' | 'weather' | 'terrain'
-  strategicValue: number
-  synergyScore: number
-}
-
-export interface MovesetAnalysis {
-  pokemon: string
-  types: string[]
-  recommendations: MoveRecommendation[]
-  coverage: Record<string, number>
-  weaknesses: Record<string, number>
-  role: 'physical' | 'special' | 'mixed'
-}
+import { calculateTypeWeaknesses, calculateTypeStrengths, calculateCounterTypes } from '@/lib/utils'
 
 export class MovesetRecommendationService {
   // Strategic moves database with priorities and descriptions
@@ -95,17 +72,30 @@ export class MovesetRecommendationService {
       .filter(([_, multiplier]) => multiplier > 1.5)
       .map(([type, _]) => type)
     
+    // Calculate counter types (types that are strong against this Pokemon)
+    const counterTypes = calculateCounterTypes(pokemonTypes)
+    
     // Generate move recommendations
     const recommendations = await this.generateMoveRecommendations(
       pokemon, 
       processedMoves, 
       pokemonTypes, 
       role,
-      significantWeaknesses
+      significantWeaknesses,
+      counterTypes
     )
     
     // Calculate coverage
     const coverage = this.calculateMovesetCoverage(recommendations.slice(0, 4))
+    
+    // Calculate defensive coverage against counter types
+    const defensiveCoverage = this.calculateDefensiveCoverage(recommendations.slice(0, 4), counterTypes)
+    
+    // Assess overall threat level
+    const threatLevel = this.assessThreatLevel(counterTypes, defensiveCoverage)
+    
+    // Identify coverage gaps
+    const coverageGaps = this.identifyCoverageGaps(counterTypes, defensiveCoverage)
     
     return {
       pokemon: pokemon.name,
@@ -113,7 +103,11 @@ export class MovesetRecommendationService {
       recommendations,
       coverage,
       weaknesses: weaknesses,
-      role
+      role,
+      counterTypes,
+      defensiveCoverage,
+      threatLevel,
+      coverageGaps
     }
   }
 
@@ -137,7 +131,8 @@ export class MovesetRecommendationService {
     },
     pokemonTypes: string[],
     role: 'physical' | 'special' | 'mixed',
-    weaknesses: string[]
+    weaknesses: string[],
+    counterTypes: Record<string, number>
   ): Promise<MoveRecommendation[]> {
     const allMoves = [
       ...processedMoves.levelUp,
@@ -175,6 +170,9 @@ export class MovesetRecommendationService {
           }
         }
         
+        // Calculate defensive coverage bonus against counter types
+        const defensiveCoverageBonus = this.calculateDefensiveCoverageBonus(moveType, counterTypes)
+        
         // Learn method priority
         const methodBonus = this.getMethodBonus(moveData.method)
         
@@ -190,6 +188,7 @@ export class MovesetRecommendationService {
         // Final score calculation
         const score = power * (isStab ? 1.5 : 1) * 
                       (1 + coverageBonus * 0.3) * 
+                      (1 + defensiveCoverageBonus * 0.5) * 
                       methodBonus * 
                       roleBonus * 
                       categoryScore * 
@@ -199,6 +198,7 @@ export class MovesetRecommendationService {
         const reasons = []
         if (isStab) reasons.push('STAB')
         if (coverageBonus > 0) reasons.push('Covers weaknesses')
+        if (defensiveCoverageBonus > 0) reasons.push('Counters threats')
         if (power >= 80) reasons.push('High power')
         if (methodBonus >= 1.2) reasons.push('Easy to learn')
         if (strategicValue > 0.7) reasons.push('High strategic value')
@@ -224,7 +224,7 @@ export class MovesetRecommendationService {
     // Sort by score and return top recommendations
     return recommendations
       .sort((a, b) => b.score - a.score)
-      .slice(0, 12) // Return top 12 for selection
+      .slice(0, 100) // Return top 100 for maximum variety
   }
 
   private static getMethodBonus(method: string): number {
@@ -436,5 +436,197 @@ export class MovesetRecommendationService {
   static getMoveDescription(moveName: string): string {
     const strategicMove = this.STRATEGIC_MOVES[moveName]
     return strategicMove?.description || ''
+  }
+
+  // Defensive Coverage Methods
+  
+  static calculateDefensiveCoverageBonus(moveType: string, counterTypes: Record<string, number>): number {
+    let bonus = 0
+    
+    Object.entries(counterTypes).forEach(([counterType, multiplier]) => {
+      const effectiveness = this.getTypeEffectiveness(moveType, counterType)
+      if (effectiveness > 1) {
+        // Higher bonus for countering more dangerous counter types
+        bonus += effectiveness * multiplier
+      }
+    })
+    
+    return Math.min(bonus, 3) // Cap the bonus to prevent over-weighting
+  }
+
+  static calculateDefensiveCoverage(moves: MoveRecommendation[], counterTypes: Record<string, number>): Record<string, number> {
+    const coverage: Record<string, number> = {}
+    
+    moves.forEach(move => {
+      Object.entries(counterTypes).forEach(([counterType, threatMultiplier]) => {
+        const effectiveness = this.getTypeEffectiveness(move.type, counterType)
+        if (effectiveness > 1) {
+          coverage[counterType] = Math.max(coverage[counterType] || 0, effectiveness)
+        }
+      })
+    })
+    
+    return coverage
+  }
+
+  static assessThreatLevel(counterTypes: Record<string, number>, defensiveCoverage: Record<string, number>): 'low' | 'medium' | 'high' {
+    let totalThreatScore = 0
+    let coveredThreatScore = 0
+    
+    Object.entries(counterTypes).forEach(([type, multiplier]) => {
+      totalThreatScore += multiplier
+      if (defensiveCoverage[type] && defensiveCoverage[type] > 1) {
+        coveredThreatScore += multiplier * 0.8 // 80% threat reduction if covered
+      }
+    })
+    
+    const uncoveredThreatRatio = (totalThreatScore - coveredThreatScore) / totalThreatScore
+    
+    if (uncoveredThreatRatio > 0.6) return 'high'
+    if (uncoveredThreatRatio > 0.3) return 'medium'
+    return 'low'
+  }
+
+  static identifyCoverageGaps(counterTypes: Record<string, number>, defensiveCoverage: Record<string, number>): string[] {
+    const gaps: string[] = []
+    
+    Object.entries(counterTypes).forEach(([type, multiplier]) => {
+      if (!defensiveCoverage[type] || defensiveCoverage[type] <= 1) {
+        gaps.push(type)
+      }
+    })
+    
+    // Sort by threat level (highest multiplier first)
+    return gaps.sort((a, b) => (counterTypes[b] || 0) - (counterTypes[a] || 0))
+  }
+
+  // New Defensive Moveset Generation Methods
+  
+  static generateDefensiveMoveset(analysis: MovesetAnalysis): MoveRecommendation[] {
+    const { recommendations, counterTypes } = analysis
+    const selectedMoves: MoveRecommendation[] = []
+    
+    // 1. Prioritize moves that cover the most dangerous counter types
+    const defensiveMoves = recommendations
+      .filter(m => m.category === 'attacking')
+      .map(move => ({
+        ...move,
+        counteredTypes: Object.keys(counterTypes).filter(type => 
+          this.getTypeEffectiveness(move.type, type) > 1
+        ),
+        coverageScore: Object.keys(counterTypes).reduce((score, type) => {
+          const effectiveness = this.getTypeEffectiveness(move.type, type)
+          return effectiveness > 1 ? score + (effectiveness * (counterTypes[type] || 1)) : score
+        }, 0)
+      }))
+      .sort((a, b) => b.coverageScore - a.coverageScore)
+    
+    // 2. Add best defensive coverage moves
+    selectedMoves.push(...defensiveMoves.slice(0, 3))
+    
+    // 3. Add 1 STAB move for offensive capability
+    const stabMoves = recommendations.filter(m => m.isStab && !selectedMoves.includes(m))
+    if (stabMoves.length > 0) {
+      selectedMoves.push(stabMoves[0])
+    }
+    
+    // 4. Fill remaining slot with highest scoring defensive move
+    if (selectedMoves.length < 4) {
+      const remainingMoves = defensiveMoves.filter(m => !selectedMoves.includes(m))
+      selectedMoves.push(...remainingMoves.slice(0, 4 - selectedMoves.length))
+    }
+    
+    return selectedMoves.slice(0, 4)
+  }
+
+  static generateBalancedDefensiveMoveset(analysis: MovesetAnalysis): MoveRecommendation[] {
+    const { recommendations, role } = analysis
+    const selectedMoves: MoveRecommendation[] = []
+    
+    // 1. Add 1 STAB move for consistent damage
+    const stabMoves = recommendations.filter(m => m.isStab && m.category === 'attacking')
+    if (stabMoves.length > 0) {
+      selectedMoves.push(stabMoves[0])
+    }
+    
+    // 2. Add 2 defensive coverage moves
+    const defensiveMoves = recommendations
+      .filter(m => m.category === 'attacking' && !m.isStab)
+      .sort((a, b) => b.score - a.score)
+    
+    selectedMoves.push(...defensiveMoves.slice(0, 2))
+    
+    // 3. Add utility move based on role
+    const utilityMoves = recommendations.filter(m => 
+      ['buff', 'debuff', 'support', 'recovery'].includes(m.category)
+    ).sort((a, b) => b.strategicValue - a.strategicValue)
+    
+    if (utilityMoves.length > 0 && selectedMoves.length < 4) {
+      selectedMoves.push(utilityMoves[0])
+    }
+    
+    // 4. Fill remaining slot with highest scoring move
+    if (selectedMoves.length < 4) {
+      const remainingMoves = recommendations.filter(m => !selectedMoves.includes(m))
+      selectedMoves.push(...remainingMoves.slice(0, 4 - selectedMoves.length))
+    }
+    
+    return selectedMoves.slice(0, 4)
+  }
+
+  static suggestCoverageMoves(analysis: MovesetAnalysis, maxSuggestions: number = 3): DefensiveRecommendation[] {
+    const { recommendations, coverageGaps, counterTypes } = analysis
+    const suggestions: DefensiveRecommendation[] = []
+    const usedMoveNames = new Set<string>()
+    
+    // Get all potential defensive moves sorted by score
+    const allDefensiveMoves: Array<{
+      move: any
+      counteredTypes: string[]
+      priority: 'high' | 'medium' | 'low'
+      coverageScore: number
+    }> = []
+    
+    // For each coverage gap, find the best move
+    coverageGaps.forEach((gapType: string) => {
+      const effectiveMoves = recommendations.filter(move => 
+        this.getTypeEffectiveness(move.type, gapType) > 1 &&
+        !usedMoveNames.has(move.name) // Avoid duplicates
+      ).sort((a, b) => b.score - a.score)
+      
+      if (effectiveMoves.length > 0) {
+        const bestMove = effectiveMoves[0]
+        const counteredTypes = Object.keys(counterTypes).filter(type => 
+          this.getTypeEffectiveness(bestMove.type, type) > 1
+        )
+        
+        const priority = counterTypes[gapType] >= 2 ? 'high' : 
+                       counterTypes[gapType] >= 1.5 ? 'medium' : 'low'
+        
+        const coverageScore = counteredTypes.reduce((score, type) => 
+          score + (this.getTypeEffectiveness(bestMove.type, type) * (counterTypes[type] || 1)), 0
+        )
+        
+        allDefensiveMoves.push({
+          move: bestMove,
+          counteredTypes,
+          priority,
+          coverageScore
+        })
+        
+        usedMoveNames.add(bestMove.name)
+      }
+    })
+    
+    // Sort by coverage score and return top unique suggestions
+    return allDefensiveMoves
+      .sort((a, b) => b.coverageScore - a.coverageScore)
+      .slice(0, maxSuggestions)
+      .map(item => ({
+        move: item.move,
+        counteredTypes: item.counteredTypes,
+        coverageScore: item.coverageScore,
+        priority: item.priority
+      }))
   }
 }

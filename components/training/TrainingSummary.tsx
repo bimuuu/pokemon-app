@@ -42,7 +42,9 @@ export function TrainingSummary({
   // Moveset state
   const [movesetAnalysis, setMovesetAnalysis] = useState<MovesetAnalysis | null>(null)
   const [selectedMoves, setSelectedMoves] = useState<MoveRecommendation[]>([])
+  const [moveSlots, setMoveSlots] = useState<(MoveRecommendation | null)[]>(Array(4).fill(null))
   const [isGeneratingMoveset, setIsGeneratingMoveset] = useState(false)
+  const [activeMovesetType, setActiveMovesetType] = useState<'offensive' | 'balanced' | 'defensive'>('balanced')
   
   // Item state
   const [itemAnalysis, setItemAnalysis] = useState<ItemOptimizationAnalysis | null>(null)
@@ -76,6 +78,32 @@ export function TrainingSummary({
   
   // Translation function (placeholder - should be passed from parent)
   const t = (key: string) => key // Simplified for now
+
+  // Initialize default moveset when analysis is ready
+  useEffect(() => {
+    if (movesetAnalysis && moveSlots.every(slot => slot === null)) {
+      // Auto-generate a balanced moveset as default
+      const defaultMoveset = MovesetRecommendationService.generateBalancedMoveset(movesetAnalysis)
+      const newSlots = Array(4).fill(null)
+      defaultMoveset.forEach((move, index) => {
+        if (index < 4) newSlots[index] = move
+      })
+      setMoveSlots(newSlots)
+      setSelectedMoves(defaultMoveset)
+    }
+  }, [movesetAnalysis])
+
+  const handleRefreshRecommendations = async () => {
+    setIsGeneratingMoveset(true)
+    try {
+      const freshAnalysis = await MovesetRecommendationService.analyzePokemonMoves(pokemon)
+      setMovesetAnalysis(freshAnalysis)
+    } catch (error) {
+      console.error('Failed to refresh recommendations:', error)
+    } finally {
+      setIsGeneratingMoveset(false)
+    }
+  }
 
   const calculateTotalPower = () => {
     return selectedMoves.reduce((total, move) => total + (move.power || 0), 0)
@@ -150,32 +178,78 @@ export function TrainingSummary({
   }
   // Moveset handlers
   const handleMoveSelect = (move: MoveRecommendation, slotIndex: number) => {
-    const newMoves = [...selectedMoves]
-    const existingIndex = newMoves.findIndex(m => m.name === move.name)
-    
-    if (existingIndex !== -1) {
-      newMoves[existingIndex] = selectedMoves[slotIndex] || null
-    }
-    
-    newMoves[slotIndex] = move
-    setSelectedMoves(newMoves.filter(Boolean))
+    const newSlots = [...moveSlots]
+    newSlots[slotIndex] = move
+    setMoveSlots(newSlots)
+    setSelectedMoves(newSlots.filter(Boolean) as MoveRecommendation[])
   }
 
   const handleMoveRemove = (slotIndex: number) => {
-    const newMoves = [...selectedMoves]
-    newMoves[slotIndex] = null as any
-    setSelectedMoves(newMoves.filter(Boolean))
+    const newSlots = [...moveSlots]
+    newSlots[slotIndex] = null
+    setMoveSlots(newSlots)
+    setSelectedMoves(newSlots.filter(Boolean) as MoveRecommendation[])
   }
 
   const handleGenerateMoveset = async () => {
     if (!movesetAnalysis) return
     
     setIsGeneratingMoveset(true)
+    setActiveMovesetType('offensive')
     try {
-      const balancedMoveset = MovesetRecommendationService.generateBalancedMoveset(movesetAnalysis)
+      // Force refresh moveset analysis to get updated recommendations
+      const freshAnalysis = await MovesetRecommendationService.analyzePokemonMoves(pokemon)
+      setMovesetAnalysis(freshAnalysis)
+      
+      const balancedMoveset = MovesetRecommendationService.generateBalancedMoveset(freshAnalysis)
+      const newSlots = Array(4).fill(null)
+      balancedMoveset.forEach((move, index) => {
+        if (index < 4) newSlots[index] = move
+      })
+      setMoveSlots(newSlots)
       setSelectedMoves(balancedMoveset)
     } catch (error) {
       console.error('Failed to generate moveset:', error)
+    } finally {
+      setIsGeneratingMoveset(false)
+    }
+  }
+
+  const handleGenerateDefensiveMoveset = async () => {
+    if (!movesetAnalysis) return
+    
+    setIsGeneratingMoveset(true)
+    setActiveMovesetType('defensive')
+    try {
+      const defensiveMoveset = MovesetRecommendationService.generateDefensiveMoveset(movesetAnalysis)
+      const newSlots = Array(4).fill(null)
+      defensiveMoveset.forEach((move, index) => {
+        if (index < 4) newSlots[index] = move
+      })
+      setMoveSlots(newSlots)
+      setSelectedMoves(defensiveMoveset)
+    } catch (error) {
+      console.error('Failed to generate defensive moveset:', error)
+    } finally {
+      setIsGeneratingMoveset(false)
+    }
+  }
+
+  const handleGenerateBalancedDefensiveMoveset = async () => {
+    if (!movesetAnalysis) return
+    
+    setIsGeneratingMoveset(true)
+    setActiveMovesetType('balanced')
+    try {
+      const balancedDefensiveMoveset = MovesetRecommendationService.generateBalancedDefensiveMoveset(movesetAnalysis)
+      const newSlots = Array(4).fill(null)
+      balancedDefensiveMoveset.forEach((move, index) => {
+        if (index < 4) newSlots[index] = move
+      })
+      setMoveSlots(newSlots)
+      setSelectedMoves(balancedDefensiveMoveset)
+    } catch (error) {
+      console.error('Failed to generate balanced defensive moveset:', error)
     } finally {
       setIsGeneratingMoveset(false)
     }
@@ -307,12 +381,16 @@ export function TrainingSummary({
           <AnimatePresence mode="wait">
             {activeSection === 'moves' && (
               <MovesSection
-                selectedMoves={selectedMoves}
+                selectedMoves={moveSlots}
                 movesetAnalysis={movesetAnalysis}
                 isGeneratingMoveset={isGeneratingMoveset}
                 onMoveSelect={handleMoveSelect}
                 onMoveRemove={handleMoveRemove}
                 onGenerateMoveset={handleGenerateMoveset}
+                onGenerateDefensiveMoveset={handleGenerateDefensiveMoveset}
+                onGenerateBalancedDefensiveMoveset={handleGenerateBalancedDefensiveMoveset}
+                onRefreshRecommendations={handleRefreshRecommendations}
+                activeMovesetType={activeMovesetType}
               />
             )}
           </AnimatePresence>

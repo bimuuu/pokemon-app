@@ -59,6 +59,30 @@ export function calculateTypeStrengths(types: string[]): Record<string, number> 
   return strengths
 }
 
+export function calculateCounterTypes(types: string[]): Record<string, number> {
+  const counterTypes: Record<string, number> = {}
+  
+  // Find all types that deal super-effective damage to this Pokemon's types
+  Object.entries(TYPE_EFFECTIVENESS).forEach(([attackingType, typeData]) => {
+    let totalMultiplier = 0
+    
+    types.forEach(defendingType => {
+      const effectiveness = typeData.attacking[defendingType as keyof typeof typeData.attacking] || 1
+      totalMultiplier += effectiveness
+    })
+    
+    // Average effectiveness across all of this Pokemon's types
+    const avgEffectiveness = totalMultiplier / types.length
+    
+    // Only include types that deal more than neutral damage
+    if (avgEffectiveness > 1) {
+      counterTypes[attackingType] = avgEffectiveness
+    }
+  })
+  
+  return counterTypes
+}
+
 export function getStatAbbreviation(statName: string): string {
   const abbreviations: Record<string, string> = {
     'hp': 'HP',

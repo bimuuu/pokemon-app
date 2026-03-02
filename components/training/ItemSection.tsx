@@ -133,7 +133,7 @@ export function ItemSection({
                         variants={cardVariants}
                         whileHover="hover"
                         whileTap="tap"
-                        className={`border rounded-lg p-3 cursor-pointer ${
+                        className={`border rounded-lg p-4 cursor-pointer ${
                           selectedItem?.name === item.name 
                             ? 'border-blue-500 bg-blue-50' 
                             : 'border-gray-200'
@@ -171,7 +171,7 @@ export function ItemSection({
                       variants={cardVariants}
                       whileHover="hover"
                       whileTap="tap"
-                      className={`border rounded-lg p-3 cursor-pointer ${
+                      className={`border rounded-lg p-4 cursor-pointer ${
                         selectedItem?.name === item.name 
                           ? 'border-blue-500 bg-blue-50' 
                           : 'border-gray-200'

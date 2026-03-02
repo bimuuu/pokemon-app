@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedTooltip } from "@/components/ui/AnimatedTooltip"
-import { Sword, Target, Star } from "lucide-react"
+import { Sword, Target, Star, Zap } from "lucide-react"
 import { getTypeColor } from "@/lib/utils"
 import { ColorUtils } from "@/utils/colorUtils"
 import type { Move } from "pokenode-ts"
@@ -97,7 +97,7 @@ export function MoveTooltip({ move, children }: MoveTooltipProps) {
         </div>
         
         {/* Basic Stats */}
-        <div className="grid grid-cols-3 gap-2 text-xs">
+        <div className="grid grid-cols-4 gap-2 text-xs">
           <div className="flex items-center gap-1">
             <Sword className="h-3 w-3 text-muted-foreground" />
             <span className={`font-medium ${ColorUtils.getPowerColor(displayMove?.power)}`}>
@@ -114,6 +114,20 @@ export function MoveTooltip({ move, children }: MoveTooltipProps) {
             <Star className="h-3 w-3 text-muted-foreground" />
             <span className="font-medium text-blue-600">
               {isLoading ? '—' : (displayMove?.pp || '—')}
+            </span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Zap className="h-3 w-3 text-muted-foreground" />
+            <span className={`font-medium ${
+              displayMove?.priority && displayMove.priority > 0 ? 'text-green-600' : 
+              displayMove?.priority && displayMove.priority < 0 ? 'text-red-600' : 
+              'text-gray-600'
+            }`}>
+              {isLoading ? '—' : (
+                displayMove?.priority !== undefined && displayMove?.priority !== null ? 
+                (displayMove.priority > 0 ? `+${displayMove.priority}` : displayMove.priority.toString()) : 
+                '0'
+              )}
             </span>
           </div>
         </div>

@@ -156,7 +156,7 @@ export default function PastureLootPage() {
                 const imageSrc = hasError ? fallbackUrl : spriteUrl
                 
                 return (
-                  <LocationTooltip pokemonName={pokemon["Pokémon"]}>
+                  <LocationTooltip key={pokemonKey} pokemonName={pokemon["Pokémon"]}>
                   <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200 relative z-10 cursor-help h-full flex flex-col">
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-sm font-bold text-gray-500">#{pokemon["No."]}</span>

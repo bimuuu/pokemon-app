@@ -314,6 +314,17 @@ export interface MovesetAnalysis {
   coverage: Record<string, number>;
   weaknesses: Record<string, number>;
   role: 'physical' | 'special' | 'mixed';
+  counterTypes: Record<string, number>;
+  defensiveCoverage: Record<string, number>;
+  threatLevel: 'low' | 'medium' | 'high';
+  coverageGaps: string[];
+}
+
+export interface DefensiveRecommendation {
+  move: MoveRecommendation;
+  counteredTypes: string[];
+  coverageScore: number;
+  priority: 'high' | 'medium' | 'low';
 }
 
 export interface TrainingPokemon extends TeamPokemon {
