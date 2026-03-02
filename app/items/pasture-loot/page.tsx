@@ -157,7 +157,7 @@ export default function PastureLootPage() {
                 
                 return (
                   <LocationTooltip pokemonName={pokemon["Pokémon"]}>
-                  <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200 relative z-10 cursor-help">
+                  <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200 relative z-10 cursor-help h-full flex flex-col">
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-sm font-bold text-gray-500">#{pokemon["No."]}</span>
                       <div className="flex gap-1">
@@ -203,7 +203,7 @@ export default function PastureLootPage() {
                       {pokemon["Pokémon"]}
                     </h3>
                     
-                    <div className="space-y-2">
+                    <div className="space-y-2 mt-auto">
                       <div>
                         <div className="text-xs text-gray-500 mb-1">Drops:</div>
                         <div className="flex flex-wrap gap-1">
