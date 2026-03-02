@@ -72,7 +72,7 @@ export default function MythicalPokemonPage() {
         </section>
       ) : (
         <>
-          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid-container">
+          <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 grid-container relative z-10">
             {paginatedData.map((pokemon, index) => (
               <PokemonCard 
                 key={`${pokemon['N.']}-${index}`} 

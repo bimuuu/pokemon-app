@@ -108,10 +108,13 @@ export function ClientLayoutContent({ children }: { children: React.ReactNode })
               </Link>
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link href="/items" className={getNavLinkClass('/items')}>
-                {t('navigation.items')}
-                {getActiveIndicator('/items')}
-              </Link>
+              <Dropdown
+                trigger={t('navigation.items')}
+                items={[
+                  { label: t('navigation.itemSell'), href: '/items/item-sell' },
+                  { label: t('navigation.pastureLoot'), href: '/items/pasture-loot' }
+                ]}
+              />
             </motion.li>
             <motion.li whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Dropdown

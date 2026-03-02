@@ -18,6 +18,8 @@ export const thTranslations = {
     typeChart: "ตารางธาตุ",
     gameData: "ท่าต่อสู้ / ความสามารถ / นิสัย / ไอเท็มถือ",
     items: "ไอเท็ม",
+    itemSell: "ขายไอเท็ม",
+    pastureLoot: "ของที่ได้จากฟาร์ม",
     moves: "ท่าต่อสู้",
     abilities: "ความสามารถ",
     natures: "นิสัย",
@@ -586,6 +588,12 @@ export const thTranslations = {
     noItemsFound: "ไม่พบไอเท็มที่ตรงกับเงื่อนไข",
     totalItems: "ไอเท็มทั้งหมด",
     totalValue: "มูลค่ารวม"
+  },
+  pastureLoot: {
+    title: "ของที่ได้จากฟาร์ม",
+    subtitle: "ค้นพบว่าโปเกม่อนแต่ละตัวทิ้งไอเท็มอะไรเมื่ออยู่ในฟาร์ม วางแผนกลยุทธ์การทำฟาร์มด้วยอัตราการทิ้งและเงื่อนไขพิเศษโดยละเอียด",
+    searchPlaceholder: "ค้นหาโปเกม่อนหรือไอเท็มที่ทิ้ง...",
+    noPokemonFound: "ไม่พบโปเกม่อนที่ตรงกับเงื่อนไข"
   },
   errors: {
     failedToFetchCobblemonData: "ไม่สามารถดึงข้อมูล cobblemon ได้",

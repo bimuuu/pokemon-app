@@ -2,6 +2,18 @@
 export * from './item'
 export * from './pokemon'
 
+// Pasture Loot types
+export interface PastureLootEntry {
+  "No.": string
+  "Pokémon": string
+  "Drops": string
+  "Spawn Specific Drops": string
+}
+
+export interface PastureLootData {
+  pastureLoot: PastureLootEntry[]
+}
+
 // Common utility types
 export interface ApiResponse<T = any> {
   data?: T

@@ -24,6 +24,7 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
   // State to track image loading errors
   const [mainImageError, setMainImageError] = useState(false)
   const [varietyImageErrors, setVarietyImageErrors] = useState<Set<string>>(new Set())
+  const [mainImageLoaded, setMainImageLoaded] = useState(false)
   
   // Memoize sprite URL for performance
   const spriteUrl = useMemo(() => getPokemonSpriteUrl(id), [id])
@@ -33,7 +34,7 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
   const mainImageSrc = mainImageError ? fallbackUrl : spriteUrl
   
   return (
-    <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200">
+    <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200 relative z-10">
       <Link href={`/pokemon/${name}`}>
         <div className="flex justify-between items-start mb-3">
           <span className="text-sm font-bold text-gray-500">{pokemon['N.']}</span>
@@ -43,19 +44,35 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
         </div>
         
         <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center relative">
-          <Image 
-            src={mainImageSrc}
-            alt={pokemon.POKÉMON}
-            width={64}
-            height={64}
-            className="object-contain"
-            onError={() => {
-              if (!mainImageError) {
-                setMainImageError(true)
-              }
-            }}
-            placeholder="empty"
-          />
+          {mainImageError ? (
+            <div className="w-full h-full flex items-center justify-center text-gray-400">
+              <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+            </div>
+          ) : (
+            <>
+              {!mainImageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+                  <div className="w-8 h-8 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+                </div>
+              )}
+              <Image 
+                src={mainImageSrc}
+                alt={pokemon.POKÉMON}
+                width={64}
+                height={64}
+                className={`object-contain transition-opacity duration-200 ${mainImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                onError={() => {
+                  if (!mainImageError) {
+                    setMainImageError(true)
+                  }
+                }}
+                onLoad={() => setMainImageLoaded(true)}
+                placeholder="empty"
+              />
+            </>
+          )}
         </div>
         
         <h3 className="font-semibold text-center mb-2">{pokemon.POKÉMON}</h3>
@@ -138,12 +155,24 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
               {varieties.slice(0, 6).map((variety) => {
                 const varietyKey = variety.name
                 const hasError = varietyImageErrors.has(varietyKey)
-                const imageSrc = hasError ? '/placeholder.png' : (variety.sprites.front_default || '/placeholder.png')
+                
+                if (hasError) {
+                  return (
+                    <div key={variety.name} className="w-6 h-6 rounded border border-gray-200 bg-gray-100 flex items-center justify-center relative group">
+                      <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                      </svg>
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                        {variety.display_name}
+                      </div>
+                    </div>
+                  )
+                }
                 
                 return (
                   <div key={variety.name} className="relative group">
                     <Image 
-                      src={imageSrc}
+                      src={variety.sprites.front_default || '/placeholder.png'}
                       alt={variety.display_name}
                       width={24}
                       height={24}

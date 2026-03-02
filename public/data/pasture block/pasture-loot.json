@@ -1,0 +1,4310 @@
+[
+  {
+    "No.": "0001",
+    "Pokémon": "Bulbasaur",
+    "Drops": "Melon Seeds 0-1, Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0002",
+    "Pokémon": "Ivysaur",
+    "Drops": "Melon Seeds 0-2, Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0003",
+    "Pokémon": "Venusaur",
+    "Drops": "Melon Seeds 0-3, Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0004",
+    "Pokémon": "Charmander",
+    "Drops": "Blaze Powder 0-1, Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0005",
+    "Pokémon": "Charmeleon",
+    "Drops": "Blaze Powder 0-2, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0006",
+    "Pokémon": "Charizard",
+    "Drops": "Blaze Powder 0-3, Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0007",
+    "Pokémon": "Squirtle",
+    "Drops": "Turtle Scute 0-1, Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0008",
+    "Pokémon": "Wartortle",
+    "Drops": "Turtle Scute 0-2, Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0009",
+    "Pokémon": "Blastoise",
+    "Drops": "Turtle Scute 0-3, Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0010",
+    "Pokémon": "Caterpie",
+    "Drops": "String 0-1, Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0011",
+    "Pokémon": "Metapod",
+    "Drops": "String 0-2, Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0012",
+    "Pokémon": "Butterfree",
+    "Drops": "Silver Powder 5%, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0013",
+    "Pokémon": "Weedle",
+    "Drops": "String 0-1, Pinap Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0014",
+    "Pokémon": "Kakuna",
+    "Drops": "String 0-2, Pinap Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0015",
+    "Pokémon": "Beedrill",
+    "Drops": "Poison Barb 5%, Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0016",
+    "Pokémon": "Pidgey",
+    "Drops": "Feather 0-1, Raw Chicken 1, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0017",
+    "Pokémon": "Pidgeotto",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0018",
+    "Pokémon": "Pidgeot",
+    "Drops": "Feather 0-3, Raw Chicken 1, Sharp Beak 5%, Chilan Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0019",
+    "Pokémon": "Rattata",
+    "Drops": "Rotten Flesh 0-1, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0019",
+    "Pokémon": "Rattata [Alolan]",
+    "Drops": "Rotten Flesh 0-1, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0020",
+    "Pokémon": "Raticate",
+    "Drops": "Rotten Flesh 0-2, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0020",
+    "Pokémon": "Raticate [Alolan]",
+    "Drops": "Rotten Flesh 0-2, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0021",
+    "Pokémon": "Spearow",
+    "Drops": "Feather 0-1, Raw Chicken 1, Sharp Beak 2.5%, Charti Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0022",
+    "Pokémon": "Fearow",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 5%, Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0023",
+    "Pokémon": "Ekans",
+    "Drops": "Razor Fang 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0024",
+    "Pokémon": "Arbok",
+    "Drops": "Razor Fang 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0025",
+    "Pokémon": "Pikachu",
+    "Drops": "Light Ball 5%, Thunder Stone 5%, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0026",
+    "Pokémon": "Raichu",
+    "Drops": "Light Ball 10%, Thunder Stone 10%, Oran Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0026",
+    "Pokémon": "Raichu [Alolan]",
+    "Drops": "Light Ball 10%, Thunder Stone 10%, Oran Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0027",
+    "Pokémon": "Sandshrew",
+    "Drops": "Armadillo Scute 0-1, Quick Claw 2.5%, Soft Sand 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0028",
+    "Pokémon": "Sandslash",
+    "Drops": "Armadillo Scute 0-2, Quick Claw 5%, Soft Sand 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0029",
+    "Pokémon": "Nidoran-F",
+    "Drops": "Poison Barb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0030",
+    "Pokémon": "Nidorina",
+    "Drops": "Poison Barb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0031",
+    "Pokémon": "Nidoqueen",
+    "Drops": "Poison Barb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0032",
+    "Pokémon": "Nidoran-M",
+    "Drops": "Poison Barb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0033",
+    "Pokémon": "Nidorino",
+    "Drops": "Poison Barb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0034",
+    "Pokémon": "Nidoking",
+    "Drops": "Poison Barb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0035",
+    "Pokémon": "Clefairy",
+    "Drops": "Moon Stone 5%, Babiri Berry 5%, Fairy Feather 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0036",
+    "Pokémon": "Clefable",
+    "Drops": "Moon Stone 10%, Babiri Berry 10%, Fairy Feather 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0037",
+    "Pokémon": "Vulpix",
+    "Drops": "Sweet Berries 1-3, Charcoal 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0037",
+    "Pokémon": "Vulpix [Alolan]",
+    "Drops": "Sweet Berries 1-3, Snowball 0-1, Babiri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0038",
+    "Pokémon": "Ninetales",
+    "Drops": "Sweet Berries 2-4, Charcoal 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0038",
+    "Pokémon": "Ninetales [Alolan]",
+    "Drops": "Sweet Berries 2-4, Snowball 0-2, Babiri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0039",
+    "Pokémon": "Jigglypuff",
+    "Drops": "Moon Stone 5%, Air Balloon 5%, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0040",
+    "Pokémon": "Wigglytuff",
+    "Drops": "Moon Stone 10%, Air Balloon 10%, Oran Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0041",
+    "Pokémon": "Zubat",
+    "Drops": "Phantom Membrane 2.5%, Razor Fang 2.5%, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0042",
+    "Pokémon": "Golbat",
+    "Drops": "Phantom Membrane 5%, Razor Fang 5%, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0043",
+    "Pokémon": "Oddish",
+    "Drops": "Absorb Bulb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0044",
+    "Pokémon": "Gloom",
+    "Drops": "Absorb Bulb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0045",
+    "Pokémon": "Vileplume",
+    "Drops": "Absorb Bulb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0046",
+    "Pokémon": "Paras",
+    "Drops": "Red Mushroom 0-2, Coba Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0047",
+    "Pokémon": "Parasect",
+    "Drops": "Red Mushroom 1, Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0048",
+    "Pokémon": "Venonat",
+    "Drops": "String 0-1, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0049",
+    "Pokémon": "Venomoth",
+    "Drops": "String 0-2, Silver Powder 5%, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0050",
+    "Pokémon": "Diglett",
+    "Drops": "Dirt 0-1, Potato 2.5%, Big Root 2.5%, Soft Sand 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0050",
+    "Pokémon": "Diglett [Alolan]",
+    "Drops": "Coarse Dirt 0-1, Potato 2.5%, Big Root 2.5%, Soft Sand 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0051",
+    "Pokémon": "Dugtrio",
+    "Drops": "Dirt 0-2, Potato 5%, Big Root 5%, Soft Sand 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0051",
+    "Pokémon": "Dugtrio [Alolan]",
+    "Drops": "Coarse Dirt 0-2, Potato 5%, Big Root 5%, Soft Sand 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0052",
+    "Pokémon": "Meowth",
+    "Drops": "Gold Nugget 0-1, Quick Claw 2.5%, Pinap Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0052",
+    "Pokémon": "Meowth [Alolan]",
+    "Drops": "Gold Nugget 0-1, Quick Claw 2.5%, Bluk Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0052",
+    "Pokémon": "Meowth [Galarian]",
+    "Drops": "Razor Claw 2.5%, Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0053",
+    "Pokémon": "Persian",
+    "Drops": "Gold Nugget 0-2, Quick Claw 5%, Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0053",
+    "Pokémon": "Persian [Alolan]",
+    "Drops": "Gold Nugget 0-2, Quick Claw 5%, Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0054",
+    "Pokémon": "Psyduck",
+    "Drops": "Feather 0-1, Raw Chicken 1, Mystic Water 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0055",
+    "Pokémon": "Golduck",
+    "Drops": "Feather 0-2, Raw Chicken 1, Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0056",
+    "Pokémon": "Mankey",
+    "Drops": "Muscle Band 2.5%, Payapa Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0057",
+    "Pokémon": "Primeape",
+    "Drops": "Muscle Band 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0058",
+    "Pokémon": "Growlithe",
+    "Drops": "Bone 0-1, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0059",
+    "Pokémon": "Arcanine",
+    "Drops": "Bone 0-2, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0060",
+    "Pokémon": "Poliwag",
+    "Drops": "King's Rock 2.5%, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0061",
+    "Pokémon": "Poliwhirl",
+    "Drops": "King's Rock 5%, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0062",
+    "Pokémon": "Poliwrath",
+    "Drops": "King's Rock 10%, Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0063",
+    "Pokémon": "Abra",
+    "Drops": "Ender Pearl 0-1, Twisted Spoon 2.5%, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0064",
+    "Pokémon": "Kadabra",
+    "Drops": "Ender Pearl 0-2, Twisted Spoon 5%, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0065",
+    "Pokémon": "Alakazam",
+    "Drops": "Ender Pearl 0-3, Twisted Spoon 10%, Kasib Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0066",
+    "Pokémon": "Machop",
+    "Drops": "Focus Band 2.5%, Muscle Band 2.5%, Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0067",
+    "Pokémon": "Machoke",
+    "Drops": "Focus Band 5%, Muscle Band 5%, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0068",
+    "Pokémon": "Machamp",
+    "Drops": "Focus Band 10%, Muscle Band 10%, Wepear Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0069",
+    "Pokémon": "Bellsprout",
+    "Drops": "Big Root 2.5%, Pinap Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0070",
+    "Pokémon": "Weepinbell",
+    "Drops": "Big Root 5%, Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0071",
+    "Pokémon": "Victreebel",
+    "Drops": "Big Root 10%, Pinap Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0072",
+    "Pokémon": "Tentacool",
+    "Drops": "Ink Sac 1-3, Glow Ink Sac 1-3 10%, Poison Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0073",
+    "Pokémon": "Tentacruel",
+    "Drops": "Ink Sac 2-4, Glow Ink Sac 2-4 10%, Poison Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0074",
+    "Pokémon": "Geodude",
+    "Drops": "Gravel 0-1, Everstone 2.5%, Black Augurite 2.5%, Rindo Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0075",
+    "Pokémon": "Graveler",
+    "Drops": "Gravel 0-2, Everstone 5%, Black Augurite 5%, Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0076",
+    "Pokémon": "Golem",
+    "Drops": "Gravel 0-3, Everstone 10%, Black Augurite 10%, Rindo Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0077",
+    "Pokémon": "Ponyta",
+    "Drops": "Leather 0-1, Blaze Powder 2.5%, Shuca Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether Overgrowth, biome:Nether Wasteland = Leather 0-1, Blaze Powder 5%, Shuca Berry 2.5%"
+  },
+  {
+    "No.": "0077",
+    "Pokémon": "Ponyta [Galarian]",
+    "Drops": "Leather 0-1, Razz Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0078",
+    "Pokémon": "Rapidash",
+    "Drops": "Leather 0-2, Blaze Powder 5%, Shuca Berry 5%",
+    "Spawn Specific Drops": "biome:Nether Overgrowth, biome:Nether Wasteland = Leather 0-2, Blaze Powder 10%, Shuca Berry 5%"
+  },
+  {
+    "No.": "0078",
+    "Pokémon": "Rapidash [Galarian]",
+    "Drops": "Leather 0-2, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0079",
+    "Pokémon": "Slowpoke",
+    "Drops": "King's Rock 2.5%, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0080",
+    "Pokémon": "Slowbro",
+    "Drops": "King's Rock 5%, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0081",
+    "Pokémon": "Magnemite",
+    "Drops": "Raw Iron 0-1, Magnet 2.5%, Metal Coat 2.5%, Shuca Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0082",
+    "Pokémon": "Magneton",
+    "Drops": "Raw Iron 0-2, Magnet 5%, Metal Coat 5%, Shuca Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0083",
+    "Pokémon": "Farfetch'd",
+    "Drops": "Feather 0-1, Raw Chicken 1, Medicinal Leek 0-1, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0083",
+    "Pokémon": "Farfetch'd [Galarian]",
+    "Drops": "Feather 0-1, Raw Chicken 1, Medicinal Leek 0-1, Coba Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0084",
+    "Pokémon": "Doduo",
+    "Drops": "Feather 0-1, Raw Chicken 1, Sharp Beak 2.5%, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0085",
+    "Pokémon": "Dodrio",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 5%, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0086",
+    "Pokémon": "Seel",
+    "Drops": "Raw Cod 0-1, Never-Melt Ice 2.5%, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0087",
+    "Pokémon": "Dewgong",
+    "Drops": "Raw Cod 0-2, Never-Melt Ice 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0088",
+    "Pokémon": "Grimer",
+    "Drops": "Slimeball 0-1, Black Sludge 2.5%, Toxic Orb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0089",
+    "Pokémon": "Muk",
+    "Drops": "Slimeball 0-2, Black Sludge 5%, Toxic Orb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0090",
+    "Pokémon": "Shellder",
+    "Drops": "Aspear Berry 2.5%, Shell Bell 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0091",
+    "Pokémon": "Cloyster",
+    "Drops": "Aspear Berry 5%, Shell Bell 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0092",
+    "Pokémon": "Gastly",
+    "Drops": "Spell Tag 2.5%, Payapa Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether = Spell Tag 2.5%, Payapa Berry 2.5%, Ghast Tear 5%"
+  },
+  {
+    "No.": "0093",
+    "Pokémon": "Haunter",
+    "Drops": "Spell Tag 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": "biome:Nether = Spell Tag 5%, Payapa Berry 5%, Ghast Tear 10%"
+  },
+  {
+    "No.": "0094",
+    "Pokémon": "Gengar",
+    "Drops": "Spell Tag 10%, Payapa Berry 10%",
+    "Spawn Specific Drops": "biome:Nether = Spell Tag 10%, Payapa Berry 10%, Ghast Tear 25%"
+  },
+  {
+    "No.": "0095",
+    "Pokémon": "Onix",
+    "Drops": "Stone 1-3, Hard Stone 2.5%, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0096",
+    "Pokémon": "Drowzee",
+    "Drops": "Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0097",
+    "Pokémon": "Hypno",
+    "Drops": "Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0098",
+    "Pokémon": "Krabby",
+    "Drops": "King's Rock 2.5%, Pinap Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0099",
+    "Pokémon": "Kingler",
+    "Drops": "King's Rock 5%, Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0100",
+    "Pokémon": "Voltorb",
+    "Drops": "Gunpowder 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0100",
+    "Pokémon": "Voltorb [Hisuian]",
+    "Drops": "Gunpowder 0-1, Red Apricorn 0-1, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0101",
+    "Pokémon": "Electrode",
+    "Drops": "Gunpowder 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0101",
+    "Pokémon": "Electrode [Hisuian]",
+    "Drops": "Gunpowder 0-2, Red Apricorn 0-2, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0102",
+    "Pokémon": "Exeggcute",
+    "Drops": "Egg 0-3, Oval Stone 2.5%, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0103",
+    "Pokémon": "Exeggutor",
+    "Drops": "Egg 0-3, Oval Stone 5%, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0103",
+    "Pokémon": "Exeggutor [Alolan]",
+    "Drops": "Egg 0-3, Oval Stone 5%, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0104",
+    "Pokémon": "Cubone",
+    "Drops": "Bone 0-1, Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0105",
+    "Pokémon": "Marowak",
+    "Drops": "Bone 1, Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0105",
+    "Pokémon": "Marowak [Alolan]",
+    "Drops": "Bone 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0106",
+    "Pokémon": "Hitmonlee",
+    "Drops": "Black Belt 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0107",
+    "Pokémon": "Hitmonchan",
+    "Drops": "Black Belt 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0108",
+    "Pokémon": "Lickitung",
+    "Drops": "Slimeball 0-1, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0109",
+    "Pokémon": "Koffing",
+    "Drops": "Black Sludge 2.5%, Smoke Ball 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0110",
+    "Pokémon": "Weezing",
+    "Drops": "Black Sludge 5%, Smoke Ball 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0111",
+    "Pokémon": "Rhyhorn",
+    "Drops": "Protector 2.5%, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0112",
+    "Pokémon": "Rhydon",
+    "Drops": "Protector 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0113",
+    "Pokémon": "Chansey",
+    "Drops": "Lucky Egg 10% OR Oval Stone 10% OR Egg 50%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0114",
+    "Pokémon": "Tangela",
+    "Drops": "Vine 0-1, Big Root 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0115",
+    "Pokémon": "Kangaskhan",
+    "Drops": "Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0116",
+    "Pokémon": "Horsea",
+    "Drops": "Prismarine Shard 0-1, Dragon Scale 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0117",
+    "Pokémon": "Seadra",
+    "Drops": "Prismarine Shard 0-2, Dragon Scale 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0118",
+    "Pokémon": "Goldeen",
+    "Drops": "Raw Salmon 1, Bone Meal 5%, Mystic Water 2.5%, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0119",
+    "Pokémon": "Seaking",
+    "Drops": "Raw Salmon 1, Bone Meal 10%, Mystic Water 5%, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0120",
+    "Pokémon": "Staryu",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0121",
+    "Pokémon": "Starmie",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0122",
+    "Pokémon": "Mr. Mime",
+    "Drops": "Light Clay 5%, Babiri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0123",
+    "Pokémon": "Scyther",
+    "Drops": "Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0124",
+    "Pokémon": "Jynx",
+    "Drops": "Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0125",
+    "Pokémon": "Electabuzz",
+    "Drops": "Redstone 0-2, Electirizer 5%, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0126",
+    "Pokémon": "Magmar",
+    "Drops": "Blaze Powder 5%, Magmarizer 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": "biome:Nether Basalt, biome:Nether Wasteland = Blaze Powder 10%, Magmarizer 5%, Rawst Berry 5%"
+  },
+  {
+    "No.": "0127",
+    "Pokémon": "Pinsir",
+    "Drops": "Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0128",
+    "Pokémon": "Tauros",
+    "Drops": "Leather 0-2, Raw Beef 1-3",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0129",
+    "Pokémon": "Magikarp",
+    "Drops": "Raw Salmon 1, Bone Meal 5%, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0130",
+    "Pokémon": "Gyarados",
+    "Drops": "Raw Salmon 1, Bone Meal 10%, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0131",
+    "Pokémon": "Lapras",
+    "Drops": "Mystic Water 5%, Never-Melt Ice 5%, Heart of the Sea 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0132",
+    "Pokémon": "Ditto",
+    "Drops": "Quick Powder 0-1, Metal Powder 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0133",
+    "Pokémon": "Eevee",
+    "Drops": "Silk Scarf 5%, Eviolite 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0134",
+    "Pokémon": "Vaporeon",
+    "Drops": "Water Stone 25%, Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0135",
+    "Pokémon": "Jolteon",
+    "Drops": "Thunder Stone 25%, Magnet 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0136",
+    "Pokémon": "Flareon",
+    "Drops": "Fire Stone 25%, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0137",
+    "Pokémon": "Porygon",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0138",
+    "Pokémon": "Omanyte",
+    "Drops": "Nautilus Shell 1, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0139",
+    "Pokémon": "Omastar",
+    "Drops": "Nautilus Shell 1, Bone Meal 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0140",
+    "Pokémon": "Kabuto",
+    "Drops": "Razor Claw 5%, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0141",
+    "Pokémon": "Kabutops",
+    "Drops": "Razor Claw 10%, Bone Meal 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0142",
+    "Pokémon": "Aerodactyl",
+    "Drops": "Bone 0-3, Rocky Helmet 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0143",
+    "Pokémon": "Snorlax",
+    "Drops": "Apple 0-3, Apple 0-3, Chesto Berry 5%, Leftovers 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0147",
+    "Pokémon": "Dratini",
+    "Drops": "Dragon's Breath 0-1, Dragon Fang 2.5%, Dragon Scale 2.5%, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0148",
+    "Pokémon": "Dragonair",
+    "Drops": "Dragon's Breath 0-2, Dragon Fang 5%, Dragon Scale 5%, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0149",
+    "Pokémon": "Dragonite",
+    "Drops": "Dragon's Breath 0-3, Dragon Fang 10%, Dragon Scale 10%, Yache Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0152",
+    "Pokémon": "Chikorita",
+    "Drops": "Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0153",
+    "Pokémon": "Bayleef",
+    "Drops": "Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0154",
+    "Pokémon": "Meganium",
+    "Drops": "Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0155",
+    "Pokémon": "Cyndaquil",
+    "Drops": "Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0156",
+    "Pokémon": "Quilava",
+    "Drops": "Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0157",
+    "Pokémon": "Typhlosion",
+    "Drops": "Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0157",
+    "Pokémon": "Typhlosion [Hisuian]",
+    "Drops": "Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0158",
+    "Pokémon": "Totodile",
+    "Drops": "Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0159",
+    "Pokémon": "Croconaw",
+    "Drops": "Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0160",
+    "Pokémon": "Feraligatr",
+    "Drops": "Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0161",
+    "Pokémon": "Sentret",
+    "Drops": "Silk Scarf 2.5%, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0162",
+    "Pokémon": "Furret",
+    "Drops": "Silk Scarf 5%, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0163",
+    "Pokémon": "Hoothoot",
+    "Drops": "Feather 0-1, Raw Chicken 1, Wise Glasses 2.5%, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0164",
+    "Pokémon": "Noctowl",
+    "Drops": "Feather 0-2, Raw Chicken 1, Wise Glasses 5%, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0165",
+    "Pokémon": "Ledyba",
+    "Drops": "Charti Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0166",
+    "Pokémon": "Ledian",
+    "Drops": "Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0167",
+    "Pokémon": "Spinarak",
+    "Drops": "String 0-1, Spider Eye 0-1, Rotten Flesh 0-1, Poison Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0168",
+    "Pokémon": "Ariados",
+    "Drops": "String 0-2, Spider Eye 0-2, Rotten Flesh 0-2, Poison Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0169",
+    "Pokémon": "Crobat",
+    "Drops": "Phantom Membrane 10%, Razor Fang 10%, Persim Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0170",
+    "Pokémon": "Chinchou",
+    "Drops": "Prismarine Crystal 0-1, Deep Sea Scale 2.5%, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0171",
+    "Pokémon": "Lanturn",
+    "Drops": "Prismarine Crystal 0-2, Deep Sea Scale 5%, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0172",
+    "Pokémon": "Pichu",
+    "Drops": "Light Ball 2.5%, Thunder Stone 2.5%, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0173",
+    "Pokémon": "Cleffa",
+    "Drops": "Moon Stone 2.5%, Babiri Berry 2.5%, Fairy Feather 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0174",
+    "Pokémon": "Igglybuff",
+    "Drops": "Moon Stone 2.5%, Air Balloon 2.5%, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0177",
+    "Pokémon": "Natu",
+    "Drops": "Feather 0-1, Raw Chicken 1, Wise Glasses 2.5%, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0178",
+    "Pokémon": "Xatu",
+    "Drops": "Feather 0-2, Raw Chicken 1, Wise Glasses 5%, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0179",
+    "Pokémon": "Mareep",
+    "Drops": "Raw Mutton 1-2, White Wool 1-2, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0180",
+    "Pokémon": "Flaaffy",
+    "Drops": "Raw Mutton 1-3, White Wool 1, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0181",
+    "Pokémon": "Ampharos",
+    "Drops": "Raw Mutton 2-4, Cheri Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0182",
+    "Pokémon": "Bellossom",
+    "Drops": "Absorb Bulb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0185",
+    "Pokémon": "Sudowoodo",
+    "Drops": "Hard Stone 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0186",
+    "Pokémon": "Politoed",
+    "Drops": "Verdant Froglight 1, King's Rock 10%, Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0190",
+    "Pokémon": "Aipom",
+    "Drops": "Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0191",
+    "Pokémon": "Sunkern",
+    "Drops": "Wheat Seeds 1, Coba Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0192",
+    "Pokémon": "Sunflora",
+    "Drops": "Sunflower 1, Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0193",
+    "Pokémon": "Yanma",
+    "Drops": "Charti Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0194",
+    "Pokémon": "Wooper",
+    "Drops": "Clay Ball 0-1, Rindo Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0194",
+    "Pokémon": "Wooper [Paldean]",
+    "Drops": "Clay Ball 0-1, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0195",
+    "Pokémon": "Quagsire",
+    "Drops": "Clay Ball 0-2, Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0196",
+    "Pokémon": "Espeon",
+    "Drops": "Sun Stone 25%, Twisted Spoon 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0197",
+    "Pokémon": "Umbreon",
+    "Drops": "Moon Stone 25%, Black Glasses 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0198",
+    "Pokémon": "Murkrow",
+    "Drops": "Feather 0-1, Raw Chicken 1, Bluk Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0199",
+    "Pokémon": "Slowking",
+    "Drops": "King's Rock 10%, Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0200",
+    "Pokémon": "Misdreavus",
+    "Drops": "Phantom Membrane 2.5%, Spell Tag 2.5%, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0202",
+    "Pokémon": "Wobbuffet",
+    "Drops": "Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0203",
+    "Pokémon": "Girafarig",
+    "Drops": "Leather 0-1, Razor Fang 2.5%, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0204",
+    "Pokémon": "Pineco",
+    "Drops": "String 0-1, Occa Berry 2.5%, Iron Ball 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0205",
+    "Pokémon": "Forretress",
+    "Drops": "String 0-2, Occa Berry 5%, Iron Ball 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0207",
+    "Pokémon": "Gligar",
+    "Drops": "Phantom Membrane 2.5%, Razor Fang 2.5%, Poison Barb 2.5%, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0208",
+    "Pokémon": "Steelix",
+    "Drops": "Raw Iron 2-4, Metal Coat 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0209",
+    "Pokémon": "Snubbull",
+    "Drops": "Bone 0-1, Babiri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0210",
+    "Pokémon": "Granbull",
+    "Drops": "Bone 0-2, Babiri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0211",
+    "Pokémon": "Qwilfish",
+    "Drops": "Pufferfish 1, Prismarine Shard 0-1, Poison Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0211",
+    "Pokémon": "Qwilfish [Hisuian]",
+    "Drops": "Pufferfish 1, Prismarine Shard 0-1, Poison Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0212",
+    "Pokémon": "Scizor",
+    "Drops": "Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0213",
+    "Pokémon": "Shuckle",
+    "Drops": "Berry Juice 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0214",
+    "Pokémon": "Heracross",
+    "Drops": "Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0215",
+    "Pokémon": "Sneasel",
+    "Drops": "Razor Claw 2.5%, Quick Claw 2.5%, Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0215",
+    "Pokémon": "Sneasel [Hisuian]",
+    "Drops": "Razor Claw 2.5%, Poison Barb 2.5%, Payapa Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0216",
+    "Pokémon": "Teddiursa",
+    "Drops": "Sweet Berries 1-3, Honey Bottle 2.5%, Peat Block 2.5%, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0217",
+    "Pokémon": "Ursaring",
+    "Drops": "Sweet Berries 2-4, Honey Bottle 5%, Peat Block 5%, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0218",
+    "Pokémon": "Slugma",
+    "Drops": "Magma Cream 0-1, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0219",
+    "Pokémon": "Magcargo",
+    "Drops": "Magma Cream 0-2, Basalt 1, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0220",
+    "Pokémon": "Swinub",
+    "Drops": "Raw Porkchop 1, Brown Wool 1, Never-Melt Ice 2.5%, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0221",
+    "Pokémon": "Piloswine",
+    "Drops": "Raw Porkchop 1-2, Brown Wool 1-2, Never-Melt Ice 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0222",
+    "Pokémon": "Corsola",
+    "Drops": "Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0223",
+    "Pokémon": "Remoraid",
+    "Drops": "Raw Cod 1, Bone Meal 5%, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0224",
+    "Pokémon": "Octillery",
+    "Drops": "Ink Sac 1-3, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0225",
+    "Pokémon": "Delibird",
+    "Drops": "Feather 0-2, Raw Chicken 1, Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0226",
+    "Pokémon": "Mantine",
+    "Drops": "Raw Cod 0-2, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0227",
+    "Pokémon": "Skarmory",
+    "Drops": "Sharp Beak 5%, Metal Coat 5%, Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0230",
+    "Pokémon": "Kingdra",
+    "Drops": "Prismarine Shard 0-3, Dragon Scale 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0231",
+    "Pokémon": "Phanpy",
+    "Drops": "Clay Ball 0-1, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0232",
+    "Pokémon": "Donphan",
+    "Drops": "Clay Ball 0-2, Protector 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0233",
+    "Pokémon": "Porygon2",
+    "Drops": "Up-Grade 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0234",
+    "Pokémon": "Stantler",
+    "Drops": "Leather 0-1, Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0235",
+    "Pokémon": "Smeargle",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0236",
+    "Pokémon": "Tyrogue",
+    "Drops": "Black Belt 2.5%, Payapa Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0237",
+    "Pokémon": "Hitmontop",
+    "Drops": "Black Belt 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0238",
+    "Pokémon": "Smoochum",
+    "Drops": "Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0239",
+    "Pokémon": "Elekid",
+    "Drops": "Redstone 0-1, Electirizer 2.5%, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0240",
+    "Pokémon": "Magby",
+    "Drops": "Blaze Powder 2.5%, Magmarizer 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether Basalt, biome:Nether Wasteland = Blaze Powder 5%, Magmarizer 2.5%, Rawst Berry 2.5%"
+  },
+  {
+    "No.": "0241",
+    "Pokémon": "Miltank",
+    "Drops": "Leather 0-2, Raw Beef 1-3, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0242",
+    "Pokémon": "Blissey",
+    "Drops": "Lucky Egg 25% OR Oval Stone 25% OR Egg 50%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0246",
+    "Pokémon": "Larvitar",
+    "Drops": "Hard Stone 2.5%, Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0247",
+    "Pokémon": "Pupitar",
+    "Drops": "Hard Stone 5%, Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0248",
+    "Pokémon": "Tyranitar",
+    "Drops": "Hard Stone 10%, Chople Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0252",
+    "Pokémon": "Treecko",
+    "Drops": "Stick 0-1, Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0253",
+    "Pokémon": "Grovyle",
+    "Drops": "Stick 0-2, Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0254",
+    "Pokémon": "Sceptile",
+    "Drops": "Stick 0-3, Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0255",
+    "Pokémon": "Torchic",
+    "Drops": "Feather 0-1, Raw Chicken 1, Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0256",
+    "Pokémon": "Combusken",
+    "Drops": "Feather 0-2, Raw Chicken 1, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0257",
+    "Pokémon": "Blaziken",
+    "Drops": "Feather 0-3, Raw Chicken 1, Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0258",
+    "Pokémon": "Mudkip",
+    "Drops": "Clay Ball 0-1, Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0259",
+    "Pokémon": "Marshtomp",
+    "Drops": "Clay Ball 0-2, Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0260",
+    "Pokémon": "Swampert",
+    "Drops": "Clay Ball 0-3, Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0261",
+    "Pokémon": "Poochyena",
+    "Drops": "Bone 0-1, Rotten Flesh 0-1, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0262",
+    "Pokémon": "Mightyena",
+    "Drops": "Bone 0-2, Rotten Flesh 0-2, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0263",
+    "Pokémon": "Zigzagoon",
+    "Drops": "Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0263",
+    "Pokémon": "Zigzagoon [Galarian]",
+    "Drops": "Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0264",
+    "Pokémon": "Linoone",
+    "Drops": "Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0264",
+    "Pokémon": "Linoone [Galarian]",
+    "Drops": "Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0270",
+    "Pokémon": "Lotad",
+    "Drops": "Lily Pad 0-1, Mental Herb 2.5%, Kebia Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0271",
+    "Pokémon": "Lombre",
+    "Drops": "Lily Pad 0-2, Mental Herb 5%, Kebia Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0272",
+    "Pokémon": "Ludicolo",
+    "Drops": "Lily Pad 0-3, Mental Herb 10%, Kebia Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0273",
+    "Pokémon": "Seedot",
+    "Drops": "Dark Oak Sapling 0-1, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0274",
+    "Pokémon": "Nuzleaf",
+    "Drops": "Dark Oak Sapling 0-2, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0275",
+    "Pokémon": "Shiftry",
+    "Drops": "Dark Oak Sapling 0-3, Tanga Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0276",
+    "Pokémon": "Taillow",
+    "Drops": "Feather 0-1, Raw Chicken 1, Charti Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0277",
+    "Pokémon": "Swellow",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0278",
+    "Pokémon": "Wingull",
+    "Drops": "Feather 0-1, Raw Chicken 1, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0279",
+    "Pokémon": "Pelipper",
+    "Drops": "Feather 0-2, Raw Chicken 1, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0280",
+    "Pokémon": "Ralts",
+    "Drops": "Ender Pearl 0-1, Dawn Stone 2.5%, Twisted Spoon 2.5%, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0281",
+    "Pokémon": "Kirlia",
+    "Drops": "Ender Pearl 0-2, Dawn Stone 5%, Twisted Spoon 5%, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0282",
+    "Pokémon": "Gardevoir",
+    "Drops": "Ender Pearl 0-3, Dawn Stone 10%, Twisted Spoon 10%, Kasib Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0283",
+    "Pokémon": "Surskit",
+    "Drops": "Honey Bottle 2.5%, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0284",
+    "Pokémon": "Masquerain",
+    "Drops": "Honey Bottle 2.5%, Silver Powder 5%, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0285",
+    "Pokémon": "Shroomish",
+    "Drops": "Brown Mushroom 0-1, Kebia Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0286",
+    "Pokémon": "Breloom",
+    "Drops": "Brown Mushroom 0-2, Kebia Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0287",
+    "Pokémon": "Slakoth",
+    "Drops": "Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0288",
+    "Pokémon": "Vigoroth",
+    "Drops": "Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0289",
+    "Pokémon": "Slaking",
+    "Drops": "Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0290",
+    "Pokémon": "Nincada",
+    "Drops": "Soft Sand 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0291",
+    "Pokémon": "Ninjask",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0292",
+    "Pokémon": "Shedinja",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0293",
+    "Pokémon": "Whismur",
+    "Drops": "Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0294",
+    "Pokémon": "Loudred",
+    "Drops": "Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0295",
+    "Pokémon": "Exploud",
+    "Drops": "Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0296",
+    "Pokémon": "Makuhita",
+    "Drops": "Black Belt 2.5%, King's Rock 2.5%, Payapa Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0297",
+    "Pokémon": "Hariyama",
+    "Drops": "Black Belt 5%, King's Rock 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0299",
+    "Pokémon": "Nosepass",
+    "Drops": "Flint 0-1, Hard Stone 2.5%, Magnet 2.5%, Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0302",
+    "Pokémon": "Sableye",
+    "Drops": "Amethyst Shard 0-2, Diamond 5%, Emerald 5%, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0303",
+    "Pokémon": "Mawile",
+    "Drops": "Razor Fang 5%, Occa Berry 5%, Iron Ball 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0304",
+    "Pokémon": "Aron",
+    "Drops": "Raw Iron 0-1, Hard Stone 2.5%, Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0305",
+    "Pokémon": "Lairon",
+    "Drops": "Raw Iron 0-2, Hard Stone 5%, Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0306",
+    "Pokémon": "Aggron",
+    "Drops": "Raw Iron 0-3, Hard Stone 10%, Chople Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0311",
+    "Pokémon": "Plusle",
+    "Drops": "Magnet 5%, Cell Battery 5%, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0312",
+    "Pokémon": "Minun",
+    "Drops": "Magnet 5%, Cell Battery 5%, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0313",
+    "Pokémon": "Volbeat",
+    "Drops": "Bright Powder 5%, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0314",
+    "Pokémon": "Illumise",
+    "Drops": "Bright Powder 5%, Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0315",
+    "Pokémon": "Roselia",
+    "Drops": "Rose 0-1, Poison Barb 5%, Absorb Bulb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0318",
+    "Pokémon": "Carvanha",
+    "Drops": "Deep Sea Tooth 2.5%, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0319",
+    "Pokémon": "Sharpedo",
+    "Drops": "Deep Sea Tooth 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0320",
+    "Pokémon": "Wailmer",
+    "Drops": "Bone Block 0-1, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0321",
+    "Pokémon": "Wailord",
+    "Drops": "Bone Block 0-2, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0322",
+    "Pokémon": "Numel",
+    "Drops": "Magma Cream 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0323",
+    "Pokémon": "Camerupt",
+    "Drops": "Magma Cream 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0324",
+    "Pokémon": "Torkoal",
+    "Drops": "Coal 0-2, Charcoal Stick 5%, Smoke Ball 5%, Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0327",
+    "Pokémon": "Spinda",
+    "Drops": "Bamboo 0-2, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0328",
+    "Pokémon": "Trapinch",
+    "Drops": "Soft Sand 2.5%, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0329",
+    "Pokémon": "Vibrava",
+    "Drops": "Soft Sand 5%, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0330",
+    "Pokémon": "Flygon",
+    "Drops": "Soft Sand 10%, Yache Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0331",
+    "Pokémon": "Cacnea",
+    "Drops": "Cactus 0-1, Poison Barb 2.5%, Tanga Berry 2.5%, Sticky Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0332",
+    "Pokémon": "Cacturne",
+    "Drops": "Cactus 0-2, Poison Barb 5%, Tanga Berry 5%, Sticky Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0337",
+    "Pokémon": "Lunatone",
+    "Drops": "Moon Stone 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0338",
+    "Pokémon": "Solrock",
+    "Drops": "Sun Stone 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0339",
+    "Pokémon": "Barboach",
+    "Drops": "Clay Ball 0-1, Rindo Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0340",
+    "Pokémon": "Whiscash",
+    "Drops": "Clay Ball 0-2, Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0341",
+    "Pokémon": "Corphish",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0342",
+    "Pokémon": "Crawdaunt",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0343",
+    "Pokémon": "Baltoy",
+    "Drops": "Clay Ball 0-1, Light Clay 2.5%, Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0344",
+    "Pokémon": "Claydol",
+    "Drops": "Clay Ball 0-2, Light Clay 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0345",
+    "Pokémon": "Lileep",
+    "Drops": "Big Root 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0346",
+    "Pokémon": "Cradily",
+    "Drops": "Big Root 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0347",
+    "Pokémon": "Anorith",
+    "Drops": "Quick Claw 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0348",
+    "Pokémon": "Armaldo",
+    "Drops": "Quick Claw 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0349",
+    "Pokémon": "Feebas",
+    "Drops": "Raw Salmon 1, Bone Meal 5%, Prism Scale 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0350",
+    "Pokémon": "Milotic",
+    "Drops": "Bone Meal 10%, Prism Scale 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0352",
+    "Pokémon": "Kecleon",
+    "Drops": "Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0355",
+    "Pokémon": "Duskull",
+    "Drops": "Phantom Membrane 2.5%, Reaper Cloth 2.5%, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0356",
+    "Pokémon": "Dusclops",
+    "Drops": "Phantom Membrane 5%, Reaper Cloth 5%, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0357",
+    "Pokémon": "Tropius",
+    "Drops": "Nanab Berry 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0358",
+    "Pokémon": "Chimecho",
+    "Drops": "Colbur Berry 5%, Cleanse Tag 5%, Soothe Bell 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0359",
+    "Pokémon": "Absol",
+    "Drops": "Razor Claw 5%, Life Orb 5%, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0360",
+    "Pokémon": "Wynaut",
+    "Drops": "Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0363",
+    "Pokémon": "Spheal",
+    "Drops": "Raw Cod 0-1, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0364",
+    "Pokémon": "Sealeo",
+    "Drops": "Raw Cod 0-2, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0365",
+    "Pokémon": "Walrein",
+    "Drops": "Raw Cod 0-3, Chesto Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0366",
+    "Pokémon": "Clamperl",
+    "Drops": "Shell Bell 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0367",
+    "Pokémon": "Huntail",
+    "Drops": "Deep Sea Tooth 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0368",
+    "Pokémon": "Gorebyss",
+    "Drops": "Deep Sea Scale 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0369",
+    "Pokémon": "Relicanth",
+    "Drops": "Deep Sea Scale 5%, Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0370",
+    "Pokémon": "Luvdisc",
+    "Drops": "Deep Sea Scale 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0371",
+    "Pokémon": "Bagon",
+    "Drops": "Dragon Fang 2.5%, Dragon Scale 2.5%, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0372",
+    "Pokémon": "Shelgon",
+    "Drops": "Dragon Fang 5%, Dragon Scale 5%, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0373",
+    "Pokémon": "Salamence",
+    "Drops": "Dragon Fang 10%, Dragon Scale 10%, Yache Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0374",
+    "Pokémon": "Beldum",
+    "Drops": "Ender Pearl 0-1, Metal Coat 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0375",
+    "Pokémon": "Metang",
+    "Drops": "Ender Pearl 0-2, Metal Coat 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0376",
+    "Pokémon": "Metagross",
+    "Drops": "Ender Pearl 0-3, Metal Coat 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0387",
+    "Pokémon": "Turtwig",
+    "Drops": "Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0388",
+    "Pokémon": "Grotle",
+    "Drops": "Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0389",
+    "Pokémon": "Torterra",
+    "Drops": "Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0390",
+    "Pokémon": "Chimchar",
+    "Drops": "Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0391",
+    "Pokémon": "Monferno",
+    "Drops": "Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0392",
+    "Pokémon": "Infernape",
+    "Drops": "Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0393",
+    "Pokémon": "Piplup",
+    "Drops": "Feather 0-1, Raw Chicken 1, Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0394",
+    "Pokémon": "Prinplup",
+    "Drops": "Feather 0-2, Raw Chicken 1, Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0395",
+    "Pokémon": "Empoleon",
+    "Drops": "Feather 0-3, Raw Chicken 1, Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0396",
+    "Pokémon": "Starly",
+    "Drops": "Feather 0-1, Raw Chicken 1, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0397",
+    "Pokémon": "Staravia",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0398",
+    "Pokémon": "Staraptor",
+    "Drops": "Feather 0-3, Raw Chicken 1, Sharp Beak 5%, Yache Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0399",
+    "Pokémon": "Bidoof",
+    "Drops": "Stick 0-1, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0400",
+    "Pokémon": "Bibarel",
+    "Drops": "Stick 0-2, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0401",
+    "Pokémon": "Kricketot",
+    "Drops": "Coba Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0402",
+    "Pokémon": "Kricketune",
+    "Drops": "Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0403",
+    "Pokémon": "Shinx",
+    "Drops": "Quick Claw 2.5%, Shuca Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0404",
+    "Pokémon": "Luxio",
+    "Drops": "Quick Claw 5%, Shuca Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0405",
+    "Pokémon": "Luxray",
+    "Drops": "Quick Claw 10%, Shuca Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0406",
+    "Pokémon": "Budew",
+    "Drops": "Poison Barb 2.5%, Absorb Bulb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0407",
+    "Pokémon": "Roserade",
+    "Drops": "Rose 1-2, Poison Barb 10%, Absorb Bulb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0408",
+    "Pokémon": "Cranidos",
+    "Drops": "Bone 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0409",
+    "Pokémon": "Rampardos",
+    "Drops": "Bone 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0410",
+    "Pokémon": "Shieldon",
+    "Drops": "Bone 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0411",
+    "Pokémon": "Bastiodon",
+    "Drops": "Bone 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0415",
+    "Pokémon": "Combee",
+    "Drops": "Honey Bottle 0-1, Honey Comb 2.5%, Poison Barb 2.5%, Charti Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0416",
+    "Pokémon": "Vespiquen",
+    "Drops": "Honey Bottle 0-3, Honey Comb 10%, Poison Barb 10%, Charti Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0417",
+    "Pokémon": "Pachirisu",
+    "Drops": "Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0418",
+    "Pokémon": "Buizel",
+    "Drops": "Raw Salmon 0-1, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0419",
+    "Pokémon": "Floatzel",
+    "Drops": "Raw Salmon 0-2, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0422",
+    "Pokémon": "Shellos",
+    "Drops": "Clay Ball 0-1, Rindo Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0423",
+    "Pokémon": "Gastrodon",
+    "Drops": "Clay Ball 0-2, Rindo Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0424",
+    "Pokémon": "Ambipom",
+    "Drops": "Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0425",
+    "Pokémon": "Drifloon",
+    "Drops": "Phantom Membrane 2.5%, Kasib Berry 2.5%, Air Balloon 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0426",
+    "Pokémon": "Drifblim",
+    "Drops": "Phantom Membrane 5%, Kasib Berry 5%, Air Balloon 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0427",
+    "Pokémon": "Buneary",
+    "Drops": "Raw Rabbit 1, Rabbit Hide 0-1, Rabbit's Foot 2.5%, Carrot 2.5%, Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0428",
+    "Pokémon": "Lopunny",
+    "Drops": "Raw Rabbit 1, Rabbit Hide 0-2, Rabbit's Foot 5%, Carrot 5%, Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0429",
+    "Pokémon": "Mismagius",
+    "Drops": "Phantom Membrane 5%, Spell Tag 5%, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0430",
+    "Pokémon": "Honchkrow",
+    "Drops": "Feather 0-3, Raw Chicken 1, Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0433",
+    "Pokémon": "Chingling",
+    "Drops": "Colbur Berry 2.5%, Soothe Bell 2.5%, Cleanse Tag 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0438",
+    "Pokémon": "Bonsly",
+    "Drops": "Hard Stone 2.5%, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0439",
+    "Pokémon": "Mime Jr.",
+    "Drops": "Light Clay 2.5%, Babiri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0440",
+    "Pokémon": "Happiny",
+    "Drops": "Oval Stone 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0441",
+    "Pokémon": "Chatot",
+    "Drops": "Feather 0-2, Raw Chicken 1, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0442",
+    "Pokémon": "Spiritomb",
+    "Drops": "Spell Tag 5%, Smoke Ball 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0443",
+    "Pokémon": "Gible",
+    "Drops": "Dragon Fang 2.5%, Haban Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0444",
+    "Pokémon": "Gabite",
+    "Drops": "Dragon Fang 5%, Haban Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0445",
+    "Pokémon": "Garchomp",
+    "Drops": "Dragon Fang 10%, Haban Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0446",
+    "Pokémon": "Munchlax",
+    "Drops": "Apple 0-3, Leftovers 2.5%, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0447",
+    "Pokémon": "Riolu",
+    "Drops": "Chople Berry 2.5%, Expert Belt 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0448",
+    "Pokémon": "Lucario",
+    "Drops": "Chople Berry 5%, Expert Belt 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0449",
+    "Pokémon": "Hippopotas",
+    "Drops": "Sand 0-1, Soft Sand 2.5%, Chesto Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0450",
+    "Pokémon": "Hippowdon",
+    "Drops": "Sand 0-2, Soft Sand 5%, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0455",
+    "Pokémon": "Carnivine",
+    "Drops": "Miracle Seed 5%, Big Root 5%, Kebia Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0456",
+    "Pokémon": "Finneon",
+    "Drops": "Raw Cod 1, Bone Meal 5%, Rindo Berry 2.5%, Prism Scale 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0457",
+    "Pokémon": "Lumineon",
+    "Drops": "Raw Cod 1, Bone Meal 10%, Rindo Berry 5%, Prism Scale 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0458",
+    "Pokémon": "Mantyke",
+    "Drops": "Raw Cod 0-1, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0461",
+    "Pokémon": "Weavile",
+    "Drops": "Razor Claw 5%, Quick Claw 5%, Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0462",
+    "Pokémon": "Magnezone",
+    "Drops": "Raw Iron 0-3, Magnet 10%, Metal Coat 10%, Shuca Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0463",
+    "Pokémon": "Lickilicky",
+    "Drops": "Slimeball 0-2, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0464",
+    "Pokémon": "Rhyperior",
+    "Drops": "Protector 10%, Passho Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0465",
+    "Pokémon": "Tangrowth",
+    "Drops": "Vine 0-2, Big Root 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0466",
+    "Pokémon": "Electivire",
+    "Drops": "Redstone 0-3, Electirizer 10%, Cheri Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0467",
+    "Pokémon": "Magmortar",
+    "Drops": "Blaze Powder 10%, Magmarizer 10%, Rawst Berry 10%",
+    "Spawn Specific Drops": "biome:Nether Basalt, biome:Nether Wasteland = Blaze Powder 25%, Magmarizer 10%, Rawst Berry 10%"
+  },
+  {
+    "No.": "0469",
+    "Pokémon": "Yanmega",
+    "Drops": "Charti Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0470",
+    "Pokémon": "Leafeon",
+    "Drops": "Leaf Stone 25%, Miracle Seed  10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0471",
+    "Pokémon": "Glaceon",
+    "Drops": "Ice Stone 25%, Never-Melt Ice 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0472",
+    "Pokémon": "Gliscor",
+    "Drops": "Phantom Membrane 5%, Razor Fang 5%, Poison Barb 5%, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0473",
+    "Pokémon": "Mamoswine",
+    "Drops": "Raw Porkchop 2-3, Brown Wool 2-3, Never-Melt Ice 10%, Aspear Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0474",
+    "Pokémon": "Porygon-Z",
+    "Drops": "Dubious Disc 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0475",
+    "Pokémon": "Gallade",
+    "Drops": "Ender Pearl 0-3, Dawn Stone 10%, Twisted Spoon 10%, Kasib Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0476",
+    "Pokémon": "Probopass",
+    "Drops": "Flint 0-3, Hard Stone 5%, Magnet 5%, Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0477",
+    "Pokémon": "Dusknoir",
+    "Drops": "Phantom Membrane 10%, Reaper Cloth 10%, Kasib Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0495",
+    "Pokémon": "Snivy",
+    "Drops": "Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0496",
+    "Pokémon": "Servine",
+    "Drops": "Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0497",
+    "Pokémon": "Serperior",
+    "Drops": "Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0498",
+    "Pokémon": "Tepig",
+    "Drops": "Raw Porkchop 1-2, Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0499",
+    "Pokémon": "Pignite",
+    "Drops": "Raw Porkchop 1-3, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0500",
+    "Pokémon": "Emboar",
+    "Drops": "Raw Porkchop 2-4, Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0501",
+    "Pokémon": "Oshawott",
+    "Drops": "Mystic Water 5%, Shell Bell 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0502",
+    "Pokémon": "Dewott",
+    "Drops": "Mystic Water 10%, Shell Bell 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0503",
+    "Pokémon": "Samurott",
+    "Drops": "Mystic Water 25%, Shell Bell 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0503",
+    "Pokémon": "Samurott [Hisuian]",
+    "Drops": "Mystic Water 25%, Shell Bell 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0504",
+    "Pokémon": "Patrat",
+    "Drops": "Babiri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0505",
+    "Pokémon": "Watchog",
+    "Drops": "Babiri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0506",
+    "Pokémon": "Lillipup",
+    "Drops": "Bone 0-1, Blue Wool 1, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0507",
+    "Pokémon": "Herdier",
+    "Drops": "Bone 0-2, Blue Wool 1-2, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0508",
+    "Pokémon": "Stoutland",
+    "Drops": "Bone 0-3, Blue Wool 2-3, Chilan Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0509",
+    "Pokémon": "Purrloin",
+    "Drops": "Rotten Flesh 0-1, Bluk Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0510",
+    "Pokémon": "Liepard",
+    "Drops": "Rotten Flesh 0-2, Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0519",
+    "Pokémon": "Pidove",
+    "Drops": "Feather 0-1, Raw Chicken 1, Razz Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0520",
+    "Pokémon": "Tranquill",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0521",
+    "Pokémon": "Unfezant",
+    "Drops": "Feather 0-3, Raw Chicken 1, Sharp Beak 5%, Razz Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0522",
+    "Pokémon": "Blitzle",
+    "Drops": "Leather 0-1, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0523",
+    "Pokémon": "Zebstrika",
+    "Drops": "Leather 0-2, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0526",
+    "Pokémon": "Gigalith",
+    "Drops": "Raw Copper 0-3, Hard Stone 10%, Everstone 10%, Black Augurite 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0527",
+    "Pokémon": "Woobat",
+    "Drops": "Light Blue Wool 1, Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0528",
+    "Pokémon": "Swoobat",
+    "Drops": "Light Blue Wool 1-2, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0532",
+    "Pokémon": "Timburr",
+    "Drops": "Muscle Band 2.5%, Razz Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0533",
+    "Pokémon": "Gurdurr",
+    "Drops": "Muscle Band 5%, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0534",
+    "Pokémon": "Conkeldurr",
+    "Drops": "Muscle Band 10%, Razz Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0543",
+    "Pokémon": "Venipede",
+    "Drops": "Poison Barb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0544",
+    "Pokémon": "Whirlipede",
+    "Drops": "Poison Barb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0545",
+    "Pokémon": "Scolipede",
+    "Drops": "Poison Barb 10%, Pecha Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0546",
+    "Pokémon": "Cottonee",
+    "Drops": "White Wool 1, Kebia Berry 2.5%, Absorb Bulb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0547",
+    "Pokémon": "Whimsicott",
+    "Drops": "White Wool 1-2, Kebia Berry 5%, Absorb Bulb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0548",
+    "Pokémon": "Petilil",
+    "Drops": "Revival Herb 2.5%, Persim Berry 2.5%, Absorb Bulb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0549",
+    "Pokémon": "Lilligant",
+    "Drops": "Revival Herb 5%, Persim Berry 5%, Absorb Bulb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0549",
+    "Pokémon": "Lilligant [Hisuian]",
+    "Drops": "Revival Herb 5%, Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0550",
+    "Pokémon": "Basculin",
+    "Drops": "Raw Salmon 1, Bone Meal 5%, Deep Sea Tooth 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0551",
+    "Pokémon": "Sandile",
+    "Drops": "Black Glasses 2.5%, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0552",
+    "Pokémon": "Krokorok",
+    "Drops": "Black Glasses 5%, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0553",
+    "Pokémon": "Krookodile",
+    "Drops": "Black Glasses 10%, Tanga Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0554",
+    "Pokémon": "Darumaka",
+    "Drops": "Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0555",
+    "Pokémon": "Darmanitan",
+    "Drops": "Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0556",
+    "Pokémon": "Maractus",
+    "Drops": "Cactus 0-2, Miracle Seed 5%, Sticky Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0557",
+    "Pokémon": "Dwebble",
+    "Drops": "Terracotta 0-1, Hard Stone 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0558",
+    "Pokémon": "Crustle",
+    "Drops": "Terracotta 0-2, Hard Stone 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0559",
+    "Pokémon": "Scraggy",
+    "Drops": "Black Belt 2.5%, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0560",
+    "Pokémon": "Scrafty",
+    "Drops": "Black Belt 5%, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0561",
+    "Pokémon": "Sigilyph",
+    "Drops": "Ender Pearl 0-1, Light Clay 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0562",
+    "Pokémon": "Yamask",
+    "Drops": "Spell Tag 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0563",
+    "Pokémon": "Cofagrigus",
+    "Drops": "Spell Tag 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0564",
+    "Pokémon": "Tirtouga",
+    "Drops": "Turtle Scute 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0565",
+    "Pokémon": "Carracosta",
+    "Drops": "Turtle Scute 0-3",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0566",
+    "Pokémon": "Archen",
+    "Drops": "Feather 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0567",
+    "Pokémon": "Archeops",
+    "Drops": "Feather 0-3",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0570",
+    "Pokémon": "Zorua",
+    "Drops": "Sweet Berries 1-3, Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0570",
+    "Pokémon": "Zorua [Hisuian]",
+    "Drops": "Sweet Berries 1-3, Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0571",
+    "Pokémon": "Zoroark",
+    "Drops": "Sweet Berries 2-4, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0571",
+    "Pokémon": "Zoroark [Hisuian]",
+    "Drops": "Sweet Berries 2-4, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0585",
+    "Pokémon": "Deerling",
+    "Drops": "Leather 0-1, Yache Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0586",
+    "Pokémon": "Sawsbuck",
+    "Drops": "Leather 0-2, Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0587",
+    "Pokémon": "Emolga",
+    "Drops": "Yache Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0592",
+    "Pokémon": "Frillish",
+    "Drops": "Glow Ink Sac 0-1, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0593",
+    "Pokémon": "Jellicent",
+    "Drops": "Glow Ink Sac 0-2, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0594",
+    "Pokémon": "Alomomola",
+    "Drops": "Raw Cod 1, Bone Meal 5%, Deep Sea Scale 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0595",
+    "Pokémon": "Joltik",
+    "Drops": "String 0-1, Spider Eye 0-1, Rotten Flesh 0-1, Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0596",
+    "Pokémon": "Galvantula",
+    "Drops": "String 0-2, Spider Eye 0-2, Rotten Flesh 0-2, Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0597",
+    "Pokémon": "Ferroseed",
+    "Drops": "Raw Iron 0-1, Occa Berry 2.5%, Sticky Barb 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0598",
+    "Pokémon": "Ferrothorn",
+    "Drops": "Raw Iron 0-2, Occa Berry 5%, Sticky Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0599",
+    "Pokémon": "Klink",
+    "Drops": "Raw Iron 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0600",
+    "Pokémon": "Klang",
+    "Drops": "Raw Iron 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0601",
+    "Pokémon": "Klinklang",
+    "Drops": "Raw Iron 0-3",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0605",
+    "Pokémon": "Elgyem",
+    "Drops": "Ender Pearl 0-1, Light Clay 2.5%, Colbur Berry 2.5%",
+    "Spawn Specific Drops": "biome:End = Ender Pearl 0-1, Chorus Fruit 0-1, Light Clay 2.5%, Colbur Berry 2.5%"
+  },
+  {
+    "No.": "0606",
+    "Pokémon": "Beheeyem",
+    "Drops": "Ender Pearl 0-2, Light Clay 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": "biome:End = Ender Pearl 0-2, Chorus Fruit 0-2, Light Clay 5%, Colbur Berry 5%"
+  },
+  {
+    "No.": "0607",
+    "Pokémon": "Litwick",
+    "Drops": "Candle 0-1, Dusk Stone 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0608",
+    "Pokémon": "Lampent",
+    "Drops": "Candle 1, Dusk Stone 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0609",
+    "Pokémon": "Chandelure",
+    "Drops": "Candle 1-3, Dusk Stone 10%, Rawst Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0613",
+    "Pokémon": "Cubchoo",
+    "Drops": "Snowball 0-1, Raw Cod 0-1, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0614",
+    "Pokémon": "Beartic",
+    "Drops": "Snowball 0-2, Raw Cod 0-2, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0615",
+    "Pokémon": "Cryogonal",
+    "Drops": "Never-Melt Ice 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0622",
+    "Pokémon": "Golett",
+    "Drops": "Clay Ball 0-1, Light Clay 2.5%, Colbur Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0623",
+    "Pokémon": "Golurk",
+    "Drops": "Clay Ball 0-2, Light Clay 5%, Colbur Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0626",
+    "Pokémon": "Bouffalant",
+    "Drops": "Leather 0-2, Raw Beef 1-3, Brown Wool 1-2, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0631",
+    "Pokémon": "Heatmor",
+    "Drops": "Flame Orb 5%, Blaze Powder 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": "biome:Nether Mountain = Flame Orb 5%, Blaze Powder 10%, Rawst Berry 5%"
+  },
+  {
+    "No.": "0632",
+    "Pokémon": "Durant",
+    "Drops": "Raw Iron 0-1, Occa Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0633",
+    "Pokémon": "Deino",
+    "Drops": "Dragon's Breath 0-1, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0634",
+    "Pokémon": "Zweilous",
+    "Drops": "Dragon's Breath 0-2, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0635",
+    "Pokémon": "Hydreigon",
+    "Drops": "Dragon's Breath 0-3, Roseli Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0636",
+    "Pokémon": "Larvesta",
+    "Drops": "String 0-1, Blaze Powder 2.5%, Silver Powder 2.5%, Charti Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether Crimson, biome:Nether Forest = String 0-1, Blaze Powder 5%, Silver Powder 2.5%, Charti Berry 2.5%"
+  },
+  {
+    "No.": "0637",
+    "Pokémon": "Volcarona",
+    "Drops": "Blaze Powder 5%, Silver Powder 5%, Charti Berry 5%",
+    "Spawn Specific Drops": "biome:Nether Crimson, biome:Nether Forest = Blaze Powder 10%, Silver Powder 5%, Charti Berry 5%"
+  },
+  {
+    "No.": "0650",
+    "Pokémon": "Chespin",
+    "Drops": "Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0651",
+    "Pokémon": "Quilladin",
+    "Drops": "Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0652",
+    "Pokémon": "Chesnaught",
+    "Drops": "Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0653",
+    "Pokémon": "Fennekin",
+    "Drops": "Blaze Powder 0-1, Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0654",
+    "Pokémon": "Braixen",
+    "Drops": "Stick 1, Blaze Powder 0-2, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0655",
+    "Pokémon": "Delphox",
+    "Drops": "Stick 1, Blaze Powder 0-3, Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0656",
+    "Pokémon": "Froakie",
+    "Drops": "Pearlescent Froglight 0-1, Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0657",
+    "Pokémon": "Frogadier",
+    "Drops": "Pearlescent Froglight 0-2, Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0658",
+    "Pokémon": "Greninja",
+    "Drops": "Pearlescent Froglight 0-3, Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0659",
+    "Pokémon": "Bunnelby",
+    "Drops": "Raw Rabbit 1, Rabbit Hide 0-1, Rabbit's Foot 2.5%, Carrot 2.5%, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0660",
+    "Pokémon": "Diggersby",
+    "Drops": "Raw Rabbit 1, Rabbit Hide 0-2, Rabbit's Foot 5%, Carrot 5%, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0661",
+    "Pokémon": "Fletchling",
+    "Drops": "Feather 0-1, Raw Chicken 1, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0662",
+    "Pokémon": "Fletchinder",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0663",
+    "Pokémon": "Talonflame",
+    "Drops": "Feather 0-3, Raw Chicken 1, Sharp Beak 5%, Rawst Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0664",
+    "Pokémon": "Scatterbug",
+    "Drops": "String 0-1, Bright Powder 2.5%, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0665",
+    "Pokémon": "Spewpa",
+    "Drops": "String 0-2, Bright Powder 2.5%, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0666",
+    "Pokémon": "Vivillon",
+    "Drops": "Bright Powder 5%, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0669",
+    "Pokémon": "Flabébé",
+    "Drops": "Poppy 1, Kebia Berry 2.5%",
+    "Spawn Specific Drops": "preset:Red_Flowers = Poppy 1, Kebia Berry 2.5%; preset:Yellow_Flowers = Dandelion 1, Kebia Berry 2.5%; preset:Orange_Flowers = Orange Tulip 1, Kebia Berry 2.5%; preset:Blue_Flowers = Cornflower 1, Kebia Berry 2.5%; preset:White_Flowers = Oxeye Daisy 1, Kebia Berry 2.5%; preset:Pink_Flowers = Allium 1, Kebia Berry 2.5%"
+  },
+  {
+    "No.": "0670",
+    "Pokémon": "Floette",
+    "Drops": "Poppy 1, Kebia Berry 5%",
+    "Spawn Specific Drops": "preset:Red_Flowers = Poppy 1, Kebia Berry 5%; preset:Yellow_Flowers = Dandelion 1, Kebia Berry 5%; preset:Orange_Flowers = Orange Tulip 1, Kebia Berry 5%; preset:Blue_Flowers = Cornflower 1, Kebia Berry 5%; preset:White_Flowers = Oxeye Daisy 1, Kebia Berry 5%; preset:Pink_Flowers = Allium 1, Kebia Berry 5%"
+  },
+  {
+    "No.": "0671",
+    "Pokémon": "Florges",
+    "Drops": "Poppy 0-3, Kebia Berry 10%",
+    "Spawn Specific Drops": "preset:Red_Flowers = Poppy 0-3, Kebia Berry 10%; preset:Yellow_Flowers = Dandelion 0-3, Kebia Berry 10%; preset:Orange_Flowers = Orange Tulip 0-3, Kebia Berry 10%; preset:Blue_Flowers = Cornflower 0-3, Kebia Berry 10%; preset:White_Flowers = Oxeye Daisy 0-3, Kebia Berry 10%; preset:Pink_Flowers = Allium 0-3, Kebia Berry 10%"
+  },
+  {
+    "No.": "0679",
+    "Pokémon": "Honedge",
+    "Drops": "Iron Nugget 0-1, Iron Sword 2.5%, Dusk Stone 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0680",
+    "Pokémon": "Doublade",
+    "Drops": "Iron Nugget 0-2, Iron Sword 5%, Dusk Stone 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0681",
+    "Pokémon": "Aegislash",
+    "Drops": "Iron Nugget 0-3, Iron Sword 10%, Dusk Stone 10%, Ability Shield 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0690",
+    "Pokémon": "Skrelp",
+    "Drops": "Kelp 0-1, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0691",
+    "Pokémon": "Dragalge",
+    "Drops": "Kelp 0-2, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0692",
+    "Pokémon": "Clauncher",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0693",
+    "Pokémon": "Clawitzer",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0696",
+    "Pokémon": "Tyrunt",
+    "Drops": "Razor Fang 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0697",
+    "Pokémon": "Tyrantrum",
+    "Drops": "Razor Fang 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0698",
+    "Pokémon": "Amaura",
+    "Drops": "Never-Melt Ice 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0699",
+    "Pokémon": "Aurorus",
+    "Drops": "Never-Melt Ice 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0700",
+    "Pokémon": "Sylveon",
+    "Drops": "Shiny Stone 25%, Fairy Feather 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0703",
+    "Pokémon": "Carbink",
+    "Drops": "Diamond 5%, Babiri Berry 5%, Float Stone 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0704",
+    "Pokémon": "Goomy",
+    "Drops": "Slimeball 0-1, Haban Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0705",
+    "Pokémon": "Sliggoo",
+    "Drops": "Slimeball 0-2, Haban Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0705",
+    "Pokémon": "Sliggoo [Hisuian]",
+    "Drops": "Slimeball 0-2, Iron Ingot 0-2, Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0706",
+    "Pokémon": "Goodra",
+    "Drops": "Slimeball 0-3, Haban Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0706",
+    "Pokémon": "Goodra [Hisuian]",
+    "Drops": "Slimeball 0-3, Iron Ingot 0-3, Bluk Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0707",
+    "Pokémon": "Klefki",
+    "Drops": "Name Tag 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0708",
+    "Pokémon": "Phantump",
+    "Drops": "Jack o'Lantern 0-1, Spell Tag 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0709",
+    "Pokémon": "Trevenant",
+    "Drops": "Jack o'Lantern 1, Spell Tag 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0710",
+    "Pokémon": "Pumpkaboo",
+    "Drops": "Pumpkin Seeds 0-1, Miracle Seed 2.5%, Kasib Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0711",
+    "Pokémon": "Gourgeist",
+    "Drops": "Pumpkin Seeds 0-2, Miracle Seed 5%, Kasib Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0712",
+    "Pokémon": "Bergmite",
+    "Drops": "Never-Melt Ice 2.5%, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0713",
+    "Pokémon": "Avalugg",
+    "Drops": "Never-Melt Ice 5%, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0722",
+    "Pokémon": "Rowlet",
+    "Drops": "Feather 0-1, Raw Chicken 1, Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0723",
+    "Pokémon": "Dartrix",
+    "Drops": "Feather 0-2, Raw Chicken 1, Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0724",
+    "Pokémon": "Decidueye",
+    "Drops": "Feather 0-3, Raw Chicken 1, Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0724",
+    "Pokémon": "Decidueye [Hisuian]",
+    "Drops": "Feather 0-3, Raw Chicken 1, Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0725",
+    "Pokémon": "Litten",
+    "Drops": "Charcoal Stick 5%, Expert Belt 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0726",
+    "Pokémon": "Torracat",
+    "Drops": "Charcoal Stick 10%, Expert Belt 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0727",
+    "Pokémon": "Incineroar",
+    "Drops": "Charcoal Stick 25%, Expert Belt 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0728",
+    "Pokémon": "Popplio",
+    "Drops": "Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0729",
+    "Pokémon": "Brionne",
+    "Drops": "Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0730",
+    "Pokémon": "Primarina",
+    "Drops": "Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0731",
+    "Pokémon": "Pikipek",
+    "Drops": "Feather 0-1, Raw Chicken 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0732",
+    "Pokémon": "Trumbeak",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0733",
+    "Pokémon": "Toucannon",
+    "Drops": "Feather 0-3, Raw Chicken 1, Sharp Beak 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0739",
+    "Pokémon": "Crabrawler",
+    "Drops": "Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0740",
+    "Pokémon": "Crabominable",
+    "Drops": "Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0742",
+    "Pokémon": "Cutiefly",
+    "Drops": "Honey Bottle 0-1, Cheri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0743",
+    "Pokémon": "Ribombee",
+    "Drops": "Honey Bottle 0-2, Cheri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0746",
+    "Pokémon": "Wishiwashi",
+    "Drops": "Raw Cod 1, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0747",
+    "Pokémon": "Mareanie",
+    "Drops": "Slimeball 0-1, Poison Barb 2.5%, Pecha Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0748",
+    "Pokémon": "Toxapex",
+    "Drops": "Slimeball 0-2, Poison Barb 5%, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0749",
+    "Pokémon": "Mudbray",
+    "Drops": "Leather 0-1, Clay Ball 0-1, Light Clay 2.5%, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0750",
+    "Pokémon": "Mudsdale",
+    "Drops": "Leather 0-2, Clay Ball 0-2, Light Clay 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0753",
+    "Pokémon": "Fomantis",
+    "Drops": "Miracle Seed 2.5%, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0754",
+    "Pokémon": "Lurantis",
+    "Drops": "Miracle Seed 5%, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0755",
+    "Pokémon": "Morelull",
+    "Drops": "Brown Mushroom 0-1, Kebia Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0756",
+    "Pokémon": "Shiinotic",
+    "Drops": "Brown Mushroom 0-2, Kebia Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0757",
+    "Pokémon": "Salandit",
+    "Drops": "Rotten Flesh 0-1, Shuca Berry 2.5%, Smoke Ball 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0758",
+    "Pokémon": "Salazzle",
+    "Drops": "Rotten Flesh 0-2, Shuca Berry 5%, Smoke Ball 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0759",
+    "Pokémon": "Stufful",
+    "Drops": "Chople Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0760",
+    "Pokémon": "Bewear",
+    "Drops": "Chople Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0761",
+    "Pokémon": "Bounsweet",
+    "Drops": "Persim Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0762",
+    "Pokémon": "Steenee",
+    "Drops": "Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0763",
+    "Pokémon": "Tsareena",
+    "Drops": "Persim Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0764",
+    "Pokémon": "Comfey",
+    "Drops": "Misty Seed 5%, Kebia Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0767",
+    "Pokémon": "Wimpod",
+    "Drops": "Bluk Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0768",
+    "Pokémon": "Golisopod",
+    "Drops": "Bluk Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0769",
+    "Pokémon": "Sandygast",
+    "Drops": "Sand 0-1, Soft Sand 2.5%, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0770",
+    "Pokémon": "Palossand",
+    "Drops": "Sand 0-2, Soft Sand 5%, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0771",
+    "Pokémon": "Pyukumuku",
+    "Drops": "Slimeball 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0775",
+    "Pokémon": "Komala",
+    "Drops": "Acacia Log 1, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0776",
+    "Pokémon": "Turtonator",
+    "Drops": "Turtle Scute 0-2, Charcoal 5%, Haban Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0778",
+    "Pokémon": "Mimikyu",
+    "Drops": "Spell Tag 5%, Chesto Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0779",
+    "Pokémon": "Bruxish",
+    "Drops": "Raw Cod 1, Bone Meal 5%, Razor Fang 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0781",
+    "Pokémon": "Dhelmise",
+    "Drops": "Kelp 0-2, Raw Iron 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0782",
+    "Pokémon": "Jangmo-o",
+    "Drops": "Dragon Scale 0-1, Razor Claw 2.5%, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0783",
+    "Pokémon": "Hakamo-o",
+    "Drops": "Dragon Scale 0-2, Razor Claw 5%, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0784",
+    "Pokémon": "Kommo-o",
+    "Drops": "Dragon Scale 0-3, Razor Claw 10%, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0810",
+    "Pokémon": "Grookey",
+    "Drops": "Stick 0-1, Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0811",
+    "Pokémon": "Thwackey",
+    "Drops": "Stick 0-2, Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0812",
+    "Pokémon": "Rillaboom",
+    "Drops": "Stick 1-2, Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0813",
+    "Pokémon": "Scorbunny",
+    "Drops": "Rabbit Hide 0-1, Raw Rabbit 1, Rabbit's Foot 5%, Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0814",
+    "Pokémon": "Raboot",
+    "Drops": "Rabbit Hide 0-2, Raw Rabbit 1, Rabbit's Foot 10%, Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0815",
+    "Pokémon": "Cinderace",
+    "Drops": "Rabbit Hide 0-3, Raw Rabbit 1, Rabbit's Foot 25%, Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0816",
+    "Pokémon": "Sobble",
+    "Drops": "Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0817",
+    "Pokémon": "Drizzile",
+    "Drops": "Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0818",
+    "Pokémon": "Inteleon",
+    "Drops": "Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0821",
+    "Pokémon": "Rookidee",
+    "Drops": "Feather 0-1, Raw Chicken 1, Wacan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0822",
+    "Pokémon": "Corvisquire",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0823",
+    "Pokémon": "Corviknight",
+    "Drops": "Feather 0-3, Raw Chicken 1, Metal Coat 10%, Wacan Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0827",
+    "Pokémon": "Nickit",
+    "Drops": "Sweet Berries 1-3, Emerald 2.5%, Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0828",
+    "Pokémon": "Thievul",
+    "Drops": "Sweet Berries 2-4, Emerald 5%, Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0829",
+    "Pokémon": "Gossifleur",
+    "Drops": "Coba Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0830",
+    "Pokémon": "Eldegoss",
+    "Drops": "White Wool 1-2, Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0831",
+    "Pokémon": "Wooloo",
+    "Drops": "Raw Mutton 1-2, White Wool 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0832",
+    "Pokémon": "Dubwool",
+    "Drops": "Raw Mutton 1-3, White Wool 1-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0835",
+    "Pokémon": "Yamper",
+    "Drops": "Bone 0-1, Wepear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0836",
+    "Pokémon": "Boltund",
+    "Drops": "Bone 0-2, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0845",
+    "Pokémon": "Cramorant",
+    "Drops": "Feather 0-2, Raw Chicken 1, Raw Cod 0-2, Wacan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0846",
+    "Pokémon": "Arrokuda",
+    "Drops": "Raw Salmon 1, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0847",
+    "Pokémon": "Barraskewda",
+    "Drops": "Raw Salmon 1, Bone Meal 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0849",
+    "Pokémon": "Toxtricity [Low Key]",
+    "Drops": "Shuca Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0850",
+    "Pokémon": "Sizzlipede",
+    "Drops": "Blaze Powder 2.5%, Charti Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether Basalt, biome:Nether Wasteland = Blaze Powder 5%, Charti Berry 2.5%"
+  },
+  {
+    "No.": "0851",
+    "Pokémon": "Centiskorch",
+    "Drops": "Blaze Powder 5%, Charti Berry 5%",
+    "Spawn Specific Drops": "biome:Nether Basalt, biome:Nether Wasteland = Blaze Powder 10%, Charti Berry 5%"
+  },
+  {
+    "No.": "0856",
+    "Pokémon": "Hatenna",
+    "Drops": "Babiri Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0857",
+    "Pokémon": "Hattrem",
+    "Drops": "Babiri Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0858",
+    "Pokémon": "Hatterene",
+    "Drops": "Babiri Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0859",
+    "Pokémon": "Impidimp",
+    "Drops": "Roseli Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0860",
+    "Pokémon": "Morgrem",
+    "Drops": "Roseli Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0861",
+    "Pokémon": "Grimmsnarl",
+    "Drops": "Roseli Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0862",
+    "Pokémon": "Obstagoon",
+    "Drops": "Chople Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0863",
+    "Pokémon": "Perrserker",
+    "Drops": "Razor Claw 5%, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0865",
+    "Pokémon": "Sirfetch'd",
+    "Drops": "Feather 0-2, Raw Chicken 1, Medicinal Leek 1, Coba Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0868",
+    "Pokémon": "Milcery",
+    "Drops": "Sugar 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0869",
+    "Pokémon": "Alcremie",
+    "Drops": "Sugar 0-2, Cake 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0870",
+    "Pokémon": "Falinks",
+    "Drops": "Gold Helmet 5%, Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0871",
+    "Pokémon": "Pincurchin",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0874",
+    "Pokémon": "Stonjourner",
+    "Drops": "Stone 2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0875",
+    "Pokémon": "Eiscue",
+    "Drops": "Feather 0-1, Raw Chicken 1, Raw Cod 0-1, Blue Ice 1, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0875",
+    "Pokémon": "Eiscue [No Ice Face]",
+    "Drops": "Feather 0-1, Raw Chicken 1, Raw Cod 0-1, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0878",
+    "Pokémon": "Cufant",
+    "Drops": "Raw Copper 0-1, Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0879",
+    "Pokémon": "Copperajah",
+    "Drops": "Raw Copper 0-2, Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0880",
+    "Pokémon": "Dracozolt",
+    "Drops": "Bone 0-2, Feather 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0881",
+    "Pokémon": "Arctozolt",
+    "Drops": "Bone 0-2, Feather 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0882",
+    "Pokémon": "Dracovish",
+    "Drops": "Bone 0-2, Raw Cod 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0883",
+    "Pokémon": "Arctovish",
+    "Drops": "Bone 0-2, Raw Cod 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0885",
+    "Pokémon": "Dreepy",
+    "Drops": "Phantom Membrane 2.5%, Haban Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0886",
+    "Pokémon": "Drakloak",
+    "Drops": "Phantom Membrane 5%, Haban Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0887",
+    "Pokémon": "Dragapult",
+    "Drops": "Phantom Membrane 10%, Haban Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0899",
+    "Pokémon": "Wyrdeer",
+    "Drops": "Leather 0-2, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0900",
+    "Pokémon": "Kleavor",
+    "Drops": "Stone Axe 0-2, Wepear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0901",
+    "Pokémon": "Ursaluna",
+    "Drops": "Sweet Berries 3-5, Honey Bottle 10%, Peat Block 10%, Oran Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0902",
+    "Pokémon": "Basculegion",
+    "Drops": "Raw Salmon 1, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0903",
+    "Pokémon": "Sneasler",
+    "Drops": "Razor Claw 5%, Poison Barb 5%, Payapa Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0904",
+    "Pokémon": "Overqwil",
+    "Drops": "Pufferfish 1, Prismarine Shard 0-2, Poison Barb 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0905",
+    "Pokémon": "Enamorus",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0906",
+    "Pokémon": "Sprigatito",
+    "Drops": "Miracle Seed 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0907",
+    "Pokémon": "Floragato",
+    "Drops": "Miracle Seed 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0908",
+    "Pokémon": "Meowscarada",
+    "Drops": "Miracle Seed 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0909",
+    "Pokémon": "Fuecoco",
+    "Drops": "Charcoal Stick 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0910",
+    "Pokémon": "Crocalor",
+    "Drops": "Charcoal Stick 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0911",
+    "Pokémon": "Skeledirge",
+    "Drops": "Charcoal Stick 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0912",
+    "Pokémon": "Quaxly",
+    "Drops": "Mystic Water 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0913",
+    "Pokémon": "Quaxwell",
+    "Drops": "Mystic Water 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0914",
+    "Pokémon": "Quaquaval",
+    "Drops": "Mystic Water 25%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0915",
+    "Pokémon": "Lechonk",
+    "Drops": "Raw Porkchop 1-2, Oran Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0916",
+    "Pokémon": "Oinkologne",
+    "Drops": "Raw Porkchop 1-3, Oran Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0924",
+    "Pokémon": "Tandemaus",
+    "Drops": "Wheat Seeds 0-1, Chilan Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0925",
+    "Pokémon": "Maushold",
+    "Drops": "Wheat Seeds 0-2, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0926",
+    "Pokémon": "Fidough",
+    "Drops": "Bread 0-1, Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0927",
+    "Pokémon": "Dachsbun",
+    "Drops": "Bread 0-2, Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0931",
+    "Pokémon": "Squawkabilly",
+    "Drops": "Feather 0-2, Raw Chicken 1, Chilan Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0932",
+    "Pokémon": "Nacli",
+    "Drops": "Calcite 0-1, Passho Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0933",
+    "Pokémon": "Naclstack",
+    "Drops": "Calcite 0-2, Passho Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0934",
+    "Pokémon": "Garganacl",
+    "Drops": "Calcite 0-3, Passho Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0935",
+    "Pokémon": "Charcadet",
+    "Drops": "Charcoal 0-2, Charcoal Stick 2.5%, Rawst Berry 2.5%",
+    "Spawn Specific Drops": "biome:Nether = Blaze Rod 0-1, Charcoal Stick 2.5%, Rawst Berry 2.5%"
+  },
+  {
+    "No.": "0936",
+    "Pokémon": "Armarouge",
+    "Drops": "Charcoal 0-2, Charcoal Stick 5%, Auspicious Armor 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": "biome:Nether = Blaze Rod 0-2, Charcoal Stick 5%, Auspicious Armor 5%, Rawst Berry 5%"
+  },
+  {
+    "No.": "0937",
+    "Pokémon": "Ceruledge",
+    "Drops": "Charcoal 0-2, Charcoal Stick 5%, Malicious Armor 5%, Rawst Berry 5%",
+    "Spawn Specific Drops": "biome:Nether = Blaze Rod 0-2, Charcoal Stick 5%, Malicious Armor 5%, Rawst Berry 5%"
+  },
+  {
+    "No.": "0940",
+    "Pokémon": "Wattrel",
+    "Drops": "Feather 0-1, Raw Chicken 1, Razz Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0941",
+    "Pokémon": "Kilowattrel",
+    "Drops": "Feather 0-2, Raw Chicken 1, Sharp Beak 2.5%, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0942",
+    "Pokémon": "Maschiff",
+    "Drops": "Bone 0-1, Rotten Flesh 0-1, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0943",
+    "Pokémon": "Mabosstiff",
+    "Drops": "Bone 0-2, Rotten Flesh 0-2, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0944",
+    "Pokémon": "Shroodle",
+    "Drops": "Nanab Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0945",
+    "Pokémon": "Grafaiai",
+    "Drops": "Nanab Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0950",
+    "Pokémon": "Klawf",
+    "Drops": "Pinap Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0955",
+    "Pokémon": "Flittle",
+    "Drops": "Raw Chicken 1, Tanga Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0956",
+    "Pokémon": "Espathra",
+    "Drops": "Raw Chicken 1, Tanga Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0957",
+    "Pokémon": "Tinkatink",
+    "Drops": "Raw Iron 0-1, Razz Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0958",
+    "Pokémon": "Tinkatuff",
+    "Drops": "Raw Iron 0-2, Razz Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0959",
+    "Pokémon": "Tinkaton",
+    "Drops": "Raw Iron 0-3, Razz Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0960",
+    "Pokémon": "Wiglett",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0961",
+    "Pokémon": "Wugtrio",
+    "Drops": "",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0963",
+    "Pokémon": "Finizen",
+    "Drops": "Raw Cod 0-1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0964",
+    "Pokémon": "Palafin",
+    "Drops": "Raw Cod 0-2",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0965",
+    "Pokémon": "Varoom",
+    "Drops": "Iron Nugget 0-1, Black Sludge 2.5%, Shuca Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0966",
+    "Pokémon": "Revavroom",
+    "Drops": "Iron Nugget 0-2, Black Sludge 5%, Shuca Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0969",
+    "Pokémon": "Glimmet",
+    "Drops": "Amethyst Shard 0-1, Shuca Berry 2.5%, Float Stone 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0970",
+    "Pokémon": "Glimmora",
+    "Drops": "Amethyst Shard 0-2, Shuca Berry 5%, Float Stone 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0973",
+    "Pokémon": "Flamigo",
+    "Drops": "Feather 0-2, Raw Chicken 1, Payapa Berry 5%, Fairy Feather 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0974",
+    "Pokémon": "Cetoddle",
+    "Drops": "Bone Block 0-1, Aspear Berry 2.5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0975",
+    "Pokémon": "Cetitan",
+    "Drops": "Bone Block 0-2, Aspear Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0976",
+    "Pokémon": "Veluza",
+    "Drops": "Raw Cod 1-3, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0977",
+    "Pokémon": "Dondozo",
+    "Drops": "Raw Salmon 1, Bone Meal 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0978",
+    "Pokémon": "Tatsugiri",
+    "Drops": "Raw Salmon 1, Bone Meal 5%, Haban Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0979",
+    "Pokémon": "Annihilape",
+    "Drops": "Muscle Band 10%, Payapa Berry 10%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0980",
+    "Pokémon": "Clodsire",
+    "Drops": "Clay Ball 0-2, Pecha Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0981",
+    "Pokémon": "Farigiraf",
+    "Drops": "Leather 0-2, Razor Fang 5%, Persim Berry 5%",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0999",
+    "Pokémon": "Gimmighoul",
+    "Drops": "Relic Coin 24-48",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": "0999",
+    "Pokémon": "Gimmighoul [Roaming Form]",
+    "Drops": "Relic Coin 1",
+    "Spawn Specific Drops": ""
+  },
+  {
+    "No.": 1000,
+    "Pokémon": "Gholdengo",
+    "Drops": "Relic Coin 24-48",
+    "Spawn Specific Drops": ""
+  }
+]

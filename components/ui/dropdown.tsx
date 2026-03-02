@@ -51,7 +51,7 @@ export function Dropdown({ trigger, items, className = '' }: DropdownProps) {
       </button>
       
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-md shadow-lg z-50 min-w-[160px]">
+        <div className="absolute top-full left-0 mt-1 bg-background border border-border rounded-md shadow-lg z-[100] min-w-[160px]">
           <div className="py-1">
             {items.map((item, index) => (
               <a

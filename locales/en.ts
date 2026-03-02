@@ -18,6 +18,8 @@ export const enTranslations = {
     typeChart: "Type Chart",
     gameData: "Move / Ability / Nature / Held Item",
     items: "Items",
+    itemSell: "Item Sell",
+    pastureLoot: "Pasture Loot",
     moves: "Moves",
     abilities: "Abilities",
     natures: "Natures",
@@ -581,6 +583,12 @@ export const enTranslations = {
     noItemsFound: "No items found matching your criteria.",
     totalItems: "Total items",
     totalValue: "Total value"
+  },
+  pastureLoot: {
+    title: "Pasture Loot",
+    subtitle: "Discover what items each Pokémon drops when placed in pastures. Plan your farming strategy with detailed drop rates and special conditions.",
+    searchPlaceholder: "Search Pokémon or drops...",
+    noPokemonFound: "No Pokémon found matching your criteria."
   },
   errors: {
     failedToFetchCobblemonData: "Failed to fetch cobblemon data",
