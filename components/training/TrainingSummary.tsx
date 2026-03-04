@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { Pokemon, MoveRecommendation, ItemRecommendation, EVSpread, MovesetAnalysis, ItemOptimizationAnalysis, EVAnalysis, NatureAnalysis, AbilityAnalysis } from '@/types/pokemon'
 import { MovesetRecommendationService } from '@/features/training/services/MovesetRecommendationService'
 import { HeldItemOptimizationService } from '@/features/training/services/HeldItemOptimizationService'
@@ -18,24 +19,123 @@ import { ItemSection } from './ItemSection'
 import { EVSection } from './EVSection'
 import { NatureSection } from './NatureSection'
 import { AbilitySection } from './AbilitySection'
+import { formatPokemonName } from '@/lib/utils'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { 
   TrendingUp,
   ChevronDown,
   Loader2,
+  Settings,
 } from 'lucide-react'
+
+// Utility functions for form display
+const getFormDisplayName = (formName: string) => {
+  const parts = formName.split('-')
+  if (parts.length === 1) return formatPokemonName(formName)
+  
+  const baseName = parts[0]
+  const formSuffix = parts.slice(1).join(' ')
+  
+  // Special cases for common form names
+  const suffixMap: Record<string, string> = {
+    'mega': 'Mega',
+    'gmax': 'Gigantamax',
+    'alola': 'Alola',
+    'galar': 'Galar',
+    'hisui': 'Hisui',
+    'paldea': 'Paldea',
+    'origin': 'Origin',
+    'primal': 'Primal',
+    'unbound': 'Unbound',
+    'ash': 'Ash',
+    'school': 'School',
+    'blade': 'Blade',
+    'shield': 'Shield',
+    'power': 'Power',
+    'technique': 'Technique',
+    'soul': 'Soul',
+    'pirouette': 'Pirouette',
+    'therian': 'Therian',
+    'incarnate': 'Incarnate',
+    'resolute': 'Resolute',
+    'sky': 'Sky',
+    'land': 'Land',
+    'blue': 'Blue',
+    'red': 'Red',
+    'white': 'White',
+    'black': 'Black',
+    'complete': 'Complete',
+    'active': 'Active',
+    'defense': 'Defense',
+    'attack': 'Attack',
+    'speed': 'Speed',
+    'heat': 'Heat',
+    'wash': 'Wash',
+    'frost': 'Frost',
+    'fan': 'Fan',
+    'mow': 'Mow',
+    'dawn': 'Dawn',
+    'dusk': 'Dusk',
+    'midnight': 'Midnight',
+    'noon': 'Noon',
+    'overcast': 'Overcast',
+    'sunshine': 'Sunshine',
+    'snowy': 'Snowy',
+    'rainy': 'Rainy',
+    'plant': 'Plant',
+    'sandy': 'Sandy',
+    'trash': 'Trash',
+    'hangry': 'Hangry',
+    'busted': 'Busted',
+    'full': 'Full',
+    'zero': 'Zero',
+    'ice': 'Ice',
+    'zen': 'Zen',
+    'standard': 'Standard',
+    'super': 'Super',
+    'female': 'Female',
+    'male': 'Male',
+    'east': 'East',
+    'west': 'West',
+    'north': 'North',
+    'south': 'South',
+    'spring': 'Spring',
+    'summer': 'Summer',
+    'autumn': 'Autumn',
+    'winter': 'Winter'
+  }
+  
+  const formattedSuffix = suffixMap[formSuffix] || formSuffix.charAt(0).toUpperCase() + formSuffix.slice(1)
+  return `${formattedSuffix}`
+}
+
+const getFormBadgeVariant = (formName: string) => {
+  if (formName.includes('mega')) return 'destructive'
+  if (formName.includes('gmax')) return 'default'
+  if (formName.includes('primal')) return 'destructive'
+  if (formName.includes('origin')) return 'secondary'
+  if (formName.includes('alola')) return 'outline'
+  if (formName.includes('galar')) return 'outline'
+  if (formName.includes('hisui')) return 'outline'
+  if (formName.includes('paldea')) return 'outline'
+  return 'secondary'
+}
 
 interface TrainingSummaryProps {
   pokemon: Pokemon
   onOptimize?: () => void
   onExport?: () => void
   onShare?: () => void
+  onToggleForms?: () => void
   isBuildPage?: boolean
 }
 
 export function TrainingSummary({ 
   pokemon, 
+  onToggleForms,
   isBuildPage = false
 }: TrainingSummaryProps) {
+  const { t } = useLanguage()
   const [isExpanded, setIsExpanded] = useState(true)
   const [activeSection, setActiveSection] = useState<'moves' | 'item' | 'evs' | 'nature' | 'ability'>('moves')
   
@@ -75,9 +175,6 @@ export function TrainingSummary({
 
   // Calculate total base stats
   const totalStats = pokemon?.stats?.reduce((sum, stat) => sum + (stat?.base_stat || 0), 0) || 0
-  
-  // Translation function (placeholder - should be passed from parent)
-  const t = (key: string) => key // Simplified for now
 
   // Initialize default moveset when analysis is ready
   useEffect(() => {
@@ -323,23 +420,46 @@ export function TrainingSummary({
               </motion.div>
               Training Summary
             </CardTitle>
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsExpanded(!isExpanded)}
-              >
+            <div className="flex items-center gap-2">
+              {isBuildPage && onToggleForms && (
                 <motion.div
-                  animate={{ rotate: isExpanded ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <ChevronDown className="h-4 w-4" />
+                  <Button
+                    variant="default"
+                    size="default"
+                    onClick={onToggleForms}
+                    title={t('common.change_pokemon_form')}
+                    className="px-4 py-2 bg-blue-600 border-blue-600 text-white rounded-lg"
+                  >
+                    <div className="flex items-center gap-1">
+                      <span className="text-sm font-medium">
+                        {t('common.change_form')}
+                      </span>
+                      <ChevronDown className="h-4 w-4 text-white" />
+                    </div>
+                  </Button>
                 </motion.div>
-              </Button>
-            </motion.div>
+              )}
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                >
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronDown className="h-4 w-4" />
+                  </motion.div>
+                </Button>
+              </motion.div>
+            </div>
           </div>
         </CardHeader>
         <AnimatePresence>

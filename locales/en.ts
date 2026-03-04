@@ -10,7 +10,9 @@ export const enTranslations = {
     noDataFound: "No data found matching your criteria.",
     back: "Back to Pokemon list",
     showAll: "Show All",
-    default: "Default"
+    default: "Default",
+    change_form: "Change form",
+    change_pokemon_form: "Change Pokemon form"
   },
   navigation: {
     pokemon: "Pokemon",

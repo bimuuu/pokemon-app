@@ -280,16 +280,14 @@ export function FormSelector({
         ],
       }
       
-      // Use special forms if available, otherwise fetch from API
+      // Use special forms if available, otherwise create base form
       let forms: PokemonForm[] = specialForms[baseName] || []
       
       if (forms.length === 0) {
-        // Fetch forms data from API
-        const formsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${baseName}`)
-        if (formsResponse.ok) {
-          const formsData = await formsResponse.json()
-          forms = formsData.forms || []
-        }
+        // Always include the base form
+        forms = [
+          { name: baseName, url: `https://pokeapi.co/api/v2/pokemon/${baseName}` }
+        ]
       }
       
       setAvailableForms(forms)
@@ -540,133 +538,9 @@ export function FormSelector({
     )
   }
 
-  // Always show form selector for Pokemon with known forms
+  // Always show form selector to display base form
   const shouldShowFormSelector = () => {
-    const baseName = pokemon.name.split('-')[0]
-    
-    // Comprehensive list of Pokemon with multiple forms
-    const pokemonWithForms = [
-      // Starters with Mega Evolutions
-      'charizard', 'venusaur', 'blastoise', 'blaziken', 'sceptile', 'swampert',
-      'torchic', 'treecko', 'mudkip',
-      
-      // Legendary Pokemon with forms
-      'mewtwo', 'rayquaza', 'kyogre', 'groudon', 'dialga', 'palkia', 'giratina',
-      'reshiram', 'zekrom', 'kyurem', 'xerneas', 'yveltal', 'zacian', 'zamazenta',
-      'calyrex', 'necrozma', 'solgaleo', 'lunala',
-      
-      // Popular Pokemon with Mega Evolutions
-      'alakazam', 'gengar', 'kangaskhan', 'pinsir', 'gyarados', 'aerodactyl',
-      'scizor', 'heracross', 'houndoom', 'tyranitar', 'salamence', 'metagross',
-      'latias', 'latios', 'lucario', 'abomasnow', 'gallade', 'audino', 'diancie',
-      
-      // Pokemon with Regional Variants
-      'rattata', 'raticate', 'spearow', 'fearow', 'eevee', 'vaporeon', 'jolteon', 'flareon',
-      'pikachu', 'raichu', 'sandshrew', 'sandslash', 'vulpix', 'ninetales', 'diglett',
-      'dugtrio', 'meowth', 'persian', 'psyduck', 'golduck', 'mankey', 'primeape',
-      'growlithe', 'arcanine', 'poliwrath', 'geodude', 'graveler', 'golem', 'onix',
-      'hypno', 'rhydon', 'tangela', 'kangaskhan', 'seaking', 'goldeen', 'seaking',
-      'staryu', 'starmie', 'mr-mime', 'jynx', 'electabuzz', 'magmar', 'tauros',
-      'magikarp', 'gyarados', 'mew', 'chikorita', 'bayleef', 'meganium',
-      'cyndaquil', 'quilava', 'typhlosion', 'totodile', 'croconaw', 'feraligatr',
-      'sentret', 'furret', 'hoothoot', 'noctowl', 'ledyba', 'ledian', 'spinark',
-      'ariados', 'chinchou', 'lanturn', 'pichu', 'cleffa', 'igglybuff', 'togepi',
-      'togetic', 'natu', 'xatu', 'mareep', 'flaaffy', 'ampharos', 'bellossom',
-      'marill', 'azumarill', 'sudowoodo', 'politoed', 'hoppip', 'skiploom', 'jumpluff',
-      'aipom', 'sunkern', 'sunflora', 'yanma', 'wooper', 'quagsire', 'espeon',
-      'umbreon', 'murkrow', 'slowking', 'misdreavus', 'unown', 'wobbuffet', 'girafarig',
-      'pineco', 'forretress', 'dunsparce', 'gligar', 'steelix', 'snubbull', 'granbull',
-      'qwilfish', 'scizor', 'shuckle', 'heracross', 'sneasel', 'teddiursa', 'ursaring',
-      'slugma', 'magcargo', 'swinub', 'piloswine', 'corsola', 'remoraid', 'octillery',
-      'delibird', 'mantine', 'skarmory', 'houndour', 'houndoom', 'kingdra', 'phanpy',
-      'donphan', 'porygon2', 'stantler', 'smeargle', 'tyrogue', 'hitmontop', 'smoochum',
-      'elekid', 'magby', 'miltank', 'blissey', 'larvitar', 'pupitar', 'tyranitar',
-      'lugia', 'ho-oh', 'celebi', 'treecko', 'grovyle', 'sceptile', 'torchic', 'combusken',
-      'blaziken', 'mudkip', 'marshtomp', 'swampert', 'poochyena', 'mightyena', 'zigzagoon',
-      'linoone', 'wurmple', 'silcoon', 'beautifly', 'cascoon', 'dustox', 'lotad',
-      'lombre', 'ludicolo', 'seedot', 'nuzleaf', 'shiftry', 'taillow', 'swellow', 'wingull',
-      'pelipper', 'ralts', 'kirlia', 'gardevoir', 'surskit', 'masquerain', 'shroomish',
-      'breloom', 'slakoth', 'vigoroth', 'slaking', 'nincada', 'ninjask', 'shedinja',
-      'whismur', 'loudred', 'exploud', 'makuhita', 'hariyama', 'azurill', 'nosepass',
-      'skitty', 'delcatty', 'sableye', 'mawile', 'aron', 'lairon', 'aggron', 'meditite',
-      'medicham', 'electrike', 'manectric', 'plusle', 'minun', 'volbeat', 'illumise',
-      'roselia', 'gulpin', 'swalot', 'carvanha', 'sharpedo', 'wailmer', 'wailord',
-      'numel', 'camerupt', 'torkoal', 'spoink', 'grumpig', 'spinda', 'trapinch', 'vibrava',
-      'flygon', 'cacnea', 'cacturne', 'swablu', 'altaria', 'zangoose', 'seviper',
-      'lunatone', 'solrock', 'barboach', 'whiscash', 'corphish', 'crawdaunt', 'baltoy',
-      'claydol', 'lileep', 'cradily', 'anorith', 'armaldo', 'feebas', 'milotic',
-      'castform', 'kecleon', 'shuppet', 'banette', 'duskull', 'dusclops', 'tropius',
-      'chimecho', 'absol', 'wynaut', 'snorunt', 'glalie', 'spheal', 'sealeo',
-      'walrein', 'clamperl', 'huntail', 'gorebyss', 'relicanth', 'luvdisc', 'bagon',
-      'shelgon', 'salamence', 'beldum', 'metang', 'metagross', 'regirock', 'regice',
-      'registeel', 'latias', 'latios', 'kyogre', 'groudon', 'rayquaza', 'jirachi',
-      'deoxys', 'turtwig', 'grotle', 'torterra', 'chimchar', 'monferno', 'infernape',
-      'piplup', 'prinplup', 'empoleon', 'starly', 'staravia', 'staraptor', 'bidoof',
-      'bibarel', 'kricketot', 'kricketune', 'shinx', 'luxio', 'luxray', 'budew',
-      'roserade', 'cranidos', 'rampardos', 'shieldon', 'bastiodon', 'burmy', 'wormadam',
-      'mothim', 'combee', 'vespiquen', 'pachirisu', 'buizel', 'floatzel', 'cherubi',
-      'cherrim', 'shellos', 'gastrodon', 'ambipom', 'drifloon', 'drifblim', 'buneary',
-      'lopunny', 'glameow', 'purugly', 'honchkrow', 'mismagius', 'gliscor', 'weavile',
-      'magnezone', 'lickilicky', 'rhyperior', 'tangrowth', 'electivire', 'magmortar',
-      'togekiss', 'yanmega', 'leafeon', 'glaceon', 'gliscor', 'mamoswine', 'porygon-z',
-      'gallade', 'probopass', 'dusknoir', 'froslass', 'rotom', 'uxie', 'mesprit',
-      'azelf', 'dialga', 'palkia', 'heatran', 'regigigas', 'giratina', 'cresselia',
-      'phione', 'manaphy', 'darkrai', 'shaymin', 'arceus', 'snivy', 'servine',
-      'serperior', 'tepig', 'pignite', 'emboar', 'oshawott', 'dewott', 'samurott',
-      'patrat', 'watchog', 'lillipup', 'herdier', 'stoutland', 'purrloin', 'liepard',
-      'pansage', 'simisage', 'pansear', 'simisear', 'panpour', 'simipour', 'munna',
-      'musharna', 'pidove', 'tranquill', 'unfezant', 'blitzle', 'zebstrika', 'roggenrola',
-      'boldore', 'gigalith', 'woobat', 'swoobat', 'drilbur', 'excadrill', 'audino',
-      'timburr', 'gurdurr', 'conkeldurr', 'sewaddle', 'swadloon', 'leavanny', 'venipede',
-      'whirlipede', 'scolipede', 'cottonee', 'whimsicott', 'petilil', 'lilligant',
-      'basculin', 'sandile', 'krokorok', 'krookodile', 'darumaka', 'darmanitan',
-      'maractus', 'dwebble', 'crustle', 'scraggy', 'scrafty', 'sigilyph', 'yamask',
-      'cofagrigus', 'tirtouga', 'carracosta', 'archen', 'archeops', 'trubbish',
-      'garbodor', 'zorua', 'zoroark', 'minccino', 'cinccino', 'gothita', 'gothorita',
-      'gothitelle', 'solosis', 'duosion', 'reuniclus', 'ducklett', 'swanna', 'vanillite',
-      'vanilluxe', 'deerling', 'sawsbuck', 'emolga', 'joltik', 'galvantula', 'ferroseed',
-      'ferrothorn', 'klink', 'klang', 'klinklang', 'tympole', 'palpitoad', 'seismitoad',
-      'stunfisk', 'mienfoo', 'mienshao', 'druddigon', 'golett', 'golurk', 'pawniard',
-      'bisharp', 'bouffalant', 'rufflet', 'braviary', 'vullaby', 'mandibuzz', 'heatmor',
-      'durant', 'deino', 'zweilous', 'hydreigon', 'larvesta', 'volcarona', 'cobalion',
-      'terrakion', 'virizion', 'tornadus', 'thundurus', 'reshiram', 'zekrom',
-      'landorus', 'kyurem', 'keldeo', 'meloetta', 'genesect', 'chespin', 'quilladin',
-      'chesnaught', 'fennekin', 'braixen', 'delphox', 'froakie', 'frogadier', 'greninja',
-      'bunnelby', 'diggersby', 'fletchling', 'fletchinder', 'talonflame', 'scatterbug',
-      'spewpa', 'vivillon', 'litleo', 'pyroar', 'flabebe', 'floette', 'florges',
-      'skiddo', 'gogoat', 'pancham', 'pangoro', 'furfrou', 'espurr', 'meowstic',
-      'honedge', 'doublade', 'aegislash', 'spritzee', 'aromatisse', 'swirlix', 'slurpuff',
-      'inkay', 'malamar', 'binacle', 'barbaracle', 'skrelp', 'dragalge', 'clauncher',
-      'clawitzer', 'helioptile', 'heliolisk', 'tyrunt', 'tyrantrum', 'amaura', 'aurorus',
-      'sylveon', 'hawlucha', 'dedenne', 'carbink', 'goomy', 'sliggoo', 'goodra',
-      'klefki', 'phantump', 'trevenant', 'pumpkaboo', 'gourgeist', 'bergmite', 'avalugg',
-      'noibat', 'noivern', 'xerneas', 'yveltal', 'zygarde', 'diancie', 'hoopa',
-      'volcanion', 'rowlet', 'dartrix', 'decidueye', 'litten', 'torracat', 'incineroar',
-      'popplio', 'brionne', 'primarina', 'caterpie', 'metapod', 'butterfree', 'weedle',
-      'kakuna', 'beedrill', 'pidgey', 'pidgeotto', 'pidgeot', 'rattata', 'raticate',
-      'spearow', 'fearow', 'ekans', 'arbok', 'pikachu', 'raichu', 'sandshrew',
-      'sandslash', 'nidoran-f', 'nidorina', 'nidoqueen', 'nidoran-m', 'nidorino',
-      'nidoking', 'clefairy', 'clefable', 'vulpix', 'ninetales', 'jigglypuff', 'wigglytuff',
-      'zubat', 'golbat', 'oddish', 'gloom', 'vileplume', 'paras', 'parasect',
-      'venonat', 'venomoth', 'diglett', 'dugtrio', 'meowth', 'persian', 'psyduck',
-      'golduck', 'mankey', 'primeape', 'growlithe', 'arcanine', 'poliwag', 'poliwhirl',
-      'poliwrath', 'abra', 'kadabra', 'alakazam', 'machop', 'machoke', 'machamp',
-      'bellsprout', 'weepinbell', 'victreebel', 'tentacool', 'tentacruel', 'geodude',
-      'graveler', 'golem', 'ponyta', 'rapidash', 'slowpoke', 'slowbro', 'magnemite',
-      'magneton', "farfetch'd", 'doduo', 'dodrio', 'seel', 'dewgong', 'grimer',
-      'muk', 'shellder', 'cloyster', 'gastly', 'haunter', 'gengar', 'onix',
-      'drowzee', 'hypno', 'krabby', 'kingler', 'voltorb', 'electrode', 'exeggcute',
-      'exeggutor', 'cubone', 'marowak', 'hitmonlee', 'hitmonchan', 'hitmontop',
-      'lickitung', 'koffing', 'weezing', 'rhyhorn', 'rhydon', 'chansey', 'tangela',
-      'kangaskhan', 'horsea', 'seadra', 'goldeen', 'seaking', 'staryu', 'starmie',
-      'mr-mime', 'scyther', 'jynx', 'electabuzz', 'magmar', 'pinsir', 'tauros',
-      'magikarp', 'gyarados', 'lapras', 'ditto', 'eevee', 'vaporeon', 'jolteon',
-      'flareon', 'porygon', 'omanyte', 'omastar', 'kabuto', 'kabutops', 'aerodactyl',
-      'snorlax', 'articuno', 'zapdos', 'moltres', 'dratini', 'dragonair', 'dragonite',
-      'mewtwo', 'mew'
-    ]
-    
-    return pokemonWithForms.includes(baseName)
+    return true
   }
 
   if (!shouldShowFormSelector()) {

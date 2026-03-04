@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { ArrowLeft, Loader2 } from 'lucide-react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Pokemon, PokemonFormData } from '@/types/pokemon'
 import { TrainingSummary } from '@/components/training/TrainingSummary'
 import { FormSelector } from '@/components/training/FormSelector'
@@ -21,6 +21,7 @@ export default function PokemonBuildPage() {
   const [selectedForm, setSelectedForm] = useState<string>('base')
   const [selectedFormData, setSelectedFormData] = useState<PokemonFormData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [showForms, setShowForms] = useState(false)
 
   useEffect(() => {
     loadPokemon()
@@ -64,6 +65,10 @@ export default function PokemonBuildPage() {
       const cacheKey = `training-${pokemon?.name || pokemonName}-${selectedForm || 'base'}`
       localStorage.removeItem(cacheKey)
     }
+  }
+
+  const toggleForms = () => {
+    setShowForms(!showForms)
   }
 
   // Convert PokemonFormData to Pokemon format for TrainingSummary
@@ -131,20 +136,25 @@ export default function PokemonBuildPage() {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Form Selection Panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:w-80 flex-shrink-0"
-          >
-            <FormSelector
-              pokemon={pokemon}
-              selectedForm={selectedForm}
-              onFormSelect={handleFormSelect}
-              onFormChange={handleFormChange}
-            />
-          </motion.div>
+          {/* Form Selection Panel - Hidden by default */}
+          <AnimatePresence>
+            {showForms && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="lg:w-80 flex-shrink-0"
+              >
+                <FormSelector
+                  pokemon={pokemon}
+                  selectedForm={selectedForm}
+                  onFormSelect={handleFormSelect}
+                  onFormChange={handleFormChange}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Build Content - Centered */}
           <motion.div
@@ -163,6 +173,7 @@ export default function PokemonBuildPage() {
                 key={`${selectedForm || 'base'}-${pokemon?.id}-${getPokemonForTraining().types.map(t => t.type.name).join('-')}`}
                 pokemon={getPokemonForTraining()}
                 isBuildPage={true}
+                onToggleForms={toggleForms}
                 onOptimize={() => {
                   // TODO: Implement comprehensive optimization
                   console.log('Optimize build for', pokemon.name, selectedForm || '')

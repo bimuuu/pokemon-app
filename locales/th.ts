@@ -10,7 +10,9 @@ export const thTranslations = {
     noDataFound: "ไม่พบข้อมูลที่ตรงกับเงื่อนไข",
     back: "กลับไปหน้ารายการโปเกม่อน",
     showAll: "แสดงทั้งหมด",
-    default: "ปกติ"
+    default: "ปกติ",
+    change_form: "เปลี่ยนร่าง",
+    change_pokemon_form: "เปลี่ยนร่างโปเกม่อน"
   },
   navigation: {
     pokemon: "โปเกม่อน",
