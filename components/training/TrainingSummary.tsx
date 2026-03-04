@@ -74,7 +74,7 @@ export function TrainingSummary({
   const [isLoading, setIsLoading] = useState(false)
 
   // Calculate total base stats
-  const totalStats = pokemon.stats.reduce((sum, stat) => sum + stat.base_stat, 0)
+  const totalStats = pokemon?.stats?.reduce((sum, stat) => sum + (stat?.base_stat || 0), 0) || 0
   
   // Translation function (placeholder - should be passed from parent)
   const t = (key: string) => key // Simplified for now
@@ -106,22 +106,22 @@ export function TrainingSummary({
   }
 
   const calculateTotalPower = () => {
-    return selectedMoves.reduce((total, move) => total + (move.power || 0), 0)
+    return selectedMoves?.reduce((total, move) => total + (move.power || 0), 0) || 0
   }
 
   const calculateTypeCoverage = () => {
     const coverage = new Set<string>()
-    selectedMoves.forEach(move => {
+    selectedMoves?.forEach(move => {
       coverage.add(move.type)
     })
     return coverage.size
   }
 
   const calculateSTABCount = () => {
-    const pokemonTypes = pokemon.types.map(t => t.type.name)
-    return selectedMoves.filter(move => 
+    const pokemonTypes = pokemon?.types?.map(t => t.type.name) || []
+    return selectedMoves?.filter(move => 
       pokemonTypes.includes(move.type)
-    ).length
+    ).length || 0
   }
 
   const totalPower = calculateTotalPower()
@@ -129,9 +129,19 @@ export function TrainingSummary({
   const stabCount = calculateSTABCount()
   const isComplete = selectedMoves.length === 4 && !!selectedItem
 
+  // Reset selected data when pokemon changes
   useEffect(() => {
+    // Reset all selected data when pokemon changes
+    setSelectedMoves([])
+    setMoveSlots(Array(4).fill(null))
+    setSelectedItem(null)
+    setSelectedEVSpread(null)
+    setSelectedNature(null)
+    setSelectedAbility(null)
+    
+    // Re-initialize with new pokemon data
     initializeTrainingData()
-  }, [pokemon])
+  }, [pokemon.id, pokemon.name, pokemon.types]) // Include types to detect Arceus form changes
 
   const initializeTrainingData = async () => {
     setIsLoading(true)

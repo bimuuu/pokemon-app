@@ -81,7 +81,7 @@ export function AbilitySection({
         </div>
 
         {/* Ability Recommendations */}
-        {abilityAnalysis && (
+        {abilityAnalysis && abilityAnalysis.recommendations && abilityAnalysis.recommendations.length > 0 && (
           <div>
             <h4 className="font-medium mb-3 flex items-center gap-2">
               <Zap className="h-4 w-4" />

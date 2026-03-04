@@ -56,7 +56,7 @@ export class NatureOptimizationService {
 
   static async analyzeOptimalNatures(pokemon: Pokemon): Promise<NatureAnalysis> {
     const baseStats = this.getBaseStats(pokemon)
-    const role = this.determinePokemonRole(baseStats)
+    const role = this.determinePokemonRole(pokemon.name, baseStats)
     
     // Generate nature recommendations
     const recommendations = this.generateNatureRecommendations(baseStats, role)
@@ -84,7 +84,188 @@ export class NatureOptimizationService {
     }
   }
 
-  private static determinePokemonRole(baseStats: PokemonStats): string {
+  private static determinePokemonRole(pokemonName: string, baseStats: PokemonStats): string {
+    // Special cases for known forms
+    const name = pokemonName.toLowerCase()
+    
+    // Mega Evolution forms with known stat distributions
+    const megaForms: Record<string, 'physical-attacker' | 'special-attacker'> = {
+      // Mega X forms (Physical attackers)
+      'charizard-mega-x': 'physical-attacker',
+      'mewtwo-mega-x': 'physical-attacker', 
+      'blaziken-mega': 'physical-attacker',
+      'groudon-primal': 'physical-attacker',
+      'salamence-mega': 'physical-attacker',
+      'garchomp-mega': 'physical-attacker',
+      'tyranitar-mega': 'physical-attacker',
+      'metagross-mega': 'physical-attacker',
+      'latios-mega': 'physical-attacker',
+      'rayquaza-mega': 'physical-attacker',
+      'scizor-mega': 'physical-attacker',
+      'heracross-mega': 'physical-attacker',
+      'pinsir-mega': 'physical-attacker',
+      'gyarados-mega': 'physical-attacker',
+      'aerodactyl-mega': 'physical-attacker',
+      
+      // Mega Y forms (Special attackers)  
+      'charizard-mega-y': 'special-attacker',
+      'mewtwo-mega-y': 'special-attacker',
+      'venusaur-mega': 'special-attacker',
+      'blastoise-mega': 'special-attacker',
+      'alakazam-mega': 'special-attacker',
+      'gengar-mega': 'special-attacker',
+      'kangaskhan-mega': 'special-attacker',
+      'pidgeot-mega': 'special-attacker',
+      'slowbro-mega': 'special-attacker',
+      'steelix-mega': 'special-attacker',
+      'sableye-mega': 'special-attacker',
+      'absol-mega': 'special-attacker',
+      'glalie-mega': 'special-attacker',
+      'sceptile-mega': 'special-attacker',
+      'swampert-mega': 'special-attacker',
+      'gardevoir-mega': 'special-attacker',
+      'medicham-mega': 'special-attacker',
+      'latias-mega': 'special-attacker',
+      'kyogre-primal': 'special-attacker',
+      'lucario-mega': 'special-attacker',
+      'abomasnow-mega': 'special-attacker',
+      'gallade-mega': 'special-attacker',
+      'audino-mega': 'special-attacker',
+      'diancie-mega': 'special-attacker'
+    }
+    
+    // Arceus forms - determine role based on type
+    const arceusForms: Record<string, 'physical-attacker' | 'special-attacker'> = {
+      'arceus-fighting': 'physical-attacker',
+      'arceus-flying': 'physical-attacker',
+      'arceus-poison': 'physical-attacker',
+      'arceus-ground': 'physical-attacker',
+      'arceus-rock': 'physical-attacker',
+      'arceus-bug': 'physical-attacker',
+      'arceus-ghost': 'special-attacker',
+      'arceus-steel': 'physical-attacker',
+      'arceus-fire': 'special-attacker',
+      'arceus-water': 'special-attacker',
+      'arceus-grass': 'special-attacker',
+      'arceus-electric': 'special-attacker',
+      'arceus-psychic': 'special-attacker',
+      'arceus-ice': 'special-attacker',
+      'arceus-dragon': 'physical-attacker',
+      'arceus-dark': 'physical-attacker',
+      'arceus-fairy': 'special-attacker'
+    }
+    
+    // Regional forms with different stat distributions
+    const regionalForms: Record<string, 'physical-attacker' | 'special-attacker'> = {
+      // Alolan forms
+      'rattata-alola': 'physical-attacker',
+      'raticate-alola': 'physical-attacker',
+      'raichu-alola': 'special-attacker',
+      'sandshrew-alola': 'physical-attacker',
+      'sandslash-alola': 'physical-attacker',
+      'vulpix-alola': 'special-attacker',
+      'ninetales-alola': 'special-attacker',
+      'diglett-alola': 'physical-attacker',
+      'dugtrio-alola': 'physical-attacker',
+      'meowth-alola': 'physical-attacker',
+      'persian-alola': 'physical-attacker',
+      'geodude-alola': 'special-attacker',
+      'graveler-alola': 'special-attacker',
+      'golem-alola': 'physical-attacker',
+      'grimer-alola': 'physical-attacker',
+      'muk-alola': 'physical-attacker',
+      'exeggutor-alola': 'special-attacker',
+      'marowak-alola': 'physical-attacker',
+      
+      // Galarian forms
+      'meowth-galar': 'physical-attacker',
+      'ponyta-galar': 'physical-attacker',
+      'rapidash-galar': 'special-attacker',
+      'farfetchd-galar': 'physical-attacker',
+      'weezing-galar': 'special-attacker',
+      'mr-mime-galar': 'special-attacker',
+      'corsola-galar': 'special-attacker',
+      'zigzagoon-galar': 'physical-attacker',
+      'linoone-galar': 'physical-attacker',
+      'yamask-galar': 'special-attacker',
+      'cursola-galar': 'special-attacker',
+      'stunfisk-galar': 'special-attacker',
+      
+      // Hisuian forms
+      'typhlosion-hisui': 'special-attacker',
+      'growlithe-hisui': 'physical-attacker',
+      'arcanine-hisui': 'physical-attacker',
+      'voltorb-hisui': 'special-attacker',
+      'electrode-hisui': 'special-attacker',
+      'qwilfish-hisui': 'physical-attacker',
+      'sneasel-hisui': 'physical-attacker',
+      'weavile-hisui': 'physical-attacker',
+      'sneasler-hisui': 'physical-attacker',
+      'braviary-hisui': 'physical-attacker',
+      'avalugg-hisui': 'physical-attacker',
+      'decidueye-hisui': 'physical-attacker',
+      'samurott-hisui': 'physical-attacker',
+      'lilligant-hisui': 'physical-attacker',
+      
+      // Paldean forms
+      'wooper-paldea': 'physical-attacker',
+      'quagsire-paldea': 'physical-attacker',
+      'tauros-paldea': 'physical-attacker',
+      'tauros-paldea-aqua': 'physical-attacker',
+      'tauros-paldea-blaze': 'physical-attacker',
+      'tauros-paldea-combat': 'physical-attacker'
+    }
+    
+    // Gigantamax forms
+    const gmaxForms: Record<string, 'physical-attacker' | 'special-attacker'> = {
+      'charizard-gmax': 'special-attacker',
+      'venusaur-gmax': 'special-attacker',
+      'blastoise-gmax': 'special-attacker',
+      'butterfree-gmax': 'special-attacker',
+      'pikachu-gmax': 'physical-attacker',
+      'meowth-gmax': 'physical-attacker',
+      'machamp-gmax': 'physical-attacker',
+      'gengar-gmax': 'special-attacker',
+      'kingler-gmax': 'physical-attacker',
+      'lapras-gmax': 'special-attacker',
+      'eevee-gmax': 'physical-attacker',
+      'snorlax-gmax': 'physical-attacker',
+      'garbodor-gmax': 'physical-attacker',
+      'melmetal-gmax': 'physical-attacker',
+      'corviknight-gmax': 'physical-attacker',
+      'duraludon-gmax': 'special-attacker',
+      'coalossal-gmax': 'physical-attacker',
+      'flapple-gmax': 'physical-attacker',
+      'appletun-gmax': 'special-attacker',
+      'sandaconda-gmax': 'physical-attacker',
+      'toxtricity-gmax': 'special-attacker',
+      'centiskorch-gmax': 'physical-attacker',
+      'hatterene-gmax': 'special-attacker',
+      'grimmsnarl-gmax': 'special-attacker',
+      'alcremie-gmax': 'special-attacker',
+      'copperajah-gmax': 'physical-attacker',
+      'urshifu-gmax': 'physical-attacker',
+      'urshifu-rapid-gmax': 'physical-attacker'
+    }
+    
+    // Check special form mappings
+    if (megaForms[name]) {
+      return megaForms[name]
+    }
+    
+    if (arceusForms[name]) {
+      return arceusForms[name]
+    }
+    
+    if (regionalForms[name]) {
+      return regionalForms[name]
+    }
+    
+    if (gmaxForms[name]) {
+      return gmaxForms[name]
+    }
+    
+    // General role determination based on stats
     const { attack, specialAttack, defense, specialDefense, speed } = baseStats
     
     // Calculate offensive and defensive potential
@@ -149,6 +330,22 @@ export class NatureOptimizationService {
     
     // Role-specific bonuses
     switch (role) {
+      case 'special-attacker':
+        if (natureStats.increased === 'special-attack') score += 30
+        if (natureStats.increased === 'speed') score += 20
+        if (natureStats.decreased === 'attack') score += 15 // Good to reduce unused stat
+        if (natureStats.decreased === 'special-attack') score -= 35
+        if (natureStats.decreased === 'speed') score -= 25
+        break
+        
+      case 'physical-attacker':
+        if (natureStats.increased === 'attack') score += 30
+        if (natureStats.increased === 'speed') score += 20
+        if (natureStats.decreased === 'special-attack') score += 15 // Good to reduce unused stat
+        if (natureStats.decreased === 'attack') score -= 35
+        if (natureStats.decreased === 'speed') score -= 25
+        break
+        
       case 'fast-attacker':
         if (natureStats.increased === 'speed') score += 25
         if (natureStats.increased === 'attack' || natureStats.increased === 'special-attack') score += 20
@@ -198,6 +395,30 @@ export class NatureOptimizationService {
     const increasedStat = baseStats[natureStats.increased as keyof PokemonStats]
     const decreasedStat = baseStats[natureStats.decreased as keyof PokemonStats]
     
+    // Role-specific reasoning
+    if (role === 'special-attacker') {
+      if (natureStats.increased === 'special-attack') {
+        reasons.push('Maximizes Special Attack for primary damage output')
+      }
+      if (natureStats.decreased === 'attack') {
+        reasons.push('Reduces unused Attack stat')
+      }
+      if (natureStats.increased === 'speed') {
+        reasons.push('Improves speed for outspeeding opponents')
+      }
+    } else if (role === 'physical-attacker') {
+      if (natureStats.increased === 'attack') {
+        reasons.push('Maximizes Attack for primary damage output')
+      }
+      if (natureStats.decreased === 'special-attack') {
+        reasons.push('Reduces unused Special Attack stat')
+      }
+      if (natureStats.increased === 'speed') {
+        reasons.push('Improves speed for outspeeding opponents')
+      }
+    }
+    
+    // General stat-based reasoning
     if (increasedStat >= 90) {
       reasons.push(`Boosts excellent ${natureStats.increased}`)
     } else if (increasedStat >= 80) {
