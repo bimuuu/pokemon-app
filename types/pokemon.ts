@@ -232,6 +232,7 @@ export interface PokemonFormData {
   is_battle_only: boolean;
   is_mega: boolean;
   is_primal: boolean;
+  is_gmax: boolean;
   pokemon: {
     name: string;
     url: string;

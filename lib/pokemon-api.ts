@@ -813,6 +813,7 @@ export async function fetchAllFormsData(pokemonId: number): Promise<Record<strin
           is_battle_only: formData?.is_battle_only || false,
           is_mega: formData?.is_mega || false,
           is_primal: formData?.is_primal || false,
+          is_gmax: formData?.is_gmax || false,
           pokemon: {
             name: pokemonData.name,
             url: `https://pokeapi.co/api/v2/pokemon/${pokemonData.id}/`

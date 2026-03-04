@@ -321,6 +321,7 @@ export function FormSelector({
                 is_battle_only: false,
                 is_mega: false,
                 is_primal: false,
+                is_gmax: false,
                 pokemon: {
                   name: 'arceus',
                   url: 'https://pokeapi.co/api/v2/pokemon/arceus'
