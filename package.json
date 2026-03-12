@@ -6,9 +6,12 @@
     "dev": "next dev",
     "dev:webpack": "next dev --webpack",
     "build": "next build",
+    "build:analyze": "set ANALYZE=true && next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "set ANALYZE=true && next build"
+    "analyze": "set ANALYZE=true && next build",
+    "vercel-build": "next build",
+    "test:images": "node scripts/test-images.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

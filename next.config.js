@@ -12,7 +12,25 @@ const nextConfig = {
         hostname: 'assets.pokemon.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'pokeapi.co',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.serebii.net',
+        pathname: '/**',
+      },
     ],
+    unoptimized: false,
+    domains: [
+      'raw.githubusercontent.com',
+      'assets.pokemon.com',
+      'www.serebii.net'
+    ],
+    loader: 'custom',
+    loaderFile: './lib/image-loader.js',
   },
 }
 

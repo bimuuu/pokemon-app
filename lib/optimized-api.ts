@@ -1,5 +1,6 @@
 import { CobblemonPokemon } from '@/types/pokemon'
 import { debounce } from './performance'
+import { testImageLoad, logImagePerformance } from './image-utils'
 
 // Simple Pokemon data structure with only what we need
 export interface SimplePokemonData {
@@ -60,12 +61,41 @@ export async function fetchPokemonTypesOnly(pokemonIds: number[]): Promise<Recor
 
 // Get Pokemon sprite URL with fallback
 export function getPokemonSpriteUrl(id: number): string {
+  // Primary source: Official artwork from PokeAPI
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 }
 
 // Get fallback sprite URL
 export function getFallbackSpriteUrl(id: number): string {
+  // Secondary source: Regular sprites from PokeAPI
   return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+}
+
+// Get ultimate fallback sprite URL (alternative source)
+export function getUltimateFallbackSpriteUrl(id: number): string {
+  // Tertiary source: Pokemon.com assets (more reliable)
+  return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`
+}
+
+// Test all image sources for a specific Pokemon (for debugging)
+export async function testPokemonImageSources(id: number): Promise<void> {
+  if (process.env.NODE_ENV !== 'development') return
+  
+  const sources = [
+    getPokemonSpriteUrl(id),
+    getFallbackSpriteUrl(id),
+    getUltimateFallbackSpriteUrl(id)
+  ]
+  
+  const results = await Promise.allSettled(
+    sources.map(url => testImageLoad(url))
+  )
+  
+  const imageResults = results.map(result => 
+    result.status === 'fulfilled' ? result.value : { success: false, url: '', error: 'Promise rejected' }
+  )
+  
+  logImagePerformance(id, imageResults)
 }
 
 // Optimized Pokemon data structure for cards
@@ -83,11 +113,15 @@ export function createOptimizedPokemonData(pokemon: CobblemonPokemon, types: str
 // Preload critical Pokemon images
 export function preloadPokemonImages(pokemonIds: number[]): void {
   pokemonIds.forEach(id => {
-    const img = new Image()
-    img.src = getPokemonSpriteUrl(id)
+    const sources = [
+      getPokemonSpriteUrl(id),
+      getFallbackSpriteUrl(id),
+      getUltimateFallbackSpriteUrl(id)
+    ]
     
-    // Also preload fallback
-    const fallbackImg = new Image()
-    fallbackImg.src = getFallbackSpriteUrl(id)
+    sources.forEach(src => {
+      const img = new Image()
+      img.src = src
+    })
   })
 }

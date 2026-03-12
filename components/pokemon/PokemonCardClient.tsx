@@ -8,7 +8,8 @@ import { TypeBadge, RarityBadge } from '@/components/ui'
 import { formatPokemonName } from '@/lib/utils'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translateCondition } from '@/lib/i18n'
-import { getPokemonSpriteUrl, getFallbackSpriteUrl } from '@/lib/optimized-api'
+import { getPokemonSpriteUrl, getFallbackSpriteUrl, getUltimateFallbackSpriteUrl } from '@/lib/optimized-api'
+import { ImageTestButton } from '@/components/debug/ImageTestButton'
 
 interface PokemonCardProps {
   pokemon: CobblemonPokemon
@@ -23,15 +24,21 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
   
   // State to track image loading errors
   const [mainImageError, setMainImageError] = useState(false)
+  const [fallbackImageError, setFallbackImageError] = useState(false)
   const [varietyImageErrors, setVarietyImageErrors] = useState<Set<string>>(new Set())
   const [mainImageLoaded, setMainImageLoaded] = useState(false)
   
-  // Memoize sprite URL for performance
+  // Memoize sprite URLs for performance
   const spriteUrl = useMemo(() => getPokemonSpriteUrl(id), [id])
   const fallbackUrl = useMemo(() => getFallbackSpriteUrl(id), [id])
+  const ultimateFallbackUrl = useMemo(() => getUltimateFallbackSpriteUrl(id), [id])
   
   // Determine which image source to use for main sprite
-  const mainImageSrc = mainImageError ? fallbackUrl : spriteUrl
+  const mainImageSrc = mainImageError 
+    ? (fallbackImageError 
+      ? ultimateFallbackUrl
+      : fallbackUrl)
+    : spriteUrl
   
   return (
     <article className="pokemon-card p-4 hover:scale-105 hover:shadow-lg transition-all duration-200 relative z-10">
@@ -44,7 +51,7 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
         </div>
         
         <div className="w-20 h-20 mx-auto mb-3 bg-gray-100 rounded-lg flex items-center justify-center relative">
-          {mainImageError ? (
+          {(mainImageError && fallbackImageError) ? (
             <div className="w-full h-full flex items-center justify-center text-gray-400">
               <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
@@ -66,10 +73,14 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
                 onError={() => {
                   if (!mainImageError) {
                     setMainImageError(true)
+                  } else if (!fallbackImageError && mainImageSrc === fallbackUrl) {
+                    setFallbackImageError(true)
                   }
                 }}
                 onLoad={() => setMainImageLoaded(true)}
                 placeholder="empty"
+                unoptimized={false}
+                priority={id <= 151} // Priority for first 151 Pokemon
               />
             </>
           )}
@@ -102,6 +113,14 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
               {pokemon.SPAWN.length > 20 ? pokemon.SPAWN.substring(0, 20) + '...' : pokemon.SPAWN}
             </dd>
           </div>
+          {process.env.NODE_ENV === 'development' && (
+            <div className="flex justify-between">
+              <dt>Debug:</dt>
+              <dd>
+                <ImageTestButton pokemonId={id} pokemonName={pokemon.POKÉMON} />
+              </dd>
+            </div>
+          )}
         </dl>
         
         {pokemon.CONDITION && (
@@ -182,6 +201,7 @@ export const PokemonCardClient = memo(({ pokemon, types, varieties }: PokemonCar
                           setVarietyImageErrors(prev => new Set(prev).add(varietyKey))
                         }
                       }}
+                      unoptimized={false}
                     />
                     <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
                       {variety.display_name}
