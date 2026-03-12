@@ -267,8 +267,10 @@ export default function TrainerDetailPage() {
   const trainerId = decodeURIComponent(params.id as string).replace(/%20/g, ' ').replace(/%2E/g, '.')
   
   // Parse region-prefixed ID (format: region_trainerName) or legacy ID (format: trainerName)
-  const [regionPrefix, trainerName] = trainerId.includes('_') 
-    ? trainerId.split('_', 2) 
+  // Handle cases like "kanto_Bruno_Kanto" -> ["kanto", "Bruno_Kanto"]
+  const firstUnderscoreIndex = trainerId.indexOf('_')
+  const [regionPrefix, trainerName] = firstUnderscoreIndex !== -1 
+    ? [trainerId.substring(0, firstUnderscoreIndex), trainerId.substring(firstUnderscoreIndex + 1)]
     : [null, trainerId]
 
   console.log('=== Page.tsx ===')
