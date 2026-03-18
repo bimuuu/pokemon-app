@@ -17,7 +17,7 @@ import {
   TrainerType
 } from './constants/trainerTypes'
 import { TeamRecommendationCard } from './ui'
-import {
+import { 
   createSimplePokemon,
   getPokemonRarity,
   getLevelScaling,
@@ -25,7 +25,6 @@ import {
   getGenerationWeight,
   enforceRarityDistribution
 } from './utils'
-import { getBattleStrategy } from './utils/battleStrategy'
 
 interface TeamRecommendationProps {
   trainerTeam: any[]
@@ -318,7 +317,6 @@ export function TeamRecommendation({
     return (
       <TeamRecommendationCard
         loading={loading}
-        battleStrategy={getBattleStrategy(trainerWeaknesses, trainerStrengths, averageLevel)}
         trainerWeaknesses={trainerWeaknesses}
         trainerStrengths={trainerStrengths}
       />
@@ -329,7 +327,6 @@ export function TeamRecommendation({
     <div>
       <TeamRecommendationCard
         loading={loading}
-        battleStrategy={getBattleStrategy(trainerWeaknesses, trainerStrengths, averageLevel)}
         trainerWeaknesses={trainerWeaknesses}
         trainerStrengths={trainerStrengths}
         recommendedPokemon={recommendedPokemon}

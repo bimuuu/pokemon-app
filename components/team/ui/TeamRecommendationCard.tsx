@@ -15,7 +15,6 @@ interface RecommendedPokemon {
 
 interface TeamRecommendationCardProps {
   loading: boolean
-  battleStrategy: string[]
   trainerWeaknesses: string[]
   trainerStrengths: string[]
   recommendedPokemon?: RecommendedPokemon[]
@@ -24,7 +23,6 @@ interface TeamRecommendationCardProps {
 
 export function TeamRecommendationCard({ 
   loading, 
-  battleStrategy, 
   trainerWeaknesses, 
   trainerStrengths,
   recommendedPokemon = [],
@@ -49,19 +47,7 @@ export function TeamRecommendationCard({
         <Lightbulb className="w-6 h-6" />
       </div>
       
-      {/* Battle Strategy */}
-      <div className="bg-gray-700 rounded-lg p-3 mb-3">
-        <h4 className="font-medium mb-2 flex items-center text-gray-300">
-          <BrainCircuit className="w-4 h-4 mr-2" />
-          Battle Strategy
-        </h4>
-        <ul className="text-sm space-y-1 text-gray-400">
-          <li>• Target ice/fighting/bug types</li>
-          <li>• Avoid fire/ice/flying types</li>
-          <li>• Level 21+ recommended</li>
-        </ul>
-      </div>
-
+      
       {/* Recommended Pokemon */}
       {recommendedPokemon.length > 0 && (
         <div className="mb-4">
