@@ -1,7 +1,8 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Sword, MapPin, Shield } from 'lucide-react'
+import { ArrowLeft, Sword, MapPin, Shield, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { TypeBadge } from '@/components/ui/TypeBadge'
 import { Button } from '@/components/ui/button'
@@ -19,8 +20,12 @@ interface PokemonHeaderProps {
 }
 
 export function PokemonHeader({ pokemon, cobblemonData, totalStats, t }: PokemonHeaderProps) {
+  const [isShiny, setIsShiny] = useState(false)
+  
   const weaknesses = calculateTypeWeaknesses(pokemon.types.map(t => t.type.name))
   const strengths = calculateTypeStrengths(pokemon.types.map(t => t.type.name))
+  
+  const currentSprite = isShiny ? pokemon.sprites.front_shiny : pokemon.sprites.front_default
   return (
     <>
       <motion.div
@@ -47,13 +52,18 @@ export function PokemonHeader({ pokemon, cobblemonData, totalStats, t }: Pokemon
             transition={{ type: 'spring', stiffness: 300, damping: 24 }}
           >
             <motion.div 
-              className="w-64 h-64 mx-auto mb-4 bg-gray-100 rounded-lg flex items-center justify-center"
+              className="w-64 h-64 mx-auto mb-4 bg-gray-100 rounded-lg flex items-center justify-center relative"
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
+              {isShiny && (
+                <div className="absolute top-2 right-2">
+                  <Sparkles className="w-5 h-5 text-yellow-500 animate-pulse" />
+                </div>
+              )}
               <motion.img 
-                src={pokemon.sprites.front_default}
-                alt={pokemon.name}
+                src={currentSprite}
+                alt={`${pokemon.name} ${isShiny ? 'shiny' : 'normal'}`}
                 className="w-56 h-56 object-contain"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -77,6 +87,30 @@ export function PokemonHeader({ pokemon, cobblemonData, totalStats, t }: Pokemon
             >
               {formatPokemonId(pokemon.id)}
             </motion.p>
+            
+            {/* Shiny Toggle */}
+            <motion.div 
+              className="flex justify-center mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.65 }}
+            >
+              <button
+                onClick={() => setIsShiny(!isShiny)}
+                className={`
+                  flex items-center gap-2 px-4 py-2 rounded-lg border-2 transition-all duration-300
+                  ${isShiny 
+                    ? 'border-yellow-400 bg-gradient-to-r from-yellow-50 to-yellow-100 text-yellow-700 shadow-lg shadow-yellow-200/50' 
+                    : 'border-gray-300 bg-white text-gray-700 hover:border-gray-400'
+                  }
+                `}
+              >
+                <Sparkles className={`w-4 h-4 ${isShiny ? 'text-yellow-600 animate-pulse' : 'text-gray-500'}`} />
+                <span className="font-medium">
+                  {isShiny ? 'Shiny' : 'Normal'}
+                </span>
+              </button>
+            </motion.div>
             <motion.div 
               className="flex justify-center gap-2 mb-4"
               variants={containerVariants}
